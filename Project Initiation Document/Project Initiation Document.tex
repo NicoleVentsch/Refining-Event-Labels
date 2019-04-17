@@ -1,25 +1,27 @@
 \documentclass[notitlepage]{article}
-\usepackage[utf8]{inputenc} 	%UTF-8
-\usepackage{geometry} 			%Page formatting
-\usepackage{amsmath} 			%Advanced Maths
-\usepackage{amssymb}			%Mathamatical symbols
-\usepackage{mathtools}			%Essential for custom commands relating maths
-\usepackage{comment} 			%Multiline-comments
-\usepackage{mdframed}			%Make frames
-\usepackage{xcolor}				%Color
-\usepackage{fancyhdr}			%Header
-\usepackage{listings}			%Java syntax highlighting #1
-\usepackage{color}				%Java syntax highlighting #2
-\usepackage{tikz}				%TREEEEEEEEEEEEEEEEEEEES
-\usetikzlibrary{shapes}			%SHAAAAAAAAAAAAAAAAAAPES
-\usetikzlibrary{positioning}	%You get the drill..
-\tikzstyle{data}=[rectangle split,rectangle split parts=2,draw,text centered] %Fk this
-\definecolor{name}{rgb}{0.5,0.5,0.5}%Java syntax highlighting #3
-\usepackage{tasks}				%For listing elements. #1
-\usepackage{exsheets}			%For listing elements. #2
-\usepackage{array}				%Truth tables #1
-\newcolumntype{C}{>$c<$}		%Truth tables #2
+\usepackage[utf8]{inputenc} 
+\usepackage{geometry} 		
+\usepackage{chngcntr}
+\usepackage{amsmath} 			
+\usepackage{amssymb}			
+\usepackage{mathtools}		
+\usepackage{comment} 			
+\usepackage{mdframed}			
+\usepackage{xcolor}				
+\usepackage{fancyhdr}			
+\usepackage{listings}			
+\usepackage{color}				
+\usepackage{tikz}	
+\usetikzlibrary{shapes}	
+\usetikzlibrary{positioning}	
+\tikzstyle{data}=[rectangle split,rectangle split parts=2,draw,text centered]
+\definecolor{name}{rgb}{0.5,0.5,0.5}
+\usepackage{tasks}			
+\usepackage{exsheets}		
+\usepackage{array}			
+\newcolumntype{C}{>$c<$}
 \usepackage{empheq}
+\usepackage{caption}
 
 \geometry{ 						%Format titlepage (interrupted by newgeometry)
 	a4paper,
@@ -139,7 +141,22 @@ In this project we will assume that an event log is given by the user, i.e., dat
 \section{Project Plan}
 
 \subsection{Milestones}
-
+The project starts on the 09/04/2019 and ends on the 08/07/2019 and is divided into nine milestones.  
+\begin{center}
+	\captionof{table}{Overview Milestones }
+  \begin{tabular}{  m{6cm} m{8cm} m{2cm} }
+  	\hline
+		Milestone & Description & Deadline \\ \hline
+		Project Initiation document & The Project Initiation Document provides all of the key information required to start and run the project. This includes the project description, business case, feasibility study and a project team presentation.  & 19/04/2019 \\ \hline
+		Requirements Specification document & The Requirements Specification document contains functional and none functional requirements such as a set of use cases to describe the system interactions. & 29/04/2019 \\ \hline
+		Design Analysis and dummy P.o.C. & The final document is a description about the planned software system architectural background and a proof of concept visualizing the main UI components. & 13/05/2019 \\ \hline
+		Sprint 1 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart}  & 24/05/2019 \\ \hline
+		Sprint 2 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart} & 07/06/2019 \\ \hline
+		Sprint 3 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart} & 21/06/2019 \\ \hline
+		Testing, assessment and deployment & The application is checked for accuracy and should be aviable for use. & 01/07/2019 \\ \hline
+		Final report on the project & The final report provides an overview about the project course and the result. & 08/07/2019 \\ \hline
+	\end{tabular}
+\end{center}
 \subsection{Deliverables}
 
 \subsection{Timetable}
