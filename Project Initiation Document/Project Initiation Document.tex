@@ -12,14 +12,9 @@
 \usepackage{listings}			
 \usepackage{color}				
 \usepackage{tikz}	
-\usetikzlibrary{shapes}	
-\usetikzlibrary{positioning}	
-\tikzstyle{data}=[rectangle split,rectangle split parts=2,draw,text centered]
-\definecolor{name}{rgb}{0.5,0.5,0.5}
 \usepackage{tasks}			
 \usepackage{exsheets}		
 \usepackage{array}			
-\newcolumntype{C}{>$c<$}
 \usepackage{empheq}
 \usepackage{caption}
 \usepackage{pdfpages}
@@ -36,10 +31,6 @@
 
 \newcommand{\documentName}{Project Initiation}
 \newcommand{\projectName}{Label Refinement by Behavioral Similarity}
-\newcommand{\tasknr}{11}
-\newcommand{\mnr}{Matrikelnummer}
-\newcommand{\groupnr}{Gruppennummer}
-\newcommand{\duedate}{Abgabefristdatum}
 
 %END DEFINE YOUR VARIABLES HERE
 
@@ -54,7 +45,7 @@
 	\texttt{}
 	Christopher Beine\\
 	\texttt{}
-	Nicole\\
+	Nicole Ventsch\\
 	\texttt{}
 	Juan\\
 	\texttt{}
@@ -158,9 +149,48 @@ For our project we will use Python as back-end programming language to implement
 
 \textcolor{red}{@all front end, libraries used and why}\\
 
+{\color{gray} *************** under construction *****************}
 
+{\color{red} @all Do we need external libraries to implement the algorithm?}\\
+{\color{red} TODO: formulate bullet points [to be done until friday]}
 
+\begin{itemize}
+	\item Flask 1.0.2 as web application framework
+	\item Phyton 3.7.2 as back-end programming language
+	\item JavaScript as Front-end development language (Standard ECMAScript 2018)
+	\item Browser support (Google Chrome version $\geq$ 70, Firefox version $\geq$ 63, Maybe don't support IE/Edge)
+	\item {\color{red} TODO: Select HTML5 visualisation framework for petri nets [To be done until saturday]}
+	\item {\color{red} TODO: Select JavaScript Framework / Actually Required? [To be done until saturday]}
+	\item Bootstrap version 4.3.1 for fast ui design
+\end{itemize}
 
+\large{flask}
+\begin{itemize}
+	\item References: Netflix Lemur, Linked-in internal stack
+	\item Minimalistic Framework
+	\item highly customizable
+\end{itemize}
+
+\large{Phyton}
+\begin{itemize}
+	\item Specified by stackholder
+	\item highly used for datascience
+	\item reference
+\end{itemize}
+
+\large{JavaScript}
+\begin{itemize}
+	\item defacto standard
+	\item Required for dynamic content
+\end{itemize}
+
+\large{Bootstrap}
+\begin{itemize}
+	\item References: Twitter, Spotify, Coursera
+	\item Fast Responsive UI design (May indicate responsive as optional for project)
+\end{itemize}
+
+{\color{gray} **************************************************}
 
 
 \subsection{Risks and migiations}
@@ -203,7 +233,10 @@ Software components do not work as a whole & Put emphasis on the design step \\
 
 \subsection{Milestones}
 
-The project starts on the 09/04/2019 and ends on the 08/07/2019 and is divided into nine milestones.  
+The project starts on the 09/04/2019 and ends on the 08/07/2019 and is divided into nine milestones. The project is managed with a scrum-oriented approach
+where each milestone represents a sprint. The project team organizes the required tasks during each sprint and visualize the current project status via a dashboard.
+
+{\color{red} TODO: add sprint description until friday} \\
 \begin{center}
 	\captionof{table}{Overview Milestones }
   \begin{tabular}{ m{0.4cm} m{5cm} m{8.5cm} m{2cm} }
@@ -271,8 +304,7 @@ With each milestones various deliverables are created to monitor, document and v
 \end{itemize}
 
 {\color{red} @all: should we write tests during the implementation? Could possibly save us a lot of trouble, but we have to select a test framework.
-Otherwise we can remove the Unit Test protocols
-}
+Otherwise we can remove the Unit Test protocols}
 
 \textbf{7 Testing, assessment and deployment}
 \\
