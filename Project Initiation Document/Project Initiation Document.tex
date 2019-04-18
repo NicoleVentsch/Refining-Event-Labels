@@ -23,6 +23,7 @@
 \usepackage{empheq}
 \usepackage{caption}
 \usepackage{pdfpages}
+\usepackage{tabularx}
 
 \geometry{ 						%Format titlepage (interrupted by newgeometry)
 	a4paper,
@@ -49,7 +50,7 @@
 
 \author{
 	\large Document owner:\\
-	Bianka\\
+	Bianka Bakullari\\
 	\texttt{}
 	Christopher Beine\\
 	\texttt{}
@@ -131,13 +132,72 @@ In this project we will assume that an event log is given by the user, i.e., dat
 
 \subsection{Theoretical point of view}
 
+From a theoretical point of view, we view an event log for which we suspect to have different tasks being handled as the same activity as \textit{imprecise}.
+In reality, each event in the data is a unique occurrence over time.
+By defining a \textit{labeling  function} which maps these events to a finite set of activity names, also called \textit{labels}, we obtain event logs having common activities across traces and within traces.
+A problem arises when similar events happening in different contexts are assigned the same label.
+Applying process discovery algorithms to such event logs may lead to process models being imprecise, misleading or even incorrect.
+
+There has already been some research investigating this problem. 
+Some of the approaches include using additional domain knowledge to correct the labeling, or trace clustering to do relabeling according to the different variants.
+
+In our project, we focus on the algorithm developed, investigated and explained in [paper], which given an event log, refines the labels of events based only on the context and patterns present in this event log.
+The approach consists of three main steps: 1)detecting activities which need refined labels, do relabeling 2)accross dissimilar traces and then 3)within traces.
+In our project, we assume that the set of activities needing relabeling is given and the user should have the possibility to set the thresholds affecting the relabeling in steps 2) and 3).
+
+Since the logs have a finite set of activities leaving room for only a reduced number of computations needed for the cost function in step 2) and the fact that this algorithm has already been successfully implemented in ProM yielding good results, we conclude that the project is feasible from a theoretical point of view.\\
+
 \subsection{Technical point of view}
+
+As stated in [paper], the algorithm has already been implemented in ProM, where controlled experiments have been made to test the performance of the algorithm based on event logs containing different patterns.
+There has also been a real life case study involving an event log with data concerning healthcare which was provided by Maastricht University Medical Center (MUMC+), a large academic hospital in the Netherlands.
+In the log containing 1039 cases and 6213 events, the activities \textit{surgery} and \textit{consultation} were imprecise.
+After relabeling, the resulting model reflected the behaviour which was described by the domain experts, according to whom the acitivity \textit{surgery} for example took place many times during the treatment of certain patients.
+
+For our project we will use Python as back-end programming language to implement the algorithm. 
+
+\textcolor{red}{@all front end, libraries used and why}\\
+
+
+
+
+
 
 \subsection{Risks and migiations}
 
 \subsubsection{Project management risks}
 
+\begin{tabularx}{12cm}{|X|X|}
+\hline
+\textbf{Risks} &\textbf{Mitigations}\\
+\hline
+Misunderstanding of Tasks & Do regular discussiond, meetings in the group and with the project supervisor\\
+\hline
+Unmatching schedules of the team members & Arrange meetings in advance, notify other members for any change  \\
+\hline
+Acquiring new skills under time pressure & Assign tasks based on individual strengths to increase efficiency \\ 
+\hline
+\end{tabularx}\\ 
+
+
 \subsubsection{Technical risks}
+
+\begin{tabularx}{12cm}{|X|X|}
+\hline
+\textbf{Risks} &\textbf{Mitigations}\\
+\hline
+Inconsistencies in programming styles & Explain the code to other members, write useful comments while coding\\
+\hline
+Unclear performance measures & Test code on small event logs, use automatically generated event logs to experiment \\
+\hline
+Software components do not work as a whole & Put emphasis on the design step \\ 
+\hline
+\end{tabularx}
+
+
+
+
+
 
 \section{Project Plan}
 
