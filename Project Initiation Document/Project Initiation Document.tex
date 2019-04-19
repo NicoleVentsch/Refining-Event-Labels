@@ -143,7 +143,7 @@ Applying process discovery algorithms to such event logs may lead to process mod
 There has already been some research investigating this problem. 
 Some of the approaches include using additional domain knowledge to correct the labeling, or trace clustering to do relabeling according to the different variants.
 
-In our project, we focus on the algorithm developed, investigated and explained in [paper], which given an event log, refines the labels of events based only on the context and patterns present in this event log.
+In our project, we focus on the algorithm developed, investigated and explained in \cite{Refining}, which given an event log, refines the labels of events based only on the context and patterns present in this event log.
 The approach consists of three main steps: 1)detecting activities which need refined labels, do relabeling 2)accross dissimilar traces and then 3)within traces.
 In our project, we assume that the set of activities needing relabeling is given and the user should have the possibility to set the thresholds affecting the relabeling in steps 2) and 3).
 
@@ -151,7 +151,7 @@ Since the logs have a finite set of activities leaving room for only a reduced n
 
 \subsection{Technical point of view}
 
-As stated in [paper], the algorithm has already been implemented in ProM, where controlled experiments have been made to test the performance of the algorithm based on event logs containing different patterns.
+As stated in \cite{Refining}, the algorithm has already been implemented in ProM, where controlled experiments have been made to test the performance of the algorithm based on event logs containing different patterns.
 There has also been a real life case study involving an event log with data concerning healthcare which was provided by Maastricht University Medical Center (MUMC+), a large academic hospital in the Netherlands.
 In the log containing 1039 cases and 6213 events, the activities \textit{surgery} and \textit{consultation} were imprecise.
 After relabeling, the resulting model reflected the behaviour which was described by the domain experts, according to whom the acitivity \textit{surgery} for example took place many times during the treatment of certain patients.
@@ -168,6 +168,8 @@ For our project we will use Python as back-end programming language to implement
 \begin{itemize}
 	\item Flask 1.0.2 as web application framework
 	\item Python 3.7.2 as back-end programming language
+	\item pm4py python library as process mining toolkit
+    \item NetworkX pyhton library for graph manipulation
 	\item JavaScript as Front-end development language (Standard ECMAScript 2018)
 	\item Browser support (Google Chrome version $\geq$ 70, Firefox version $\geq$ 63, Maybe don't support IE/Edge)
 	\item {\color{red} TODO: Select HTML5 visualisation framework for petri nets [To be done until saturday]}
@@ -353,6 +355,10 @@ Juan Garza is a student at the RWTH University. He is currently in his 4th semes
 \section{Project office}
 
 \subsection{Description}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{references}  
 
 \end{flushleft}
 
