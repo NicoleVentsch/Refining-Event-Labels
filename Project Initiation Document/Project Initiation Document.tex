@@ -86,14 +86,15 @@
 \section{Overview}
 Many processes involve carrying out an action multiple times. An example for this would be an online shop in which you first have to pay a registration fee before ordering an item and paying it. This process contains the event "payment" twice, but in different contexts, so that the payments are actually two different tasks. In the context of analysing processes, the event logs usually only contain the event names, so that the "payment" actions would be treated as the same task and loops would be induced in the resulting models. However, these loops do not match the actual process, which is the issue this project addresses. 
 
-These imprecise logs should be refined based on the structural contexts of the events. We want to refine the logs without any filtering. Moreover, we want to allow an interactive change of the thresholds used to refine the labels since this can differ for every log and we have no knowledge of the correctness of the refined log in general.
+These imprecise logs should be refined based on the structural contexts of the events. We want to refine the logs without any filtering. Moreover, we want to allow an interactive change of the thresholds used to refine the labels since this can differ for every log and we have no knowledge of the correctness of the refined log in general. All of this should be done by creating a Python-based web service in this project.
 
-By designing an interface that allows the users to upload an event log, to set the thresholds and to download the modified event log, carrying out this project will save the data analysts a lot of time which is needed to refine the log and will make their results more accurate.  Using this approach, the process logs can be refined to reach a higher precision in the subsequent analysis of up to $89 \, \% $, which highly increases the quality of the process discovery results. These better results can lead to more optimized processes and that way reduce the company's expenses while increasing its efficiency. 
+
 
 
 \section{Business Case}
 
-\subsection{Intial situation}
+Based on the situation explained in the overview, we now want to discuss the business case and explore the project`s potential. We will do this by first defining the scope of the project, then the assumptions we take and finally we will consider the advantages that are gained by carrying out this project. 
+% \subsection{Intial situation}
 
 \subsection{Scope}
 
@@ -113,11 +114,21 @@ Implementation:
 	\item create a user interface that allows the users to upload the original event log, set thresholds and imprecise label scope and finally download the refined event log
 \end{itemize}
 
-\subsection{Key Benefits}
+Moreover, we will follow the software development Lifecycle and, in this connection, we will create documentation on the project initialization, on the requirement specifications, on the design and P.o.C and a software documentation. Each of them have to be submitted before the corresponding due date stated in the section "Project Plan - Milestones".  
+
+
+
 
 \subsection{Assumptions}
 
 In this project we will assume that an event log is given by the user, i.e., data that contains at least the attributes "id", "time stamp" and "activity name". Moreover, we will assume that these event logs are given in the standard XES format. 
+
+\subsection{Key Benefits}
+ 
+With this project we mainly aim at improving given event logs by making them more precise, so that the subsequent analysis will be more accurate. Using this approach, the process logs can be refined to reach a higher precision in the subsequent analysis of up to $89 \, \% $, which highly increases the quality of the process discovery results.  Thus, the data scientists will be enabled to gain better insights from the data. These insights can then lead to more optimized processes and that way reduce the company's expenses while increasing its efficiency.  
+
+By designing an interface that allows the users to upload an event log, to set the thresholds and to download the modified event log, carrying out this project will save the data analysts a lot of time which would be needed to refine the log themselves. By providing a web service, the software can be used on demand and there are only minor requirements for the user's hardware and avoids the necessity to stick to a given programming language or software.
+
 
 \section{Feasibility study}
 
@@ -331,9 +342,7 @@ Otherwise we can remove the Unit Test protocols}
 % May include self assement here 
 \subsubsection{Nicole Ventsch}
 
-I am a Master student studying Mathematics and Data Science in parallel.  Moreover, I work as a student assistant in the field of Data Analytics / Business Intelligence. Due to my background in mathematics, I have a good understanding of theoretical foundations. Moreover, I am very interested in Data Science and already took many courses in that area. Since I took the course "Introduction to Data Science", I also worked with Python before, so that I should be able to implement an algorithm in Python.
-
-Though I have a strong theoretical background, I never worked on user interfaces or with web services, so that this aspect of the project could be challenging for me. 
+Nicole Ventsch is a Master student at RWTH studying Mathematics and Data Science in parallel. She is studying both subjects in her second semester of the master's degree. Moreover, she works as a student assistant in the field of Data Analytics / Business Intelligence. Due to her background in mathematics, she has a good understanding of theoretical foundations. Moreover, she is very interested in Data Science and already took many courses in that area. Since she took the course "Introduction to Data Science", she also worked with Python before. Though she has a strong theoretical background, she never worked on user interfaces or with web services, so that this aspect of the project could be challenging for her. Additionally to that, she is not used to the software development Lifecycle, so that executing this project will include many new experiences to her. 
 
 \subsection{Juan Garza}
 
