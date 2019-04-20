@@ -139,7 +139,11 @@ By designing an interface that allows the users to upload an event log, to set t
 By providing a web service, the software can be used on demand and there are only minor requirements for the user's hardware which avoids the necessity to stick to a given programming language or software.
 
 
+
+
 \section{Feasibility study}
+In this section we give a description of our project by explaining why the task is realizable from both theoretical and technical point of view.
+We also try to take potential risks into account and propose countermeasures.
 
 \subsection{Theoretical point of view}
 
@@ -152,26 +156,30 @@ Applying process discovery algorithms to such event logs may lead to process mod
 There has already been some research investigating this problem. 
 Some of the approaches include using additional domain knowledge to correct the labeling, or trace clustering to do relabeling according to the different variants.
 
-In our project, we focus on the algorithm developed, investigated and explained in \cite{Refining}, which given an event log, refines the labels of events based only on the context and patterns present in this event log.
+In our project, we focus on the algorithm developed, investigated and explained in \cite{paper}, which given an event log, refines the labels of events based only on the context and patterns present in this event log.
 The approach consists of three main steps: 1)detecting activities which need refined labels, do relabeling 2)accross dissimilar traces and then 3)within traces.
-In our project, we assume that the set of activities needing relabeling is given and the user should have the possibility to set the thresholds affecting the relabeling in steps 2) and 3).
+Here we assume that the set of candidate activities needing relabeling is given and the user should have the possibility to set the thresholds affecting the relabeling in steps 2) and 3).
 
 Since the logs have a finite set of activities leaving room for only a reduced number of computations needed for the cost function in step 2) and the fact that this algorithm has already been successfully implemented in ProM yielding good results, we conclude that the project is feasible from a theoretical point of view.\\
 
 \subsection{Technical point of view}
 
-As stated in \cite{Refining}, the algorithm has already been implemented in ProM, where controlled experiments have been made to test the performance of the algorithm based on event logs containing different patterns.
+As stated in \cite{paper}, the algorithm has already been implemented in ProM, where controlled experiments have been made to test the performance of the algorithm based on event logs containing different patterns.
 There has also been a real life case study involving an event log with data concerning healthcare which was provided by Maastricht University Medical Center (MUMC+), a large academic hospital in the Netherlands.
 In the log containing 1039 cases and 6213 events, the activities \textit{surgery} and \textit{consultation} were imprecise.
 After relabeling, the resulting model reflected the behaviour which was described by the domain experts, according to whom the acitivity \textit{surgery} for example took place many times during the treatment of certain patients.
 
 For our project we will use Python as back-end programming language to implement the algorithm. 
+In particular we will make use of the .pm4py library which is a joint effort of the Process Mining group at the Fraunhofer FIT and the Chair of
+RWTH Process and Data Science group as it supports many process mining
+algorithms and performance measures in Python.
 
 \textcolor{red}{@all front end, libraries used and why}\\
 
 {\color{gray} *************** under construction *****************}
 
 {\color{red} @all Do we need external libraries to implement the algorithm?}\\
+{\color{blue} No we can probably specify that in the next document, I think what we have here is sufficient :)}\\
 {\color{red} TODO: formulate bullet points [to be done until friday]}
 
 \begin{itemize}
@@ -195,8 +203,8 @@ For our project we will use Python as back-end programming language to implement
 
 \large{Python}
 \begin{itemize}
-	\item Specified by stackholder
-	\item highly used for datascience
+	\item specified by stackholder
+	\item highly used for data science
 	\item reference
 \end{itemize}
 
@@ -215,15 +223,17 @@ For our project we will use Python as back-end programming language to implement
 {\color{gray} **************************************************}
 
 
-\subsection{Risks and migiations}
+\subsection{Risks and mitigations}
+In the following we try to estimate the potential problems and risks that may arise during our project and propose ways to be prepared for or overcome them.
+We take into consideration complications concerning the organisational and management aspects, as well as those arising when implementing the algorithm.
 
 \subsubsection{Project management risks}
 
-\begin{tabularx}{12cm}{|X|X|}
+\begin{tabularx}{15cm}{|X|X|}
 \hline
 \textbf{Risks} &\textbf{Mitigations}\\
 \hline
-Misunderstanding of Tasks & Do regular discussiond, meetings in the group and with the project supervisor\\
+Misunderstanding of tasks & Do regular discussions, meetings in the group and with the project supervisor\\
 \hline
 Unmatching schedules of the team members & Arrange meetings in advance, notify other members for any change  \\
 \hline
@@ -234,7 +244,7 @@ Acquiring new skills under time pressure & Assign tasks based on individual stre
 
 \subsubsection{Technical risks}
 
-\begin{tabularx}{12cm}{|X|X|}
+\begin{tabularx}{15cm}{|X|X|}
 \hline
 \textbf{Risks} &\textbf{Mitigations}\\
 \hline
@@ -348,9 +358,10 @@ Otherwise we can remove the Unit Test protocols}
 \subsection{Timetable}
 
 \section{Project Team}
+In the following we focus on the individual strengths of the members of the team and specify the responsibilities with respect to the milestones of the project.
 
 \subsection{Competences} 
-In this section we introduce the members of our team by shortly describing their knowledge and capabilities which will be useful to carry out the task successfully.
+In this section we introduce the members of our team by shortly describing their knowledge and competences which will be useful to carry out the task successfully.
 
 \subsubsection*{Nicole Ventsch}
 
@@ -368,19 +379,87 @@ Currently she is attending the "Advanced Process Mining" lecture.
 She has gathered some experience working with Python where in most cases pre-processing and analysis was made on concrete event data, therefore a challenge of this project is implementing an algorithm that works on any given event log efficiently.
 Since she has never worked with web applications before so the execution of this step will be a new experience for her.
 
-\subsubsection*{Christopher Beine}
 
+\subsubsection*{Christopher Beine}
+{\color{red} TODO}
 
 \subsection{Roles}
+We emphasize that all of the team members are supposed to put active effort on each of the milestones of the project.
+However, we assign a team member to have main responsibility for each step in order to ensure that the deliverables have sufficient quality and nothing is missing.
+
+\begin{center}
+  \begin{tabular}{ m{0.4cm} m{5cm} m{5cm} m{6cm} }
+  	\hline
+		ID & Milestone & Chief Responsibility & Contact \\ \hline
+		1 & Project Initiation document & Bianka Bakullari & bianka.bakullari@gmail.com \\ \hline
+		2 & Requirements Specification document & xx & yy \\ \hline
+		3 & Design Analysis and dummy P.o.C. & xx & yy \\ \hline
+		4 & Sprint 1 code and documentation & xx  & yy \\ \hline
+		5 & Sprint 2 code and documentation & Bianka Bakullari & bianka.bakullari@gmail.com \\ \hline
+		6 & Sprint 3 code and documentation & xx & yy \\ \hline
+		7 & Testing, assessment and deployment & xx & yy \\ \hline
+		8 & Final report on the project & xx & yy \\ \hline
+	\end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Project office}
 
-\subsection{Description}
+In order to better be able to keep track of our progress, we use the Trello dashboard to divide our tasks into planned, running and completed ones.
+Trello also gives the opportunity to write descriptions and comments on each task, so that everyone is able to specify certain things needed to be considered or problems having arised.
+For our deliverables we use Git, as this makes it able to keep track of any changes and updates to our documentation or code.
+All members and the instructors have access to both Trello account and Git repository.
 
-\newpage
-\bibliographystyle{plain}
-\bibliography{references}  
+%\newpage
+%\bibliographystyle{plain}
+%\bibliography{references}  
 
+
+
+
+\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
+%\bibliography{uw-ethesis}
+% Tip 5: You can create multiple .bib files to organize your references. 
+% Just list them all in the \bibliogaphy command, separated by commas (no spaces).
+
+% The following statement causes the specified references to be added to the bibliography% even if they were not 
+% cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
+
+
+\begin{thebibliography}{5}
+\bibitem{paper}
+Lu, Xixi, et al. "Handling duplicated tasks in process discovery by refining event labels." International Conference on Business Process Management. Springer, Cham, 2016.
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
 
 \end{document}
