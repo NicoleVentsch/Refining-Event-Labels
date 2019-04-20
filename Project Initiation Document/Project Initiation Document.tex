@@ -40,7 +40,7 @@
   }
 
 \author{
-	\large Document owner:\\
+	\large \underline{Document owners:}\\ 
 	Bianka Bakullari\\
 	\texttt{}
 	Christopher Beine\\
@@ -102,9 +102,11 @@ During the project, we will create both code and documentations. Thus, the scope
 
 Documentation: 
 \begin{itemize}
-	\item develop and describe the design of the interface we will use and picture how users can set the thresholds in the interface 
+	\item create a Project Initiation Document 
+	\item realize the Requirements Specification document
+	\item develop and describe the design of the interface 
 	\item design the algorithm structure by stating the usage of classes as well as the inputs and outputs for the functions that are used
-	
+	\item Software Documentation during milestones
 \end{itemize} 
 
 
@@ -114,20 +116,27 @@ Implementation:
 	\item create a user interface that allows the users to upload the original event log, set thresholds and imprecise label scope and finally download the refined event log
 \end{itemize}
 
-Moreover, we will follow the software development Lifecycle and, in this connection, we will create documentation on the project initialization, on the requirement specifications, on the design and P.o.C and a software documentation. Each of them have to be submitted before the corresponding due date stated in the section "Project Plan - Milestones".  
-
-
+For the realization of our project some background in Process Mining is needed, as well as programming knowledge.
+Moreover, the documentation of both organizational aspects as well as software will follow the software development lifecycle where each part has to be submitted before the corresponding due date stated in the section "Project Plan - Milestones".
 
 
 \subsection{Assumptions}
 
-In this project we will assume that an event log is given by the user, i.e., data that contains at least the attributes "id", "time stamp" and "activity name". Moreover, we will assume that these event logs are given in the standard XES format. 
+In this project we will assume that an event log is given by the user, i.e., data that contains at least the attributes "id", "time stamp" and "activity name". Moreover, we will assume that these event logs are given in the standard XES format.
+Since the set of candidates for imprecise labels is given by the user, we assume that the quality of the processes applied on the refined event log also depends on the domain knowledge of the user who picks the candidate labels.
+Our algorithm is a pre-processing step in itself and it does not include other preprocessing mechanisms like filtering.
+In this context, instead of considering imprecise labels as noise and filtering the out, we change the labels based on the patterns present in the data.
+
+
 
 \subsection{Key Benefits}
  
-With this project we mainly aim at improving given event logs by making them more precise, so that the subsequent analysis will be more accurate. Using this approach, the process logs can be refined to reach a higher precision in the subsequent analysis of up to $89 \, \% $, which highly increases the quality of the process discovery results.  Thus, the data scientists will be enabled to gain better insights from the data. These insights can then lead to more optimized processes and that way reduce the company's expenses while increasing its efficiency.  
+With this project we mainly aim at improving given event logs by making them more precise, so that the subsequent analysis will be more accurate. 
+Our Label Refinement algorithm gives data scientists the opportunity to apply the process discovery algorithms to both original and refined event logs, leading to more alternative solutions from which the best can be chosen.
+More correct models enable gaining better insights from the data, which on the other hand gives the data scientists the opportunity to take the best measures in order to optimize the processes and that way reduce the company's expenses while increasing its efficiency.  
 
-By designing an interface that allows the users to upload an event log, to set the thresholds and to download the modified event log, carrying out this project will save the data analysts a lot of time which would be needed to refine the log themselves. By providing a web service, the software can be used on demand and there are only minor requirements for the user's hardware and avoids the necessity to stick to a given programming language or software.
+By designing an interface that allows the users to upload an event log, to set the thresholds and to download the modified event log, carrying out this project will save the data analysts a lot of time which would be needed to refine the log themselves and also help them find better models systematically. 
+By providing a web service, the software can be used on demand and there are only minor requirements for the user's hardware which avoids the necessity to stick to a given programming language or software.
 
 
 \section{Feasibility study}
@@ -341,14 +350,26 @@ Otherwise we can remove the Unit Test protocols}
 \section{Project Team}
 
 \subsection{Competences} 
-% May include self assement here 
-\subsubsection{Nicole Ventsch}
+In this section we introduce the members of our team by shortly describing their knowledge and capabilities which will be useful to carry out the task successfully.
 
-Nicole Ventsch is a Master student at RWTH studying Mathematics and Data Science in parallel. She is studying both subjects in her second semester of the master's degree. Moreover, she works as a student assistant in the field of Data Analytics / Business Intelligence. Due to her background in mathematics, she has a good understanding of theoretical foundations. Moreover, she is very interested in Data Science and already took many courses in that area. Since she took the course "Introduction to Data Science", she also worked with Python before. Though she has a strong theoretical background, she never worked on user interfaces or with web services, so that this aspect of the project could be challenging for her. Additionally to that, she is not used to the software development Lifecycle, so that executing this project will include many new experiences to her. 
+\subsubsection*{Nicole Ventsch}
 
-\subsection{Juan Garza}
+Nicole Ventsch is a Master student at RWTH studying Mathematics and Data Science in parallel. She is studying both subjects in her second semester of the master's degree. Moreover, she works as a student assistant in the field of Data Analytics / Business Intelligence. Due to her background in mathematics, she has a good understanding of theoretical foundations. Moreover, she is very interested in Data Science and already took many courses in that area. Since she took the course "Introduction to Data Science", she has also worked with Python before. Though she has a strong theoretical background, she has never worked on user interfaces or with web services, so that this aspect of the project could be challenging for her. Additionally to that, she is not used to the software development Lifecycle, so that executing this project will include many new experiences to her. 
 
-Juan Garza is a student at the RWTH University. He is currently in his 4th semester of studies towards a master’s degree in computer science. During his studies, he deepened his knowledge of process mining by attending the lecture “Business Process intelligence”. Moreover, he carried out a seminar on “Selected Topics in Process Mining”. He is familiar with Java and Python as programming languages. Besides school projects, he has no programming experience in “real world” environments which may represent a difficulty for him. 
+\subsubsection*{Juan Garza}
+
+Juan Garza is a student at the RWTH University. He is currently in his 4th semester of studies towards a master’s degree in Computer Science. During his studies, he deepened his knowledge of process mining by attending the lecture “Business Process intelligence”. Moreover, he carried out a seminar on “Selected Topics in Process Mining”. He is familiar with Java and Python as programming languages. Besides school projects, he has no programming experience in “real world” environments which may represent a difficulty for him. 
+
+\subsubsection*{Bianka Bakullari}
+
+Bianka Bakullari is a Master student at RWTH studying Computer Science.
+She has a good theoretical background on the field of Process Mining after having attented the lectures "Business Process Intelligence" and "Introduction to Data Science". 
+Currently she is attending the "Advanced Process Mining" lecture.
+She has gathered some experience working with Python where in most cases pre-processing and analysis was made on concrete event data, therefore a challenge of this project is implementing an algorithm that works on any given event log efficiently.
+Since she has never worked with web applications before so the execution of this step will be a new experience for her.
+
+\subsubsection*{Christopher Beine}
+
 
 \subsection{Roles}
 
