@@ -168,59 +168,29 @@ As stated in \cite{paper}, the algorithm has already been implemented in ProM, w
 There has also been a real life case study involving an event log with data concerning healthcare which was provided by Maastricht University Medical Center (MUMC+), a large academic hospital in the Netherlands.
 In the log containing 1039 cases and 6213 events, the activities \textit{surgery} and \textit{consultation} were imprecise.
 After relabeling, the resulting model reflected the behaviour which was described by the domain experts, according to whom the acitivity \textit{surgery} for example took place many times during the treatment of certain patients.
-
-For our project we will use Python as back-end programming language to implement the algorithm. 
-In particular we will make use of the .pm4py library which is a joint effort of the Process Mining group at the Fraunhofer FIT and the Chair of
-RWTH Process and Data Science group as it supports many process mining
-algorithms and performance measures in Python.
-
-\textcolor{red}{@all front end, libraries used and why}\\
-
-{\color{gray} *************** under construction *****************}
-
-{\color{red} @all Do we need external libraries to implement the algorithm?}\\
-{\color{blue} No we can probably specify that in the next document, I think what we have here is sufficient :)}\\
-{\color{red} TODO: formulate bullet points [to be done until friday]}
-
+\medskip
+For our project we will use following open source tools: 
+\medskip
 \begin{itemize}
-	\item Flask 1.0.2 as web application framework
 	\item Python 3.7.2 as back-end programming language
 	\item pm4py python library as process mining toolkit
-    \item NetworkX pyhton library for graph manipulation
+  \item NetworkX pyhton library for graph manipulation
+  \item Flask 1.0.2 as web application framework
 	\item JavaScript as Front-end development language (Standard ECMAScript 2018)
-	\item Browser support (Google Chrome version $\geq$ 70, Firefox version $\geq$ 63, Maybe don't support IE/Edge)
-	\item {\color{red} TODO: Select HTML5 visualisation framework for petri nets [To be done until saturday]}
-	\item {\color{red} TODO: Select JavaScript Framework / Actually Required? [To be done until saturday]}
-	\item Bootstrap version 4.3.1 for fast ui design
 \end{itemize}
 
-\large{flask}
-\begin{itemize}
-	\item References: Netflix Lemur, Linked-in internal stack
-	\item Minimalistic Framework
-	\item highly customizable
-\end{itemize}
-
-\large{Python}
-\begin{itemize}
-	\item specified by stackholder
-	\item highly used for data science
-	\item reference
-\end{itemize}
-
-\large{JavaScript}
-\begin{itemize}
-	\item defacto standard
-	\item Required for dynamic content
-\end{itemize}
-
-\large{Bootstrap}
-\begin{itemize}
-	\item References: Twitter, Spotify, Coursera
-	\item Fast Responsive UI design (May indicate responsive as optional for project)
-\end{itemize}
-
-{\color{gray} **************************************************}
+We will seperate the application into two main parts the back-end which is responsible for the algorithm and API design and the front-end to provide a user friend interface.\\
+\medskip
+Python is used as back-end programming language to implement the algorithm. Additionally, we will use Flask as a lightweight webapplication framework. 
+It provides a quick start and is easily customizable via plug-ins. It is also used in enterprise applications like Netflix Lemu [?].\\
+\medskip
+In particular we will make use of the .pm4py library which is a joint effort of the Process Mining group at the Fraunhofer FIT and the Chair of
+RWTH Process and Data Science group as it supports many process mining algorithms and performance measures in Python.\\
+\medskip
+The frontend is for visualization only. It is created with HTML5 and JavaScript to access the API and to perform ui logic. 
+Thus, presentation and business logic can be easily separated and replaced.\\
+\medskip
+The final web application will be optimized for Google Chrome (Version $\geq$ 65) and Firefox (Version $\geq$ 60).
 
 
 \subsection{Risks and mitigations}
@@ -258,9 +228,6 @@ Software components do not work as a whole & Put emphasis on the design step \\
 
 
 
-
-
-
 \section{Project Plan}
 
 \subsection{Milestones}
@@ -268,7 +235,6 @@ Software components do not work as a whole & Put emphasis on the design step \\
 The project starts on the 09/04/2019 and ends on the 08/07/2019 and is divided into nine milestones. The project is managed with a scrum-oriented approach
 where each milestone represents a sprint. The project team organizes the required tasks during each sprint and visualize the current project status via a dashboard.
 
-{\color{red} TODO: add sprint description until friday} \\
 \begin{center}
 	\captionof{table}{Overview Milestones }
   \begin{tabular}{ m{0.4cm} m{5cm} m{8.5cm} m{2cm} }
@@ -277,9 +243,9 @@ where each milestone represents a sprint. The project team organizes the require
 		1 & Project Initiation document & The Project Initiation Document provides all of the key information required to start and run the project. This includes the project description, business case, feasibility study and a project team presentation.  & 19/04/2019 \\ \hline
 		2 & Requirements Specification document & The Requirements Specification document contains functional and none functional requirements such as a set of use cases to describe the system interactions. & 29/04/2019 \\ \hline
 		3 & Design Analysis and dummy P.o.C. & The final document is a description about the planned system architectural background and a proof of concept visualizing the main UI components. & 13/05/2019 \\ \hline
-		4 & Sprint 1 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart}  & 24/05/2019 \\ \hline
-		5 & Sprint 2 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart} & 07/06/2019 \\ \hline
-		6 & Sprint 3 code and documentation & {\color{red} TODO: sprint description depending on GANTT chart} & 21/06/2019 \\ \hline
+		4 & Sprint 1 code and documentation & In this sprint the import module and a static frontend will be implemented.  & 24/05/2019 \\ \hline
+		5 & Sprint 2 code and documentation & In this sprint the algorithm will be implemented. & 07/06/2019 \\ \hline
+		6 & Sprint 3 code and documentation & IN this sprint the final user interface and visualization will be implemented. & 21/06/2019 \\ \hline
 		7 & Testing, assessment and deployment & The application is checked for accuracy and should be aviable for use. & 01/07/2019 \\ \hline
 		8 & Final report on the project & The final report provides an overview about the project course and the result. & 08/07/2019 \\ \hline
 	\end{tabular}
@@ -313,7 +279,6 @@ With each milestones various deliverables are created to monitor, document and v
 \textbf{4 Sprint 1 code and documentation }
 \\
 \begin{itemize}
-	\item Python components
 	\item Unit Test protocols
 	\item Code documentation
 \end{itemize}
@@ -321,7 +286,6 @@ With each milestones various deliverables are created to monitor, document and v
 \textbf{5  Sprint 2 code and documentation }
 \\
 \begin{itemize}
-	\item Python components
 	\item Unit Test protocols
 	\item Code documentation
 \end{itemize}
@@ -329,8 +293,6 @@ With each milestones various deliverables are created to monitor, document and v
 \textbf{6 Sprint 3 code and documentation }
 \\
 \begin{itemize}
-	\item Python components
-	\item Java Script components
 	\item Unit Test protocols
 	\item Code documentation
 \end{itemize}
