@@ -1,0 +1,198 @@
+\documentclass[notitlepage]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage{geometry} 		
+\usepackage{chngcntr}
+\usepackage{amsmath} 			
+\usepackage{amssymb}			
+\usepackage{mathtools}		
+\usepackage{comment} 			
+\usepackage{mdframed}			
+\usepackage{xcolor}				
+\usepackage{fancyhdr}			
+\usepackage{listings}			
+\usepackage{color}				
+\usepackage{tikz}	
+\usepackage{tasks}			
+\usepackage{exsheets}		
+\usepackage{array}			
+\usepackage{empheq}
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+
+\geometry{ 						%Format titlepage (interrupted by newgeometry)
+	a4paper,
+	total={170mm,257mm}%,
+	%left=0mm,
+	%top=0mm,
+}
+
+%START DEFINE YOUR VARIABLES HERE
+
+\newcommand{\documentName}{Requirement Specification Document}
+\newcommand{\projectName}{Label Refinement by Behavioral Similarity}
+
+%END DEFINE YOUR VARIABLES HERE
+
+\title{%
+	\documentName\text{ } \\
+  \large \projectName\text{ } \\
+  }
+
+\author{
+	\large \underline{Document owners:}\\ 
+	Bianka Bakullari\\
+	\texttt{}
+	Christopher Beine\\
+	\texttt{}
+	Nicole Ventsch\\
+	\texttt{}
+	Juan\\
+	\texttt{}
+}
+
+\date{\small{Last edited: \today}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\lhead{\documentName\space-\space\projectName}
+
+\makeatletter					%Prefix to add ToC to titlepage
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\renewcommand*\contentsname{}
+\makeatother
+                  
+
+\begin{document}
+
+\begin{titlepage}
+\clearpage\maketitle			%Clear title page
+\thispagestyle{fancy}
+
+
+\end{titlepage}
+
+\title{ \large \textbf{ Contents}}
+\tableofcontents
+
+\newpage
+
+\rfoot{\thepage}				%Start printing page-numbers, after title page.
+
+\newgeometry{ 					%Default page formatting on-going #1
+	total={170mm,257mm},
+	left=20mm,
+	top=25mm,
+    bottom=30mm					%Causes warning
+}
+
+\begin{flushleft}				%Default page formatting on-going #2
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+
+\subsection{The Client, the Customer and other Stakeholders}
+
+\subsection{Users of the Product}
+
+
+\section{Project Constraints}
+
+\subsection{Mandated Constraints}
+
+\subsection{Naming Conventions and Definitions}
+
+\subsection{Relevant Facts and Assumptions}
+
+
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work}
+
+\subsection{The Scope of the Product}
+
+\subsection{Functional and Data Requirements}
+
+
+\section{Nonfunctional Requirements}
+
+\subsection{Look and Feel Requirements}
+
+\subsection{Usability and Humanity Requirements}
+
+\subsection{Performance Requirements}
+
+\subsection{Operational and Environmental Requirements}
+
+\subsection{Maintainability and Support Requirements}
+
+\subsection{Security Requirements}
+
+\subsection{Cultural and Political Requirements}
+
+\subsection{Legal Requirements}
+
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+
+\subsection{Off-the-Shelf Solutions}
+
+\subsection{New Problems}
+
+\subsection{Tasks}
+
+\subsection{Migration to the New Product}
+
+\subsection{Risks}
+
+\subsection{Costs}
+
+\subsection{User Documentation and Training}
+
+\subsection{Waiting Room}
+
+
+
+
+
+
+
+\addcontentsline{toc}{chapter}{\textbf{References}}
+\end{flushleft}
+%\bibliography{uw-ethesis}
+% Tip 5: You can create multiple .bib files to organize your references. 
+% Just list them all in the \bibliogaphy command, separated by commas (no spaces).
+
+% The following statement causes the specified references to be added to the bibliography% even if they were not 
+% cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
+
+
+\begin{thebibliography}{5}
+\bibitem{paper}
+Lu, Xixi, et al. "Handling duplicated tasks in process discovery by refining event labels." International Conference on Business Process Management. Springer, Cham, 2016.
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+\end{document}
