@@ -1,0 +1,239 @@
+\documentclass[notitlepage]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage{geometry} 		
+\usepackage{chngcntr}
+\usepackage{amsmath} 			
+\usepackage{amssymb}			
+\usepackage{mathtools}		
+\usepackage{comment} 			
+\usepackage{mdframed}			
+\usepackage{xcolor}				
+\usepackage{fancyhdr}			
+\usepackage{listings}			
+\usepackage{color}				
+\usepackage{tikz}	
+\usepackage{tasks}			
+\usepackage{exsheets}		
+\usepackage{array}			
+\usepackage{empheq}
+\usepackage{caption}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+
+\geometry{ 						%Format titlepage (interrupted by newgeometry)
+	a4paper,
+	total={170mm,257mm}%,
+	%left=0mm,
+	%top=0mm,
+}
+
+%START DEFINE YOUR VARIABLES HERE
+
+\newcommand{\documentName}{Requirement Specification Document}
+\newcommand{\projectName}{Label Refinement by Behavioral Similarity}
+
+%END DEFINE YOUR VARIABLES HERE
+
+\title{%
+	\documentName\text{ } \\
+  \large \projectName\text{ } \\
+  }
+
+\author{
+	\large \underline{Document owners:}\\ 
+	Bianka Bakullari\\
+	\texttt{}
+	Christopher Beine\\
+	\texttt{}
+	Nicole Ventsch\\
+	\texttt{}
+	Juan\\
+	\texttt{}
+}
+
+\date{\small{Last edited: \today}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{}
+\lhead{\documentName\space-\space\projectName}
+
+\makeatletter					%Prefix to add ToC to titlepage
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\renewcommand*\contentsname{}
+\makeatother
+                  
+
+\begin{document}
+
+\begin{titlepage}
+\clearpage\maketitle			%Clear title page
+\thispagestyle{fancy}
+
+
+\end{titlepage}
+
+\title{ \large \textbf{ Contents}}
+\tableofcontents
+
+\newpage
+
+\rfoot{\thepage}				%Start printing page-numbers, after title page.
+
+\newgeometry{ 					%Default page formatting on-going #1
+	total={170mm,257mm},
+	left=20mm,
+	top=25mm,
+    bottom=30mm					%Causes warning
+}
+
+\begin{flushleft}				%Default page formatting on-going #2
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+
+\subsection{The Client, the Customer and other Stakeholders}
+
+\subsection{Users of the Product}
+
+
+\section{Project Constraints}
+
+\subsection{Mandated Constraints}
+
+\subsection{Naming Conventions and Definitions}
+
+\subsection{Relevant Facts and Assumptions}
+
+
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work}
+
+\subsection{The Scope of the Product}
+
+\subsection{Functional and Data Requirements}
+
+
+\section{Nonfunctional Requirements}
+
+\subsection{Look and Feel Requirements}
+
+\subsection{Usability and Humanity Requirements}
+
+\subsection{Performance Requirements}
+
+\subsection{Operational and Environmental Requirements}
+
+\subsection{Maintainability and Support Requirements}
+
+\subsection{Security Requirements}
+
+\subsection{Cultural and Political Requirements}
+
+\subsection{Legal Requirements}
+
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+
+\subsection{Off-the-Shelf Solutions}
+
+\subsection{New Problems}
+
+\subsection{Tasks}
+
+\subsection{Migration to the New Product}
+
+\subsection{Risks}
+\newpage
+\begin{tabularx}{\textwidth}{|X|X|p{3cm}|X|}
+\hline
+\textbf{Risks} 
+&\textbf{Description}
+&\textbf{Category}
+&\textbf{Mitigation}\\
+\hline
+Inaccurate expectations. &Stakeholders develop inaccurate expectations (believe that the project will achieve something not in the requirements, plan, etc).&Stakeholder &Clearly state in the requirement documentation what are the deliverables meant to be done and the scope of the project.\\
+\hline
+Process inputs are low quality. &Inputs from stakeholders that are low quality (e.g. business case, requirements, change requests). &Stakeholder	&Kindly ask the stakeholder for a more detailed and clearer version of any input they may provide i.e., requirements, business cases.\\
+\hline
+Misunderstood requirements.	&When requirements are misinterpreted by the project team.	&Communication &Meet with the stakeholders and discuss the requirements again until the team is sure that they have completely understood them.\\ 
+\hline
+Learning curves. &Project team needs to acquire new skills for the project.	&Team	&Motivate the project team, give them the best practices on the IT field and make experts instruct them using their knowledge and own experience.\\ 
+\hline
+Integration failure. &Product components will fail to integrate with each other. &Integration	&Establish standards for product development and make sure that the individual components passed flawlessly the unit test.\\ 
+\hline
+Requirements are incomplete. &Requirements are not fully captured or are overlooked.	&Requirements	&Make a peer-review of the requirement documentation and make sure that nothing is being left out.\\ 
+\hline
+\end{tabularx}
+
+
+
+\subsection{Costs}
+
+\subsection{User Documentation}
+\begin{enumerate}
+\item Technical documentation: 
+\begin{itemize}
+  \item Software code documentation.
+  \item Technical specifications.
+\end{itemize}
+
+\item User documentation including:
+\begin{itemize}
+\item How to use the UI. 
+\item Examples of inputs and outputs.
+\item Explanation of error messages.
+\item Information to contact the developers (in case of further questions).
+\end{itemize}
+\end{enumerate}
+
+\subsection{Waiting Room}
+
+\begin{itemize}
+\item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique to visualize the resulting process model and to pick the one which is considered to be the best one (according to user’s expertise). 
+\item Additional feature that allows for the automatic detection of “imprecise labels” by using properties of the Inductive Miner (IM).
+\end{itemize}
+
+
+
+
+
+\addcontentsline{toc}{chapter}{\textbf{References}}
+\end{flushleft}
+%\bibliography{uw-ethesis}
+% Tip 5: You can create multiple .bib files to organize your references. 
+% Just list them all in the \bibliogaphy command, separated by commas (no spaces).
+
+% The following statement causes the specified references to be added to the bibliography% even if they were not 
+% cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
+
+
+\begin{thebibliography}{5}
+\bibitem{paper}
+Lu, Xixi, et al. "Handling duplicated tasks in process discovery by refining event labels." International Conference on Business Process Management. Springer, Cham, 2016.
+
+
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+\end{document}
