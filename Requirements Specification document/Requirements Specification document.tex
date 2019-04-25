@@ -93,10 +93,13 @@
 
 \subsection{The Purpose of the Project}
 
+The purpose of the project is providing a platform that allows refinements of event logs, where actions that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented that allows users to upload event logs in the standard XES format and set a threshold for the refinements. This event log should contain actions that are carried out multiple times and are named identically. The web service should then apply an algorithm to it that refines the log in a way that these actions are relabelled based on structural similarity. Finally, the user should be able to download the refined log.
+
+The users can then use the refined log to gain insight by applying process discovery algorithms to the data. By using the refinement algorithm, higher accuracies should be reached and that way lead to a better insight into the processes.
+
 \subsection{The Client, the Customer and other Stakeholders}
 
-\subsection{Users of the Product}
-
+The client of this project is the Chair of Process and Data Science at the RWTH Aachen, which provides the supervision and support for this project. Furthermore, there are many different potential users. For example, students or researchers could use the website as a preprocessing step in order to continue research with the refined log. Additionally, business analysts from companies could use it in order to get a better insight from the refined log than from the original one. Since we will provide a web service, it is easily accessible and not limited to be used by a prespecified group of people. 
 
 \section{Project Constraints}
 
@@ -187,7 +190,7 @@ A common mistake the user could make is upload an event log in the .csv or .xlsx
 &\textbf{Category}
 &\textbf{Mitigation}\\
 \hline
-Inaccurate expectations. &Stakeholders develop inaccurate expectations (believe that the project will achieve something not in the requirements, plan, etc).&Stakeholder &Clearly state in the requirement documentation what are the deliverables meant to be done and the scope of the project.\\
+Inaccurate expectations. &Stakeholders develop inaccurate expectations (believe that the project will achieve something not in the requirements, plan, etc.).&Stakeholder &Clearly state in the requirement documentation what are the deliverables meant to be done and the scope of the project.\\
 \hline
 Process inputs are low quality. &Inputs from stakeholders that are low quality (e.g. business case, requirements, change requests). &Stakeholder	&Kindly ask the stakeholder for a more detailed and clearer version of any input they may provide i.e., requirements, business cases.\\
 \hline
@@ -225,7 +228,7 @@ Requirements are incomplete. &Requirements are not fully captured or are overloo
 \subsection{Waiting Room}
 
 \begin{itemize}
-\item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique to visualize the resulting process model and to pick the one which is considered to be the best one (according to user’s expertise). 
+\item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique to visualize the resulting process model and to pick the one which is considered to be the best one (according to user's expertise). 
 \item Additional feature that allows for the automatic detection of “imprecise labels” by using properties of the Inductive Miner (IM).
 \end{itemize}
 
