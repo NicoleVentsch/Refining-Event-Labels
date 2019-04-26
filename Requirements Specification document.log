@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.4.15)  26 APR 2019 11:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/Arch Linux) (preloaded format=pdflatex 2019.4.15)  23 APR 2019 17:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.tex"
-(/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.tex
+**"/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document.tex"
+(/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document.tex
 LaTeX2e <2018-12-01>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
@@ -772,7 +772,7 @@ Package xtemplate Info: Declaring object type 'tasks' taking 3 argument(s) on
 \l__tasks_choice_raise_dim=\dimen287
  (/usr/share/texmf-dist/tex/latex/tasks/tasks.cfg
 File: tasks.cfg 2016/08/13 v0.12 tasks instances
-)) (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/exsheets.sty
+)) (/usr/share/texmf-dist/tex/latex/exsheets/exsheets.sty
 Package: exsheets 2017/02/08 v0.21i Yet another package for the creation of exercise sheets and exams.
 \l__exsheets_tmpa_int=\count322
 \l__exsheets_tmpb_int=\count323
@@ -832,7 +832,26 @@ File: exsheets_headings.cfg  2017/02/08 v0.21i ExSheets headings instances
 \ULC@box=\box79
 Package: ulem 2012/05/18
 \ULdepth=\dimen299
-) (/usr/share/texmf-dist/tex/latex/translations/translations.sty
+)
+
+/usr/share/texmf-dist/tex/latex/exsheets/exsheets.sty:2794: LaTeX3 Error: Variant form 'n' deprecated for base form
+(LaTeX3)        '\__exsheets_blank_skip:N'. One should not change an
+(LaTeX3)        argument from type 'N' to type 'n': base form only accepts a
+(LaTeX3)        single token argument.
+
+Type <return> to continue.
+ ...                                              
+                                                  
+l.2794 ...ariant:Nn \__exsheets_blank_skip:N { n }
+                                                  
+
+LaTeX does not know anything more about this error, sorry.
+
+Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+
+(/usr/share/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2017/08/31 v1.7a internationalization of LaTeX2e packages (CN)
  (/usr/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
 Package: scrlfile 2019/02/01 v3.26b KOMA-Script package (loading files)
@@ -906,7 +925,7 @@ Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
 \TX@ftn=\toks42
 )
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 67.
- (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.aux)
+ (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document.aux)
 \openout1 = `"Requirements Specification document.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
@@ -1014,11 +1033,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-] (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.toc)
+]
+No file "Requirements Specification document".toc.
 \tf@toc=\write5
 \openout5 = `"Requirements Specification document.toc"'.
 
- [1]
+[1]
 
 Package geometry Warning: Over-specification in `v'-direction.
     `height' (731.23582pt) is ignored.
@@ -1057,111 +1077,27 @@ Package geometry Warning: Over-specification in `v'-direction.
 
 [2
 
-] [3] [4]
-Underfull \hbox (badness 2626) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Stakeholders de-velop in-
- []
+]
+Overfull \vbox (31.77597pt too high) has occurred while \output is active []
 
+ [3] (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document.aux)
 
-Underfull \hbox (badness 6252) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 the re-quire-ments, plan,
- []
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-
-Underfull \hbox (badness 1454) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Clearly state in the re-
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 quire-ment doc-u-men-ta-tion
- []
-
-
-Underfull \hbox (badness 4634) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Process in-puts are low
- []
-
-
-Underfull \hbox (badness 1163) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Inputs from stake-hold-ers
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 busi-ness case, re-quire-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Misunderstood re-quire-
- []
-
-
-Underfull \hbox (badness 7451) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 When re-quire-ments are
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 mis-in-ter-preted by the
- []
-
-
-Underfull \hbox (badness 1436) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 quire new skills for the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Motivate the project
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 them us-ing their knowl-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Establish stan-dards for
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Requirements are not
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 205--205
-\OT1/cmr/m/n/10 fully cap-tured or are
- []
-
-
-Underfull \hbox (badness 5817) in paragraph at lines 205--205
-[]|\OT1/cmr/m/n/10 Make a peer-review of
- []
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 215.
-(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 215.
- [5] [6] (/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.aux) ) 
+ ) 
 Here is how much of TeX's memory you used:
- 30771 strings out of 492616
- 611989 string characters out of 6135177
- 669091 words of memory out of 5000000
- 34231 multiletter control sequences out of 15000+600000
- 540775 words of font info for 58 fonts, out of 8000000 for 9000
+ 30740 strings out of 492616
+ 610835 string characters out of 6135177
+ 662452 words of memory out of 5000000
+ 34208 multiletter control sequences out of 15000+600000
+ 538768 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,11n,65p,969b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document/Requirements Specification document.pdf" (7 pages, 108993 bytes).
+ 55i,11n,65p,933b,317s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb>
+Output written on "/home/christopherb/Documents/Software/gitkraken/Refining-Event-Labels/Requirements Specification document.pdf" (4 pages, 73790 bytes).
 PDF statistics:
- 59 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 40 PDF objects out of 1000 (max. 8388607)
+ 28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
