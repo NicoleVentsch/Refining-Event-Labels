@@ -119,18 +119,48 @@ The new and refined log could later be used as an alternative input to process d
 
 
 \subsection{The Scope of the Product}
-The final product consists of a web interface where the user can upload event logs, parametrize thresholds and then the Refining Event Labels algorithm is executed. 
+
+The final product consists of a web interface where the user can upload event logs, parametrize thresholds and then the Label Refinement algorithm is executed. 
 In order to get an overview of the product, a use case analysis was carried out, where we identify the system actors and their functions. 
-Because the project's focus is the Refining Event Labels implementation, the project was divided into two systems. 
+Because the project's focus is the Label Refinement implementation, the project was divided into two systems. 
 This allows a better visualisation of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
 \medskip
-\includegraphics[width=\textwidth]{"UML Files/Use Case Diagram front-end".png}
-\medskip
-\includegraphics[width=\textwidth]{"UML Files/Use Case Diagram back-end".png}
-{\color{gray} **** under construction ***}
-\medskip
-\subsection{Functional and Data Requirements}
+Figure \ref{fig:front-end} displays the Use Cases for the final web interface and thus the system interactions with the End-user.  
+Figure \ref{fig:back-end} indicates the Use Cases of, which are required for the Label Refinement algorithm. So the front-end diagram refers to UI functions  
+and the back-end diagram to a more technical view.
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{"UML Files/Use Case Diagram front-end".png}
+  \caption{Use cases front-end}
+  \label{fig:front-end}
+\end{figure}
 
+\begin{figure}[h!]
+  \includegraphics[width=\textwidth]{"UML Files/Use Case Diagram back-end".png}
+  \caption{Use cases backen-end}
+  \label{fig:back-end}
+\end{figure}
+\clearpage
+The following actors exists in the final system:\\
+\medskip
+\begin{tabularx}{\textwidth}{|m{3cm}|m{3cm}|m{10cm}|}
+	\hline
+	\textbf{Actor} 
+	&\textbf{Symbol}
+	&\textbf{Description}\\
+	\hline
+	End user & {\color{red} TODO: include actor image} & The End user interacts with the web interface of the system and does not need any information about the technical implementation\\
+	\hline
+	Webclient & {\color{red} TODO: include actor image} & The Webclient provides the API access on simple abstraction layer to provide an easy algorithm execution\\
+	\hline
+	Event Label Refining Front-end & {\color{red} TODO: include actor image} & The Event Label Refining Front-end is the Webclient which is delivered with the project \\
+	\hline
+	Event Label Refining Back-end & {\color{red} TODO: include actor image} & The Event Label Refining Backend-end is responsible for label refining algorithm. It provides access via an API \\
+	\hline
+\end{tabularx}
+
+\subsection{Functional and Data Requirements}
+The following requirements result from the use case analysis:\\
+\medskip
 \includegraphics[scale=0.6]{Req1.png}
 
 \includegraphics[scale=0.6]{Req2.png}
