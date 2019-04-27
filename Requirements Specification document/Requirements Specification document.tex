@@ -14,7 +14,8 @@
 \usepackage{tikz}	
 \usepackage{tasks}			
 \usepackage{exsheets}		
-\usepackage{array}			
+\usepackage{array}		
+\usepackage{graphicx}	
 \usepackage{empheq}
 \usepackage{caption}
 \usepackage{pdfpages}
@@ -115,10 +116,17 @@ The client of this project is the Chair of Process and Data Science at the RWTH 
 \subsection{The Scope of the Work}
 
 \subsection{The Scope of the Product}
-
+The final system consist of a web interface to upload Event logs, parameterize thresholds and to execute the refining event label algorithm. 
+In order to get an overview of the product, a use case analysis was carried out, where we identify the system actors and their functions. 
+Because the project focus is the refining event lable implementation, the project was divided into two systems. This allows a better visualisation 
+of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
+\medskip
+\includegraphics[width=\textwidth]{"UML Files/Use Case Diagram front-end".png}
+\medskip
+\includegraphics[width=\textwidth]{"UML Files/Use Case Diagram back-end".png}
+{\color{gray} **** under construction ***}
+\medskip
 \subsection{Functional and Data Requirements}
-
-
 \section{Nonfunctional Requirements}
 
 \subsection{Look and Feel Requirements}

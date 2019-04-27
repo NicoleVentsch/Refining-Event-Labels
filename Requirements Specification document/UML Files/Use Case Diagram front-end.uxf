@@ -6,8 +6,8 @@
     <coordinates>
       <x>230</x>
       <y>70</y>
-      <w>750</w>
-      <h>860</h>
+      <w>570</w>
+      <h>790</h>
     </coordinates>
     <panel_attributes>Event Label Refining Front-end
 halign=left</panel_attributes>
@@ -185,7 +185,7 @@ halign=left</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1060</x>
+      <x>850</x>
       <y>370</y>
       <w>240</w>
       <h>80</h>
@@ -200,10 +200,10 @@ valign=center</panel_attributes>
     <coordinates>
       <x>640</x>
       <y>400</y>
-      <w>440</w>
+      <w>230</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>lt=-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;420.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
   </element>
 </diagram>
