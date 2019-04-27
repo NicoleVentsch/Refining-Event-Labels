@@ -94,7 +94,7 @@
 
 \subsection{The Purpose of the Project}
 
-The purpose of the project is providing a platform that allows refinements of event logs, where actions that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented that allows users to upload event logs in the standard XES format and set a threshold for the refinements. This event log should contain actions that are carried out multiple times and are named identically. The web service should then apply an algorithm to it that refines the log in a way that these actions are relabelled based on structural similarity. Finally, the user should be able to download the refined log.
+The purpose of the project is providing a platform that allows refinements of event logs, where actions that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented that allows users to upload event logs in the standard XES or CSV format and set thresholds for the refinements. This event log should contain actions that are carried out multiple times and are named identically. The web service should then apply an algorithm to it that refines the log in a way that these actions are relabelled based on structural similarity. Finally, the user should be able to download the refined log in XES.
 
 The users can then use the refined log to gain insight by applying process discovery algorithms to the data. By using the refinement algorithm, higher accuracies should be reached and that way lead to a better insight into the processes.
 
@@ -114,12 +114,15 @@ The client of this project is the Chair of Process and Data Science at the RWTH 
 \section{Functional Requirements}
 
 \subsection{The Scope of the Work}
+As explained in the Project Initiation document, we aim to provide a web application where the end user can apply the Label Refinement automatically as a pre-processing step to his event log.
+The new and refined log could later be used as alternative input to process discovery algorithms in other tools, yielding a new model and thus adding an alternative to the solution space of possible process models.
+
 
 \subsection{The Scope of the Product}
-The final system consist of a web interface to upload Event logs, parameterize thresholds and to execute the refining event label algorithm. 
+The final product consists of a web interface where the user can upload event logs, parameterize thresholds and then the Refining Event Labels algorithm is executed. 
 In order to get an overview of the product, a use case analysis was carried out, where we identify the system actors and their functions. 
-Because the project focus is the refining event lable implementation, the project was divided into two systems. This allows a better visualisation 
-of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
+Because the project's focus is the Refining Event Labels implementation, the project was divided into two systems. 
+This allows a better visualisation of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
 \medskip
 \includegraphics[width=\textwidth]{"UML Files/Use Case Diagram front-end".png}
 \medskip
@@ -127,23 +130,43 @@ of the individual algorithm steps and system interactions. The following use cas
 {\color{gray} **** under construction ***}
 \medskip
 \subsection{Functional and Data Requirements}
+
+\includegraphics[scale=0.6]{Req1.png}
+
+\includegraphics[scale=0.6]{Req2.png}
+
+\includegraphics[scale=0.6]{Req3.png}
+
+\includegraphics[scale=0.6]{Req4.png}
+
+\includegraphics[scale=0.6]{Req5.png}
+
+\includegraphics[scale=0.6]{Req6.png}
+
+\includegraphics[scale=0.6]{Req7.png}
+
+
+
+
 \section{Nonfunctional Requirements}
 
-\subsection{Look and Feel Requirements}
+\subsection{Look and Feel Requirements and Usability}
+The user interface must be self-explanatory and easy to use.
+It should be clear where the event log can be uploaded and/or downloaded.
+For each threshold, the user should be able to type in his choice and see it on the screen.
+In case that the event log has the wrong format or the chosen threshold is out of range, an error message displayed on the screen should imply what has gone wrong.
 
-\subsection{Usability and Humanity Requirements}
+Our product is aimed at users who have some knowledge in Process Mining, are familiar with the algorithm or are previously informed about the concept and effects of relabeling.
 
-\subsection{Performance Requirements}
+
+
+
+%\subsection{Performance Requirements}
 
 \subsection{Operational and Environmental Requirements}
 
 \subsection{Maintainability and Support Requirements}
 
-\subsection{Security Requirements}
-
-\subsection{Cultural and Political Requirements}
-
-\subsection{Legal Requirements}
 
 
 \section{Project Issues}
@@ -168,7 +191,7 @@ Whether or not some functionalities should be implemented together or individual
 There has already been an implementation of the algorithm in ProM.
 This might be helpful in the designing steps of our algorithm.
 
-We will use a code written in Java to automatically generate events logs.
+We will use a code written in Java to automatically generate events logs which we will then use as small tests for our code.
 
 \textcolor{red}{@juan: Where did you get the java code you showed us once?}
 
@@ -178,16 +201,17 @@ Whether or not the models resulting from the new refined log have better precisi
 Since the result also depends on the thresholds and set of candidate activities which are chosen by the user, we assume that the user has some background on Process Mining and has clear intentions for trying to work with a new refined log.
 The algorithm does not filter out events or features in the data.
 
-A common mistake the user could make is upload an event log in the .csv or .xlsx format instead of .xes format.
+Optimally, the new models resulting from the refined event log should keep the same old labels even for the refined ones.
+This requires from the process discovery algorithm itself to compare the original event log with the refined one and then map the refined labels to their old names after having obtained the refined model.
+We consider this beyond our scope.
+Since the set of new labels to use for refinement is unspecified, our implementation will assign new endings to the original label, so that the context is still clear even with a model containing the new labels.
+
+A common mistake the user could make is upload an event log in some other format (e.g. .xlsx format) instead of XES or CSV format.
 
 
+%\subsection{Tasks}
 
-
-
-
-\subsection{Tasks}
-
-\subsection{Migration to the New Product}
+%\subsection{Migration to the New Product}
 
 \subsection{Risks}
 \newpage
@@ -198,15 +222,15 @@ A common mistake the user could make is upload an event log in the .csv or .xlsx
 &\textbf{Category}
 &\textbf{Mitigation}\\
 \hline
-Inaccurate expectations. &Stakeholders develop inaccurate expectations (believe that the project will achieve something not in the requirements, plan, etc.).&Stakeholder &Clearly state in the requirement documentation what are the deliverables meant to be done and the scope of the project.\\
+Inaccurate expectations. &Inaccurate expectations are developed(believe that the project will achieve something not in the requirements, plan, etc.).&Stakeholder &Look up the requirements document and consult with the client.\\
 \hline
-Process inputs are low quality. &Inputs from stakeholders that are low quality (e.g. business case, requirements, change requests). &Stakeholder	&Kindly ask the stakeholder for a more detailed and clearer version of any input they may provide i.e., requirements, business cases.\\
+Process inputs have low quality. &Inputs from stakeholders that are low quality (e.g. business case, requirements, change requests). &Stakeholder	&Kindly ask for a more detailed and clearer version of any input they may provide i.e., requirements, business cases.\\
 \hline
-Misunderstood requirements.	&When requirements are misinterpreted by the project team.	&Communication &Meet with the stakeholders and discuss the requirements again until the team is sure that they have completely understood them.\\ 
+Misunderstood requirements.	&When requirements are misinterpreted by the project team.	&Communication &Meet and discuss the requirements again until the team is sure that they have completely understood them.\\ 
 \hline
 Learning curves. &Project team needs to acquire new skills for the project.	&Team	&Motivate the project team, give them the best practices on the IT field and make experts instruct them using their knowledge and own experience.\\ 
 \hline
-Integration failure. &Product components will fail to integrate with each other. &Integration	&Establish standards for product development and make sure that the individual components passed flawlessly the unit test.\\ 
+Integration failure. &Product components will fail to integrate with each other. &Integration	&Establish standards for product development and make sure that the individual components passed the tests flawlessly.\\ 
 \hline
 Requirements are incomplete. &Requirements are not fully captured or are overlooked.	&Requirements	&Make a peer-review of the requirement documentation and make sure that nothing is being left out.\\ 
 \hline
@@ -214,7 +238,7 @@ Requirements are incomplete. &Requirements are not fully captured or are overloo
 
 
 
-\subsection{Costs}
+%\subsection{Costs}
 
 \subsection{User Documentation}
 \begin{enumerate}
@@ -234,10 +258,12 @@ Requirements are incomplete. &Requirements are not fully captured or are overloo
 \end{enumerate}
 
 \subsection{Waiting Room}
+In the following we gather some ideas on which functionalities can be added or extended in our product.
 
 \begin{itemize}
-\item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique to visualize the resulting process model and to pick the one which is considered to be the best one (according to user's expertise). 
+\item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique from another tool to visualize the resulting process model and to pick the one which is considered to be the best one (according to user's expertise). 
 \item Additional feature that allows for the automatic detection of “imprecise labels” by using properties of the Inductive Miner (IM).
+\item Additional feedback describing the changes being made to the original event log.
 \end{itemize}
 
 
