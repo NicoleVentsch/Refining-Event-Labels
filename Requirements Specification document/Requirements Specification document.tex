@@ -94,13 +94,11 @@
 
 \subsection{The Purpose of the Project}
 
-The purpose of the project is providing a platform that allows refinements of event logs, where actions that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented that allows users to upload event logs in the standard XES or CSV format and set thresholds for the refinements. This event log should contain actions that are carried out multiple times and are named identically. The web service should then apply an algorithm to it that refines the log in a way that these actions are relabelled based on structural similarity. Finally, the user should be able to download the refined log in XES.
-
-The users can then use the refined log to gain insight by applying process discovery algorithms to the data. By using the refinement algorithm, higher accuracies should be reached and that way lead to a better insight into the processes.
+The purpose of the project is providing a platform that allows refinements of event logs, where activities that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented which allows users to upload event logs in the standard XES or CSV format and set thresholds for the refinements. This event log should contain activities that are carried out multiple times and are named identically. The web service should then apply the refinement algorithm and finally, the user should be able to download the refined event log in XES format. By using the refinement algorithm, more accurate and precise BPMs (Business Process Models) are generated which provides better insights into the processes.
 
 \subsection{The Client, the Customer and other Stakeholders}
 
-The client of this project is the Chair of Process and Data Science at the RWTH Aachen, which provides the supervision and support for this project. Furthermore, there are many different potential users. For example, students or researchers could use the website as a preprocessing step in order to continue research with the refined log. Additionally, business analysts from companies could use it in order to get a better insight from the refined log than from the original one. Since we will provide a web service, it is easily accessible and not limited to be used by a prespecified group of people. 
+The client of this project is the Chair of Process and Data Science at the RWTH Aachen, which provides the supervision and support for this project. Furthermore, there are many different potential users. For example, students or researchers could use the website as a pre-processing step in order to continue research with the refined log. Additionally, business analysts from companies could use it in order to get a better insight from the refined log than from the original one. Since we will provide a web service, it will be easily accessed and not bound to an specific type of user. 
 
 \section{Project Constraints}
 
@@ -115,16 +113,16 @@ The client of this project is the Chair of Process and Data Science at the RWTH 
 
 \subsection{The Scope of the Work}
 As explained in the Project Initiation document, we aim to provide a web application where the end user can apply the Label Refinement automatically as a pre-processing step to his event log.
-The new and refined log could later be used as alternative input to process discovery algorithms in other tools, yielding a new model and thus adding an alternative to the solution space of possible process models.
+The new and refined log could later be used as alternative input for process discovery algorithms in other tools, yielding a new model and thus adding an alternative to the solution space of possible process models.
 
 
 \subsection{The Scope of the Product}
 The final product consists of a web interface where the user can upload event logs, parameterize thresholds and then the Label Refinement algorithm is executed. 
 In order to get an overview of the product, a use case analysis was carried out, where we identify the system actors and their functions. 
-Because the project's focus is the Label Refinement implementation, the project was divided into two systems. 
+Since the project's focus is the Label Refinement implementation, the project was divided into two systems. 
 This allows a better visualisation of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
 \medskip
-Figure \ref{fig:front-end} displays the Use Cases for the final webinterface and thus the system interactions with the Enduser.  
+Figure \ref{fig:front-end} displays the Use Cases for the final web interface and thus the system interactions with the end-user.  
 Figure \ref{fig:back-end} indicates the Use Cases of, which are required for the Label Refinement algorithm. So the front-end diagram refers to UI functions  
 and the back-end diagram to a more technical view.
 \begin{figure}[h!]
@@ -208,18 +206,13 @@ After finishing the project, the web service should be self-explanatory for the 
 
 \subsection{Open Issues}
 Our team has a rough idea of the steps needed to implement the algorithm and the interface.
-However, we are unsure of the relative time needed for each of these parts.
-Many unexpected bugs in our algorithm could hinder the time we have in our disposal to design a user-friendly web-interface.
+However, we are unsure about the relative time needed for each of these components.
+During the implementation of the algorithm, many unexpected bugs might show up and could hinder the time we have in our disposal to design a user-friendly web-interface.
 
-While we will try to achieve writing an efficient algorithm, there are no concrete performance measures required.
-Drawbacks will probably be found during implementation and decisions will have to be made on the spot.
+While we will strive to write an efficient algorithm, there are no guarantees about its  performance when the number of requests increases beyond the server capacity. Drawbacks will probably be found during implementation and decisions will have to be made on the spot.
 
-Since each of the members has to be fully aware of and actively participate in the coding process, it is still unclear how the functionalities will be divided between the group members.
-Whether or not some functionalities should be implemented together or individually depends on type and importance of functionality, personal schedules, deadlines and so on.
-
-
-
-
+Since each of the team members has to be fully aware of and actively participate during the coding process, it is still unclear how the functionalities will be divided between the members.
+Whether or not some components should be implemented together or individually depends on the type and importance of the component, deadlines and other personal issues.
 
 
 \subsection{Off-the-Shelf Solutions}
