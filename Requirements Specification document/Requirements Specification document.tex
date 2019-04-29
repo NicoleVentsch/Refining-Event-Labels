@@ -94,19 +94,45 @@
 
 \subsection{The Purpose of the Project}
 
-The purpose of the project is providing a platform that allows refinements of event logs, where activities that originally had the same label are relabelled if they have different structural behaviours. In order to do so, an interactive web service should be implemented which allows users to upload event logs in the standard XES or CSV format and set thresholds for the refinements. This event log should contain activities that are carried out multiple times and are named identically. The web service should then apply the refinement algorithm and finally, the user should be able to download the refined event log in XES format. By using the refinement algorithm, more accurate and precise BPMs (Business Process Models) are generated which provides better insights into the processes.
+The purpose of the project is providing a platform that allows refinements of event logs, where activities that originally had the same label are assigned distinct labels  if they appear in different patterns in the structure of the event log. 
+In order to do so, an interactive web service should be implemented which allows users to upload event logs in the standard XES or CSV format and set thresholds for the refinements. 
+This event log should contain activities that are carried out multiple times and are named identically. 
+The web service should then apply the refinement algorithm and finally, the user should be able to download the refined event log in XES format. 
+By using the refinement algorithm, more accurate and precise BPMs (Business Process Models) are generated which provide better insights into the processes.
 
 \subsection{The Client, the Customer and other Stakeholders}
 
-The client of this project is the Chair of Process and Data Science at the RWTH Aachen, which provides the supervision and support for this project. Furthermore, there are many different potential users. For example, students or researchers could use the website as a pre-processing step in order to continue research with the refined log. Additionally, business analysts from companies could use it in order to get a better insight from the refined log than from the original one. Since we will provide a web service, it will be easily accessed and not bound to an specific type of user. 
+The client of this project is the Chair of Process and Data Science at the RWTH Aachen, which provides the supervision and support for this project. Furthermore, there are many different potential users. For example, students or researchers could use the website as a pre-processing step in order to continue research with the refined log. Additionally, business analysts from companies could use it in order to get a better insight from the refined log than from the original one. Since we will provide a web service, it will be easily accessed and not bound to any specific type of user. 
+
+
+
+
+
+
 
 \section{Project Constraints}
 
 \subsection{Mandated Constraints}
+\begin{itemize}
+\item The algorithm has to be implemented in Python.
+\item Each one of the team members must take part in the coding process.
+\item There are clear deadlines for all deliverables. The deliverables must be submitted before the deadline.
+\end{itemize}
+
+
 
 \subsection{Naming Conventions and Definitions}
+We refer to the "Label Refinement algorithm" also as the "Event Label Refining algorithm" or the "Refinement algorithm".
+
+We sometimes use the name "trace variants" to refer to the the different clusters of traces.
+
+
+
 
 \subsection{Relevant Facts and Assumptions}
+The set of candidate labels which are prone to be refined is chosen by the user. 
+The user also picks the thresholds needed as input for the different steps of the algorithm.
+The quality of the process models resulting from process discovery algorithms applied on the refined log heavily depends on the choices the user makes for the candidate labels and the thresholds.
 
 
 \section{Functional Requirements}
@@ -123,7 +149,7 @@ Since the project's focus is the Label Refinement implementation, the project wa
 This allows a better visualisation of the individual algorithm steps and system interactions. The following use cases were identified within the analysis.\\
 \medskip
 Figure \ref{fig:front-end} displays the Use Cases for the final web interface and thus the system interactions with the end-user.  
-Figure \ref{fig:back-end} indicates the Use Cases of, which are required for the Label Refinement algorithm. So the front-end diagram refers to UI functions  
+Figure \ref{fig:back-end} indicates the Use Cases which are required for the Label Refinement algorithm. So the front-end diagram refers to UI functions  
 and the back-end diagram to a more technical view.
 \begin{figure}[h!]
   \includegraphics[width=\textwidth]{"UML Files/Use Case Diagram front-end".png}
@@ -137,7 +163,7 @@ and the back-end diagram to a more technical view.
   \label{fig:back-end}
 \end{figure}
 \clearpage
-The following actors exists in the final system:\\
+The following actors exist in the final system:\\
 \medskip
 \begin{tabularx}{\textwidth}{|m{4cm}|m{4cm}|m{8cm}|}
 	\hline
@@ -145,13 +171,13 @@ The following actors exists in the final system:\\
 	&\textbf{Symbol}
 	&\textbf{Description}\\
 	\hline
-	End user & \includegraphics[width=60px, height=75px]{"UML Files/enduser".png} & The End user interacts with the web interface of the system and does not need any information about the technical implementation\\
+	End user & \includegraphics[width=60px, height=75px]{"UML Files/enduser".png} & The end user interacts with the web interface of the system and does not need any information about the technical implementation.\\
 	\hline
-	Webclient & \includegraphics[width=100px]{"UML Files/webclient".png} & The Webclient provides the API access on simple abstraction layer to provide an easy algorithm execution\\
+	Webclient & \includegraphics[width=100px]{"UML Files/webclient".png} & The Webclient provides the API access on simple abstraction layer to provide an easy algorithm execution.\\
 	\hline
-	Event Label Refining Front-end & \includegraphics[width=100px]{"UML Files/front-end".png} & The Event Label Refining Front-end is the Webclient which is delivered with the project \\
+	Label Refinement Front-end & \includegraphics[width=100px]{"UML Files/front-end".png} & The Label Refinement Front-end is the Webclient which is delivered with the project. \\
 	\hline
-	Event Label Refining Back-end & \includegraphics[width=100px]{"UML Files/back-end".png} & The Event Label Refining Backend-end is responsible for label refining algorithm. It provides access via an API \\
+	Label Refinement Back-end & \includegraphics[width=100px]{"UML Files/back-end".png} & The Label Refinement Back-end is responsible for the label refining algorithm. It provides access via an API. \\
 	\hline
 \end{tabularx}
 
@@ -209,13 +235,13 @@ The project must meet the following technical requirements:
 \medskip
 To validate the Operational and Environmental requirements, the front-end requirements are tested in Mozilla Firefox and Google Chrome. 
 \subsection{Maintainability and Support Requirements}
-After finishing the project, the web service should be self-explanatory for the users. We do not intent to offer support other than documentation to the users. Moreover, the website should only include the aspects we mentioned above and is not intended to be expanded by us after this project. We do not intend maintaining the web service after finishing this project.
+After finishing the project, the web service should be self-explanatory for the users. We do not intend to offer support other than documentation to the users. Moreover, the website should only include the aspects we mentioned above and is not intended to be expanded by us after this project. We do not intend maintaining the web service after finishing this project.
 \section{Project Issues}
 
 \subsection{Open Issues}
 Our team has a rough idea of the steps needed to implement the algorithm and the interface.
 However, we are unsure about the relative time needed for each of these components.
-During the implementation of the algorithm, many unexpected bugs might show up and could hinder the time we have in our disposal to design a user-friendly web-interface.
+During the implementation of the algorithm, many unexpected bugs might hinder the time we have in our disposal to design a user-friendly web-interface.
 
 While we will strive to write an efficient algorithm, there are no guarantees about its  performance when the number of requests increases beyond the server capacity. Drawbacks will probably be found during implementation and decisions will have to be made on the spot.
 
@@ -250,7 +276,7 @@ A common mistake the user could make is upload an event log in some other format
 %\subsection{Migration to the New Product}
 
 \subsection{Risks}
-\newpage
+%\newpage
 \begin{tabularx}{\textwidth}{|X|X|p{3cm}|X|}
 \hline
 \textbf{Risks} 
@@ -294,7 +320,7 @@ Requirements are incomplete. &Requirements are not fully captured or are overloo
 \end{enumerate}
 
 \subsection{Waiting Room}
-In the following we gather some ideas on which functionalities can be added or extended in our product.
+In the following we gather some ideas on which functionalities can be added or extended in our product:
 
 \begin{itemize}
 \item Additional feature which enables the user to choose a Business Process Model Discovery (BPMD) technique from another tool to visualize the resulting process model and to pick the one which is considered to be the best one (according to user's expertise). 
@@ -306,7 +332,7 @@ In the following we gather some ideas on which functionalities can be added or e
 
 
 
-\addcontentsline{toc}{chapter}{\textbf{References}}
+%\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
 %\bibliography{uw-ethesis}
 % Tip 5: You can create multiple .bib files to organize your references. 
