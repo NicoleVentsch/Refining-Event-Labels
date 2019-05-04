@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.14)  4 MAY 2019 12:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.14)  4 MAY 2019 12:04
 entering extended mode
 **"./Design Analysis.tex"
 ("Design Analysis.tex"
@@ -1548,16 +1548,11 @@ File: InterfaceMockup1.png Graphic file (type png)
 
 <use InterfaceMockup1.png>
 Package pdftex.def Info: InterfaceMockup1.png used on input line 117.
-(pdftex.def)             Requested size: 486.6168pt x 357.73561pt.
-
-Overfull \hbox (2.91997pt too wide) in paragraph at lines 117--118
-[]  
- []
-
-[1
+(pdftex.def)             Requested size: 389.29492pt x 286.18958pt.
+ [1
 
 ]
-Overfull \vbox (177.38676pt too high) has occurred while \output is active []
+Overfull \vbox (105.84073pt too high) has occurred while \output is active []
 
 
 [2 <./InterfaceMockup1.png>]
@@ -1566,40 +1561,29 @@ File: InterfaceMockup2.png Graphic file (type png)
 
 <use InterfaceMockup2.png>
 Package pdftex.def Info: InterfaceMockup2.png used on input line 123.
-(pdftex.def)             Requested size: 455.29988pt x 314.97597pt.
+(pdftex.def)             Requested size: 364.24129pt x 251.98172pt.
 
 <InterfaceMockup3-1.png, id=22, 493.845pt x 402.90524pt>
 File: InterfaceMockup3-1.png Graphic file (type png)
 
 <use InterfaceMockup3-1.png>
 Package pdftex.def Info: InterfaceMockup3-1.png used on input line 134.
-(pdftex.def)             Requested size: 493.84378pt x 402.90425pt.
-
-Overfull \hbox (10.14694pt too wide) in paragraph at lines 134--135
-[]  
- []
-
-[3 <./InterfaceMockup2.png>]
+(pdftex.def)             Requested size: 395.07652pt x 322.32462pt.
+ [3 <./InterfaceMockup2.png>]
 <InterfaceMockup3-2.png, id=26, 384.83775pt x 293.29575pt>
 File: InterfaceMockup3-2.png Graphic file (type png)
 
 <use InterfaceMockup3-2.png>
 Package pdftex.def Info: InterfaceMockup3-2.png used on input line 139.
-(pdftex.def)             Requested size: 384.8368pt x 293.29501pt.
- [4 <./InterfaceMockup3-1.png>]
-<InterfaceMockup4.png, id=30, 506.49225pt x 416.757pt>
+(pdftex.def)             Requested size: 307.8706pt x 234.6369pt.
+ [4 <./InterfaceMockup3-1.png> <./InterfaceMockup3-2.png>] <InterfaceMockup4.pn
+g, id=30, 506.49225pt x 416.757pt>
 File: InterfaceMockup4.png Graphic file (type png)
 
 <use InterfaceMockup4.png>
 Package pdftex.def Info: InterfaceMockup4.png used on input line 145.
-(pdftex.def)             Requested size: 506.49101pt x 416.75598pt.
-
-Overfull \hbox (22.79417pt too wide) in paragraph at lines 145--146
-[]  
- []
-
-[5 <./InterfaceMockup3-2.png>] [6 <./InterfaceMockup4.png>]
-("Design Analysis.aux") ) 
+(pdftex.def)             Requested size: 405.19435pt x 333.40605pt.
+ [5 <./InterfaceMockup4.png>] ("Design Analysis.aux") ) 
 Here is how much of TeX's memory you used:
  31008 strings out of 493323
  613724 string characters out of 3139063
@@ -1608,15 +1592,16 @@ Here is how much of TeX's memory you used:
  540775 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,65p,841b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-bx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb>
-Output written on "Design Analysis.pdf" (7 pages, 257668 bytes).
+<C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pf
+b>
+Output written on "Design Analysis.pdf" (6 pages, 256837 bytes).
 PDF statistics:
- 58 PDF objects out of 1000 (max. 8388607)
+ 53 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
