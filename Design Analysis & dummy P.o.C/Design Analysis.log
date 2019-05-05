@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.14)  4 MAY 2019 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.6.14)  5 MAY 2019 20:48
 entering extended mode
 **"./Design Analysis.tex"
 ("Design Analysis.tex"
@@ -1543,52 +1543,54 @@ Package geometry Warning: Over-specification in `v'-direction.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-<InterfaceMockup1.png, id=13, 486.618pt x 357.7365pt>
+<ScreenFlow.png, id=13, 553.06625pt x 482.80376pt>
+File: ScreenFlow.png Graphic file (type png)
+ <use ScreenFlow.png>
+Package pdftex.def Info: ScreenFlow.png used on input line 122.
+(pdftex.def)             Requested size: 387.14374pt x 337.96033pt.
+
+[1
+
+] <InterfaceMockup1.png, id=19, 486.618pt x 357.7365pt>
 File: InterfaceMockup1.png Graphic file (type png)
 
 <use InterfaceMockup1.png>
-Package pdftex.def Info: InterfaceMockup1.png used on input line 117.
+Package pdftex.def Info: InterfaceMockup1.png used on input line 126.
 (pdftex.def)             Requested size: 389.29492pt x 286.18958pt.
- [1
-
-]
-Overfull \vbox (105.84073pt too high) has occurred while \output is active []
-
-
-[2 <./InterfaceMockup1.png>]
-<InterfaceMockup2.png, id=21, 455.301pt x 314.97675pt>
+ [2 <./ScreenFlow.png> <./InterfaceMockup1.png>]
+<InterfaceMockup2.png, id=24, 455.301pt x 314.97675pt>
 File: InterfaceMockup2.png Graphic file (type png)
 
 <use InterfaceMockup2.png>
-Package pdftex.def Info: InterfaceMockup2.png used on input line 123.
+Package pdftex.def Info: InterfaceMockup2.png used on input line 132.
 (pdftex.def)             Requested size: 364.24129pt x 251.98172pt.
 
-<InterfaceMockup3-1.png, id=22, 493.845pt x 402.90524pt>
+<InterfaceMockup3-1.png, id=25, 493.845pt x 402.90524pt>
 File: InterfaceMockup3-1.png Graphic file (type png)
 
 <use InterfaceMockup3-1.png>
-Package pdftex.def Info: InterfaceMockup3-1.png used on input line 134.
+Package pdftex.def Info: InterfaceMockup3-1.png used on input line 140.
 (pdftex.def)             Requested size: 395.07652pt x 322.32462pt.
  [3 <./InterfaceMockup2.png>]
-<InterfaceMockup3-2.png, id=26, 384.83775pt x 293.29575pt>
+<InterfaceMockup3-2.png, id=29, 384.83775pt x 293.29575pt>
 File: InterfaceMockup3-2.png Graphic file (type png)
 
 <use InterfaceMockup3-2.png>
-Package pdftex.def Info: InterfaceMockup3-2.png used on input line 139.
+Package pdftex.def Info: InterfaceMockup3-2.png used on input line 145.
 (pdftex.def)             Requested size: 307.8706pt x 234.6369pt.
  [4 <./InterfaceMockup3-1.png> <./InterfaceMockup3-2.png>] <InterfaceMockup4.pn
-g, id=30, 506.49225pt x 416.757pt>
+g, id=33, 506.49225pt x 416.757pt>
 File: InterfaceMockup4.png Graphic file (type png)
 
 <use InterfaceMockup4.png>
-Package pdftex.def Info: InterfaceMockup4.png used on input line 145.
+Package pdftex.def Info: InterfaceMockup4.png used on input line 151.
 (pdftex.def)             Requested size: 405.19435pt x 333.40605pt.
  [5 <./InterfaceMockup4.png>] ("Design Analysis.aux") ) 
 Here is how much of TeX's memory you used:
- 31008 strings out of 493323
- 613724 string characters out of 3139063
+ 31013 strings out of 493323
+ 613813 string characters out of 3139063
  657459 words of memory out of 3000000
- 34087 multiletter control sequences out of 15000+200000
+ 34091 multiletter control sequences out of 15000+200000
  540775 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  55i,12n,65p,841b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1599,9 +1601,9 @@ ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 msfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pf
 b>
-Output written on "Design Analysis.pdf" (6 pages, 256837 bytes).
+Output written on "Design Analysis.pdf" (6 pages, 268642 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
