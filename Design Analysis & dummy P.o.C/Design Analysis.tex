@@ -20,6 +20,7 @@
 \usepackage{caption}
 \usepackage{pdfpages}
 \usepackage{tabularx}
+\usepackage{lscape}
 
 \geometry{ 						%Format titlepage (interrupted by newgeometry)
 	a4paper,
@@ -98,7 +99,13 @@
 \subsection{Development Methods}
 
 \section{Architectural Strategies}
+{\color{gray} **** under construction ****}
+\begin{itemize}
+	\item Factory Pattern
+	\item Decorator (Variaton)
+\end{itemize}
 
+{\color{gray} ***************************}
 \section{System Architecture}
 \includegraphics[scale=0.4]{"UML_Architecture/Architecture Overview".png}
 
@@ -107,8 +114,10 @@
 \subsection{Refining Label API}
 \subsection{File Store}
 \subsection{Refining Event Labels}
+\begin{landscape}
 \subsection{Event Log Converter}
-
+\includegraphics[width=\columnwidth]{"UML_Architecture/Event Log Converter CD".png}
+\end{landscape}
 \section{Policies and Tactics}
 
 \section{Detailed System Design}
