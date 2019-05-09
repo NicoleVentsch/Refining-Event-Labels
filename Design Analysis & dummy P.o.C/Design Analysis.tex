@@ -13,7 +13,8 @@
 \usepackage{color}				
 \usepackage{tikz}	
 \usepackage{tasks}			
-\usepackage{exsheets}		
+\usepackage{exsheets}	
+\usepackage{blindtext}	
 \usepackage{array}			
 \usepackage{empheq}
 \usepackage{caption}
@@ -91,24 +92,160 @@
 \subsection{Definitions and Acronyms}
 
 \section{Design Considerations}
-\subsection{Assumptions}
-\subsection{Constraints}
-\subsection{System Environment}
-\subsection{Design Methodology}
-\subsection{Risks and Volatile Areas}
+\subsection{Assumptions and Dependencies}
+\subsection{General Constraints}
+\subsection{Goals and Guidelines}
+\subsection{Development Methods}
 
-\section{Architecture}
-\subsection{Overview}
-\subsection{Rationale}
-\subsection{Component Details}
+\section{Architectural Strategies}
 
-\section{High Level Design}
-\subsection{Conceptual View}
+\section{System Architecture}
+\includegraphics[scale=0.4]{UML_Architecture/Architecture_Overview.png}
 
-\section{Low Level Design}
-\subsection{Module 1}
-\subsection{Module 2}
-%.....
+\subsection{Client Machine}
+\subsection{Front-end}
+\subsection{Refining Label API}
+\subsection{Refining Event Labels}
+\subsection{Library}
+
+\section{Policies and Tactics}
+
+\section{Detailed System Design}
+The main algorithm "Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm. These modules will be explained in detail in the following subsections.
+\subsection{Module 1: Preprocessing}
+Name: Preprocessing
+
+Type: module
+
+Description: This module is responsible for preprocessing the data. The event log provided by the user is read and stored internally. Moreover, it is checked if it has the right format and an error is produced if is does not have. 
+
+Attributes: None
+
+Resources: None
+
+Operations: 
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: read\_csv()
+
+Arguments: path to a log file in csv format
+
+Returns: event log 
+
+Description: The csv file provided by the user is read and stored as a table containing the original columns.
+
+Precondition: the path leads to a csv file
+
+Postcondition: the table is stored internally
+
+Exceptions: None
+\par
+\endgroup
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: read\_XES()
+
+Arguments: path to a log file in XES format
+
+Returns: event log 
+
+Description: The XES file provided by the user is read and stored as a table containing the original columns.
+
+Precondition: the path leads to an XES file, the provided column names exist in the file
+
+Postcondition: an event log is stored internally
+
+Exceptions: None
+\par
+\endgroup
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: check\_event\_log()
+
+Arguments: table imported using read\_XES() or read\_csv(),  name of the activity column, ID column and time stamp column provided by the user
+
+Returns: True or False
+
+Description: The table we created by reading in the file is checked for actually being an event log, i.e., containing an activity column, an ID column and a time stamp column. The names for these columns are entered by the user. If these exist in the table, True will be returned, otherwise False will be returned. 
+
+Precondition: a file was read and the names for the columns were entered by the user
+
+Postcondition: the process can continue if True was returned, else an error occurs
+
+Exceptions: None
+\par
+\endgroup
+
+
+\subsection{Module 2: Storing the Traces}
+Name: Storing the Traces
+
+Type: module
+
+Description: This module is responsible for getting the unique traces from the event log and storing the traces for each activity in a look-up table that can be used for refining the original log later. 
+
+Attributes: None
+
+Resources: None
+
+Operations: 
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: create\_lookup\_table()
+
+Arguments: table,  name of the activity column, ID column and time stamp column
+
+Returns: lookup table containing one trace for every ID , where the trace is stored as an array
+
+Description: The table is converted, so that we get the activity traces for each ID ordered by their time stamp.
+
+Precondition: check\_event\_log() returned True
+
+Postcondition: a lookup table is stored
+
+Exceptions: None
+
+\par
+\endgroup
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: get\_unique\_traces()
+
+Arguments: look-up table created using create\_lookup\_table()
+
+Returns: an array containing the unique traces, i.e., an array of arrays
+
+Description: The traces from the look-up table are checked for duplicates and the unique traces are stored in an array
+
+Precondition: a lookup table was created using create\_lookup\_table()
+
+Postcondition: an array of arrays containing the unique traces is stored
+
+Exceptions: None
+
+\par
+\endgroup
+
+\subsection{Module 3}
+%...
 
 \section{User Interface Design}
 \subsection{Application Control}
