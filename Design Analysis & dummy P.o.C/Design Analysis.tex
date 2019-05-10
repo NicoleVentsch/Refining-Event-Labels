@@ -122,12 +122,12 @@
 
 \section{Detailed System Design}
 The main algorithm "Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm. These modules will be explained in detail in the following subsections.
-\subsection{Module 1: Preprocessing}
-Name: Preprocessing
+\subsection{Module 1.1: File Creator}
+Name: File Creator
 
 Type: module
 
-Description: This module is responsible for preprocessing the data. The event log provided by the user is read and stored internally. Moreover, it is checked if it has the right format and an error is produced if is does not have. 
+Description: This module is responsible for creating a file from the data the user uploads. The event log provided by the user is read and stored internally. Moreover, it is checked if it has the right format and an error is produced if is does not have. 
 
 Attributes: None
 
@@ -136,22 +136,22 @@ Resources: None
 Operations: 
 \medskip
 
-\par
-\begingroup
-\leftskip4em
-Name: read\_csv()
+%\par
+%\begingroup
+%\leftskip4em
+%Name: read\_csv()
 
-Arguments: path to a log file in csv format
+%Arguments: path to a log file in csv format
 
-Returns: event log 
+%Returns: event log 
 
-Description: The csv file provided by the user is read and stored as a table containing the original columns.
+%Description: The csv file provided by the user is read and stored as a table containing the original columns.
 
-Precondition: the path leads to a csv file
+%Precondition: the path leads to a csv file
 
-Postcondition: the table is stored internally
+%Postcondition: the table is stored internally
 
-Exceptions: None
+%Exceptions: None
 \par
 \endgroup
 
@@ -168,7 +168,63 @@ Returns: event log
 
 Description: The XES file provided by the user is read and stored as a table containing the original columns.
 
-Precondition: the path leads to an XES file, the provided column names exist in the file
+Precondition: the path leads to an XES file; the file is an event log
+
+Postcondition: an event log is stored internally
+
+Exceptions: None
+\par
+\endgroup
+
+\medskip
+
+\subsection{Module 1.2: Preprocessing Log}
+Name: Preprocessing Log
+
+Type: module
+
+Description: This module is responsible for preprocessing the data. The event log provided by the user is read and stored internally. Moreover, it is checked if it has the right format and an error is produced if is does not have. 
+
+Attributes: None
+
+Resources: None
+
+Operations: 
+\medskip
+
+%\par
+%\begingroup
+%\leftskip4em
+%Name: read\_csv()
+
+%Arguments: path to a log file in csv format
+
+%Returns: event log 
+
+%Description: The csv file provided by the user is read and stored as a table containing the original columns.
+
+%Precondition: the path leads to a csv file
+
+%Postcondition: the table is stored internally
+
+%Exceptions: None
+\par
+\endgroup
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+Name: read\_XES()
+
+Arguments: path to a log file in XES format
+
+Returns: event log 
+
+Description: The XES file provided by the user is read and stored as a table containing the original columns.
+
+Precondition: the path leads to an XES file; the file is an event log
 
 Postcondition: an event log is stored internally
 
@@ -183,13 +239,13 @@ Exceptions: None
 \leftskip4em
 Name: check\_event\_log()
 
-Arguments: table imported using read\_XES() or read\_csv(),  name of the activity column, ID column and time stamp column provided by the user
+Arguments: table imported using read\_XES() 
 
 Returns: True or False
 
-Description: The table we created by reading in the file is checked for actually being an event log, i.e., containing an activity column, an ID column and a time stamp column. The names for these columns are entered by the user. If these exist in the table, True will be returned, otherwise False will be returned. 
+Description: The table we created by reading in the file is checked for actually being an event log, i.e., containing an activity column, an ID column and a time stamp column. If these exist in the table, True will be returned, otherwise False will be returned. 
 
-Precondition: a file was read and the names for the columns were entered by the user
+Precondition: an XES file was read 
 
 Postcondition: the process can continue if True was returned, else an error occurs
 
@@ -198,61 +254,61 @@ Exceptions: None
 \endgroup
 
 
-\subsection{Module 2: Storing the Traces}
-Name: Storing the Traces
+%\subsection{Module 2: Storing the Traces}
+%Name: Storing the Traces
 
-Type: module
+%Type: module
 
-Description: This module is responsible for getting the unique traces from the event log and storing the traces for each activity in a look-up table that can be used for refining the original log later. 
+%Description: This module is responsible for getting the unique traces from the event log and storing the traces for each activity in a look-up table that can be used for refining the original log later. 
 
-Attributes: None
+%Attributes: None
 
-Resources: None
+%Resources: None
 
-Operations: 
-\medskip
+%Operations: 
+%\medskip
 
 \par
 \begingroup
 \leftskip4em
-Name: create\_lookup\_table()
+Name: get_variants()
 
-Arguments: table,  name of the activity column, ID column and time stamp column
+Arguments: table
 
-Returns: lookup table containing one trace for every ID , where the trace is stored as an array
+Returns: lookup table containing the variants present in the log and a list of IDs that have these variants, where the trace is stored as an array
 
-Description: The table is converted, so that we get the activity traces for each ID ordered by their time stamp.
+Description: The table is converted, so that we get the unique variants for the IDs ordered by their time stamp and store the set of Ids that have the variant in a table.
 
 Precondition: check\_event\_log() returned True
 
-Postcondition: a lookup table is stored
+Postcondition: a lookup table is stored containing the variants and IDs with that variant
 
 Exceptions: None
 
 \par
 \endgroup
 
-\medskip
+%\medskip
 
-\par
-\begingroup
-\leftskip4em
-Name: get\_unique\_traces()
+%\par
+%\begingroup
+%\leftskip4em
+%Name: get\_unique\_traces()
 
-Arguments: look-up table created using create\_lookup\_table()
+%Arguments: look-up table created using create\_lookup\_table()
 
-Returns: an array containing the unique traces, i.e., an array of arrays
+%Returns: an array containing the unique traces, i.e., an array of arrays
 
-Description: The traces from the look-up table are checked for duplicates and the unique traces are stored in an array
+%Description: The traces from the look-up table are checked for duplicates and the unique traces are stored in an array
 
-Precondition: a lookup table was created using create\_lookup\_table()
+%Precondition: a lookup table was created using create\_lookup\_table()
 
-Postcondition: an array of arrays containing the unique traces is stored
+%Postcondition: an array of arrays containing the unique traces is stored
 
-Exceptions: None
+%Exceptions: None
 
-\par
-\endgroup
+%\par
+%\endgroup
 
 \subsection{Module 3}
 %...
