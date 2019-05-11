@@ -99,23 +99,50 @@
 \subsection{Development Methods}
 
 \section{Architectural Strategies}
-{\color{gray} **** under construction ****}
+
+\section{System Architecture}
+The following UML displays the main applicaton components and where they are deployed. The final application will be deployed on an applicaton servers which the 
+user can access over an Internet Browser on his own Machine. Therefore the System is independent of the users operating system. There are two option to perfom the 
+algorithm:
+
 \begin{itemize}
-	\item Factory Pattern
-	\item Decorator (Variaton)
+	\item 1. The user can access the JavaScript Front-end application via HTTP which provides an user friendly UI. There the user can set all required parameters and send them to the API.
+	\item 2. Additional, the user can access the API directly via HTTP with the required parameter. So the application can integrate into other application which could be helpful to perfom preprocessing steps or to use the refined labels in another application. .
 \end{itemize}
 
-{\color{gray} ***************************}
-\section{System Architecture}
+
 \includegraphics[scale=0.4]{"UML_Architecture/Architecture Overview".png}
 
 \subsection{Client Machine}
+The Client Machine is just a device with internet connection. It is not directly part of the application but is required to access to functionality.
+To use the User Webinterface a Google Chrome or Mozilla Firefox Browser is required. The Client does not need a special operating system or system structure to user 
+the project application.
 \subsection{Front-end}
+The Front-end provides the User Interface for a simple application access. It is created with HTML5 and JavaScript and redirects the User inputs to API.
+So the end user must not know the API interface, required data formats and protocols.
 \subsection{Refining Label API}
+The Refining Label API is the main access point for the refining algorithm. Every communication goes through this API. After sending data, 
+the API will validate them, execute some preprocessing steps like file conversion and finally execute the refining algorithm and returning the result to the calling user or system. 
+Additional the API acts as a connection between the other Modules. Is connects the user access, algorithm and file handling.
+Therefore each of the other components is independent and low coupling and high cohesion is achieved   
 \subsection{File Store}
+The File Store is an abstraction layer for the servers file system. It will keep track on the updates files and offers functions to store 
+refined XES files on the server. It also monitors the memory utilization.
 \subsection{Refining Event Labels}
+The Refining Event Label components is responsible for the final refining algorithm. 
+It contains functionality to calculate costs, execute preprocessing steps, horizontal clustering of variants and the vertical refinement.
+To offer a maintainable and extensible system this compontent will provides interfaces to exchange mentioned functionalities. 
+The following subcomponents exist: 
+
+
+\subsection{Event Log Converter}submodules
+The Event Log Converter is a Framework to convert different files types into an Event Log and convert them back into files. 
+For our project the system provides functionality for XES and CSV import and export. 
+The Framework can easily be extended with additional file types without changing the core functionality.
+
+The following UML class diagram display the class structure.
+
 \begin{landscape}
-\subsection{Event Log Converter}
 \includegraphics[width=\columnwidth]{"UML_Architecture/Event Log Converter CD".png}
 \end{landscape}
 
