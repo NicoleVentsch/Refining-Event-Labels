@@ -274,6 +274,8 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 \subsection{Module 1.1: File Converter}
 \textit{Name}: File Creator
 
+\textit{Related Component}: Event Log Converter
+
 \textit{Type}: module
 
 \textit{Description}: This module is responsible for creating a table from the data the user uploads. The event log provided by the user is read and stored internally containing all the original columns. 
@@ -333,6 +335,8 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 
 \subsection{Module 1.2: Preprocessing Log}
 \textit{Name}: Preprocessing Log
+
+\textit{Related Component}: Refining Event Labels
 
 \textit{Type}: module
 
@@ -417,6 +421,8 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 
 \subsection{Module 2: Customize}
 \textit{Name}: Customize
+
+\textit{Related Component}: Refining Event Labels
 
 \textit{Type}: module
 
@@ -544,6 +550,8 @@ It stores information about the candidates to refine, and the vertical and horiz
 \subsection{Module 3: Cost function}
 \textit{Name}: Cost function
 
+\textit{Related Component}: Refining Event Labels
+
 \textit{Type}: module
 
 \textit{Description}: This module is responsible for calculating the costs of all mappings between each pair of variants and selecting the optimal mapping with the least costs. 
@@ -653,6 +661,8 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \subsection{Module 4: Horizontal clustering of variants}
 \textit{Name}: Label refinement based on clusters
 
+\textit{Related Component}: Refining Event Labels
+
 \textit{Type}: module
 
 \textit{Description}: This module clusters the event log and perfoms the label refinement based on these clusters.
@@ -717,6 +727,8 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \subsection{Module 5: Vertical Refinement}
 \textit{Name}: Label refinement within variant
 
+\textit{Related Component}: Refining Event Labels
+
 \textit{Type}: module
 
 \textit{Description}: This module execute the label refinement within variant for the Event log and is part of the refinment algorithm.
@@ -754,6 +766,8 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 
 \subsection{Module 6: Post-Processing}
 \textit{Name}: Embed refinements into original log 
+
+\textit{Related Component}: File Converter
 
 \textit{Type}: module
 
@@ -816,6 +830,8 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 
 \subsection{Module 7: File Creator}
 \textit{Name}: File Creator
+
+\textit{Related Component}: Refining Event Labels
 
 \textit{Type}: module
 
