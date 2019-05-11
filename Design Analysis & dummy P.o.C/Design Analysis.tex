@@ -372,11 +372,125 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 
 \textit{Type}: module
 
-\textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
+\textit{Description}: This module is responsible to customize the algorithm parameters. The module serves as a model class and will later pass to the refining algorithm.
+It stores information about the candidates to refine, and the vertical and horizontal threshold. Also it will automatically validate this data.  
+
+\textit{Attributes}: None
+
+\textit{Resources}: None
+
+\textit{Operations}: 
+\medskip
 
 
+\par
+\begingroup
+\leftskip4em
+\textbf{2.1} 
+
+\textit{Name}: set\_candiadates()
+
+\textit{Arguments}: traces for which should be refined.
+
+\textit{Returns}: void
+
+\textit{Description}: The function provides functionality to stores the traces for the final refining algorithm. 
+
+\textit{Precondition}: Valid trace model
+
+\textit{Postcondition}: traces are stored in the model
+
+\textit{Exceptions}: None
+
+\par
+\endgroup
+
+\medskip
 
 
+\par
+\begingroup
+\leftskip4em
+\textbf{2.2} 
+
+\textit{Name}: get\_candiadates()
+
+\textit{Arguments}: none.
+
+\textit{Returns}: Array of traces which sould be considered by the refining algorithm.
+
+\textit{Description}: Provides access to all traces 
+
+\textit{Precondition}: none.
+
+\textit{Postcondition}: none.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+\par
+\begingroup
+\leftskip4em
+\textbf{2.3} 
+
+\textit{Name}: set\_threshold()
+
+\textit{Arguments}: vertical and horizontal threshold as double values.
+
+\textit{Returns}: void
+
+\textit{Description}: Allows to set the threshold for the horizontal and vertical refinement. Valous bigger than 1 will be converted to 0.99 and values smaller than 0 will be converted to 0.1
+
+\textit{Precondition}: none.
+
+\textit{Postcondition}: none.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+\par
+\begingroup
+\leftskip4em
+\textbf{2.4} 
+
+\textit{Name}: get\_vertical\_threshold()
+
+\textit{Arguments}: none.
+
+\textit{Returns}: vertical threshold as double
+
+\textit{Description}: function return the vertical threshold
+
+\textit{Precondition}: none.
+
+\textit{Postcondition}: none.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+\par
+\begingroup
+\leftskip4em
+\textbf{2.5} 
+
+\textit{Name}: get\_horizontal\_threshold()
+
+\textit{Arguments}: none.
+
+\textit{Returns}: horizontal threshold as double
+
+\textit{Description}: function return the vertical threshold
+
+\textit{Precondition}: none.
+
+\textit{Postcondition}: none.
+
+\textit{Exceptions}: None
+\par
+\endgroup
 
 
 \subsection{Module 3: Cost function}
