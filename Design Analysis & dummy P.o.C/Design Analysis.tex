@@ -685,8 +685,56 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 
 \textit{Type}: module
 
-\textcolor{red}{Operations: createfile(), downloadfile()}
+\textit{Description}: Utility class to export and store an Event Logs as a XES file.
 
+\textit{Attributes}: An Event Log model
+
+\textit{Resources}: none.
+
+\textit{Operations}: 
+\medskip
+\par
+\begingroup
+\leftskip4em
+\textbf{6.1} 
+
+\textit{Name}: create\_file()
+
+\textit{Arguments}: Event Log model.
+
+\textit{Returns}: void.
+
+\textit{Description}: Converts the event logs a XSD file.
+
+\textit{Precondition}: A valid event log format.
+
+\textit{Postcondition}: a XSD file is created.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+\medskip
+\par
+\begingroup
+\leftskip4em
+\textbf{6.2} 
+
+\textit{Name}: store\_file()
+
+\textit{Arguments}: A directory path.
+
+\textit{Returns}: the create file path.
+
+\textit{Description}: Stores the previous created file at given location.
+
+\textit{Precondition}: A existing directory Path.
+
+\textit{Postcondition}: the XSD file is stored.
+
+\textit{Exceptions}: NotADirectoryException
+\par
+\endgroup
 
 
 
