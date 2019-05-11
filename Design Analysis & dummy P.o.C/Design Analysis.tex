@@ -118,7 +118,108 @@
 \subsection{Event Log Converter}
 \includegraphics[width=\columnwidth]{"UML_Architecture/Event Log Converter CD".png}
 \end{landscape}
+
+
+
+
+
+
 \section{Policies and Tactics}
+
+
+\subsection{Ensuring Requirements Realization}
+To ensure the realization of all requirements specified in the Requirement Specification Document, the corresponding modules have to be designed.
+The table below describes which modules are resposible for which requirement and which functionalities are used for the implementation of the module. \\
+
+\medskip
+%\newpage
+\begin{tabularx}{\textwidth}{|p{6cm}|p{5cm}|p{6cm}}
+\hline
+\textbf{Requirements} 
+&\textbf{Modules}
+&\textbf{Functionalities}
+\\
+\hline
+-Upload CSV event log file 
+\newline -Upload XES event log file 
+& 
+1.1 File Converter 
+\newline 1.2 Preprocessing log 
+& 
+1.1.1 get\_event\_from\_file() 
+\newline 1.1.2 read\_XES()
+\newline 1.2.1 check\_event\_log() 
+\newline 1.2.2 lookup\_table() 
+\newline 1.2.3 get\_variants \\
+\hline
+-Customize threshold for cost function
+\newline -Customize horizontal threshold
+\newline -Customize vertical threshold
+\newline -Choose set of imprecise labels
+&
+2. Customize
+&
+\\
+\hline
+-Calculate costs
+&
+3. Cost function
+&
+3.1 mappings()
+\newline 3.2 cost\_mapping()
+\newline 3.3 cost\_matrix()
+\newline 3.4 graph()
+\\ 
+\hline
+-Clustering of traces
+\newline -Refine labels horizontally across traces 
+&
+4. Horizontal clustering of variantes
+&
+	\\ 
+\hline
+-Refine labels vertically within traces
+&
+5. Vertical refinement
+&
+	\\ 
+\hline
+$- -$
+&
+6. Post-Processing
+&
+6.1 update\_map()
+\newline 6.2 update\_table()	\\ 
+\hline
+-Download refined XES event log file
+&
+7. File Creator
+&
+\\ 
+\hline
+\end{tabularx} \\
+
+\medskip
+
+A detailed description of the modules and funcionalities is given in Section 6.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Detailed System Design}
 The main algorithm "Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm. These modules will be explained in detail in the following subsections.
@@ -278,7 +379,7 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 
 
 
-\subsection{Module 3: Calculate costs}
+\subsection{Module 3: Cost function}
 \textit{Name}: Cost function
 
 \textit{Type}: module
@@ -465,12 +566,12 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 
 
 
-\subsection{Module 7: Download}
+\subsection{Module 7: File Creator}
 \textit{Name}: File Creator
 
 \textit{Type}: module
 
-\textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
+\textcolor{red}{Operations: createfile(), downloadfile()}
 
 
 
