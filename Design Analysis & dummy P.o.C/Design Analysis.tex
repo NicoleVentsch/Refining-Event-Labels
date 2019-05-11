@@ -123,17 +123,17 @@
 \section{Detailed System Design}
 The main algorithm "Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm. These modules will be explained in detail in the following subsections.
 \subsection{Module 1.1: File Converter}
-Name: File Creator
+\textit{Name}: File Creator
 
-Type: module
+\textit{Type}: module
 
-Description: This module is responsible for creating a table from the data the user uploads. The event log provided by the user is read and stored internally containing all the original columns. 
+\textit{Description}: This module is responsible for creating a table from the data the user uploads. The event log provided by the user is read and stored internally containing all the original columns. 
 
-Attributes: None
+\textit{Attributes}: None
 
-Resources: None
+\textit{Resources}: None
 
-Operations: 
+\textit{Operations}: 
 \medskip
 
 \par
@@ -141,19 +141,19 @@ Operations:
 \leftskip4em
 \textbf{1.1.1}
 
-Name: get\_event\_log\_from\_file()
+\textit{Name}: get\_event\_log\_from\_file()
 
-Arguments: path to a log file in csv format or XES format
+\textit{Arguments}: path to a log file in csv format or XES format
 
-Returns: event log in XES format
+\textit{Returns}: event log in XES format
 
-Description: The file at the path the user enters is read and stored in XES format. In case the file is originally in csv format, the file is first converted to XES format and then stored.
+\textit{Description}: The file at the path the user enters is read and stored in XES format. In case the file is originally in csv format, the file is first converted to XES format and then stored.
 
-Precondition: the path provided by the user leads to a csv file or an XES file
+\textit{Precondition}: the path provided by the user leads to a csv file or an XES file
 
-Postcondition: the table is stored internally as an XES file
+\textit{Postcondition}: the table is stored internally as an XES file
 
-Exceptions: None
+\textit{Exceptions}: None
 \par
 \endgroup
 
@@ -164,36 +164,36 @@ Exceptions: None
 \leftskip4em
 \textbf{1.1.2}
 
-Name: read\_XES()
+\textit{Name}: read\_XES()
 
-Arguments: file in XES format
+\textit{Arguments}: file in XES format
 
-Returns: event log 
+\textit{Returns}: event log 
 
-Description: The XES file is read and stored as a table containing the original columns.
+\textit{Description}: The XES file is read and stored as a table containing the original columns.
 
-Precondition: an XES file was created using get\_event\_log\_from\_file()
+\textit{Precondition}: an XES file was created using get\_event\_log\_from\_file()
 
-Postcondition: a table containing all original columns is stored internally 
+\textit{Postcondition}: a table containing all original columns is stored internally 
 
-Exceptions: None
+\textit{Exceptions}: None
 \par
 \endgroup
 
 \medskip
 
 \subsection{Module 1.2: Preprocessing Log}
-Name: Preprocessing Log
+\textit{Name}: Preprocessing Log
 
-Type: module
+\textit{Type}: module
 
-Description: This module is responsible for preprocessing the data. It is checked if the table provided by the user contains the right variables and an error is produced if is does not have. Moreover, a table containing all unique traces and the list of IDs corresponding to these traces is created.
+\textit{Description}: This module is responsible for preprocessing the data. It is checked if the table provided by the user contains the right variables and an error is produced if is does not have. Moreover, a table containing all unique traces and the list of IDs corresponding to these traces is created.
 
-Attributes: None
+\textit{Attributes}: None
 
-Resources: None
+\textit{Resources}: None
 
-Operations: 
+\textit{Operations: }
 \medskip
 
 
@@ -202,19 +202,19 @@ Operations:
 \leftskip4em
 \textbf{1.2.1} 
 
-Name: check\_event\_log()
+\textit{Name}: check\_event\_log()
 
-Arguments: table imported using read\_XES() 
+\textit{Arguments}: table imported using read\_XES() 
 
-Returns: Boolean (True or False)
+\textit{Returns}: Boolean (True or False)
 
-Description: It is checked whether the table is actually an event log, i.e., whether it contains an activity column, an ID column and a time stamp column. If these exist in the table, "True" will be returned, otherwise "False" will be returned. 
+\textit{Description}: It is checked whether the table is actually an event log, i.e., whether it contains an activity column, an ID column and a time stamp column. If these exist in the table, "True" will be returned, otherwise "False" will be returned. 
 
-Precondition: a file was created using read\_XES()
+\textit{Precondition}: a file was created using read\_XES()
 
-Postcondition: if "True" is returned, the file is actually an event log, otherwise the file does not contain the necessary variables and an error will be displayed
+\textit{Postcondition}: if "True" is returned, the file is actually an event log, otherwise the file does not contain the necessary variables and an error will be displayed
 
-Exceptions: None
+\textit{Exceptions}: None
 \par
 \endgroup
 
@@ -225,19 +225,19 @@ Exceptions: None
 \leftskip4em
 \textbf{1.2.2}
 
-Name: lookup\_table()
+\textit{Name}: lookup\_table()
 
-Arguments: table with all original columns
+\textit{Arguments}: table with all original columns
 
-Returns: lookup table containing a "variants" column and an "ID" column
+\textit{Returns}: lookup table containing a "variants" column and an "ID" column
 
-Description: The table is converted, so that we get a table containing the unique variants for the IDs ordered by their time stamp and the set of IDs corresponding to the variant. In this lookup table, the variants are stored as arrays and the corresponding IDs as a list.
+\textit{Description}: The table is converted, so that we get a table containing the unique variants for the IDs ordered by their time stamp and the set of IDs corresponding to the variant. In this lookup table, the variants are stored as arrays and the corresponding IDs as a list.
 
-Precondition: the provided file is an event log
+\textit{Precondition}: the provided file is an event log
 
-Postcondition: a lookup table is stored containing the variants and IDs corresponding to those variants
+\textit{Postcondition}: a lookup table is stored containing the variants and IDs corresponding to those variants
 
-Exceptions: None
+\textit{Exceptions}: None
 
 \par
 \endgroup
@@ -249,27 +249,27 @@ Exceptions: None
 \leftskip4em
 \textbf{1.2.3}
 
-Name: get\_variants()
+\textit{Name}: get\_variants()
 
-Arguments: look-up table with variants and IDs for each variant
+\textit{Arguments}: look-up table with variants and IDs for each variant
 
-Returns: set of unique trace variants
+\textit{Returns}: set of unique trace variants
 
-Description: We create a set containing all the variants so that we can approach them when calculating the mappings later. Here we do not need to have access to the IDs.
+\textit{Description}: We create a set containing all the variants so that we can approach them when calculating the mappings later. Here we do not need to have access to the IDs.
 
-Precondition: The first column of the look-up table contains all trace variants
+\textit{Precondition}: The first column of the look-up table contains all trace variants
 
-Postcondition: a non-empty set containing the arrays describing each variant
+\textit{Postcondition}: a non-empty set containing the arrays describing each variant
 
-Exceptions: None
+\textit{Exceptions}: None
 
 \par
 \endgroup
 
 \subsection{Module 2: Customize}
-Name: Customize
+\textit{Name}: Customize
 
-Type: module
+\textit{Type}: module
 
 \textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
 
@@ -277,40 +277,141 @@ Type: module
 
 
 \subsection{Module 3: Download}
-Name: File Creator
+\textit{Name}: File Creator
 
-Type: module
+\textit{Type}: module
 
 \textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
 
 \subsection{Module 4: Calculate costs}
-Name: Cost function
+\textit{Name}: Cost function
 
-Type: module
+\textit{Type}: module
 
-\textcolor{red}{Operations: mappings, optimalmapping, graph, storeoptCostinMatrix}
+\textit{Description}: This module is responsible for calculating the costs of all mappings between each pair of variants and selecting the optimal mapping with the least costs. 
+
+\textit{Attributes}: None
+
+\textit{Resources}: The weights used for the calculation of costs
+
+\textit{Operations}: 
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{4.1} 
+
+\textit{Name}: mappings()
+
+\textit{Arguments}: two distinct trace variants 
+
+\textit{Returns}: a set of possible mappings
+
+\textit{Description}: For each pair of variants we obtain the set of common activity labels occurring in both variants. If this set is empty, no mapping is possible. Otherwise, if none of the common labels appears more than once in any of the variants, the unique mapping is yielded. In the other case, all combinations of possible mappings are yielded as a set where each mapping is an array of pairs of the positions that were matched together.
+
+\textit{Precondition}: We go through all pairs of trace variants yielded by get\_variants()
+
+\textit{Postcondition}: For each mapping, the cost function is computed
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{4.2} 
+
+\textit{Name}: cost\_mapping()
+
+\textit{Arguments}: two trace variants and a mapping between them
+
+\textit{Returns}: the cost of the mapping as a real number
+
+\textit{Description}: For each pair in the mapping we count the number of distinct predecessors and successors and the distances to other matched pairs. We sum over these costs for all matched pairs and also add the number of unmatched labels appearing in the traces. Each summand is weighted with a corresponding weight.
+Simultaneously we save all costs between pairs of variants in a list so that we can pick the minimal one.
+
+\textit{Precondition}: We calculate the costs for each mapping yielded by mappings().
+
+\textit{Postcondition}: For each mapping, the corresponding cost is computed.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{4.3} 
+
+\textit{Name}: cost\_matrix()
+
+\textit{Arguments}: the cost of the optimal mapping for each pair of variants
+
+\textit{Returns}: a symmetrical 2-dimensional matrix
+
+\textit{Description}: The matrix contains 0s in the diagonal and the entry in position $[i][j]$ corresponds to the cost of the optimal mapping between variant $i$ and variant $j$. 
+
+\textit{Precondition}: We can obtain the cost of the optimal mapping between two variants by choosing the minimal entry in the list of costs of their possible mappings saved in cost\_mapping().
+
+\textit{Postcondition}: For each pair of variants, the cost of the optimal mapping is known.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{4.4} 
+
+\textit{Name}: graph()
+
+\textit{Arguments}: the cost of the optimal mapping for each pair of variants and the set of variants
+
+\textit{Returns}: a connected graph
+
+\textit{Description}: For each variant there is a set of vertices corresponding to the events occuring in the variant. Each edge only connects matched pairs and for the pairs being in the candidate set the weight of each edge corresponds to the cost of the optimal mapping. Otherwise the weight of the edge is 0.
+
+\textit{Precondition}: The weights for the edges are obtained from the cost\_matrix().
+
+\textit{Postcondition}: Each variants has to be identifiable in the graph in order to be able to do the horizontal and vertical refinements in the next steps.
+
+\textit{Exceptions}: None
+\par
+\endgroup
 
 
 \subsection{Module 5: Horizontal clustering of variants}
-Name: Label refinement based on clusters
+\textit{Name}: Label refinement based on clusters
 
-Type: module
+\textit{Type}: module
 
 \textcolor{red}{Operations: clusterdetectionrelation, refinement}
 
 \subsection{Module 6: Vertical Refinement}
-Name: Label refinement within variant
+\textit{Name}: Label refinement within variant
 
-Type: module
+\textit{Type}: module
 
 \textcolor{red}{Operations: relabel(graph, cluster, threshold)}
 
 
 
 \subsection{Module 7: Post-Processing}
-Name: Embed refinements into original log 
+\textit{Name}: Embed refinements into original log 
 
-Type: module
+\textit{Type}: module
 
 \textcolor{red}{Operations: refinedlog(graph, lookup table)}
 
