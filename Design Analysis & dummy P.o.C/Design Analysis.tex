@@ -276,14 +276,9 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 
 
 
-\subsection{Module 3: Download}
-\textit{Name}: File Creator
 
-\textit{Type}: module
 
-\textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
-
-\subsection{Module 4: Calculate costs}
+\subsection{Module 3: Calculate costs}
 \textit{Name}: Cost function
 
 \textit{Type}: module
@@ -300,7 +295,7 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 \par
 \begingroup
 \leftskip4em
-\textbf{4.1} 
+\textbf{3.1} 
 
 \textit{Name}: mappings()
 
@@ -324,7 +319,7 @@ The main algorithm "Refining Event Labels" will be split up into multiple module
 \par
 \begingroup
 \leftskip4em
-\textbf{4.2} 
+\textbf{3.2} 
 
 \textit{Name}: cost\_mapping()
 
@@ -349,7 +344,7 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \par
 \begingroup
 \leftskip4em
-\textbf{4.3} 
+\textbf{3.3} 
 
 \textit{Name}: cost\_matrix()
 
@@ -373,7 +368,7 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \par
 \begingroup
 \leftskip4em
-\textbf{4.4} 
+\textbf{3.4} 
 
 \textit{Name}: graph()
 
@@ -392,14 +387,14 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \endgroup
 
 
-\subsection{Module 5: Horizontal clustering of variants}
+\subsection{Module 4: Horizontal clustering of variants}
 \textit{Name}: Label refinement based on clusters
 
 \textit{Type}: module
 
 \textcolor{red}{Operations: clusterdetectionrelation, refinement}
 
-\subsection{Module 6: Vertical Refinement}
+\subsection{Module 5: Vertical Refinement}
 \textit{Name}: Label refinement within variant
 
 \textit{Type}: module
@@ -408,16 +403,74 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 
 
 
-\subsection{Module 7: Post-Processing}
+\subsection{Module 6: Post-Processing}
 \textit{Name}: Embed refinements into original log 
 
 \textit{Type}: module
 
-\textcolor{red}{Operations: refinedlog(graph, lookup table)}
+\textit{Description}: This module is responsible for executing the refinements in the log level. That is, we want to go recreate the original event log with refined labels.
+
+\textit{Attributes}: The graph containing the new labels for each variant
+
+\textit{Resources}: The initial table describing the original event log
+
+\textit{Operations}: 
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{6.1} 
+
+\textit{Name}: update\_map()
+
+\textit{Arguments}: a graph and the look-up map
+
+\textit{Returns}: the updated look-up with refined labels
+
+\textit{Description}: We replace each old variant in the look-up map with the new refined one.
+
+\textit{Precondition}: We have to be able to relate each old variant to its corresponding refined version.
+
+\textit{Postcondition}: For each refined variant, we still have the list of the corresponding case IDs.
+
+\textit{Exceptions}: None
+\par
+\endgroup
+
+
+\medskip
+
+\par
+\begingroup
+\leftskip4em
+\textbf{6.2} 
+
+\textit{Name}: update\_table()
+
+\textit{Arguments}: the updated look-up map
+
+\textit{Returns}: the updated table with refined labels for the complete log
+
+\textit{Description}: We replace each old variant in the initial table map with the new refined one.
+
+\textit{Precondition}: We use the case IDs to be able to substitute the old variants with the new ones.
+
+\textit{Postcondition}: The updated table contains all original information from the event log but with refined candidate labels.
+
+\textit{Exceptions}: None
+\par
+\endgroup
 
 
 
 
+\subsection{Module 7: Download}
+\textit{Name}: File Creator
+
+\textit{Type}: module
+
+\textcolor{red}{Operations: setCandidates, getCandidates, setThresholds, getThresholds}
 
 
 
