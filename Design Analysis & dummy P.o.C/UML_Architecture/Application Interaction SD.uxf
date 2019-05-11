@@ -1056,19 +1056,6 @@ transparency=100</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1360</x>
-      <y>820</y>
-      <w>130</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>Req#: 1
-fg=orange
-style=wordwrap</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
       <x>1320</x>
       <y>140</y>
       <w>130</w>
