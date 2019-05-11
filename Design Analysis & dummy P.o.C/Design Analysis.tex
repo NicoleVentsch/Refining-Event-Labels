@@ -159,6 +159,11 @@ The table below describes which modules are resposible for which requirement and
 &
 2. Customize
 &
+2.1 set\_candiadates()
+\newline 2.2 get\_candiadates()
+\newline 2.3 set\_threshold()
+\newline 2.4 get\_vertical\_threshold()
+\newline 2.5 get\_horizontal\_threshold()
 \\
 \hline
 -Calculate costs
@@ -176,12 +181,15 @@ The table below describes which modules are resposible for which requirement and
 &
 4. Horizontal clustering of variantes
 &
+4.1 cluster\_detection\_relation()
+\newline 4.2 refinement()
 	\\ 
 \hline
 -Refine labels vertically within traces
 &
 5. Vertical refinement
 &
+5.1 relabel()
 	\\ 
 \hline
 $- -$
@@ -195,6 +203,8 @@ $- -$
 &
 7. File Creator
 &
+6.1 create\_file()
+\newline 6.2 store\_file()
 \\ 
 \hline
 \end{tabularx} \\
@@ -662,6 +672,9 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \textit{Exceptions}: None
 \par
 \endgroup
+
+
+\textcolor{red}{Operations: clusterdetectionrelation, refinement}
 
 \subsection{Module 5: Vertical Refinement}
 \textit{Name}: Label refinement within variant
