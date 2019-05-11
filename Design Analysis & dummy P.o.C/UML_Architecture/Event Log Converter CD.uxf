@@ -121,7 +121,7 @@ XESConverter</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>
-XESConverter</panel_attributes>
+XESCreator</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -133,7 +133,7 @@ XESConverter</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>
-CSVConverter</panel_attributes>
+CSVCreator</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -147,8 +147,8 @@ CSVConverter</panel_attributes>
     <panel_attributes>&lt;&lt;utility&gt;&gt;
 FileUtility
 --
-+convertToFile(eventLog: EventLog, type:string): string
-+getEventLogFromFile(string path): string
++create_file(eventLog: EventLog, type:string): string
++get_event_log_from_file(string path): string
 +registerImport(fileType:string, creator :FileCreator)
 +registerExport(fileType:string, converter :FileConverter)
 --
@@ -164,18 +164,19 @@ FileUtility
       <h>50</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Factory&gt;&gt;
-/FileConverterFactory/</panel_attributes>
+/FileCreatorFactory/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>740</x>
-      <y>130</y>
+      <y>110</y>
       <w>370</w>
-      <h>110</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>template=T:Object
+&lt;&lt;interface&gt;&gt;
 /FileHandlerFactory/
 --
 + fallbackHandler: T
@@ -193,7 +194,7 @@ FileUtility
       <h>50</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Factory&gt;&gt;
-/FileCreatorFactory/</panel_attributes>
+/FileConverterFactory/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
