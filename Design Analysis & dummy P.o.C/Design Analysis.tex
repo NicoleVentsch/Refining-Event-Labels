@@ -102,13 +102,15 @@
 
 \section{System Architecture}
 The following UML displays the main applicaton components and where they are deployed. The final application will be deployed on an applicaton servers which the 
-user can access over an Internet Browser on his own Machine. Therefore the System is independent of the users operating system. There are two option to perfom the 
+user can access over an internet browser on his own machine. Therefore the system is independent of the users operating system. There are two option to perfom the 
 algorithm:
 
 \begin{itemize}
-	\item 1. The user can access the JavaScript Front-end application via HTTP which provides an user friendly UI. There the user can set all required parameters and send them to the API.
-	\item 2. Additional, the user can access the API directly via HTTP with the required parameter. So the application can integrate into other application which could be helpful to perfom preprocessing steps or to use the refined labels in another application. .
+	\item The user can access the JavaScript Front-end application via HTTP which provides an user friendly UI. There the user can set all required parameters and send them to the API.
+	\item Additional, the user can access the API directly via HTTP with the required parameter. So the application can integrate into other application which could be helpful to perfom preprocessing steps or to use the refined labels in another application. .
 \end{itemize}
+
+
 
 
 \includegraphics[scale=0.4]{"UML_Architecture/Architecture Overview".png}
@@ -171,16 +173,20 @@ The table below describes which modules are resposible for which requirement and
 
 \medskip
 %\newpage
-\begin{tabularx}{\textwidth}{|p{6cm}|p{5cm}|p{6cm}}
+\begin{tabularx}{\textwidth}{|p{6cm}|p{0.4cm}|p{4cm}|p{5cm}|}
 \hline
-\textbf{Requirements} 
+\textbf{Requirements}
+&\textbf{ID} 
 &\textbf{Modules}
 &\textbf{Functionalities}
 \\
 \hline
 -Upload CSV event log file 
 \newline -Upload XES event log file 
-& 
+&
+5
+\newline 6
+&
 1.1 File Converter 
 \newline 1.2 Preprocessing log 
 & 
@@ -195,6 +201,11 @@ The table below describes which modules are resposible for which requirement and
 \newline -Customize vertical threshold
 \newline -Choose set of imprecise labels
 &
+7
+\newline 8
+\newline 9
+\newline 10
+&
 2. Customize
 &
 2.1 set\_candiadates()
@@ -205,6 +216,8 @@ The table below describes which modules are resposible for which requirement and
 \\
 \hline
 -Calculate costs
+&
+1
 &
 3. Cost function
 &
@@ -217,6 +230,9 @@ The table below describes which modules are resposible for which requirement and
 -Clustering of traces
 \newline -Refine labels horizontally across traces 
 &
+2
+\newline 3 
+&
 4. Horizontal clustering of variantes
 &
 4.1 cluster\_detection\_relation()
@@ -225,6 +241,8 @@ The table below describes which modules are resposible for which requirement and
 \hline
 -Refine labels vertically within traces
 &
+4
+&
 5. Vertical refinement
 &
 5.1 relabel()
@@ -232,12 +250,16 @@ The table below describes which modules are resposible for which requirement and
 \hline
 $- -$
 &
+
+&
 6. Post-Processing
 &
 6.1 update\_map()
 \newline 6.2 update\_table()	\\ 
 \hline
 -Download refined XES event log file
+&
+11
 &
 7. File Creator
 &
@@ -831,7 +853,7 @@ Simultaneously we save all costs between pairs of variants in a list so that we 
 \subsection{Module 7: File Creator}
 \textit{Name}: File Creator
 
-\textit{Related Component}: Refining Event Labels
+\textit{Related Component}: Refining Event Labels / File Upload
 
 \textit{Type}: module
 
