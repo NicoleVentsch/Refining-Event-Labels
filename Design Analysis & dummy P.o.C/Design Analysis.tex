@@ -100,6 +100,32 @@
 
 \section{Architectural Strategies}
 
+\subsection{Sotware}
+As mentioned the Software is divided into two main Parts, the Front-end and Back-end.\\ 
+\medskip
+The Back-end will be implemented with Python.
+Python is an popular and widely used language within the data data science. The language provides many libraries for data science like pm4py.
+The webframwork Flask which is written in Python too, provides a fast applicaton deployment with a minimal usage of external libraries so that we can 
+focus on the algorithm design. A User can Access the Back-end via an API which distributes the data to the required components.\\
+\medskip
+The Front-end will be implemented with JavaScript. We will use a minimalistic Model-View-Controller (MVC) approach. The Model only represents the data like 
+the customization paramters for the algorithm or the event log file. The Model will be easily converted into a JSON Object, which can be evaluated by the backend.
+The View represents the User Interface markup and is written in HTML5. Logic implementation is not required in the View part. The Controller part represents 
+the business logic. Since the front-end acts as a of abstraction layer for our Back-end API, the Controller should be as small as possible.\\
+\medskip
+A database system is not set up, since the project focus is the refining algorithm. However the applicatoins will keep track of the five last uploaded files and 
+their refined event logs. For this we will use the server file system. 
+
+\subsection{Enhancements}
+In order to realise a future development following measure will be implemented.
+
+Using the \textit{abstract class} in combinadtion with the \textit{factory} pattern to exchange important software and algorithms components. 
+This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registerd 
+to a factory methode afterwards. Additional code is not required. 
+
+Developing an API which can be included into other system or workflow. The event log refinement can included into other applicatons. 
+Individual components can be exchanged more easily 
+
 \section{System Architecture}
 The following UML displays the main application components and where they are deployed. The final application will be deployed on an application server which the user can access over an internet browser on his own machine. Therefore the system is independent of the users operating system. There are two option to perform the 
 algorithm:
