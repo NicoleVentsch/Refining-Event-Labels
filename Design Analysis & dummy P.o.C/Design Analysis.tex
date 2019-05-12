@@ -214,7 +214,7 @@ The table below describes which modules are responsible for which requirement an
 1.1.1 getEventLogFromFile() 
 \newline 1.1.2 readXES()
 \newline 1.2.1 checkEventLog() 
-\newline 1.2.2 createlookUpTable()
+\newline 1.2.2 lookUpTable()
 \newline 1.2.3 getVariants() \\
 \hline
 -Customize threshold for cost function.
@@ -958,6 +958,16 @@ For the implementation of the graph structure, we use the Python package Network
 \textit{Exceptions}: NotADirectoryException
 \par
 \endgroup
+
+\subsection{Data Flow Diagramm}
+\begin{landscape}
+	\newgeometry{
+		total={250mm,210mm},
+		left=20mm
+	}
+\includegraphics[width=270mm,height=200mm]{dataflow.png}
+\restoregeometry
+\end{landscape}
 
 \subsection{Uses/Interactions}
 The components from the section System Architecture and the related modules result in the following System flow:\\
