@@ -93,10 +93,26 @@
 \subsection{Definitions and Acronyms}
 
 \section{Design Considerations}
+
 \subsection{Assumptions and Dependencies}
-\subsection{General Constraints}
-\subsection{Goals and Guidelines}
+In the design of our algorithm we will try to achieve the principles of a good design, such as loose coupling, high cohesion and data hiding.
+For each step of the algorithm we will use the least complex data structure depending on the input needed for the step.
+The trace variants of the input event log are part of the input of many steps of the algorithm.
+There is a lot of redundancy when it comes to the variants as input since sometimes the whole set must be considered, sometimes only pairs and other times both of these.
+We have decided to use dictionaries to relate the traces to their case IDs, and a network to save the mapping costs between each two traces.
+This part may still be prone to changes in case of other more efficient solutions.
+
+%\subsection{General Constraints}
+%\subsection{Goals and Guidelines}
 \subsection{Development Methods}
+There are still two problems which have to be discussed during implementation:\\
+\medskip
+The first one has to do with the computation of the possible mappings.
+An exhaustive computation of all mappings and their corresponding costs is rather systematical and safe, whereas a Greedy approach where we order the event labels based on the frequency of their contexts may be more efficient.
+
+Secondly, we use an undirected weighted graph to represent all events of all traces. It remains to be seen which method is more efficient in order to access each event based on the trace variant it belongs to.
+We could do this by refering to each event through their index in the network, or we could priorly use an injective mapping from all events to their labels. 
+
 
 \section{Architectural Strategies}
 
