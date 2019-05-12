@@ -156,7 +156,7 @@ the abstract class FileCreator.\\
 \medskip
 If other file types should be supported by the application the developer only has to write another Creator/Converter for the type.
 Via the \textit{registerImport(fileType:string, creator :FileCreator)} and \textit{registerExport(fileType:string, converter :FileConverter)} methods these classes can 
-be injected in the FileUtility class. Afterward the functionality is accessible in the whole application, additional code is not required.
+be injected in the FileUtility class. Afterwards the functionality is accessible in the whole application, additional code is not required.
 
 
 
@@ -293,7 +293,7 @@ A detailed description of the modules and functionalities is given in Section 6.
 
 
 \section{Detailed System Design}
-The main algorithm ``Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm. These modules will be explained in detail in the following subsections.
+The main algorithm ``Refining Event Labels" will be split up into multiple modules that contain the main parts of the algorithm according to chapter 5.1. These modules will be explained in detail in the following subsections.
 \subsection{Module 1.1: File Converter}
 \textit{Name}: File Creator
 
@@ -301,7 +301,7 @@ The main algorithm ``Refining Event Labels" will be split up into multiple modul
 
 \textit{Type}: module.
 
-\textit{Description}: this module is responsible for creating a table from the data the user uploads. The event log provided by the user is read and stored internally containing all the original columns. 
+\textit{Description}: This module is responsible for creating a table from the data the user uploads. The event log provided by the user is read and stored internally containing all the original columns. 
 
 \textit{Attributes}: none.
 
@@ -938,14 +938,14 @@ The components from the section System Architecture and the related modules resu
 		total={250mm,210mm},
 		left=0mm
 	}
-\includegraphics[width=297mm,height=210mm]{"Application Interaction SD".png}
+\includegraphics[width=297mm,height=210mm]{UML_Architecture/"Application Interaction SD".png}
 \restoregeometry
 \end{landscape}
 
 \section{User Interface Design}
 \subsection{Application Control}
 
-In the project, we will implement a web service. The web client will have a rather plain design that should focus on the main activities the service should provide, which are uploading event logs in CSVor XES format, setting the threshold for the label refinement algorithm and download the refined log after the algorithm is finished. There will be buttons used to upload the file, apply the algorithm and download the refined event log. Moreover, the screens will have short explanations telling the user what to do (if not self-explanatory). For setting the thresholds, two boxes will be provided that include the default thresholds, but new values can be entered by the user. A draft of each of the main screen can be found in the next section, section 6.2.
+In the project, we will implement a web service. The web client will have a rather plain design that should focus on the main activities the service should provide, which are uploading event logs in CSV or XES format, setting the threshold for the label refinement algorithm and download the refined log after the algorithm is finished. There will be buttons used to upload the file, apply the algorithm and download the refined event log. Moreover, the screens will have short explanations telling the user what to do (if not self-explanatory). For setting the thresholds, two boxes will be provided that include the default thresholds, but new values can be entered by the user. A draft of each of the main screen can be found in the next section, section 6.2.
 
 \subsection{The Screens}
 
@@ -971,18 +971,18 @@ After using one of this alternatives, he can use the ``Upload" button to upload 
 \subsubsection{Screen 3.1}
 \includegraphics[scale=0.9]{InterfaceMockup3-1.png}
 
-this screen appears if the file uploaded by the user meets the requirements. In this screen, the user can set the thresholds for the algorithm, i.e., the variant and the unfolding threshold. He can enter these in the corresponding white boxes. If he does not enter the thresholds, the default values of 0.05 and 0.60 will be used respectively. Using the button ``Apply the Algorithm", the web service will start applying the algorithm using the provided thresholds. After the algorithm is finished, the user will get to Screen 4.
+This screen appears if the file uploaded by the user meets the requirements. In this screen, the user can set the candidate activity names, i.e., those activities that the algorithm can relabel. Moreover, the user can set the thresholds for the algorithm, i.e., the variant and the unfolding threshold. He can enter all of these in the corresponding white boxes. If he does not enter the thresholds, the default values of 0.05 and 0.60 will be used respectively. Using the button ``Apply the Algorithm", the web service will start applying the algorithm using the provided thresholds. After the algorithm is finished, the user will get to Screen 4.
 
 \subsubsection{Screen 3.2}
 \includegraphics[scale=0.9]{InterfaceMockup3-2.png}
 
-this screen appears if the upload was not successful because the file did not meet the assumptions. If the file does not have the right format, the user can click on the button ``Upload new File" to return to Screen 2 and upload a file that meets the constraints.
+This screen appears if the upload was not successful because the file did not meet the assumptions. If the file does not have the right format, the user can click on the button ``Upload new File" to return to Screen 2 and upload a file that meets the constraints.
 
 
 \subsubsection{Screen 4}
 \includegraphics[scale=0.8]{InterfaceMockup4.png}
 
-this Screen will be shown after finishing the algorithm. The user can now download the refined log using the corresponding button. After this step, the user is done and can exit the page, but if he also wants to apply the algorithm to another event log or to the same event log using different thresholds, he can use the corresponding buttons and will be redirected to Screen 2 or Screen 3.1 respectively.
+This Screen will be shown after finishing the algorithm. The user can now download the refined log using the corresponding button. After this step, the user is done and can exit the page, but if he also wants to apply the algorithm to another event log or to the same event log using different thresholds, he can use the corresponding buttons and will be redirected to Screen 2 or Screen 3.1 respectively.
 
 
 %\newpage
