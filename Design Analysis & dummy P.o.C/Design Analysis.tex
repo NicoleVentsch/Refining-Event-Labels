@@ -238,7 +238,6 @@ The table below describes which modules are responsible for which requirement an
 \\
 \hline
 -Calculate costs
-- \textcolor{red}{Probably is a good idea to have an optimalMatching() function that gets as a parameters the set of possible mappings (i.e. from the mappings() function) and returns an object with the best mapping and its cost. Then we project that cost directly to the edges of the graph instead of storing them in the symmetric matrix (i.e. costMatrix()) in this way we save memory space.}
 &
 1
 &
@@ -246,7 +245,7 @@ The table below describes which modules are responsible for which requirement an
 &
 3.1 mappings()
 \newline 3.2 costMapping()
-\newline 3.3 costMatrix()
+\newline 3.3 optimalMatching()
 \newline 3.4 updateGraph()
 \\ 
 \hline
@@ -674,9 +673,9 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Returns}: the cost of the mapping as a floating point value.
 
-\textit{Description}: for each pair in the mapping, the number of distinct predecessors and successors and the distances to other matched pairs is counted. Then, a final sum is computed by considering these costs for all matched pairs and also the number of unmatched labels appearing in both traces. Note that, each term is adjusted with a corresponding weight. Simultaneously all costs between pairs of variants are stored in a list so that the minimal one is chosen.
+\textit{Description}: For each pair in the mapping, the number of distinct predecessors and successors and the distances to other matched pairs is counted. Then, a final sum is computed by considering these costs for all matched pairs and also the number of unmatched labels appearing in both traces. Note that, each term is adjusted with a corresponding weight. Simultaneously all costs between pairs of variants are stored in a list so that the minimal one can be chosen later.
 
-\textit{Precondition}:calculate the costs for each mapping yielded by mappings().
+\textit{Precondition}: all possible mappings are yielded by mappings().
 
 \textit{Postcondition}: for each mapping, the corresponding cost is computed.
 
@@ -692,17 +691,17 @@ It stores information about the candidate labels to be refined and the vertical 
 \leftskip4em
 \textbf{3.3} 
 
-\textit{Name}: costMatrix()
+\textit{Name}: optimalMapping()
 
 \textit{Arguments}: the cost of the optimal mapping for each pair of variants.
 
-\textit{Returns}: a symmetrical 2-dimensional matrix.
+\textit{Returns}: a normalized (range [0, 1]) floating point value
 
-\textit{Description}: The matrix contains 0s in the diagonal and the entry in position $[i][j]$ corresponds to the cost of the optimal mapping between variant $i$ and variant $j$. 
+\textit{Description}: The returned value reflects the costs for the best mapping between the pair of variants.
 
-\textit{Precondition}: the cost of the optimal mapping between two variants is obtained by choosing the minimal entry in the list of costs of their possible mappings stored in costMapping().
+\textit{Precondition}: the cost of the optimal mapping between two variants is obtained by choosing the minimal entry in the list of costs of their possible mappings calculated in costMapping().
 
-\textit{Postcondition}: for each pair of variants, the cost of the optimal mapping is known.
+\textit{Postcondition}: for each pair of variants, the costs of all mappings are known.
 
 \textit{Exceptions}: none.
 \par
@@ -722,9 +721,9 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Returns}: an undirected weighted graph.
 
-\textit{Description}: for each variant there is a set of vertices corresponding to the events occurring in the variant. Each edge only connects matched pairs and for the pairs being in the candidate set the weight of each edge corresponds to the cost of the optimal mapping. Otherwise the weight of the edge is 0.
+\textit{Description}: For each variant there is a set of vertices corresponding to the events occurring in the variant. Each edge only connects matched pairs and for the pairs being in the candidate set the weight of each edge corresponds to the cost of the optimal mapping. Otherwise the weight of the edge is 0.
 
-\textit{Precondition}: the weights for the edges are obtained from the costMatrix().
+\textit{Precondition}: the weights for the edges are obtained from the optimalMapping().
 
 \textit{Postcondition}: each variant has to be identified in the graph in order to perform the horizontal and vertical refinements in the next steps.
 
@@ -732,6 +731,7 @@ It stores information about the candidate labels to be refined and the vertical 
 \par
 \endgroup
 
+For the implementation of the graph structure, we use the Python package NetworkX which enables the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
 
 \subsection{Module 4: Horizontal clustering of variants}
 \textit{Name}: Label refinement based on clusters.
@@ -740,7 +740,7 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Type}: module.
 
-\textit{Description}: this module clusters the event log and performs the label refinement based on these clusters.
+\textit{Description}: This module clusters the trace variants of the event log and performs label refinement based on these clusters.
 
 \textit{Attributes}: \begin{itemize}
 	\item Event log graph which should be refined.
@@ -763,7 +763,7 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Returns}: a list of subgraphs.
 
-\textit{Description}: group events in the same variant based on their similarity. Two events are considered to be in the same variant if their normalized cost is below the variant threshold $z_v$. this similarity is expressed by removing edges which cost is below $z_v$. As a result of removing these edges, a set of subgraphs is obtained and serve as cluster for the horizontal and vertical refinement. 
+\textit{Description}: Group events in the same variant based on their similarity. Two events are considered to be in the same variant if their normalized cost is below the variant threshold $z_v$. This similarity is expressed by removing edges which cost is below $z_v$. As a result of removing these edges, a set of subgraphs is obtained and serve as cluster for the horizontal and vertical refinement. 
 
 \textit{Precondition}: a complete undirected weighted graph generated from updateGraph().
 
@@ -786,7 +786,7 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Returns}: void.
 
-\textit{Description}: given the set of candidate labels, perform relabelling of events for each cluster of subgraphs, that is, give a new label to each of the events in the set of candidate labels. The relabelling is done exclusively in the graph.
+\textit{Description}: Given the set of candidate labels, perform relabelling of events for each cluster of subgraphs, that is, give a new label to each of the events in the set of candidate labels. The relabelling is done exclusively in the graph.
 
 \textit{Precondition}: a list of undirected weighted subgraphs obtained from clusterDetection().
 
@@ -803,7 +803,7 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Type}: module.
 
-\textit{Description}: this module execute the label refinement within variant for the Event log and is part of the refinement algorithm.
+\textit{Description}: This module executes the label refinement within variants for the event log and is part of the refinement algorithm.
 
 \textit{Attributes}: none.
 
@@ -881,7 +881,8 @@ It stores information about the candidate labels to be refined and the vertical 
 \leftskip4em
 \textbf{6.2} 
 
-\textit{Name}: updateEventLog() \textcolor{red}{Here, what is table referred to? The event log? I changed to updateEventLog() since we are using an event log object but feel free to make any changes :)}
+\textit{Name}: updateEventLog() 
+%\textcolor{red}{Here, what is table referred to? The event log? I changed to updateEventLog() since we are using an event log object but feel free to make any changes :)}
 
 \textit{Arguments}: an updated lookup table.
 
@@ -950,7 +951,7 @@ It stores information about the candidate labels to be refined and the vertical 
 
 \textit{Description}: stores the previous created file at given location.
 
-\textit{Precondition}: a existing directory Path.
+\textit{Precondition}: an existing directory Path.
 
 \textit{Postcondition}: the XES file is stored.
 
