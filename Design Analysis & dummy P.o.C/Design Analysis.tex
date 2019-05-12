@@ -104,35 +104,29 @@
 As mentioned the Software is divided into two main Parts, the Front-end and Back-end.\\ 
 \medskip
 The Back-end will be implemented with Python.
-Python is an popular and widely used language within the data data science. The language provides many libraries for data science like pm4py.
-The webframwork Flask which is written in Python too, provides a fast applicaton deployment with a minimal usage of external libraries so that we can 
-focus on the algorithm design. A User can Access the Back-end via an API which distributes the data to the required components.\\
+Python is a popular and widely used programming language within the field of data science. It especially provides the pm4py library, that supports process mining algorithms.
+The webframework Flask which is written in Python too, provides a fast applicaton deployment with a minimal usage of external libraries so that we can focus on the algorithm design. A User can access the Back-end via an API which distributes the data to the required components.\\
 \medskip
-The Front-end will be implemented with JavaScript. We will use a minimalistic Model-View-Controller (MVC) approach. The Model only represents the data like 
-the customization paramters for the algorithm or the event log file. The Model will be easily converted into a JSON Object, which can be evaluated by the backend.
+The Front-end will be implemented with JavaScript. We will use a minimalistic Model-View-Controller (MVC) approach. The Model only represents the data like the customization paramters for the algorithm or the event log file. The Model will be easily converted into a JSON Object, which can be evaluated by the backend.
 The View represents the User Interface markup and is written in HTML5. Logic implementation is not required in the View part. The Controller part represents 
-the business logic. Since the front-end acts as a of abstraction layer for our Back-end API, the Controller should be as small as possible.\\
+the business logic. Since the front-end acts as an abstraction layer for our Back-end API, the Controller should be as small as possible.\\
 \medskip
-A database system is not set up, since the project focus is the refining algorithm. However the applicatoins will keep track of the five last uploaded files and 
-their refined event logs. For this we will use the server file system. 
+A database system is not set up, since the project focus is the refining algorithm. However, the application will keep track of the last five uploaded files and their refined event logs. For this we will use the server file system. 
 
 \subsection{Future Enhancements}
-In order to realise a future development following measure will be implemented.
+In order to realise a future development the following measure will be implemented: the \textit{abstract class} will be used in combination with the \textit{factory} pattern to exchange important software and algorithms components. 
+This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registerd to a factory method afterwards. Additional code is not required. 
 
-Using the \textit{abstract class} in combinadtion with the \textit{factory} pattern to exchange important software and algorithms components. 
-This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registerd 
-to a factory methode afterwards. Additional code is not required. 
-
-Developing an API which can be included into other system or workflow. The event log refinement can included into other applicatons. 
-Individual components can be exchanged more easily 
+Developing an API which can be included into other system or workflow. The event log refinement can included into other applications. 
+Individual components can be exchanged more easily.
 
 \section{System Architecture}
-The following UML displays the main application components and where they are deployed. The final application will be deployed on an application server which the user can access over an internet browser on his own machine. Therefore the system is independent of the users operating system. There are two option to perform the 
+The following UML displays the main application components and where they are deployed. The final application will be deployed on an application server which the user can access over an internet browser on his own machine. Therefore the system is independent of the users operating system. There are two ways to perform the 
 algorithm:
 
 \begin{itemize}
-	\item The user can access the JavaScript Front-end application via HTTP which provides an user friendly UI. There the user can set all required parameters and send them to the API.
-	\item Additional, the user can access the API directly via HTTP with the required parameter. So the application can integrate into other application which could be helpful to perform preprocessing steps or to use the refined labels in another application. .
+	\item The user can access the JavaScript Front-end application via HTTP which provides a user friendly UI. There the user can set all required parameters and send them to the API.
+	\item Additional, the user can access the API directly via HTTP with the required parameter. So the application can integrate into another application which could be helpful to perform preprocessing steps or to use the refined labels in another application.
 \end{itemize}
 
 
@@ -142,32 +136,34 @@ algorithm:
 
 \subsection{Client Machine}
 The Client Machine is just a device with internet connection. It is not directly part of the application but is required to access to functionality.
-To use the User Webinterface a Google Chrome or Mozilla Firefox Browser is required. The Client does not need a special operating system or system structure to user 
-the project application.
+To use the User Webinterface a Google Chrome or Mozilla Firefox Browser is required. The Client does not need a special operating system or system structure to use the project application.
+
 \subsection{Front-end}
 The Front-end provides the User Interface for a simple application access. It is created with HTML5 and JavaScript and redirects the User inputs to API.
 So the end user must not know the API interface, required data formats and protocols.
+
 \subsection{Refining Label API}
 The Refining Label API is the main access point for the refining algorithm. Every communication goes through this API. After sending data, 
 the API will validate them, execute some preprocessing steps like file conversion and finally execute the refining algorithm and returning the result to the calling user or system. 
-Additional the API acts as a connection between the other Modules. Is connects the user access, algorithm and file handling.
-Therefore each of the other components is independent and low coupling and high cohesion is achieved   
+Additionally, the API acts as a connection between the other modules. It connects the user access, algorithm and file handling.
+Therefore each of the other components is independent and low coupling and high cohesion is achieved.
+ 
 \subsection{File Store}
 The File Store is an abstraction layer for the servers file system. It will keep track on the updates files and offers functions to store 
 refined XES files on the server. It also monitors the memory utilization.
 \subsection{Refining Event Labels}
 The Refining Event Label components is responsible for the final refining algorithm. 
 It contains functionality to calculate costs, execute preprocessing steps, horizontal clustering of variants and the vertical refinement.
-To offer a maintainable and extensible system this component will provides interfaces to exchange mentioned functionalities. 
-The following subcomponents exist: 
+To offer a maintainable and extensible system this component will provide interfaces to exchange mentioned functionalities. 
+%The following subcomponents exist: 
 
 
 \subsection{Event Log Converter}
-The Event Log Converter is a Framework to convert different files types into an Event Log and convert them back into files. 
+The Event Log Converter is a Framework to convert different file types into an Event Log and convert them back into files. 
 For our project the system provides functionality for XES and CSV import and export. 
 The Framework can easily be extended with additional file types without changing the core functionality.
 \medskip
-The following UML class diagram display the Framework structure:
+The following UML class diagram displays the Framework structure:
 
 \begin{landscape}
 \includegraphics[width=\columnwidth]{"Event Log Converter CD".png}
@@ -382,6 +378,9 @@ The main algorithm ``Refining Event Labels" will be split up into multiple modul
 
 \medskip
 
+We use the xes\_import\_factory, i.e. located in pm4py.objects.log.importer.xes.factory file to import a log in xes format.
+\medskip
+
 \subsection{Module 1.2: Preprocessing Log}
 \textit{Name}: Preprocessing Log.
 
@@ -468,6 +467,9 @@ The main algorithm ``Refining Event Labels" will be split up into multiple modul
 \par
 \endgroup
 
+Here we can first save all traces in a dictionary data structure where the keys correspond to the case IDs and then use this to extract a list of the case IDs having identical traces.
+
+
 \subsection{Module 2: Customize}
 \textit{Name}: Customize.
 
@@ -475,8 +477,8 @@ The main algorithm ``Refining Event Labels" will be split up into multiple modul
 
 \textit{Type}: module.
 
-\textit{Description}: this module is responsible to customize the algorithm parameters. The module serves as a model class and it is passed as an argument to the refining algorithm.
-It stores information about the candidates to refine and the vertical and horizontal threshold. It also automatically validates these parameters.  
+\textit{Description}: This module is responsible for customizing the algorithm parameters. The module serves as a model class and it is passed as an argument to the refining algorithm.
+It stores information about the candidate labels to be refined and the vertical and horizontal threshold. It also automatically validates these parameters.  
 
 \textit{Attributes}: none.
 
@@ -493,11 +495,11 @@ It stores information about the candidates to refine and the vertical and horizo
 
 \textit{Name}: setCandidates()
 
-\textit{Arguments}: traces for which should be refined.
+\textit{Arguments}: traces which contain some activity from the candidate set.
 
 \textit{Returns}: void.
 
-\textit{Description}: store the traces which are ''imprecise" according to the user expertise. 
+\textit{Description}: Store the labels which are "imprecise" according to the user expertise. 
 
 \textit{Precondition}: valid trace model.
 
@@ -520,9 +522,9 @@ It stores information about the candidates to refine and the vertical and horizo
 
 \textit{Arguments}: none.
 
-\textit{Returns}: a list of traces.
+\textit{Returns}: a list of event labels.
 
-\textit{Description}: obtain the traces which are ''imprecise" according to the user expertise. 
+\textit{Description}: obtain the labels which are "imprecise" according to the user expertise. 
 
 \textit{Precondition}: none.
 
