@@ -151,11 +151,14 @@ the business logic. Since the front-end acts as an abstraction layer for our Bac
 A database system is not set up, since the project focus is the refining algorithm. However, the application will keep track of the last five uploaded files and their refined event logs. For this we will use the server file system. 
 
 \subsection{Future Enhancements}
-In order to realise a future development the following measure will be implemented: the \textit{abstract class} will be used in combination with the \textit{factory} pattern to exchange important software and algorithms components. 
-This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registered to a factory method afterwards. Additional code is not required. 
+In order to realise a future development the following measure will be implemented:\\
+\medskip
+The \textit{abstract class}  pattern will be used in combination with the \textit{factory} pattern to exchange important software and algorithm components. 
+This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given 
+interface which will be registered to a factory method afterwards. 
 
-Developing an API which can be included into other system or workflow. The event log refinement can included into other applications. 
-Individual components can be exchanged more easily.
+Developing an API which can be included into other systems or workflows. Defining a fixed in and output
+so that The event log refinement can included into other applications. Individual components can be exchanged more easily.
 
 \section{System Architecture}
 The following UML displays the main application components and where they are deployed. The final application will be deployed on an application server which the user can access over an internet browser on his own machine. Therefore the system is independent of the users operating system. There are two ways to perform the 
