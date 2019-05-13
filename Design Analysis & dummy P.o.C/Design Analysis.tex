@@ -88,9 +88,29 @@
 
 \section{Introduction}
 \subsection{System Overview}
+The “Refining Labels” system is a web-based application that allows for relabelling of event logs based on the algorithm proposed in \cite{paper}. It provides all the functionalities required to carry out the refinement by relabelling events differently based on their behaviours (context in the event log). 
+The foundation of the system is based on the following features:
+\begin{itemize}
+\item A flexible method to upload event log files in either XES or CSV format.
+\item An interactive way to adjust the thresholds required for the algorithm.
+\item An interactive way to select the candidate labels (namely, ``imprecise labels”).
+\item A flexible method to download the refined event log in XES format.
+\end{itemize}
+As the optimal refined event log or model may be unknown, the system provides the user with the freedom to manipulate the thresholds and candidate labels and finally chose the event log which is considered to be the best one (according to user’s expertise).
+
 \subsection{Design Map}
+The Software Design Specification Document is structured as follows. Section 2 describes some issues that may influence the design process. Section 3 and 4 introduce the high-level design view. Section 5 and 6 deal with the low-level design descriptions. Finally, Section 7 presents the User Interface mock-up. 
+
 \subsection{Supporting Materials}
-\subsection{Definitions and Acronyms}
+The “Refining Labels” system makes use following open source tools (for further details such documentation, see references): 
+\begin{itemize}
+\item Python 3.7.2 as back-end programming language \cite{python}.
+\item pm4py, Python library as process mining toolkit \cite{pm4py}.
+\item NetworkX, Pyhton library for graph manipulation \cite{networkx}. 
+\item Flask 1.0.2 as web application framework 2 Project \cite{flask}. 
+\item JavaScript as front-end development language (Standard ECMAScript 2018) \cite{js}.
+\end{itemize}
+
 
 \section{Design Considerations}
 
@@ -111,7 +131,7 @@ The first one has to do with the computation of the possible mappings.
 An exhaustive computation of all mappings and their corresponding costs is rather systematical and safe, whereas a Greedy approach where we order the event labels based on the frequency of their contexts may be more efficient.
 
 Secondly, we use an undirected weighted graph to represent all events of all traces. It remains to be seen which method is more efficient in order to access each event based on the trace variant it belongs to.
-We could do this by refering to each event through their index in the network, or we could priorly use an injective mapping from all events to their labels. 
+We could do this by referring to each event through their index in the network, or we could priorly use an injective mapping from all events to their labels. 
 
 
 \section{Architectural Strategies}
@@ -123,7 +143,7 @@ The Back-end will be implemented with Python.
 Python is a popular and widely used programming language within the field of data science. It especially provides the pm4py library, that supports process mining algorithms.
 The webframework Flask which is written in Python too, provides a fast applicaton deployment with a minimal usage of external libraries so that we can focus on the algorithm design. A User can access the Back-end via an API which distributes the data to the required components.\\
 \medskip
-The Front-end will be implemented with JavaScript. We will use a minimalistic Model-View-Controller (MVC) approach. The Model only represents the data like the customization paramters for the algorithm or the event log file. The Model will be easily converted into a JSON Object, which can be evaluated by the backend.
+The Front-end will be implemented with JavaScript. We will use a minimalistic Model-View-Controller (MVC) approach. The Model only represents the data like the customization parameters for the algorithm or the event log file. The Model will be easily converted into a JSON Object, which can be evaluated by the backend.
 The View represents the User Interface markup and is written in HTML5. Logic implementation is not required in the View part. The Controller part represents 
 the business logic. Since the front-end acts as an abstraction layer for our Back-end API, the Controller should be as small as possible.\\
 \medskip
@@ -131,7 +151,7 @@ A database system is not set up, since the project focus is the refining algorit
 
 \subsection{Future Enhancements}
 In order to realise a future development the following measure will be implemented: the \textit{abstract class} will be used in combination with the \textit{factory} pattern to exchange important software and algorithms components. 
-This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registerd to a factory method afterwards. Additional code is not required. 
+This will be implemented for the file conversion, file creation or cost function. Additional functionality has to implement a given interface which will be registered to a factory method afterwards. Additional code is not required. 
 
 Developing an API which can be included into other system or workflow. The event log refinement can included into other applications. 
 Individual components can be exchanged more easily.
@@ -1057,12 +1077,27 @@ This Screen will be shown after finishing the algorithm. The user can now downlo
 % cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
 
 
-\begin{thebibliography}{5}
+\begin{thebibliography}{10}
 \bibitem{paper}
 Lu, Xixi, et al. ``Handling duplicated tasks in process discovery by refining event labels." International Conference on Business Process Management. Springer, Cham, 2016.
 
 \bibitem{matchings}
 Xixi Lu1, Dirk Fahland, Frank J.H.M. van den Biggelaar, Wil M.P. van der Aalst. ``Detecting Deviating Behaviors without Models."
+
+\bibitem{python}
+\url{https://docs.python.org/3/}
+
+\bibitem{pm4py}
+\url{http://pm4py.org/}
+
+\bibitem{networkx}
+\url{https://networkx.github.io/documentation/networkx-2.2/}
+
+\bibitem{flask}
+\url{http://flask.pocoo.org/docs/1.0/}
+
+\bibitem{js}
+\url{https://www.ecma-international.org/ecma-262/9.0/index.html}
 
 
 \end{thebibliography}
