@@ -320,7 +320,7 @@ Data validation</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-get_event_log_from_file(filePath, fileType)
+getEventLogFromFile(filePath, fileType)
 </panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -413,7 +413,7 @@ create()</panel_attributes>
       <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-get_event_log_from_file(filePath, fileType)
+getEventLogFromFile(filePath, fileType)
           :EventLogModel
 </panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
@@ -450,7 +450,7 @@ _:Event Log Converter_</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-execute _refining(eventLogModel, refiningOptions)</panel_attributes>
+executeRefining(eventLogModel, refiningOptions)</panel_attributes>
     <additional_attributes>590.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -530,7 +530,7 @@ create </panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-set_candidates()</panel_attributes>
+setCandidates()</panel_attributes>
     <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -542,7 +542,7 @@ set_candidates()</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-set_thresholds()</panel_attributes>
+setThresholds()</panel_attributes>
     <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -634,7 +634,7 @@ Vertical Refinement</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-execute _refining(eventLogModel, refiningOptions): EventLogModel</panel_attributes>
+executeRefining(eventLogModel, refiningOptions): EventLogModel</panel_attributes>
     <additional_attributes>10.0;20.0;590.0;20.0</additional_attributes>
   </element>
   <element>
@@ -690,7 +690,7 @@ execute _refining(eventLogModel, refiningOptions): EventLogModel</panel_attribut
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-create_file(EventLogModel, type)</panel_attributes>
+createFile(EventLogModel, type)</panel_attributes>
     <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -713,7 +713,7 @@ create_file(EventLogModel, type)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-create_file(EventLogModel, type): File</panel_attributes>
+createFile(EventLogModel, type): File</panel_attributes>
     <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
   </element>
   <element>
@@ -781,7 +781,7 @@ store_file(path)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-store_file(path)</panel_attributes>
+storeFile(path)</panel_attributes>
     <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
   </element>
   <element>
@@ -793,7 +793,7 @@ store_file(path)</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-store_file(path)
+storeFile(path)
 :path</panel_attributes>
     <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
   </element>

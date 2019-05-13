@@ -147,8 +147,8 @@ CSVCreator</panel_attributes>
     <panel_attributes>&lt;&lt;utility&gt;&gt;
 FileUtility
 --
-+create_file(eventLog: EventLog, type:string): string
-+get_event_log_from_file(string path): string
++createFile(eventLog: EventLog, type:string): string
++getEventLogFromFile(string path): string
 +registerImport(fileType:string, creator :FileCreator)
 +registerExport(fileType:string, converter :FileConverter)
 --

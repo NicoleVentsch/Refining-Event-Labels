@@ -12,6 +12,7 @@
 \usepackage{listings}			
 \usepackage{color}				
 \usepackage{tikz}	
+\usepackage{url}
 \usepackage{tasks}			
 \usepackage{exsheets}	
 \usepackage{blindtext}	
@@ -171,7 +172,7 @@ algorithm:
 \includegraphics[scale=0.4]{"Architecture Overview".png}
 
 \subsection{Client Machine}
-The Client Machine is just a device with internet connection. It is not directly part of the application but is required to access to functionality.
+The Client Machine is a device with internet connection. It is not directly part of the application but is required to access to functionality.
 To use the User Webinterface a Google Chrome or Mozilla Firefox Browser is required. The Client does not need a special operating system or system structure to use the project application.
 
 \subsection{Front-end}
@@ -205,8 +206,8 @@ The following UML class diagram displays the Framework structure:
 \includegraphics[width=\columnwidth]{"Event Log Converter CD".png}
 \end{landscape}
 The FileUtility provides access to the framework and its functionality.
-The functions \textit{create\_file(eventLog: EventLog, type:string): string} realises the XES and CSV file uploader requirement and 
-the \textit{get\_event\_log\_from\_file(string path): string} realises the Download refined XES event log file requirement. 
+The functions \textit{createFile(eventLog: EventLog, type:string): string} realises the XES and CSV file uploader requirement and 
+the \textit{getEventLogFromFile(string path): string} realises the Download refined XES event log file requirement. 
 
 The Factory and Abstract Class Pattern provides the conversion of multiple file types with the same method. The Factory get the required file type as string and 
 will return the corresponding Converter or Creator. Each file converter must implement the abstract class FileConverter and a file creator must implement
