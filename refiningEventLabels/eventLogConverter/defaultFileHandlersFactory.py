@@ -1,4 +1,4 @@
-from fileHandlerFactory import FileHandlerFactory
+from fileHandlerBase import FileHandlerFactory
 
 class FileConverterFactory(FileHandlerFactory):
     
