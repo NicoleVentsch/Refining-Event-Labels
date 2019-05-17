@@ -1,5 +1,5 @@
-from fileUtility import FileUtilityBase
-from fileHandlerBase import FileConverter
+from .fileUtility import FileUtilityBase
+from .fileHandlerBase import FileConverter
 from pm4py.objects.log.importer.xes import factory as xes_importer
 from pm4py.objects.log.importer.csv import factory as csv_importer
 

@@ -1,4 +1,4 @@
-from defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory
+from .defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory
 from pathlib import Path
 
 
