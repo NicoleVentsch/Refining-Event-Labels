@@ -36,3 +36,23 @@ Design Analysis & dummy P\.o\.C/Design Analysis\.toc
 Design Analysis & dummy P\.o\.C/Design Analysis\.fls
 
 Design Analysis & dummy P\.o\.C/Design Analysis\.fdb_latexmk
+
+refiningEventLabels/eventLogConverter/\.vscode/settings\.json
+
+refiningEventLabels/__pycache__/__init__\.cpython-36\.pyc
+
+refiningEventLabels/eventLogConverter/__pycache__/__init__\.cpython-36\.pyc
+
+refiningEventLabels/eventLogConverter/__pycache__/concreteImplementation\.cpython-36\.pyc
+
+refiningEventLabels/eventLogConverter/__pycache__/defaultFileHandlersFactory\.cpython-36\.pyc
+
+refiningEventLabels/eventLogConverter/__pycache__/fileHandlerBase\.cpython-36\.pyc
+
+refiningEventLabels/eventLogConverter/__pycache__/fileUtility\.cpython-36\.pyc
+
+tests/\.vscode/settings\.json
+
+tests/__pycache__/__init__\.cpython-36\.pyc
+
+tests/__pycache__/concreteImplementationTest\.cpython-36\.pyc
