@@ -5,7 +5,7 @@ Created on Sat May 18 18:43:00 2019
 @author: Bianka
 """
 
-
+import itertools  
 
 #original variants is a list of lists
 #function assigns a unqie index to each event 
@@ -35,18 +35,26 @@ def get_position_label(string, variant):
             i +=1
     return positions
     
-
-def generate_mappings(variant1, variant2):
-    mappings = []
-    label_mappings = []
-    l = 0
-    common_labels = common_labels(variant1, variant2)
-    if common_labels != []:
-        for label in common_labels:
+#return for each common label, a list of possible matchings
+def label_matchings(variant1, variant2):
+    label_matchings = []
+    commonlabels = common_labels(variant1, variant2)
+    #l = 0
+    if commonlabels != []:
+        for label in commonlabels:
             pos1 = get_position_label(label, variant1)
             pos2 = get_position_label(label, variant2)
-            for p1 in pos1:
-                for p2 in pos2:
-                    label_mappings.insert(l, (p1,p2))
-        l += 1
-        pass
+            label_mapping = list(itertools.product(pos1, pos2))
+            label_matchings.append(label_mapping)
+            #l +=1
+    return label_matchings
+
+#returns a list of all possible mappings between two trace variants
+def possible_mappings(variant1, variant2):
+    possiblemappings = []
+    labelmatchings = label_matchings(variant1, variant2)
+    l = list(itertools.product(*labelmatchings))
+    for elem in l:
+        s = set(elem)
+        possiblemappings.append(s)
+    return possiblemappings
