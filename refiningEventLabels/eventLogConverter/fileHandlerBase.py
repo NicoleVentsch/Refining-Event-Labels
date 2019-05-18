@@ -15,6 +15,10 @@ class FileCreator(ABC):
 
     def __init__(self):
         self.__destinationPath = "."
+        self._fileType = ""
+    
+    def getFileType(self):
+        return self._fileType 
     
     def setDestinationPath(self, destinationPath):
         self.__destinationPath = destinationPath
@@ -22,7 +26,7 @@ class FileCreator(ABC):
     def getDestinationPath(self):
         return self.__destinationPath
 
-    def createFile(self, eventLog, filePath = "", fileName = ""):
+    def createFile(self, eventLog, fileName = ""), filePath = "":
         pass
         
 class FileConverter(ABC):
