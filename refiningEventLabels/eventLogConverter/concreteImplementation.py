@@ -1,10 +1,10 @@
-from .fileUtility import FileUtilityBase
-from .fileHandlerBase import FileConverter, FileCreator
+from fileUtility import FileUtilityBase
+from fileHandlerBase import FileConverter, FileCreator
 import os
 from pm4py.objects.log.importer.xes import factory as xes_importer
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 from pm4py.objects.log.importer.csv import factory as csv_importer
-from pm4py.objects.conversion.log import factory as conversion_factory
+from pm4py.objects.conversion.log import factory as conversion_factory #error msg
 from pm4py.objects.log.util import sorting
 
 class FileUtility(FileUtilityBase):
@@ -30,7 +30,7 @@ class CSVFileConverter(FileConverter):
         csvEventStream = csv_importer.import_event_stream(filePath)
         return conversion_factory.apply(csvEventStream)
 
-class XESFileCreator(FileCreator) 
+class XESFileCreator(FileCreator): 
 
     def __init__(self):
         self._fileType = '.xes'

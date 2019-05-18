@@ -26,7 +26,7 @@ class FileCreator(ABC):
     def getDestinationPath(self):
         return self.__destinationPath
 
-    def createFile(self, eventLog, fileName = ""), filePath = "":
+    def createFile(self, eventLog, fileName = "", filePath = ""):
         pass
         
 class FileConverter(ABC):
