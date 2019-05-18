@@ -56,3 +56,7 @@ tests/\.vscode/settings\.json
 tests/__pycache__/__init__\.cpython-36\.pyc
 
 tests/__pycache__/concreteImplementationTest\.cpython-36\.pyc
+
+tests/Ressources/running-example\.csv
+
+tests/Ressources/running-example\.xes
