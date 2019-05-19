@@ -8,7 +8,7 @@ Created on Sat May 18 18:43:00 2019
 import itertools  
 
 #original variants is a list of lists
-#function assigns a unqie index to each event 
+#function assigns a unque index to each event
 def variants(original_variants):
     variants = original_variants
     i = 0
