@@ -6,7 +6,7 @@ from pm4py.objects.log.importer.xes import factory as xes_importer
 # get the variants with the corresponding IDs (-> lookup-map)
 # input: log (imported with xes_importer)
 # stored as a dicctionary with variants as key and as value the list of case IDs that share the variant
-from pm4py.algo.filtering.tracelog.variants import variants_filter
+from pm4py.algo.filtering.log.variants import variants_filter
 
 def lookUpTable(log):
     variant=variants_filter.get_variants_from_log_trace_idx(log, parameters=None)

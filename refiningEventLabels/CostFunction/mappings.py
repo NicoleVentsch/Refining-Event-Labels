@@ -50,9 +50,9 @@ def label_matchings(variant1, variant2):
     return label_matchings
 
 #returns a list of all possible mappings between two trace variants
-def possible_mappings(variant1, variant2):
+def possible_mappings(variant1, variant2, labelmatchings):
     possiblemappings = []
-    labelmatchings = label_matchings(variant1, variant2)
+    #labelmatchings = label_matchings(variant1, variant2)
     l = list(itertools.product(*labelmatchings))
     for elem in l:
         s = set(elem)
