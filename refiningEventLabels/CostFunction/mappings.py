@@ -5,7 +5,7 @@ Created on Sat May 18 18:43:00 2019
 @author: Bianka
 """
 
-import itertools  
+import itertools as it
 
 #original variants is a list of lists
 #function assigns a unque index to each event
@@ -44,7 +44,7 @@ def label_matchings(variant1, variant2):
         for label in commonlabels:
             pos1 = get_position_label(label, variant1)
             pos2 = get_position_label(label, variant2)
-            label_mapping = list(itertools.product(pos1, pos2))
+            label_mapping = list(it.product(pos1, pos2))
             label_matchings.append(label_mapping)
             #l +=1
     return label_matchings
@@ -53,7 +53,7 @@ def label_matchings(variant1, variant2):
 def possible_mappings(variant1, variant2, labelmatchings):
     possiblemappings = []
     #labelmatchings = label_matchings(variant1, variant2)
-    l = list(itertools.product(*labelmatchings))
+    l = list(it.product(*labelmatchings))
     for elem in l:
         s = set(elem)
         possiblemappings.append(s)
