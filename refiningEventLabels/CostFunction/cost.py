@@ -36,21 +36,29 @@ def successors(Idlabel, variant):
     succ = set(map(itemgetter(1), rest)) 
     return succ
 
-#returns list of predecessors and list of successors for each label in a variant
+#returns a pair (x,y) where x and y are lists, and x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
 def context(variant):
+    predecessors_list = []
+    successors_list = []
     predecessors = []
     successors = []
-    em = set()
-    rest = set(list(map(itemgetter(1), variant[1:])))
-    predecessors.insert(0,em)
-    successors.insert(0,rest)
+    empty = []
+    rest = list(map(itemgetter(1), variant[1:]))
+    predecessors_list.insert(0,empty)
+    successors_list.insert(0,rest)
     for index in range(1,len(variant)):
-        #print(successors[index-1])
-        last_label = set((variant[index-1][1], ))
+        pred_before = predecessors_list[index-1]
+        succ_before = successors_list[index-1]
+        last_label = [variant[index-1][1]]
         current_label = variant[index][1]
-        #print("CCCCCCCCCCC: ", current_label)
-        predecessors.insert(index, predecessors[index-1].union(last_label))#join last label
-        succ_before = list(successors[index-1])
-       # s = succ_before.remove(current_label) BUGGG
-        successors.insert(index, s) #remove current label
+        #predecessors of current label are the predecessors of the last label plus last label
+        predecessors_list.insert(index, pred_before + last_label)
+        s_temp = succ_before.copy()
+        s_temp.remove(current_label)
+        #successors of current label are the successors of the last label minus current label
+        successors_list.insert(index, s_temp) 
+    for elem in predecessors_list:
+        predecessors.append(set(elem))
+        successors.append(set(elem))
+        
     return predecessors, successors
