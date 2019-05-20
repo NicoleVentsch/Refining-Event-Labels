@@ -7,6 +7,7 @@ from pm4py.objects.log.importer.csv import factory as csv_importer
 from pm4py.objects.conversion.log import factory as conversion_factory #error msg
 from pm4py.objects.log.util import sorting
 
+# provides file import and export for .xes and .csv files
 class FileUtility(FileUtilityBase):
 
     def __init__(self, defaultDirectory):
@@ -15,6 +16,7 @@ class FileUtility(FileUtilityBase):
         self.registerImport('.csv', CSVFileConverter())
         self.registerExport('.xes', XESFileCreator())
 
+# provides .xes to event log conversion using pm4py
 class XESFileConverter(FileConverter):
     def __init__(self):
         self._fileType = '.xes'
@@ -22,6 +24,7 @@ class XESFileConverter(FileConverter):
     def convert(self, filePath):
         return xes_importer.apply(filePath)
 
+# provides .csv to event log converstion using pm4py
 class CSVFileConverter(FileConverter):
     def __init__(self):
         self._fileType = '.csv'
@@ -30,6 +33,7 @@ class CSVFileConverter(FileConverter):
         csvEventStream = csv_importer.import_event_stream(filePath)
         return conversion_factory.apply(csvEventStream)
 
+# provides event log to .xes file creation using pm4py
 class XESFileCreator(FileCreator): 
 
     def __init__(self):
