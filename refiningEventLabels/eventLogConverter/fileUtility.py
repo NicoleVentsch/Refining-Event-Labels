@@ -1,4 +1,4 @@
-from defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory
+from .defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory
 from pathlib import Path
 
 
@@ -8,7 +8,7 @@ class FileUtilityBase:
 
     def __init__(self, defaultDirectory):
         self._fileConverterFactory = FileConverterFactory()
-        self._fileCreatorFactory = FileCreatorFactory(None)
+        self._fileCreatorFactory = FileCreatorFactory()
         self.__defaultDirectory = defaultDirectory
 
     # creates file from event log

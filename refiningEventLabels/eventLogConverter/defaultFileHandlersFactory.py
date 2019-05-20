@@ -1,4 +1,4 @@
-from fileHandlerBase import FileHandlerFactory
+from .fileHandlerBase import FileHandlerFactory
 
 class FileConverterFactory(FileHandlerFactory):
     
@@ -8,8 +8,6 @@ class FileConverterFactory(FileHandlerFactory):
         #TODO: raise WrongFileFromatError
 
 class FileCreatorFactory(FileHandlerFactory):
-
-    def __init__(self):
     
     def create(self, fileType): 
         if fileType in self._fileHandlers:
