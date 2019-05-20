@@ -63,3 +63,32 @@ def context(variant):
         successors.append(set(elem2))
         
     return predecessors, successors
+
+#the costs for the non-matched labels as sum of the number of their predecessors and successors 
+def costNoMatch(variant1, variant2, mapping):
+    mapped = common_labels(variant1, variant2) #set of labels that were mapped
+    #print("mapped:", mapped)
+    unmapped1 = set(map(itemgetter(1), variant1)).difference(mapped) #set of unmapped labels in variant1
+    #print("unmapped1:", unmapped1)
+    unmapped2 = set(map(itemgetter(1), variant2)).difference(mapped) #set of unmapped labels in variant2
+    #print("unmapped2:", unmapped2)
+    firstId1 = variant1[0][0]
+    firstId2 = variant2[0][0]
+    pred1, succ1 = context(variant1)
+    pred2, succ2 = context(variant2)
+    np1 = 0
+    ns1 = 0
+    np2 = 0
+    ns2 = 0
+    for unmapped_label1 in unmapped1:
+        positions1 = [x-firstId1 for x in get_position_label(unmapped_label1, variant1)]
+        for p1 in positions1:
+            np1 += len(pred1[p1])
+            ns1 += len(succ1[p1])
+    for unmapped_label2 in unmapped2:
+        positions2 = [x-firstId2 for x in get_position_label(unmapped_label2, variant2)]
+        for p2 in positions2:
+            np1 += len(pred2[p2])
+            ns1 += len(succ2[p2])
+    sum = np1+np2+ns1+ns2
+    return sum
