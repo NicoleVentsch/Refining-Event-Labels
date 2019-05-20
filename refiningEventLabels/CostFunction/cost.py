@@ -122,9 +122,13 @@ def optimalMapping(variant1, variant2, mappings):
     if mappings != []:
         best_mapping = mappings[0]
         cost_best = costMapping(variant1,variant2,best_mapping)
+        cost_max = cost_best
         for mapping in mappings:
             cost_new = costMapping(variant1,variant2,mapping)
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-    return best_mapping, cost_best
+            if cost_new > cost_max:
+                cost_max = cost_new
+    return best_mapping, cost_best, cost_max
+            
