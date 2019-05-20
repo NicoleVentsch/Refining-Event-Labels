@@ -59,6 +59,7 @@ def context(variant):
         successors_list.insert(index, s_temp) 
     for elem in predecessors_list:
         predecessors.append(set(elem))
-        successors.append(set(elem))
+    for elem2 in successors_list:
+        successors.append(set(elem2))
         
     return predecessors, successors
