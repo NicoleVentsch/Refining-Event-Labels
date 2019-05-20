@@ -20,21 +20,20 @@ def costStructure(variant1, variant2, mapping):
 
 
 #returns set of predecessors of a label in a variant
-def predecessors(Idlabel, variant):
-    Id = Idlabel[0]
-    firstId = variant[0][0]
-    head = variant[:(Id-firstId)]
-    pred = set(map(itemgetter(1), head)) 
-    return pred
-
+#def predecessors(Idlabel, variant):
+#    Id = Idlabel[0]
+#    firstId = variant[0][0]
+#    head = variant[:(Id-firstId)]
+#    pred = set(map(itemgetter(1), head)) 
+#    return pred
 
 #returns set of successors of a label in a variant
-def successors(Idlabel, variant):
-    Id = Idlabel[0]
-    firstId = variant[0][0]
-    rest = variant[(Id-firstId+1):]
-    succ = set(map(itemgetter(1), rest)) 
-    return succ
+#def successors(Idlabel, variant):
+#    Id = Idlabel[0]
+#    firstId = variant[0][0]
+#    rest = variant[(Id-firstId+1):]
+#    succ = set(map(itemgetter(1), rest)) 
+#    return succ
 
 #returns a pair (x,y) where x and y are lists, and x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
 def context(variant):
@@ -108,3 +107,24 @@ def costMatched(variant1, variant2, mapping):
         sum += len(succ1[p1])+len(succ2[p2])-len(succ1[p1].intersection(succ2[p2])) #number of distinct successors
         print(sum)
     return sum  
+
+
+#given a mapping, returns its cost
+def costMapping(wm,ws,wn,variant1,variant2,mapping):
+    cost_struc = costStructure(variant1, variant2, mapping)
+    cost_nomatch = costNoMatch(variant1, variant2, mapping)
+    cost_match = costMatched(variant1, variant2, mapping)
+    return wm*cost_match + ws*cost_struc + wn*cost_nomatch
+
+
+#given a list of possible mappings, returns pair (best mapping, best cost)
+def optimalMapping(variant1, variant2, mappings):
+    if mappings != []:
+        best_mapping = mappings[0]
+        cost_best = costMapping(variant1,variant2,best_mapping)
+        for mapping in mappings:
+            cost_new = costMapping(variant1,variant2,mapping)
+            if cost_new < cost_best:
+                best_mapping = mapping
+                cost_best = cost_new
+    return best_mapping, cost_best
