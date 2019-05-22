@@ -1,6 +1,7 @@
-from fileUtility import FileUtilityBase
-from fileHandlerBase import FileConverter, FileCreator
+from .fileUtility import FileUtilityBase
+from .fileHandlerBase import FileConverter, FileCreator
 import os
+
 from pm4py.objects.log.importer.xes import factory as xes_importer
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 from pm4py.objects.log.importer.csv import factory as csv_importer
@@ -37,6 +38,7 @@ class CSVFileConverter(FileConverter):
 class XESFileCreator(FileCreator): 
 
     def __init__(self):
+        super(XESFileCreator, self).__init__()
         self._fileType = '.xes'
 
     def createFile(self, eventLog, fileName = "", filePath = ""):

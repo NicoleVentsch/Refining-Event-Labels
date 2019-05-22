@@ -1,4 +1,4 @@
-from refiningEventLabels.eventLogConverter.fileHandlerBase import FileHandlerFactory, FileConverter, FileCreator
-from refiningEventLabels.eventLogConverter.defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory, FileHandlerFactory
-from refiningEventLabels.eventLogConverter.fileUtility import FileConverterFactory, FileCreatorFactory, FileUtilityBase
-from refiningEventLabels.eventLogConverter.concreteImplementation import FileUtility, XESFileConverter, CSVFileConverter, XESFileCreator
+from refiningEventLabels.eventLogConverter.fileHandlerBase import *
+from refiningEventLabels.eventLogConverter.defaultFileHandlersFactory import *
+from refiningEventLabels.eventLogConverter.fileUtility import *
+from refiningEventLabels.eventLogConverter.concreteImplementation import *

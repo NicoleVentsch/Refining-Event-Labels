@@ -65,6 +65,7 @@ class FileCreatorTest(unittest.TestCase):
         return self._fileCreator
 
     def testFileCreator(self):
+        self._deletingTestFiles()
         fileCreators = self.getFileCreators()
         dirname = os.path.dirname(__file__)
         xesPath = os.path.join(dirname, 'Ressources/example.xes')
@@ -77,7 +78,7 @@ class FileCreatorTest(unittest.TestCase):
         for creatorInfo in fileCreators:
             shouldCreatedFile = os.path.join(destinationPath, "testFile." + creatorInfo[0])
             self.assertTrue(os.path.isfile(shouldCreatedFile))
-        self._deletingTestFiles()
+       
         
         
     def _deletingTestFiles(self):
