@@ -1,0 +1,19 @@
+Module 3 - Cost Function
+========================================
+|
+
+.. autofunction:: CostFunction.cost.costStructure
+
+.. autofunction:: CostFunction.cost.context
+
+.. autofunction:: CostFunction.cost.costNoMatch
+
+.. autofunction:: CostFunction.cost.costMatched
+
+.. autofunction:: CostFunction.cost.costMapping
+
+.. autofunction:: CostFunction.cost.optimalMapping
+
+|
+
+:ref:`Return Home <mastertoc>`

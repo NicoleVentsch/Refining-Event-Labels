@@ -8,8 +8,21 @@ Created on Sun May 19 19:37:12 2019
 import mappings
 from itertools import combinations
 from operator import itemgetter
+
 #sum of the differences in the distances between each matched pair and other matches pairs 
 def costStructure(variant1, variant2, mapping):
+
+    """
+   get the sum of the differences in the distances between each matched pair and other matches pairs
+
+   :param variant1: the first variant
+   :param variant2: the second variant
+   :param mapping: the mapping of the actions from the first to the second variant
+   :return: sum of the differences in the distances
+
+    """
+
+
     cost_structure = 0
     combis = list(combinations(mapping, 2)) 
     for (pair1, pair2) in combis:
@@ -37,6 +50,15 @@ def costStructure(variant1, variant2, mapping):
 
 #returns a pair (x,y) where x and y are lists, and x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
 def context(variant):
+
+    """
+    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors
+    of each action in the variant
+
+    :param variant: the variant of which we get the list of predecessors and successors
+    :return: a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
+
+    """
     predecessors_list = []
     successors_list = []
     predecessors = []
@@ -65,6 +87,17 @@ def context(variant):
 
 #the costs for the non-matched labels as sum of the number of their predecessors and successors 
 def costNoMatch(variant1, variant2, mapping):
+
+    """
+
+    calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.
+
+    :param variant1: the first variant
+    :param variant2: the second variant
+    :param mapping: the mapping for which the costs for the non-matched labels are calculated
+    :return: the cost for the non-matched labels
+
+    """
     mapped = set(mappings.common_labels(variant1, variant2)) #set of labels that were mapped
     #print("mapped:", mapped)
     unmapped1 = set(map(itemgetter(1), variant1)).difference(mapped) #set of unmapped labels in variant1
@@ -94,6 +127,16 @@ def costNoMatch(variant1, variant2, mapping):
 
 #the differences in the direct/indirect neighbors of matched pairs
 def costMatched(variant1, variant2, mapping):
+    """
+
+    calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.
+
+    :param variant1: the first variant
+    :param variant2: the second variant
+    :param mapping: the mapping for which the costs for the matched labels are calculated
+    :return: the cost for the matched labels
+
+    """
     firstId1 = variant1[0][0]
     firstId2 = variant2[0][0]
     pred1, succ1 = context(variant1)
@@ -111,6 +154,19 @@ def costMatched(variant1, variant2, mapping):
 
 #given a mapping, returns its cost
 def costMapping(wm,ws,wn,variant1,variant2,mapping):
+
+    """
+    gives the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels
+    :param wm: weighting coefficient of the cost of the matched labels
+    :param ws: weighting coefficient of the structural cost
+    :param wn: weighting coefficient of the cost of the non-matched labels
+    :param variant1: the first variant
+    :param variant2: the second variant
+    :param mapping: the mapping for which the total cost is calculated
+    :return: the total cost of the mapping
+    """
+
+
     cost_struc = costStructure(variant1, variant2, mapping)
     cost_nomatch = costNoMatch(variant1, variant2, mapping)
     cost_match = costMatched(variant1, variant2, mapping)
@@ -119,6 +175,15 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
 #given a list of possible mappings, returns pair (best mapping, best cost)
 def optimalMapping(variant1, variant2, mappings):
+
+    """
+    given two variants and a list containing all possible mapping between those variants, the mapping with the lowest total cost together with the value of this cost will be returned
+
+    :param variant1: the first variant
+    :param variant2: the second variant
+    :param mappings: a list of all the possible mappings between the two variants
+    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value
+    """
     if mappings != []:
         best_mapping = mappings[0]
         cost_best = costMapping(variant1,variant2,best_mapping)
