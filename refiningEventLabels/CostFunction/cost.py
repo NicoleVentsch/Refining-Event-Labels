@@ -157,6 +157,7 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
     """
     gives the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels
+
     :param wm: weighting coefficient of the cost of the matched labels
     :param ws: weighting coefficient of the structural cost
     :param wn: weighting coefficient of the cost of the non-matched labels

@@ -29,7 +29,7 @@ def getVariants(dicctionary):
 
     """
 
-     get the variants from the dicctionary created with lookUpTable() and omit the IDs
+    get the variants from the dicctionary created with lookUpTable() and omit the IDs
 
     :param dicctionary: a dicctionary with variants as key and as value the list of case IDs
     :return: list of unique variants stored as lists (list of lists)

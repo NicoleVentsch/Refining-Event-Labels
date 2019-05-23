@@ -6,7 +6,7 @@
 Welcome to Refining Event Labels's documentation!
 =================================================
 
-The source code is available under: `<https://github.com/NicoleVentsch/Refining-Event-Labels/settings>`_.
+The source code is available under: `<https://github.com/NicoleVentsch/Refining-Event-Labels>`_.
 
 .. toctree::
    :maxdepth: 1

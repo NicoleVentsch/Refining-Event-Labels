@@ -1,4 +1,4 @@
-Module 1 - Preprocessing Log
+Module 1.2 - Preprocessing Log
 ========================================
 |
 
