@@ -10,15 +10,6 @@ from itertools import combinations
 from operator import itemgetter
 
 
-#log = event log
-#original_variants = getVariants(lookUpTable(log))
-#variants = createEventIDs(original_variants)
-
-#create a cost matrix where Ci,j = Cj,i corresponding to the cost of the best mapping between variants[i] and variants[j]
-count = len(variants)
-C = np.zeros((count,count))
-
-
 #sum of the differences in the distances between each matched pair and other matches pairs 
 def costStructure(variant1, variant2, mapping):
 
@@ -201,6 +192,6 @@ def optimalMapping(variant1, variant2):
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-        C[pos_variant1, pos_variant2] = cost_best
-        C[pos_variant2, pos_variant1] = cost_best
+        C[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
+        C[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
     return best_mapping, cost_best

@@ -7,7 +7,9 @@ Created on Fri May 24 11:04:20 2019
 
 import mappings
 import cost
+import numpy as np
 import networkx as nx
+
 
 #returns a Graph where the vertex correspond to all unique pairs (Id, event label) appearing in the variants
 def createGraph(variants):

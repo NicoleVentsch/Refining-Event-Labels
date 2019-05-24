@@ -5,10 +5,12 @@ Created on Fri May 24 11:55:18 2019
 @author: Bianka
 """
 
-import mappings
+import preprocessing as pre
+import mappings as mp
 import cost
 import graph
-
+import numpy as np
+from itertools import combinations
 
 
 
@@ -17,6 +19,10 @@ import graph
 #variants = createEventIDs(original_variants)
 #candidates = []
 
+log = pre.xes_import_factory.apply("running-example.xes")
+original_variants = pre.getVariants(pre.lookUpTable(log))
+variants = mp.createEventIDs(original_variants)
+candidates = ["decide", "examine casually"] 
 
 #create a cost matrix where Ci,j = Cj,i corresponding to the cost of the best mapping between variants[i] and variants[j]
 count = len(variants) 
@@ -30,7 +36,7 @@ for pair in all_pairs:
 maxElement = np.amax(C)
 C = C/maxElement #each cost is normalized
 
-G = createGraph(variants)
+G = graph.createGraph(variants)
 
 #add edges corresponding to costs
 for pair in all_pairs:
@@ -51,3 +57,6 @@ for pair in all_pairs:
             G.add_edge(node1, node2, weight = C[index_variant1][index_variant2])
         else :
             G.add_edge(node1, node2, weight = 0)
+            
+            
+            
