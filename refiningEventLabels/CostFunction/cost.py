@@ -9,6 +9,16 @@ import mappings
 from itertools import combinations
 from operator import itemgetter
 
+
+#log = event log
+#original_variants = getVariants(lookUpTable(log))
+#variants = createEventIDs(original_variants)
+
+#create a cost matrix where Ci,j = Cj,i corresponding to the cost of the best mapping between variants[i] and variants[j]
+count = len(variants)
+C = np.zeros((count,count))
+
+
 #sum of the differences in the distances between each matched pair and other matches pairs 
 def costStructure(variant1, variant2, mapping):
 
@@ -146,9 +156,7 @@ def costMatched(variant1, variant2, mapping):
         p1 = pair[0]-firstId1
         p2 = pair[1]-firstId2
         sum += len(pred1[p1])+len(pred2[p2])-len(pred1[p1].intersection(pred2[p2])) #number of distinct predecessors
-        print(sum) 
         sum += len(succ1[p1])+len(succ2[p2])-len(succ1[p1].intersection(succ2[p2])) #number of distinct successors
-        print(sum)
     return sum  
 
 
@@ -174,23 +182,25 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
     return wm*cost_match + ws*cost_struc + wn*cost_nomatch
 
 
-#given a list of possible mappings, returns pair (best mapping, best cost)
-def optimalMapping(variant1, variant2, mappings):
+#given two trace variants returns pair (best mapping, best cost)
+def optimalMapping(variant1, variant2):
 
     """
-    given two variants and a list containing all possible mapping between those variants, the mapping with the lowest total cost together with the value of this cost will be returned
+    given two variants the mapping with the lowest total cost together with the value of this cost will be returned
 
     :param variant1: the first variant
     :param variant2: the second variant
-    :param mappings: a list of all the possible mappings between the two variants
     :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value
     """
+    possible_mappings = mappings.possibleMappings(variant1, variant2)
     if mappings != []:
-        best_mapping = mappings[0]
+        best_mapping = possible_mappings[0]
         cost_best = costMapping(variant1,variant2,best_mapping)
-        for mapping in mappings:
+        for mapping in possible_mappings:
             cost_new = costMapping(variant1,variant2,mapping)
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
+        C[pos_variant1, pos_variant2] = cost_best
+        C[pos_variant2, pos_variant1] = cost_best
     return best_mapping, cost_best

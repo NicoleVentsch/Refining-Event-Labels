@@ -40,7 +40,7 @@ def get_positions_label(string, variant):
 
 #Args: variant1, variant2 as a list of tuples from createEventIDs(variants)
 #Returns: list of all possible mappings for variant1 and variant2 where each mapping is a set of matched pairs
-def possibleMappings(variant1=[], variant2=[]):
+def possibleMappings(variant1, variant2):
     matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
     n = getNumberOfCommonLabels(variant1, variant2)
     
