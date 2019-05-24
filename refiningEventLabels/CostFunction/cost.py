@@ -113,12 +113,12 @@ def costNoMatch(variant1, variant2, mapping):
     np2 = 0
     ns2 = 0
     for unmapped_label1 in unmapped1:
-        positions1 = [x-firstId1 for x in mappings.get_position_label(unmapped_label1, variant1)]
+        positions1 = [x-firstId1 for x in mappings.get_positions_label(unmapped_label1, variant1)]
         for p1 in positions1:
             np1 += len(pred1[p1])
             ns1 += len(succ1[p1])
     for unmapped_label2 in unmapped2:
-        positions2 = [x-firstId2 for x in mappings.get_position_label(unmapped_label2, variant2)]
+        positions2 = [x-firstId2 for x in mappings.get_positions_label(unmapped_label2, variant2)]
         for p2 in positions2:
             np1 += len(pred2[p2])
             ns1 += len(succ2[p2])
