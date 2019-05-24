@@ -10,7 +10,6 @@ from itertools import combinations
 from operator import itemgetter
 
 
-#sum of the differences in the distances between each matched pair and other matches pairs 
 def costStructure(variant1, variant2, mapping):
 
     """
@@ -33,30 +32,13 @@ def costStructure(variant1, variant2, mapping):
     return cost_structure
 
 
-#returns set of predecessors of a label in a variant
-#def predecessors(Idlabel, variant):
-#    Id = Idlabel[0]
-#    firstId = variant[0][0]
-#    head = variant[:(Id-firstId)]
-#    pred = set(map(itemgetter(1), head)) 
-#    return pred
 
-#returns set of successors of a label in a variant
-#def successors(Idlabel, variant):
-#    Id = Idlabel[0]
-#    firstId = variant[0][0]
-#    rest = variant[(Id-firstId+1):]
-#    succ = set(map(itemgetter(1), rest)) 
-#    return succ
-
-#returns a pair (x,y) where x and y are lists, and x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
 def context(variant):
 
     """
-    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors
-    of each action in the variant
+    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant
 
-    :param variant: the variant of which we get the list of predecessors and successors
+    :param variant: the variant as a list of tuples (eventID, event label) of which we get the list of predecessors and successors
     :return: a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
 
     """
@@ -86,25 +68,22 @@ def context(variant):
         
     return predecessors, successors
 
-#the costs for the non-matched labels as sum of the number of their predecessors and successors 
+
 def costNoMatch(variant1, variant2, mapping):
 
     """
 
     calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.
 
-    :param variant1: the first variant
-    :param variant2: the second variant
+    :param variant1: the first variant as a list of tuples (eventID, event label)
+    :param variant2: the second variant as a list of tuples (eventID, event label)
     :param mapping: the mapping for which the costs for the non-matched labels are calculated
     :return: the cost for the non-matched labels
 
     """
     mapped = set(mappings.common_labels(variant1, variant2)) #set of labels that were mapped
-    #print("mapped:", mapped)
     unmapped1 = set(map(itemgetter(1), variant1)).difference(mapped) #set of unmapped labels in variant1
-    #print("unmapped1:", unmapped1)
     unmapped2 = set(map(itemgetter(1), variant2)).difference(mapped) #set of unmapped labels in variant2
-    #print("unmapped2:", unmapped2)
     firstId1 = variant1[0][0]
     firstId2 = variant2[0][0]
     pred1, succ1 = context(variant1)
@@ -126,14 +105,14 @@ def costNoMatch(variant1, variant2, mapping):
     sum = np1+np2+ns1+ns2
     return sum
 
-#the differences in the direct/indirect neighbors of matched pairs
+
 def costMatched(variant1, variant2, mapping):
     """
 
     calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.
 
-    :param variant1: the first variant
-    :param variant2: the second variant
+    :param variant1: the first variant as a list of tuples (eventID, event label)
+    :param variant2: the second variant as a list of tuples (eventID, event label)
     :param mapping: the mapping for which the costs for the matched labels are calculated
     :return: the cost for the matched labels
 
@@ -151,7 +130,7 @@ def costMatched(variant1, variant2, mapping):
     return sum  
 
 
-#given a mapping, returns its cost
+
 def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
     """
@@ -160,8 +139,8 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
     :param wm: weighting coefficient of the cost of the matched labels
     :param ws: weighting coefficient of the structural cost
     :param wn: weighting coefficient of the cost of the non-matched labels
-    :param variant1: the first variant
-    :param variant2: the second variant
+    :param variant1: the first variant as a list of tuples (eventID, event label)
+    :param variant2: the second variant as a list of tuples (eventID, event label)
     :param mapping: the mapping for which the total cost is calculated
     :return: the total cost of the mapping
     """
@@ -173,15 +152,15 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
     return wm*cost_match + ws*cost_struc + wn*cost_nomatch
 
 
-#given two trace variants returns pair (best mapping, best cost)
+
 def optimalMapping(variant1, variant2):
 
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
 
-    :param variant1: the first variant
-    :param variant2: the second variant
-    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value
+    :param variant1: the first variant as a list of tuples (eventID, event label)
+    :param variant2: the second variant as a list of tuples (eventID, event label)
+    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
     possible_mappings = mappings.possibleMappings(variant1, variant2)
     if mappings != []:
@@ -195,13 +174,21 @@ def optimalMapping(variant1, variant2):
         C[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
         C[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
     return best_mapping, cost_best
-	
-	
-	
+
+
+
+
 #Args: variant as a list of tuples, where variant = [(EventID,"Label")...]
-#       k as integer for the k-predecessors/successors   
-#Returns: list of predecessors and successors 
+#       k as integer for the k-predecessors/successors
 def context2(variant,k):
+
+    """
+    creates a list of k predecessors and successors of all events of a given variant
+
+    :param variant: variant as a list of tuples (eventID, event label)
+    :param k: integer specifying the number of predecessors and successors we consider
+    :return: a list of sets of predecessors and successors of each event within a variant
+    """
     p, s = [], []
     n = len(variant)
     
@@ -211,7 +198,3 @@ def context2(variant,k):
 
     return p,s
 
-
-	
-	
-	
