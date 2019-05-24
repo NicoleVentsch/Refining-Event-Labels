@@ -195,3 +195,23 @@ def optimalMapping(variant1, variant2):
         C[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
         C[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
     return best_mapping, cost_best
+	
+	
+	
+#Args: variant as a list of tuples, where variant = [(EventID,"Label")...]
+#       k as integer for the k-predecessors/successors   
+#Returns: list of predecessors and successors 
+def context2(variant,k):
+    p, s = [], []
+    n = len(variant)
+    
+    for i in range(n):
+        s.append(set([b for (a,b) in variant[i+1:i+k+1]]))
+        p.append(set([b for (a,b) in variant[i-n-k:i-n]]))
+
+    return p,s
+
+
+	
+	
+	
