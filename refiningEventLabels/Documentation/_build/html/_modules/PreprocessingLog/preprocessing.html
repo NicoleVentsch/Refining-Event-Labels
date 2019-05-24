@@ -39,8 +39,6 @@
 
 
 <span class="c1"># get the variants with the corresponding IDs (-&gt; lookup-map)</span>
-<span class="c1"># input: log (imported with xes_importer)</span>
-<span class="c1"># stored as a dicctionary with variants as key and as value the list of case IDs that share the variant</span>
 <span class="kn">from</span> <span class="nn">pm4py.algo.filtering.log.variants</span> <span class="k">import</span> <span class="n">variants_filter</span>
 
 <div class="viewcode-block" id="lookUpTable"><a class="viewcode-back" href="../../preprocessing.html#PreprocessingLog.preprocessing.lookUpTable">[docs]</a><span class="k">def</span> <span class="nf">lookUpTable</span><span class="p">(</span><span class="n">log</span><span class="p">):</span>
@@ -57,9 +55,7 @@
     <span class="n">variant</span><span class="o">=</span><span class="n">variants_filter</span><span class="o">.</span><span class="n">get_variants_from_log_trace_idx</span><span class="p">(</span><span class="n">log</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">variant</span></div>
 
-<span class="c1"># get the variants from the dicctionary created with lookUpTable() and omit the IDs</span>
-<span class="c1"># input: dicctionary with variants as keys and case IDs as values</span>
-<span class="c1"># stored as a list containing the variants as lists (-&gt; list of lists)</span>
+
 <div class="viewcode-block" id="getVariants"><a class="viewcode-back" href="../../preprocessing.html#PreprocessingLog.preprocessing.getVariants">[docs]</a><span class="k">def</span> <span class="nf">getVariants</span><span class="p">(</span><span class="n">dicctionary</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -84,6 +80,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

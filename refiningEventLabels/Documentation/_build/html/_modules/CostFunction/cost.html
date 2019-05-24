@@ -44,7 +44,7 @@
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">combinations</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
 
-<span class="c1">#sum of the differences in the distances between each matched pair and other matches pairs </span>
+
 <div class="viewcode-block" id="costStructure"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.costStructure">[docs]</a><span class="k">def</span> <span class="nf">costStructure</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -67,30 +67,13 @@
     <span class="k">return</span> <span class="n">cost_structure</span></div>
 
 
-<span class="c1">#returns set of predecessors of a label in a variant</span>
-<span class="c1">#def predecessors(Idlabel, variant):</span>
-<span class="c1">#    Id = Idlabel[0]</span>
-<span class="c1">#    firstId = variant[0][0]</span>
-<span class="c1">#    head = variant[:(Id-firstId)]</span>
-<span class="c1">#    pred = set(map(itemgetter(1), head)) </span>
-<span class="c1">#    return pred</span>
 
-<span class="c1">#returns set of successors of a label in a variant</span>
-<span class="c1">#def successors(Idlabel, variant):</span>
-<span class="c1">#    Id = Idlabel[0]</span>
-<span class="c1">#    firstId = variant[0][0]</span>
-<span class="c1">#    rest = variant[(Id-firstId+1):]</span>
-<span class="c1">#    succ = set(map(itemgetter(1), rest)) </span>
-<span class="c1">#    return succ</span>
-
-<span class="c1">#returns a pair (x,y) where x and y are lists, and x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i</span>
 <div class="viewcode-block" id="context"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.context">[docs]</a><span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="n">variant</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors</span>
-<span class="sd">    of each action in the variant</span>
+<span class="sd">    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</span>
 
-<span class="sd">    :param variant: the variant of which we get the list of predecessors and successors</span>
+<span class="sd">    :param variant: the variant as a list of tuples (eventID, event label) of which we get the list of predecessors and successors</span>
 <span class="sd">    :return: a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -120,25 +103,22 @@
         
     <span class="k">return</span> <span class="n">predecessors</span><span class="p">,</span> <span class="n">successors</span></div>
 
-<span class="c1">#the costs for the non-matched labels as sum of the number of their predecessors and successors </span>
+
 <div class="viewcode-block" id="costNoMatch"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.costNoMatch">[docs]</a><span class="k">def</span> <span class="nf">costNoMatch</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</span>
 
-<span class="sd">    :param variant1: the first variant</span>
-<span class="sd">    :param variant2: the second variant</span>
+<span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param mapping: the mapping for which the costs for the non-matched labels are calculated</span>
 <span class="sd">    :return: the cost for the non-matched labels</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">mapped</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">mappings</span><span class="o">.</span><span class="n">common_labels</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">))</span> <span class="c1">#set of labels that were mapped</span>
-    <span class="c1">#print(&quot;mapped:&quot;, mapped)</span>
     <span class="n">unmapped1</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">variant1</span><span class="p">))</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span> <span class="c1">#set of unmapped labels in variant1</span>
-    <span class="c1">#print(&quot;unmapped1:&quot;, unmapped1)</span>
     <span class="n">unmapped2</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">variant2</span><span class="p">))</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span> <span class="c1">#set of unmapped labels in variant2</span>
-    <span class="c1">#print(&quot;unmapped2:&quot;, unmapped2)</span>
     <span class="n">firstId1</span> <span class="o">=</span> <span class="n">variant1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">firstId2</span> <span class="o">=</span> <span class="n">variant2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">pred1</span><span class="p">,</span> <span class="n">succ1</span> <span class="o">=</span> <span class="n">context</span><span class="p">(</span><span class="n">variant1</span><span class="p">)</span>
@@ -148,26 +128,26 @@
     <span class="n">np2</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">ns2</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">unmapped_label1</span> <span class="ow">in</span> <span class="n">unmapped1</span><span class="p">:</span>
-        <span class="n">positions1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">firstId1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">get_position_label</span><span class="p">(</span><span class="n">unmapped_label1</span><span class="p">,</span> <span class="n">variant1</span><span class="p">)]</span>
+        <span class="n">positions1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">firstId1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">get_positions_label</span><span class="p">(</span><span class="n">unmapped_label1</span><span class="p">,</span> <span class="n">variant1</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">p1</span> <span class="ow">in</span> <span class="n">positions1</span><span class="p">:</span>
             <span class="n">np1</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred1</span><span class="p">[</span><span class="n">p1</span><span class="p">])</span>
             <span class="n">ns1</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">succ1</span><span class="p">[</span><span class="n">p1</span><span class="p">])</span>
     <span class="k">for</span> <span class="n">unmapped_label2</span> <span class="ow">in</span> <span class="n">unmapped2</span><span class="p">:</span>
-        <span class="n">positions2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">firstId2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">get_position_label</span><span class="p">(</span><span class="n">unmapped_label2</span><span class="p">,</span> <span class="n">variant2</span><span class="p">)]</span>
+        <span class="n">positions2</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="n">firstId2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">mappings</span><span class="o">.</span><span class="n">get_positions_label</span><span class="p">(</span><span class="n">unmapped_label2</span><span class="p">,</span> <span class="n">variant2</span><span class="p">)]</span>
         <span class="k">for</span> <span class="n">p2</span> <span class="ow">in</span> <span class="n">positions2</span><span class="p">:</span>
             <span class="n">np1</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred2</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span>
             <span class="n">ns1</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">succ2</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span>
     <span class="nb">sum</span> <span class="o">=</span> <span class="n">np1</span><span class="o">+</span><span class="n">np2</span><span class="o">+</span><span class="n">ns1</span><span class="o">+</span><span class="n">ns2</span>
     <span class="k">return</span> <span class="nb">sum</span></div>
 
-<span class="c1">#the differences in the direct/indirect neighbors of matched pairs</span>
+
 <div class="viewcode-block" id="costMatched"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.costMatched">[docs]</a><span class="k">def</span> <span class="nf">costMatched</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</span>
 
-<span class="sd">    :param variant1: the first variant</span>
-<span class="sd">    :param variant2: the second variant</span>
+<span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param mapping: the mapping for which the costs for the matched labels are calculated</span>
 <span class="sd">    :return: the cost for the matched labels</span>
 
@@ -181,13 +161,11 @@
         <span class="n">p1</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">firstId1</span>
         <span class="n">p2</span> <span class="o">=</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">firstId2</span>
         <span class="nb">sum</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred1</span><span class="p">[</span><span class="n">p1</span><span class="p">])</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">pred2</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">pred1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">pred2</span><span class="p">[</span><span class="n">p2</span><span class="p">]))</span> <span class="c1">#number of distinct predecessors</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span> 
         <span class="nb">sum</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">succ1</span><span class="p">[</span><span class="n">p1</span><span class="p">])</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">succ2</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">succ1</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">succ2</span><span class="p">[</span><span class="n">p2</span><span class="p">]))</span> <span class="c1">#number of distinct successors</span>
-        <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">sum</span>  </div>
 
 
-<span class="c1">#given a mapping, returns its cost</span>
+
 <div class="viewcode-block" id="costMapping"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.costMapping">[docs]</a><span class="k">def</span> <span class="nf">costMapping</span><span class="p">(</span><span class="n">wm</span><span class="p">,</span><span class="n">ws</span><span class="p">,</span><span class="n">wn</span><span class="p">,</span><span class="n">variant1</span><span class="p">,</span><span class="n">variant2</span><span class="p">,</span><span class="n">mapping</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
@@ -196,8 +174,8 @@
 <span class="sd">    :param wm: weighting coefficient of the cost of the matched labels</span>
 <span class="sd">    :param ws: weighting coefficient of the structural cost</span>
 <span class="sd">    :param wn: weighting coefficient of the cost of the non-matched labels</span>
-<span class="sd">    :param variant1: the first variant</span>
-<span class="sd">    :param variant2: the second variant</span>
+<span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param mapping: the mapping for which the total cost is calculated</span>
 <span class="sd">    :return: the total cost of the mapping</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -209,26 +187,52 @@
     <span class="k">return</span> <span class="n">wm</span><span class="o">*</span><span class="n">cost_match</span> <span class="o">+</span> <span class="n">ws</span><span class="o">*</span><span class="n">cost_struc</span> <span class="o">+</span> <span class="n">wn</span><span class="o">*</span><span class="n">cost_nomatch</span></div>
 
 
-<span class="c1">#given a list of possible mappings, returns pair (best mapping, best cost)</span>
-<div class="viewcode-block" id="optimalMapping"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.optimalMapping">[docs]</a><span class="k">def</span> <span class="nf">optimalMapping</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">mappings</span><span class="p">):</span>
+
+<div class="viewcode-block" id="optimalMapping"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.optimalMapping">[docs]</a><span class="k">def</span> <span class="nf">optimalMapping</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    given two variants and a list containing all possible mapping between those variants, the mapping with the lowest total cost together with the value of this cost will be returned</span>
+<span class="sd">    given two variants the mapping with the lowest total cost together with the value of this cost will be returned</span>
 
-<span class="sd">    :param variant1: the first variant</span>
-<span class="sd">    :param variant2: the second variant</span>
-<span class="sd">    :param mappings: a list of all the possible mappings between the two variants</span>
-<span class="sd">    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value</span>
+<span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">possible_mappings</span> <span class="o">=</span> <span class="n">mappings</span><span class="o">.</span><span class="n">possibleMappings</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">mappings</span> <span class="o">!=</span> <span class="p">[]:</span>
-        <span class="n">best_mapping</span> <span class="o">=</span> <span class="n">mappings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">best_mapping</span> <span class="o">=</span> <span class="n">possible_mappings</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">cost_best</span> <span class="o">=</span> <span class="n">costMapping</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span><span class="n">variant2</span><span class="p">,</span><span class="n">best_mapping</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="n">mappings</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="n">possible_mappings</span><span class="p">:</span>
             <span class="n">cost_new</span> <span class="o">=</span> <span class="n">costMapping</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span><span class="n">variant2</span><span class="p">,</span><span class="n">mapping</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">cost_new</span> <span class="o">&lt;</span> <span class="n">cost_best</span><span class="p">:</span>
                 <span class="n">best_mapping</span> <span class="o">=</span> <span class="n">mapping</span>
                 <span class="n">cost_best</span> <span class="o">=</span> <span class="n">cost_new</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">pos_variant1</span><span class="p">,</span> <span class="n">pos_variant2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_best</span> <span class="c1">#will be applied after definition of C in main</span>
+        <span class="n">C</span><span class="p">[</span><span class="n">pos_variant2</span><span class="p">,</span> <span class="n">pos_variant1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_best</span> <span class="c1">#will be applied after definition of C in main</span>
     <span class="k">return</span> <span class="n">best_mapping</span><span class="p">,</span> <span class="n">cost_best</span></div>
+
+
+
+
+<span class="c1">#Args: variant as a list of tuples, where variant = [(EventID,&quot;Label&quot;)...]</span>
+<span class="c1">#       k as integer for the k-predecessors/successors</span>
+<div class="viewcode-block" id="context2"><a class="viewcode-back" href="../../cost function.html#CostFunction.cost.context2">[docs]</a><span class="k">def</span> <span class="nf">context2</span><span class="p">(</span><span class="n">variant</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    creates a list of k predecessors and successors of all events of a given variant</span>
+
+<span class="sd">    :param variant: variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param k: integer specifying the number of predecessors and successors we consider</span>
+<span class="sd">    :return: a list of sets of predecessors and successors of each event within a variant</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">p</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variant</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">b</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]]))</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">b</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">:</span><span class="n">i</span><span class="o">-</span><span class="n">n</span><span class="p">]]))</span>
+
+    <span class="k">return</span> <span class="n">p</span><span class="p">,</span><span class="n">s</span></div>
+
 </pre></div>
 
           </div>
@@ -241,6 +245,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
