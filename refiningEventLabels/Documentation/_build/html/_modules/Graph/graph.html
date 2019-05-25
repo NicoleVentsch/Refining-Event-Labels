@@ -35,13 +35,15 @@
   <h1>Source code for Graph.graph</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Created on Fri May 24 11:04:20 2019</span>
+<span class="sd">Created on Sat May 25 12:26:38 2019</span>
 
-<span class="sd">@author: Bianka</span>
+<span class="sd">@author: Nicole</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c1">#import mappings</span>
-<span class="c1">#import cost</span>
+<span class="c1">#from graph import *</span>
+<span class="c1">#from mappings import *</span>
+<span class="c1">#from cost import *</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">itertools</span>  <span class="k">as</span> <span class="nn">it</span> 
@@ -80,6 +82,7 @@
 
 <span class="c1">#Auxiliary function</span>
 <div class="viewcode-block" id="pairwise"><a class="viewcode-back" href="../../graph.html#Graph.graph.pairwise">[docs]</a><span class="k">def</span> <span class="nf">pairwise</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; auxiliary function to create pairs&quot;&quot;&quot;</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">tee</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
     <span class="nb">next</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span></div>
@@ -92,10 +95,10 @@
 <span class="sd">    assigns the current label (&#39;curLabel&#39;) and an empty placeholder for the new label (&#39;newLabel&#39;) as attributes to the events of a given variant</span>
 
 <span class="sd">    :param variant: variant given as a list of tuples (eventID, event label)</span>
-<span class="sd">    :return: list of variants with the attributes &#39;curLabel&#39; (previously event label) and &#39;newLabel&#39; (as am empty string)</span>
+<span class="sd">    :return: list of variants with the attributes &#39;curLabel&#39; (previously event label) and &#39;newLabel&#39; (initialized as event label)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">return</span> <span class="p">[(</span><span class="n">a</span><span class="p">,{</span><span class="s1">&#39;curLabel&#39;</span><span class="p">:</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;newLabel&#39;</span><span class="p">:</span><span class="s1">&#39;&#39;</span><span class="p">})</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">]</span></div>
+    <span class="k">return</span> <span class="p">[(</span><span class="n">a</span><span class="p">,{</span><span class="s1">&#39;curLabel&#39;</span><span class="p">:</span><span class="n">b</span><span class="p">,</span> <span class="s1">&#39;newLabel&#39;</span><span class="p">:</span><span class="n">b</span><span class="p">})</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">]</span></div>
 
 
 <span class="c1">#Args: variant as a list of tuples, where variant = [(EventID,&quot;Label&quot;)...])</span>
@@ -153,9 +156,11 @@
 <h3><a href="../../index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1.1 - File Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../horizontalClustering.html">Module 4 - horizontal clustering of variants</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

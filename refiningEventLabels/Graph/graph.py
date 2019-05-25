@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 24 11:04:20 2019
+Created on Sat May 25 12:26:38 2019
 
-@author: Bianka
+@author: Nicole
 """
 
-import mappings
-import cost
+#from graph import *
+#from mappings import *
+#from cost import *
+
 import numpy as np
 import networkx as nx
 import itertools  as it 
@@ -45,6 +47,7 @@ def createEdgeList(edges = [], weight = -1):
 
 #Auxiliary function
 def pairwise(iterable):
+    """ auxiliary function to create pairs"""
     a, b = it.tee(iterable)
     next(b, None)
     return zip(a, b)
@@ -57,10 +60,10 @@ def createNodeListFromVariant(variant = []):
     assigns the current label ('curLabel') and an empty placeholder for the new label ('newLabel') as attributes to the events of a given variant
 
     :param variant: variant given as a list of tuples (eventID, event label)
-    :return: list of variants with the attributes 'curLabel' (previously event label) and 'newLabel' (as am empty string)
+    :return: list of variants with the attributes 'curLabel' (previously event label) and 'newLabel' (initialized as event label)
     """
 
-    return [(a,{'curLabel':b, 'newLabel':''}) for (a,b) in variant]
+    return [(a,{'curLabel':b, 'newLabel':b}) for (a,b) in variant]
 
 
 #Args: variant as a list of tuples, where variant = [(EventID,"Label")...])

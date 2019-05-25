@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 4 - horizontal clustering of variants" href="horizontalClustering.html" />
     <link rel="prev" title="Module 3 - Cost Function" href="cost function.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="horizontalClustering.html" title="Module 4 - horizontal clustering of variants"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="cost function.html" title="Module 3 - Cost Function"
              accesskey="P">previous</a> |</li>
@@ -80,7 +84,8 @@
 <dl class="function">
 <dt id="Graph.graph.pairwise">
 <code class="descclassname">Graph.graph.</code><code class="descname">pairwise</code><span class="sig-paren">(</span><em>iterable</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#pairwise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.pairwise" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>auxiliary function to create pairs</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="Graph.graph.createNodeListFromVariant">
@@ -92,7 +97,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variant</strong> – variant given as a list of tuples (eventID, event label)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of variants with the attributes ‘curLabel’ (previously event label) and ‘newLabel’ (as am empty string)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of variants with the attributes ‘curLabel’ (previously event label) and ‘newLabel’ (initialized as event label)</td>
 </tr>
 </tbody>
 </table>
@@ -166,9 +171,11 @@
 <h3><a href="index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1.1 - File Converter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="horizontalClustering.html">Module 4 - horizontal clustering of variants</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -193,6 +200,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="horizontalClustering.html" title="Module 4 - horizontal clustering of variants"
+             >next</a> |</li>
         <li class="right" >
           <a href="cost function.html" title="Module 3 - Cost Function"
              >previous</a> |</li>

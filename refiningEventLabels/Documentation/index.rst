@@ -13,9 +13,11 @@ The source code is available under: `<https://github.com/NicoleVentsch/Refining-
    :caption: Contents:
    :name: mastertoc
 
+   eventLogConverter
    preprocessing
    cost function
    graph
+   horizontalClustering
 
 
 Indices and tables

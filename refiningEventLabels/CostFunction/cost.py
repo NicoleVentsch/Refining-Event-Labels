@@ -5,7 +5,7 @@ Created on Sun May 19 19:37:12 2019
 @author: Bianka
 """
 
-import mappings
+#from mappings import *
 from itertools import combinations
 from operator import itemgetter
 
