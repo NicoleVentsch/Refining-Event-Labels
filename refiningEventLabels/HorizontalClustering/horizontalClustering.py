@@ -21,17 +21,17 @@ def clusterDetection(threshold):
 
     """
 
-    edges = list(G.edges)
+    edges = list(G.edges(data=True))
+
     # remove the edges above the threshold (and below 0)
-    for edge in edges:
-        if edge[2] > threshold or edge[2] <0:
-            G.remove_edge(edge[0], edge[1])
+    for node1, node2, weight in edges:
+        if weight['weight'] > threshold or weight['weight'] < 0:
+            G.remove_edge(node1, node2)
 
     # get the subgraphs of the graph created this way
-    subgraphNodes= nx.k_edge_subgraphs(G, k=1)
-    subgraphs=[G.subgraph(nodes) for nodes in subgraphNodes]
+    subgraphNodes = nx.k_edge_subgraphs(G, k=1)
+    subgraphs = [G.subgraph(nodes) for nodes in subgraphNodes]
     return subgraphs
-
 
 
 def horizontalRefinement(candidateLabels, graphList):
@@ -46,9 +46,9 @@ def horizontalRefinement(candidateLabels, graphList):
     counter=1
     for subgraph in graphList:
         for label in candidateLabels:
-            for node in list(subgraph.nodes):
-                if node['curLabel'] == label:
-                    node['newLabel'] += counter
+            for node, dict in list(subgraph.nodes(data=True)):
+                if dict['curLabel'] == label:
+                    dict['newLabel'] += str(counter)
         counter += 1
 
     return graphList
