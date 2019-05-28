@@ -25,7 +25,7 @@ def clusterDetection(threshold):
 
     # remove the edges above the threshold (and below 0)
     for node1, node2, weight in edges:
-        if weight['weight'] > threshold or weight['weight'] < 0:
+        if weight['weight'] > threshold or weight['weight'] < -1:
             G.remove_edge(node1, node2)
 
     # get the subgraphs of the graph created this way
