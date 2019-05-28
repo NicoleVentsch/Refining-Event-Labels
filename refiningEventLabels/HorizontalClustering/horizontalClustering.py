@@ -38,7 +38,7 @@ def horizontalRefinement(candidateLabels, graphList):
     """
     Performs horizontal relabelling of event labels within a cluster; each event that belongs to the candidate labels will get a unique new label per cluster
 
-    :param candidateLabels: s list of lsbels that should be refined
+    :param candidateLabels: a list of labels that should be refined
     :param graphList: a list of subgraphs where each subgraph represents a cluster of variants
     :return: s list of refined subgraphs, where the attribute 'newLabel' is changed for each candidate label, such that the event labels are unique per cluster
     """

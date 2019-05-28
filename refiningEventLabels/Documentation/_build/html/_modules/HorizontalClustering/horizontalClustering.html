@@ -56,24 +56,24 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
     <span class="c1"># remove the edges above the threshold (and below 0)</span>
-    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="ow">or</span> <span class="n">edge</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
-            <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">weight</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold</span> <span class="ow">or</span> <span class="n">weight</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">remove_edge</span><span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">)</span>
 
     <span class="c1"># get the subgraphs of the graph created this way</span>
-    <span class="n">subgraphNodes</span><span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">k_edge_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">subgraphs</span><span class="o">=</span><span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="k">for</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">subgraphNodes</span><span class="p">]</span>
+    <span class="n">subgraphNodes</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">k_edge_subgraphs</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">subgraphs</span> <span class="o">=</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="k">for</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">subgraphNodes</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">subgraphs</span></div>
-
 
 
 <div class="viewcode-block" id="horizontalRefinement"><a class="viewcode-back" href="../../horizontalClustering.html#HorizontalClustering.horizontalClustering.horizontalRefinement">[docs]</a><span class="k">def</span> <span class="nf">horizontalRefinement</span><span class="p">(</span><span class="n">candidateLabels</span><span class="p">,</span> <span class="n">graphList</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Performs horizontal relabelling of event labels within a cluster; each event that belongs to the candidate labels will get a unique new label per cluster</span>
 
-<span class="sd">    :param candidateLabels: s list of lsbels that should be refined</span>
+<span class="sd">    :param candidateLabels: a list of labels that should be refined</span>
 <span class="sd">    :param graphList: a list of subgraphs where each subgraph represents a cluster of variants</span>
 <span class="sd">    :return: s list of refined subgraphs, where the attribute &#39;newLabel&#39; is changed for each candidate label, such that the event labels are unique per cluster</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -81,9 +81,9 @@
     <span class="n">counter</span><span class="o">=</span><span class="mi">1</span>
     <span class="k">for</span> <span class="n">subgraph</span> <span class="ow">in</span> <span class="n">graphList</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">candidateLabels</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;curLabel&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">label</span><span class="p">:</span>
-                    <span class="n">node</span><span class="p">[</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">counter</span>
+            <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="nb">dict</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;curLabel&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">label</span><span class="p">:</span>
+                    <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
         <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="n">graphList</span></div>
@@ -113,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../horizontalClustering.html">Module 4 - horizontal clustering of variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../verticalClustering.html">Module 5 - vertical clustering of variants</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

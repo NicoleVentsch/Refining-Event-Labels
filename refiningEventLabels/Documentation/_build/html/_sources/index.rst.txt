@@ -18,6 +18,7 @@ The source code is available under: `<https://github.com/NicoleVentsch/Refining-
    cost function
    graph
    horizontalClustering
+   verticalClustering
 
 
 Indices and tables
