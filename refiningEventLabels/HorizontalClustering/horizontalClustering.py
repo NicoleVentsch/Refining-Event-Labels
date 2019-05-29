@@ -40,7 +40,7 @@ def horizontalRefinement(candidateLabels, graphList):
 
     :param candidateLabels: a list of labels that should be refined
     :param graphList: a list of subgraphs where each subgraph represents a cluster of variants
-    :return: s list of refined subgraphs, where the attribute 'newLabel' is changed for each candidate label, such that the event labels are unique per cluster
+    :return: a list of refined subgraphs, where the attribute 'newLabel' is changed for each candidate label, such that the event labels are unique per cluster
     """
 
     counter=1

@@ -62,6 +62,91 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="VerticalClustering.verticalClustering.inSameVariant">
+<code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">inSameVariant</code><span class="sig-paren">(</span><em>component1</em>, <em>component2</em>, <em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#inSameVariant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.inSameVariant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function to determine if two connected components corresponding to the same label are in the same variant (according to section 5.4 in the paper)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>component1</strong> – first component given as a list of event IDs</li>
+<li><strong>component2</strong> – second component given as a list of event IDs</li>
+<li><strong>variants</strong> – list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">boolean; True if the connected components are in the same variant, False otherwise</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="VerticalClustering.verticalClustering.ComponentsInSameVariant">
+<code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">ComponentsInSameVariant</code><span class="sig-paren">(</span><em>connectedComponents</em>, <em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#ComponentsInSameVariant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.ComponentsInSameVariant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the connected Components in the same variants based on a list of connected components</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>connectedComponents</strong> – a list of the connected components that consists of lists [label, event IDs]</li>
+<li><strong>variants</strong> – list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of the connected components in the same variant that consists of lists [label, event IDs]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="VerticalClustering.verticalClustering.getPosition">
+<code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">getPosition</code><span class="sig-paren">(</span><em>event</em>, <em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#getPosition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.getPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary function to determine the position of an event given its event ID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>event</strong> – event ID of the event we need the position of</li>
+<li><strong>variants</strong> – list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">integer representing the position of the event in its corresponding variant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="VerticalClustering.verticalClustering.getAveragePositions">
+<code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">getAveragePositions</code><span class="sig-paren">(</span><em>connectedComponents</em>, <em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#getAveragePositions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.getAveragePositions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gives the average positions in the respective variants for each connected component and sorts the components according to their average position</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>connectedComponents</strong> – a list of the connected components that consists of lists [label, event IDs]</li>
+<li><strong>variants</strong> – variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a sorted list of average positions of the connected components, i.e. a list of sorted lists [label, [average posotion component 1, average position component 2,…]]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="VerticalClustering.verticalClustering.getMaxSizes">
 <code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">getMaxSizes</code><span class="sig-paren">(</span><em>connectedComponents</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#getMaxSizes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.getMaxSizes" title="Permalink to this definition">¶</a></dt>
 <dd><p>gives the maximal sizes of the components for each label with respect to the number of events</p>
@@ -69,9 +154,32 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connectedComponents</strong> – list of components that consider of lists [label, event IDs]</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connectedComponents</strong> – list of list of average positions of the connected components, i.e. a list of sorted lists [label, [average posotion component 1, average position component 2,…]]</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the maximal size of the components for each label</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="VerticalClustering.verticalClustering.verticalRefinement">
+<code class="descclassname">VerticalClustering.verticalClustering.</code><code class="descname">verticalRefinement</code><span class="sig-paren">(</span><em>graphList</em>, <em>candidateLabels</em>, <em>variants</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/VerticalClustering/verticalClustering.html#verticalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#VerticalClustering.verticalClustering.verticalRefinement" title="Permalink to this definition">¶</a></dt>
+<dd><p>performs the vertical refinement of given candidate labels for a given graph list based on given variants and a threshold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>graphList</strong> – a list of graphs representing each cluster</li>
+<li><strong>candidateLabels</strong> – a list of labels that should be refined</li>
+<li><strong>variants</strong> – list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</li>
+<li><strong>threshold</strong> – the unfolding threshold the algorithm should use</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of refined subgraphs, where the attribute ‘newLabel’ is changed for each candidate label according to the vertical clustering algorithm</p>
+</td>
 </tr>
 </tbody>
 </table>

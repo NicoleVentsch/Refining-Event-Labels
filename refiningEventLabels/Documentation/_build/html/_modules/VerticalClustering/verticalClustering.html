@@ -90,11 +90,104 @@
     <span class="k">return</span> <span class="n">connectedComponents</span></div>
 
 
+<div class="viewcode-block" id="inSameVariant"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.inSameVariant">[docs]</a><span class="k">def</span> <span class="nf">inSameVariant</span><span class="p">(</span><span class="n">component1</span><span class="p">,</span> <span class="n">component2</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Auxiliary function to determine if two connected components corresponding to the same label are in the same variant (according to section 5.4 in the paper)</span>
+
+<span class="sd">    :param component1: first component given as a list of event IDs</span>
+<span class="sd">    :param component2: second component given as a list of event IDs</span>
+<span class="sd">    :param variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</span>
+<span class="sd">    :returns: boolean; True if the connected components are in the same variant, False otherwise</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">event1</span> <span class="ow">in</span> <span class="n">component1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">event2</span> <span class="ow">in</span> <span class="n">component2</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
+                <span class="n">contains1</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">contains2</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">for</span> <span class="n">eventID</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">event1</span> <span class="o">==</span> <span class="n">eventID</span><span class="p">:</span>
+                        <span class="n">contains1</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">if</span> <span class="n">event2</span> <span class="o">==</span> <span class="n">eventID</span><span class="p">:</span>
+                        <span class="n">contains2</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">if</span> <span class="n">contains1</span> <span class="ow">and</span> <span class="n">contains2</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span></div>
+
+<div class="viewcode-block" id="ComponentsInSameVariant"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.ComponentsInSameVariant">[docs]</a><span class="k">def</span> <span class="nf">ComponentsInSameVariant</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gives the connected Components in the same variants based on a list of connected components</span>
+
+<span class="sd">    :param connectedComponents: a list of the connected components that consists of lists [label, event IDs]</span>
+<span class="sd">    :param variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</span>
+<span class="sd">    :return: a list of the connected components in the same variant that consists of lists [label, event IDs]</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">newConnectedComponents</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">connectedComponents</span><span class="p">:</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">sameVariant</span><span class="o">=</span><span class="n">component</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">noMatch</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">sameVariant</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">inSameVariant</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sameVariant</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+                <span class="n">noMatch</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">newConnectedComponents</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">sameVariant</span><span class="p">])</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">noMatch</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">newConnectedComponents</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ComponentsInSameVariant</span><span class="p">([[</span><span class="n">label</span><span class="p">,</span><span class="n">noMatch</span><span class="p">]],</span> <span class="n">variants</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">noMatch</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">newConnectedComponents</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">noMatch</span><span class="p">])</span>
+
+
+    <span class="k">return</span> <span class="n">newConnectedComponents</span></div>
+
+<div class="viewcode-block" id="getPosition"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.getPosition">[docs]</a><span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Auxiliary function to determine the position of an event given its event ID</span>
+
+<span class="sd">    :param event: event ID of the event we need the position of</span>
+<span class="sd">    :param variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</span>
+<span class="sd">    :returns: integer representing the position of the event in its corresponding variant</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">variant</span> <span class="ow">in</span> <span class="n">variants</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">eventID</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">variant</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">eventID</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">event</span> <span class="o">-</span> <span class="n">variant</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="getAveragePositions"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.getAveragePositions">[docs]</a><span class="k">def</span> <span class="nf">getAveragePositions</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">variants</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gives the average positions in the respective variants for each connected component and sorts the components according to their average position</span>
+
+<span class="sd">    :param connectedComponents: a list of the connected components that consists of lists [label, event IDs]</span>
+<span class="sd">    :param variants: variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</span>
+<span class="sd">    :return: a sorted list of average positions of the connected components, i.e. a list of sorted lists [label, [average posotion component 1, average position component 2,...]]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">averagePositions</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">Labelcomponents</span> <span class="ow">in</span> <span class="n">connectedComponents</span><span class="p">:</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">Labelcomponents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">components</span><span class="o">=</span><span class="n">Labelcomponents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">averages</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
+            <span class="n">positions</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">component</span><span class="p">:</span>
+                <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">getPosition</span><span class="p">(</span><span class="n">event</span><span class="p">,</span> <span class="n">variants</span><span class="p">))</span>
+            <span class="n">averages</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">component</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">positions</span><span class="p">)))</span>
+
+        <span class="n">averages</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">averages</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">averagePositions</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">averages</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">averagePositions</span></div>
+
+
 <div class="viewcode-block" id="getMaxSizes"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.getMaxSizes">[docs]</a><span class="k">def</span> <span class="nf">getMaxSizes</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    gives the maximal sizes of the components for each label with respect to the number of events</span>
 
-<span class="sd">    :param connectedComponents: list of components that consider of lists [label, event IDs]</span>
+<span class="sd">    :param connectedComponents: list of list of average positions of the connected components, i.e. a list of sorted lists [label, [average posotion component 1, average position component 2,...]]</span>
 <span class="sd">    :return: the maximal size of the components for each label</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -102,14 +195,58 @@
     <span class="k">for</span> <span class="n">label</span><span class="p">,</span><span class="n">components</span> <span class="ow">in</span> <span class="n">connectedComponents</span><span class="p">:</span>
         <span class="n">maxSize</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">component</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">maxSize</span><span class="p">:</span>
-                <span class="n">maxSize</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">maxSize</span><span class="p">:</span>
+                <span class="n">maxSize</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">component</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">label</span><span class="p">,</span> <span class="n">maxSize</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">sizes</span></div>
 
 
-    
-    
+<div class="viewcode-block" id="verticalRefinement"><a class="viewcode-back" href="../../verticalClustering.html#VerticalClustering.verticalClustering.verticalRefinement">[docs]</a><span class="k">def</span> <span class="nf">verticalRefinement</span><span class="p">(</span><span class="n">graphList</span><span class="p">,</span> <span class="n">candidateLabels</span><span class="p">,</span> <span class="n">variants</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    performs the vertical refinement of given candidate labels for a given graph list based on given variants and a threshold</span>
+
+<span class="sd">    :param graphList: a list of graphs representing each cluster</span>
+<span class="sd">    :param candidateLabels: a list of labels that should be refined</span>
+<span class="sd">    :param variants: list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</span>
+<span class="sd">    :param threshold: the unfolding threshold the algorithm should use</span>
+<span class="sd">    :return: a list of refined subgraphs, where the attribute &#39;newLabel&#39; is changed for each candidate label according to the vertical clustering algorithm</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># first, get the connected components</span>
+    <span class="n">connectedComponents</span> <span class="o">=</span> <span class="n">createConnectedComponents</span><span class="p">(</span><span class="n">graphList</span><span class="p">,</span> <span class="n">candidateLabels</span><span class="p">)</span>
+
+    <span class="c1"># then, get the connected components in the same variant</span>
+    <span class="n">sameVariants</span> <span class="o">=</span> <span class="n">ComponentsInSameVariant</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">variants</span><span class="p">)</span>
+
+    <span class="c1"># get the sorted components with their average position</span>
+    <span class="n">averagePositions</span> <span class="o">=</span> <span class="n">getAveragePositions</span><span class="p">(</span><span class="n">sameVariants</span><span class="p">,</span> <span class="n">variants</span><span class="p">)</span>
+
+    <span class="c1"># get the maximal sizes for the connected components in the same variant</span>
+    <span class="n">maxSizes</span> <span class="o">=</span> <span class="n">getMaxSizes</span><span class="p">(</span><span class="n">averagePositions</span><span class="p">)</span>
+
+    <span class="c1"># start the refinement for each set of connected components in the same variant</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">lengthComponents</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">averagePositions</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lengthComponents</span><span class="p">):</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="n">averagePositions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">eventPosition</span> <span class="o">=</span> <span class="n">pairs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">maxSize</span> <span class="o">=</span> <span class="n">maxSizes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">eventPosition</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">eventPosition</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="o">*</span> <span class="n">maxSize</span><span class="p">:</span>
+                <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">for</span> <span class="n">subgraph</span> <span class="ow">in</span> <span class="n">graphList</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="nb">dict</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
+                    <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">eventPosition</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
+
+                        <span class="k">if</span> <span class="n">node</span> <span class="o">==</span> <span class="n">event</span><span class="p">:</span>
+                            <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">graphList</span></div>
+
     
     
 
