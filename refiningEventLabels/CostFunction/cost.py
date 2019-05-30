@@ -8,7 +8,7 @@ Created on Sun May 19 19:37:12 2019
 #from mappings import *
 from itertools import combinations
 from operator import itemgetter
-
+import mappings as mp
 
 def costStructure(variant1, variant2, mapping):
 
@@ -81,7 +81,7 @@ def costNoMatch(variant1, variant2, mapping):
     :return: the cost for the non-matched labels
 
     """
-    mapped = set(mappings.common_labels(variant1, variant2)) #set of labels that were mapped
+    mapped = set(mp.common_labels(variant1, variant2)) #set of labels that were mapped
     unmapped1 = set(map(itemgetter(1), variant1)).difference(mapped) #set of unmapped labels in variant1
     unmapped2 = set(map(itemgetter(1), variant2)).difference(mapped) #set of unmapped labels in variant2
     firstId1 = variant1[0][0]
@@ -93,12 +93,12 @@ def costNoMatch(variant1, variant2, mapping):
     np2 = 0
     ns2 = 0
     for unmapped_label1 in unmapped1:
-        positions1 = [x-firstId1 for x in mappings.get_positions_label(unmapped_label1, variant1)]
+        positions1 = [x-firstId1 for x in mp.get_positions_label(unmapped_label1, variant1)]
         for p1 in positions1:
             np1 += len(pred1[p1])
             ns1 += len(succ1[p1])
     for unmapped_label2 in unmapped2:
-        positions2 = [x-firstId2 for x in mappings.get_positions_label(unmapped_label2, variant2)]
+        positions2 = [x-firstId2 for x in mp.get_positions_label(unmapped_label2, variant2)]
         for p2 in positions2:
             np1 += len(pred2[p2])
             ns1 += len(succ2[p2])
@@ -153,7 +153,7 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
 
 
-def optimalMapping(variant1, variant2):
+def optimalMapping(variant1, variant2, matrixx, wm, ws, wn):
 
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
@@ -162,17 +162,19 @@ def optimalMapping(variant1, variant2):
     :param variant2: the second variant as a list of tuples (eventID, event label)
     :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
-    possible_mappings = mappings.possibleMappings(variant1, variant2)
-    if mappings != []:
+    #pos_variant1 = 
+    #pos_variant2 =
+    possible_mappings = mp.possibleMappings(variant1, variant2)
+    if possible_mappings != []:
         best_mapping = possible_mappings[0]
-        cost_best = costMapping(variant1,variant2,best_mapping)
+        cost_best = costMapping(wm,wn,ws,variant1,variant2,best_mapping)
         for mapping in possible_mappings:
-            cost_new = costMapping(variant1,variant2,mapping)
+            cost_new = costMapping(wm,wn,ws,variant1,variant2,mapping)
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-        C[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
-        C[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
+        #matrixx[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
+        #matrixx[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
     return best_mapping, cost_best
 
 

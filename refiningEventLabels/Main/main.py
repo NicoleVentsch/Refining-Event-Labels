@@ -39,24 +39,24 @@ C = C/maxElement #each cost is normalized
 G = graph.createGraph(variants)
 
 #add edges corresponding to costs
-for pair in all_pairs:
-    
-    best_mapping = cost.optimalMapping(pair[0],pair[1])[0]
-    best_cost = cost.optimalMapping(pair[0],pair[1])[1]
-    
-    firstID1 = pair[0][0][0]
-    firstID2 = pair[1][0][0]
-    index_variant1 = variants.index(pair[0])
-    index_variant2 = variants.index(pair[1])
-    
-    for matched_pair in best_mapping:
-        node1 = pair[0][matched_pair[0]-firstID1]
-        node2 = pair[1][matched_pair[1]-firstID2]      
-        label = pair[0][matched_pair[0]-firstID1][1]
-        if label in candidates:
-            G.add_edge(node1, node2, weight = C[index_variant1][index_variant2])
-        else :
-            G.add_edge(node1, node2, weight = 0)
+#for pair in all_pairs:
+#    
+#    best_mapping = cost.optimalMapping(pair[0],pair[1])[0]
+#    best_cost = cost.optimalMapping(pair[0],pair[1])[1]
+#    
+#    firstID1 = pair[0][0][0]
+#    firstID2 = pair[1][0][0]
+#    index_variant1 = variants.index(pair[0])
+#    index_variant2 = variants.index(pair[1])
+#    
+#    for matched_pair in best_mapping:
+#        node1 = pair[0][matched_pair[0]-firstID1]
+#        node2 = pair[1][matched_pair[1]-firstID2]      
+#        label = pair[0][matched_pair[0]-firstID1][1]
+#        if label in candidates:
+#            G.add_edge(node1, node2, weight = C[index_variant1][index_variant2])
+#        else :
+#            G.add_edge(node1, node2, weight = 0)
             
             
             
