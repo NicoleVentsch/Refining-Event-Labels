@@ -1,1 +1,1 @@
-from VerticalClustering.verticalClustering import *
+from refiningEventLabels.lib.verticalClustering.verticalClustering import *

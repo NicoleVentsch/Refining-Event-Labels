@@ -1,1 +1,1 @@
-from HorizontalClustering.horizontalClustering import *
+from refiningEventLabels.lib.horizontalClustering.horizontalClustering import *
