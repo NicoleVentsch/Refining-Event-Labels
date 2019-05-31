@@ -1,7 +1,35 @@
+import glob
+import os
+
 class FileStore():
 
     def __init__(self, config):
-        self.__FileStoreConfig = config
+        self.__fileStoreConfig = config
+        self.__files = {}
+        self.checkDir()
+
+    def checkDir(self):
+        self._getFiles()
+        self._checkDir()
+
+
+    def _getFiles(self):
+        self.__files = glob.glob(os.path.join(self.__fileStoreConfig.destinationFolder, "*"))
+        self.__files = filter(os.path.isfile, self.__files)
+        self.__files = [os.path.join(self.__fileStoreConfig.destinationFolder, f) for f in self.__files]
+        self.__files = self.__files.sort(key=lambda x: os.path.getmtime(x))
+
+
+    def _checkDir(self):
+        numberToManyFiles = len(self.__files) - self.__fileStoreConfig.numberFiles
+        self._delteFiles(numberToManyFiles)
+
+
+    def _delteFiles(self, numberFiles):
+         while numberFiles > 0:
+            os.remove(self.__files[len(self.__files) - 1])
+            self.__files[-1]
+            numberFiles -= 1
 
 
 class FileStoreConfig():
