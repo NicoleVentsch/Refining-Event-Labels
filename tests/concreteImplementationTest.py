@@ -1,10 +1,10 @@
 import unittest
 import os
 import glob
-from refiningEventLabels.eventLogConverter import FileConverter
-from refiningEventLabels.eventLogConverter import FileConverterFactory, FileCreatorFactory
-from refiningEventLabels.eventLogConverter import FileUtility
-from refiningEventLabels.eventLogConverter import XESFileCreator
+from refiningEventLabels.lib.eventLogConverter import FileConverter
+from refiningEventLabels.lib.eventLogConverter import FileConverterFactory, FileCreatorFactory
+from refiningEventLabels.lib.eventLogConverter import FileUtility
+from refiningEventLabels.lib.eventLogConverter import XESFileCreator
 from pm4py.objects.log.util import sampling, sorting
 
 class TestFileConverterFactory(unittest.TestCase):
