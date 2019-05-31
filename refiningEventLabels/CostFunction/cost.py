@@ -153,7 +153,7 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
 
 
-def optimalMapping(variant1, variant2, matrixx, wm, ws, wn):
+def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn):
 
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
@@ -162,19 +162,19 @@ def optimalMapping(variant1, variant2, matrixx, wm, ws, wn):
     :param variant2: the second variant as a list of tuples (eventID, event label)
     :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
-    #pos_variant1 = 
-    #pos_variant2 =
+    pos_variant1 = variants.index(variant1)
+    pos_variant2 = variants.index(variant2)
     possible_mappings = mp.possibleMappings(variant1, variant2)
     if possible_mappings != []:
         best_mapping = possible_mappings[0]
-        cost_best = costMapping(wm,wn,ws,variant1,variant2,best_mapping)
+        cost_best = costMapping(wm,ws,wn,variant1,variant2,best_mapping)
         for mapping in possible_mappings:
-            cost_new = costMapping(wm,wn,ws,variant1,variant2,mapping)
+            cost_new = costMapping(wm,ws,wn,variant1,variant2,mapping)
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-        #matrixx[pos_variant1, pos_variant2] = cost_best #will be applied after definition of C in main
-        #matrixx[pos_variant2, pos_variant1] = cost_best #will be applied after definition of C in main
+        matrixx[pos_variant1, pos_variant2] = cost_best #entry ij in matrix updated with best cost
+        matrixx[pos_variant2, pos_variant1] = cost_best #entry ji in matrix updated with best cost
     return best_mapping, cost_best
 
 
