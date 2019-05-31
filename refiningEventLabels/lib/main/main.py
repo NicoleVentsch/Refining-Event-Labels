@@ -4,10 +4,9 @@ Created on Fri May 24 11:55:18 2019
 
 @author: Bianka
 """
-
-import preprocessing as pre
-import mappings as mp
-import cost
+import refiningEventLabels.lib.preprocessingLog.preprocessing as pre
+import refiningEventLabels.lib.costFunction.mappings as mp
+import refiningEventLabels.lib.costFunction.cost as cost
 import graph
 import numpy as np
 from itertools import combinations
