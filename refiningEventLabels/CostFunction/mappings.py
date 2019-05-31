@@ -6,6 +6,7 @@ Created on Fri May 24 10:25:10 2019
 """
 
 import itertools  as it 
+from operator import itemgetter
 
 
 def createEventIDs(variants=[]):
@@ -85,6 +86,24 @@ def possibleMappings(variant1, variant2):
     return [set(combi) for combi in it.combinations(matches, n)
                         if len(set(it.chain.from_iterable(combi))) == (2*n)]
 
+#Args: set of candidate labels for refinement, list of all trace variants in event log
+#Returns: a list with all event IDs whose label is in the candidate set, we use this later for edge creation in the graph
+def positions_of_candidates(candidates, variants):
+    """
+    gives a list of all IDs referring to some candidate label
+
+    :param candidates: set of candidate labels for refinement chosen by the user
+    :param variants: list of all trace variants in event log where each label has unique ID
+    :return: a list with all event IDs whose label is in the candidate set
+    """
+    positions_of_candidates = []
+    for variant in variants:
+        labels = set(map(itemgetter(1), variant))
+        for label in labels:
+            if label in candidates:
+                positions = get_positions_label(label, variant)
+                positions_of_candidates.extend(positions)
+    return positions_of_candidates
 
 #Args: variant1, variant2 as a list of tuples from createEventIDs(variants)
 #return for each common label, a list of possible matchings

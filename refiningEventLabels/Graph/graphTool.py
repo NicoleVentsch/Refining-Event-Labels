@@ -22,12 +22,20 @@ class graphTool:
         return [(a,b,{'weight': weight}) for (a,b) in edges]
     
     
-    def __pairwise(self, iterable):
-        """ auxiliary function to create pairs"""
-        a, b = it.tee(iterable)
-        next(b, None)
-        return zip(a, b)
+#    def __pairwise(self, iterable):
+#        """ auxiliary function to create pairs"""
+#        a, b = it.tee(iterable)
+#        next(b, None)
+#        return zip(a, b)
     
+    #Auxiliary function
+    def pairwise(variant_nodes):
+        """ auxiliary function to create pairs"""
+        list_pairs = []
+        l = len(variant_nodes)
+        for i in range(l-1):
+            list_pairs.append((variant_nodes[i],variant_nodes[i+1]))
+        return list_pairs
 
     def __createNodeListFromVariant(self, variant = []):
         """
@@ -48,8 +56,8 @@ class graphTool:
         :param weight: a weight
         :return: a list of edges together with their weight
         """
-        edges,_ = zip(*variant)
-        return self.createEdgeList(self.__pairwise(edges), weight)
+        nodes,_ = zip(*variant)
+        return self.createEdgeList(self.__pairwise(nodes), weight)
     
     
     def createGraphFromVariants(self, variants = []):
@@ -64,15 +72,40 @@ class graphTool:
     
 
 
-    def addOptimalMapping(self, optimalMapping = [], normalizedCost = -1):
+#    def addOptimalMapping(self, optimalMapping = [], normalizedCost = -1):
+#        """
+#        updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
+#    
+#        :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
+#        :param normalizedCost: the cost of the mapping
+#        """
+#        self.G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))
+    
+    #Args: list containing all best mappings, maximalCost for normalization
+    #Returns: updates the graph by adding edges between mapped pairs with corresponding cost
+    
+
+    def addOptimalMapping(self, bestMappingsList, maxCost, candidate_positions):
         """
         updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
-    
-        :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
-        :param normalizedCost: the cost of the mapping
-        """
-        self.G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))
         
+        :param bestMappingsList:  list containing all best mappings, list has length number of (unordered) pairs of variants 
+        :param normalizedCost: the maximal cost out of all best mappings which we use for normalization of the costs
+        :param: candidate_positions: the list of all positions referring to some candidate label
+        """ 
+        for mapp in bestMappingsList:
+            normalized_cost = mapp[1]/maxCost
+            mapped_pairs = mapp[0]
+            candidate_pairs = []
+            non_candidate_pairs = []
+            for (x,y) in mapped_pairs:
+                if x in candidate_positions:
+                    candidate_pairs.append((x,y))
+                else:
+                    non_candidate_pairs.append((x,y))
+            self.G.add_edges_from(self.createEdgeList(candidate_pairs, normalized_cost))
+            self.G.add_edges_from(self.createEdgeList(non_candidate_pairs, -1)) #cost -1 for pairs of non candidate labels
+
         
     def clusterDetection(self, customParams):
         """

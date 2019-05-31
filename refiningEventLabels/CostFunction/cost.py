@@ -153,7 +153,7 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
 
 
-def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn):
+def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn, bestMappings):
 
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
@@ -173,8 +173,9 @@ def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn):
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-        matrixx[pos_variant1, pos_variant2] = cost_best #entry ij in matrix updated with best cost
-        matrixx[pos_variant2, pos_variant1] = cost_best #entry ji in matrix updated with best cost
+    matrixx[pos_variant1, pos_variant2] = cost_best #entry ij in matrix updated with best cost
+    matrixx[pos_variant2, pos_variant1] = cost_best #entry ji in matrix updated with best cost
+    bestMappings.append((best_mapping,cost_best))
     return best_mapping, cost_best
 
 

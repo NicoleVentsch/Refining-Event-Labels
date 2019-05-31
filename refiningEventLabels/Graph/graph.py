@@ -46,12 +46,20 @@ def createEdgeList(edges = [], weight = -1):
 
 
 #Auxiliary function
-def pairwise(iterable):
-    """ auxiliary function to create pairs"""
-    a, b = it.tee(iterable)
-    next(b, None)
-    return zip(a, b)
+#def pairwise(iterable):
+#    """ auxiliary function to create pairs"""
+#    a, b = it.tee(iterable)
+#    next(b, None)
+#    return zip(a, b)
 
+#Auxiliary function
+def pairwise(variant_nodes):
+    """ auxiliary function to create pairs"""
+    list_pairs = []
+    l = len(variant_nodes)
+    for i in range(l-1):
+        list_pairs.append((variant_nodes[i],variant_nodes[i+1]))
+    return list_pairs
 
 #Args: variant as a list of tuples, where variant = [(EventID,"Label")...]
 #Returns: list of variant  with attributes 'curLabel' and 'newLabel
@@ -76,8 +84,8 @@ def createEdgeListFromVariant(variant = [], weight = -1):
     :param weight: a weight
     :return: a list of edges together with their weight
     """
-    edges,_ = zip(*variant)
-    return createEdgeList(pairwise(edges), weight)
+    nodes,_ = zip(*variant)
+    return createEdgeList(pairwise(nodes), weight)
 
 
 #Args: list of variants, where variants [[(EvenID,"Label"),(...)],[...]]
@@ -95,16 +103,39 @@ def createGraphFromVariants(variants = []):
 
 #Args: optimal mapping as a list, normalized cost as floating point
 #Returns: updates the graph by adding edges from the optimal mapping
-def addOptimalMapping(optimalMapping = [], normalizedCost = -1):
+#def addOptimalMapping(optimalMapping = [], normalizedCost = -1):
+#    """
+#    updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
+#
+#    :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
+#    :param normalizedCost: the cost of the mapping
+#    """
+#    G.add_edges_from(createEdgeList(optimalMapping , normalizedCost))
+#Question here, should we add those edges which are not candidate labels with weight 0?    
+    
+
+#Args: list containing all best mappings, maximalCost for normalization
+#Returns: updates the graph by adding edges between mapped pairs with corresponding cost
+def addOptimalMapping(bestMappingsList, maxCost, candidate_positions):
     """
     updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
-
-    :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
-    :param normalizedCost: the cost of the mapping
+    
+    :param bestMappingsList:  list containing all best mappings, list has length number of (unordered) pairs of variants 
+    :param normalizedCost: the maximal cost out of all best mappings which we use for normalization of the costs
+    :param: candidate_positions: the list of all positions referring to some candidate label
     """
-    G.add_edges_from(createEdgeList(optimalMapping , normalizedCost))
-#Question here, should we add those edges which are not candidate labels with weight 0?    
-
+    for mapp in bestMappingsList:
+        normalized_cost = mapp[1]/maxCost
+        mapped_pairs = mapp[0]
+        candidate_pairs = []
+        non_candidate_pairs = []
+        for (x,y) in mapped_pairs:
+            if x in candidate_positions:
+                candidate_pairs.append((x,y))
+            else:
+                non_candidate_pairs.append((x,y))
+        G.add_edges_from(createEdgeList(candidate_pairs, normalized_cost))
+        G.add_edges_from(createEdgeList(non_candidate_pairs, -1)) #cost -1 for pairs of non candidate labels
 
     
     
