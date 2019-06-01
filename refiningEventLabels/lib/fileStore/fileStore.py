@@ -12,7 +12,7 @@ class FileStore():
         self._getFiles()
         self._removeOldestFiles()
 
-    def saveFileInDir(self, currentFilePath):
+    def storeFile(self, currentFilePath):
         fileName = os.path.basename(currentFilePath)
         newFilePath = os.path.join(self.__fileStoreConfig.destinationFolder, fileName)
         os.rename(currentFilePath, newFilePath)

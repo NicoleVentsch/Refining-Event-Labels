@@ -39,7 +39,7 @@ class TestFileConverterFactory(unittest.TestCase):
         createdFiles = [name for name in os.listdir(tmpFolder) if os.path.isfile(os.path.join(tmpFolder, name))]
         createdFiles.sort(reverse = True)
         for file in createdFiles:
-            fileStore.saveFileInDir(os.path.join(tmpFolder,file))
+            fileStore.storeFile(os.path.join(tmpFolder,file))
         
         createdFilesTmpFolder = [name for name in os.listdir(tmpFolder) if os.path.isfile(os.path.join(tmpFolder, name))]
         self.assertEqual(0, len(createdFilesTmpFolder))
