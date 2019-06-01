@@ -60,3 +60,5 @@ tests/__pycache__/concreteImplementationTest\.cpython-36\.pyc
 tests/Ressources/running-example\.csv
 
 tests/Ressources/running-example\.xes
+
+*.pyc
