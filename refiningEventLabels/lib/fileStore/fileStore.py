@@ -12,14 +12,11 @@ class FileStore():
         self._getFiles()
         self._checkDir()
 
-
     def _getFiles(self):
         self.__files = glob.glob(os.path.join(self.__fileStoreConfig.destinationFolder, "*"))
         self.__files = filter(os.path.isfile, self.__files)
         self.__files = [os.path.join(self.__fileStoreConfig.destinationFolder, f) for f in self.__files]
         self.__files.sort(key=lambda x: os.path.getmtime(x))
-
-
 
     def _checkDir(self):
         numberToManyFiles = len(self.__files) - self.__fileStoreConfig.numberFiles
