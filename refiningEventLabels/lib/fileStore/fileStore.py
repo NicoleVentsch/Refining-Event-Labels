@@ -17,7 +17,8 @@ class FileStore():
         self.__files = glob.glob(os.path.join(self.__fileStoreConfig.destinationFolder, "*"))
         self.__files = filter(os.path.isfile, self.__files)
         self.__files = [os.path.join(self.__fileStoreConfig.destinationFolder, f) for f in self.__files]
-        self.__files = self.__files.sort(key=lambda x: os.path.getmtime(x))
+        self.__files.sort(key=lambda x: os.path.getmtime(x))
+
 
 
     def _checkDir(self):
@@ -27,8 +28,8 @@ class FileStore():
 
     def _delteFiles(self, numberFiles):
          while numberFiles > 0:
-            os.remove(self.__files[len(self.__files) - 1])
-            self.__files[-1]
+            os.remove(self.__files[-1])
+            del self.__files[-1]
             numberFiles -= 1
 
 
