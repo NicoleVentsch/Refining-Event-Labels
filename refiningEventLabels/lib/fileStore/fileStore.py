@@ -40,6 +40,13 @@ class FileStore():
     def Files(self):
         return self.__files
 
+    @property
+    def FilesInfo(self):
+        fileInfos = []
+        for file in self.__files:
+            fileInfos.append({"name": file, "tstamp": os.path.getmtime(file) })
+        return fileInfos
+
 
 
     
