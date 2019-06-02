@@ -37,11 +37,15 @@ class FileStore():
             numberFiles -= 1
     
     @property
-    def Files(self):
+    def files(self):
         return self.__files
 
     @property
-    def FilesInfo(self):
+    def lastFile(self):
+        return self.__files[0]
+
+    @property
+    def filesInfo(self):
         fileInfos = []
         for file in self.__files:
             fileInfos.append({"name": file, "tstamp": os.path.getmtime(file) })
