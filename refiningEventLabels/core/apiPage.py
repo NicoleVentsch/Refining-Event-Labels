@@ -1,7 +1,7 @@
 from flask import Flask
 from abc import ABC, abstractmethod
 
-class APIPage():
+class APIPage(ABC):
 
     def __init__(self):
         self._methods = []
