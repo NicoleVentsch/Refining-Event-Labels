@@ -4,6 +4,7 @@ from refiningEventLabels.lib.fileStore import FileStore, FileStoreConfig
 
 import json
 import os
+import glob
 
 class FileUpload(APIPage):
     
@@ -25,9 +26,17 @@ class FileUpload(APIPage):
         msg = self._validFileUpload(files)
         if msg != "":
             return msg
-        self.__fileStore.storeFile(files[self._requiredFileName].filename)
-        #eventLog = self._fileConverter.getEventLogFromFile(self.__fileStore.lastFile)
-        return "File Uploaded"
+        file = files[self._requiredFileName]
+        tmpFilePath = os.path.join(os.path.dirname(__file__), "tmp", file.filename)
+        file.save(tmpFilePath)
+        self.__fileStore.storeFile(tmpFilePath)
+        self.__delteFilesOfFolder(os.path.join(os.path.dirname(__file__), "tmp", "*"))
+        return self._GET(request)
+
+    def __delteFilesOfFolder(self, path):
+        files = glob.glob(path)
+        for f in files:
+            os.remove(f)
         
     
     def _DELETE(self, request):
