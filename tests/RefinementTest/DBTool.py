@@ -44,6 +44,8 @@ class DBTool:
         vID = self.__evt.iloc[eID]['VariantID']    
         return self.getVariantByID(vID)
     
+    def getTracesByVariantID(self, vID):
+        return self.__vt.iloc[vID]['Traces']
     
     def getEventByID(self, eID):  
         return self.__evt.iloc[eID]
