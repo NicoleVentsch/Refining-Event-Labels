@@ -1,10 +1,10 @@
 
 class customParameters:
     
-    def __init__(self, candidateLabels, horizontalTreshold, verticalTreshold, weightStructure, weightMatch, weightNoMatch):
+    def __init__(self, candidateLabels, horizontalThreshold, verticalThreshold, weightStructure, weightMatch, weightNoMatch):
         self.__candidateLabels = candidateLabels
-        self.__horizontalTreshold = horizontalTreshold
-        self.__verticalTreshold = verticalTreshold
+        self.__horizontalThreshold = horizontalThreshold
+        self.__verticalThreshold = verticalThreshold
         self.__weightStructure = weightStructure
         self.__weightMatch = weightMatch
         self.__weightNoMatch = weightNoMatch
@@ -12,11 +12,11 @@ class customParameters:
     def getCandidateLabels(self):
         return self.__candidateLabels
     
-    def getHorizontalTreshold(self):
-        return self.__horizontalTreshold
+    def getHorizontalThreshold(self):
+        return self.__horizontalThreshold
     
-    def getVerticalTreshold(self):
-        return self.__verticalTreshold
+    def getVerticalThreshold(self):
+        return self.__verticalThreshold
     
     def getStructureWeight(self):
         return self.__weightStructure
@@ -30,11 +30,11 @@ class customParameters:
     def setcandidateLabels(self, candidateLabels):
         self.__candidateLabels = candidateLabels
     
-    def setHorizontalTreshold(self, horizontalTreshold):
-        self.__horizontalTreshold = horizontalTreshold
+    def setHorizontalThreshold(self, horizontalThreshold):
+        self.__horizontalThreshold = horizontalThreshold
     
-    def setVerticalTreshold(self, verticalTreshold):
-        self.__verticalTreshold = verticalTreshold
+    def setVerticalThreshold(self, verticalThreshold):
+        self.__verticalThreshold = verticalThreshold
     
     def setStructureWeight(self, weightStructure):
         self.__weightStructure = weightStructure

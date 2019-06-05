@@ -83,7 +83,7 @@ class graphTool:
     
         """
         
-        horizontalTreshold = customParams.getHorizontalTreshold()
+        horizontalTreshold = customParams.getHorizontalThreshold()
 
         filteredEdges = [(u, v) for (u, v, d) in self.__G.edges(data=True) if (d['weight'] > horizontalTreshold and d['weight'] != -1)]
         self.__G.remove_edges_from(filteredEdges)
