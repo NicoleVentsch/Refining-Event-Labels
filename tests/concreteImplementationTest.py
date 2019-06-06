@@ -31,7 +31,7 @@ class FileUtilityTest(unittest.TestCase):
 
     def testXESConversion(self):
         dirname = os.path.dirname(__file__)
-        rootDir = os.path.join(dirname, 'TestFiles')
+        rootDir = os.path.join(dirname, 'TestFiles', 'ImportExport')
         xesPath = os.path.join(dirname, 'Ressources/example.xes')
 
         fileCreator = FileUtility(rootDir)
@@ -41,7 +41,7 @@ class FileUtilityTest(unittest.TestCase):
 
     def testCSVConversion(self):
         dirname = os.path.dirname(__file__)
-        rootDir = os.path.join(dirname, 'TestFiles')
+        rootDir = os.path.join(dirname, 'TestFiles', 'ImportExport')
         csvPath = os.path.join(dirname, 'Ressources/example.csv')
 
         fileCreator = FileUtility(rootDir)
@@ -69,7 +69,7 @@ class FileCreatorTest(unittest.TestCase):
         fileCreators = self.getFileCreators()
         dirname = os.path.dirname(__file__)
         xesPath = os.path.join(dirname, 'Ressources/example.xes')
-        destinationPath = os.path.join(dirname, 'TestFiles' )
+        destinationPath = os.path.join(dirname, 'TestFiles', 'ImportExport')
         fileCreator = FileUtility(xesPath)
         eventLog = fileCreator.getEventLogFromFile(xesPath)
         for creatorInfo in fileCreators: 
@@ -83,7 +83,7 @@ class FileCreatorTest(unittest.TestCase):
         
     def _deletingTestFiles(self):
         dirname = os.path.dirname(__file__)
-        destinationPath = os.path.join(dirname, 'TestFiles')
+        destinationPath = os.path.join(dirname, 'TestFiles', 'ImportExport')
         files = glob.glob(os.path.join(destinationPath, '*'))
         for f in files:
             os.remove(f)
