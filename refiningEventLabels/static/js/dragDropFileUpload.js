@@ -1,14 +1,12 @@
 + function($) {
     'use strict';
 
-    // UPLOAD CLASS DEFINITION
-    // ======================
-
     var dropZone = document.getElementById('drop-zone');
     var uploadForm = document.getElementById('js-upload-form');
 
     var startUpload = function(files) {
         console.log(files)
+        $('#js-upload-files').add(files)
     }
 
     uploadForm.addEventListener('submit', function(e) {

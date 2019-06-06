@@ -12,17 +12,10 @@ def startup():
     startpage = StartPage()
     return startpage.execute(request)
 
-<<<<<<< HEAD
 @app.route('/fileManager')
 def fileManger():
     fileUploaderConfig = FileStoreConfig(
         os.path.join(os.path.dirname(__file__), 'api', 'uploadedFiles '),
-=======
-@app.route('/fileManager', methods = ['POST', 'GET'])
-def fileManger():
-    fileUploaderConfig = FileStoreConfig(
-        os.path.join(os.path.dirname(__file__), 'api', 'uploadedFiles'),
->>>>>>> f3667f908a6380302f380704bda23c5a17221b8f
         5,
         ['xes', 'csv']
     )
