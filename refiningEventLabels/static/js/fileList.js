@@ -4,11 +4,17 @@ class FileList {
         this._files = [];
     }
 
-    _getFilesHtml() {
+    _getFilesHtml(download = true) {
         var htmlMarkup = ""
         for (var i = 0; i < this._files.length; i++) {
             var nextFile = this._files[i];
-            htmlMarkup += `<li id="uploadFile${nextFile.tstamp}" class="list-group-item list-group-item-action">${nextFile.name}</li>`
+            
+            htmlMarkup += `<li id="uploadFile${nextFile.tstamp}" class="list-group-item list-group-item-action">`
+            if (download)
+                htmlMarkup +=  `<a href="fileDownload?name=${nextFile.name}" >${nextFile.name}</a>`
+            else 
+                htmlMarkup += `${nextFile.name}`
+            htmlMarkup += "</li>"
         }
         return htmlMarkup;
     }

@@ -9,9 +9,9 @@ $(document).ready(function(){
 
     var vertPicker = new ValuePicker("horizontalThreshold", "Horizontal threshold");
     var horPicker = new ValuePicker("verticalThreshold", "Vertical threshold");
-    var vmPicker = new ValuePicker("costMatchedLabels", "cost of the matched labels");
-    var wsPicker = new ValuePicker("structuralCost", "structural cost");
-    var wnPicker = new ValuePicker("costNonMatched", "non-matched labels");
+    var vmPicker = new ValuePicker("costMatchedLabels", "matched labels weight");
+    var wsPicker = new ValuePicker("structuralCost", "structural cost weight");
+    var wnPicker = new ValuePicker("costNonMatched", "non-matched labels weight");
 
     vertPicker.create('#customize');
     horPicker.create('#customize');

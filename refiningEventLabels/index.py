@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 import os
 
 from refiningEventLabels.frontend.startPage import StartPage
+from refiningEventLabels.api.downloadFile import FileDownload
 from refiningEventLabels.api.fileUpload import FileUpload
 from refiningEventLabels.lib.fileStore import FileStoreConfig
 
@@ -11,6 +12,16 @@ app = Flask(__name__, template_folder='frontend/template')
 def startup():
     startpage = StartPage()
     return startpage.execute(request)
+
+@app.route('/fileDownload', methods = ['POST', 'GET'])
+def fileDownload():
+    fileDownloadConfig = FileStoreConfig(
+        os.path.join(os.path.dirname(__file__), 'api', 'refinedFiles'),
+        5,
+        ['xes', 'csv']
+    )
+    download = FileDownload(fileDownloadConfig)
+    return download.execute(request)
 
 @app.route('/fileManager', methods = ['POST', 'GET'])
 def fileManger():
