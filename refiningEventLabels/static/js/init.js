@@ -1,10 +1,10 @@
 $(document).ready(function(){
     var fileLoader = new FileLoader(window.location.href + "fileManager");
-    var filePrinter = new FileList(fileLoader);
+    var filePrinter = new FileList(fileLoader, false);
     filePrinter.printFiles("#uploadedFiles");
 
     var fileLoader = new FileLoader(window.location.href + "refinedFiles");
-    var filePrinter = new FileList(fileLoader);
+    var filePrinter = new FileList(fileLoader, true);
     filePrinter.printFiles("#refinedFiles");
 
     var vertPicker = new ValuePicker("horizontalThreshold", "Horizontal threshold");
