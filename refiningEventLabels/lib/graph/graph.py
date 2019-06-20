@@ -118,12 +118,12 @@ def createGraphFromVariants(variants = []):
 #Returns: updates the graph by adding edges between mapped pairs with corresponding cost
 def addOptimalMapping(bestMappingsList, maxCost, candidate_positions):
     """
-    updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
-    
-    :param bestMappingsList:  list containing all best mappings, list has length number of (unordered) pairs of variants 
-    :param normalizedCost: the maximal cost out of all best mappings which we use for normalization of the costs
-    :param: candidate_positions: the list of all positions referring to some candidate label
-    """
+	updates the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
+
+	:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
+	:param maxCost: the cost of the best mapping with the highest cost out of all best mappings
+    :param candidate_positions: a list with all IDs corresponding to all candidate labels 
+	"""
     for mapp in bestMappingsList:
         normalized_cost = mapp[1]/maxCost
         mapped_pairs = mapp[0]
@@ -132,10 +132,10 @@ def addOptimalMapping(bestMappingsList, maxCost, candidate_positions):
         for (x,y) in mapped_pairs:
             if x in candidate_positions:
                 candidate_pairs.append((x,y))
-            else:
-                non_candidate_pairs.append((x,y))
+            #else:
+                #non_candidate_pairs.append((x,y))
         G.add_edges_from(createEdgeList(candidate_pairs, normalized_cost))
-        G.add_edges_from(createEdgeList(non_candidate_pairs, -1)) #cost -1 for pairs of non candidate labels
+        #G.add_edges_from(createEdgeList(non_candidate_pairs, -1)) #cost -1 for pairs of non candidate labels
 
     
     
