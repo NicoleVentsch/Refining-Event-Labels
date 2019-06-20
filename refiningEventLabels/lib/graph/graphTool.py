@@ -22,12 +22,20 @@ class graphTool:
         return [(a,b,{'weight': weight}) for (a,b) in edges]
     
     
-    def __pairwise(self, iterable):
-        """ auxiliary function to create pairs"""
-        a, b = it.tee(iterable)
-        next(b, None)
-        return zip(a, b)
+#    def __pairwise(self, iterable):
+#        """ auxiliary function to create pairs"""
+#        a, b = it.tee(iterable)
+#        next(b, None)
+#        return zip(a, b)
     
+    def __pairwise(self, variant_nodes):
+        """ auxiliary function to create pairs"""
+        list_pairs = []
+        l = len(variant_nodes)
+        for i in range(l-1):
+            list_pairs.append((variant_nodes[i],variant_nodes[i+1]))
+        return list_pairs
+
 
     def __createNodeListFromVariant(self, variant = []):
         """
@@ -48,8 +56,8 @@ class graphTool:
         :param weight: a weight
         :return: a list of edges together with their weight
         """
-        edges,_ = zip(*variant)
-        return self.createEdgeList(self.__pairwise(edges), weight)
+        nodes,_ = zip(*variant)
+        return self.createEdgeList(self.__pairwise(nodes), weight)
     
     
     def createGraphFromVariants(self, variants = []):
@@ -85,7 +93,7 @@ class graphTool:
         
         horizontalTreshold = customParams.getHorizontalThreshold()
 
-        filteredEdges = [(u, v) for (u, v, d) in self.__G.edges(data=True) if (d['weight'] > horizontalTreshold and d['weight'] != -1)]
+        filteredEdges = [(u, v) for (u, v, d) in self.__G.edges(data=True) if (d['weight'] > horizontalTreshold and d['weight'] != -1 or d['weight'] == -42)]
         self.__G.remove_edges_from(filteredEdges)
     
         return [nx.Graph(self.__G.subgraph(c)) for c in nx.k_edge_subgraphs(self.__G, k=1)] #or also use nx.connected_components(G)
@@ -95,18 +103,19 @@ class graphTool:
 
     def getGraph(self):
         """
-        returns the graph object
-        param: none
-        return: nx.Graph() object
+        :param: none
+        :return: nx.Graph() object
         """
         return self.__G
     
+    
     def addOptimalMapping(self, bestMappingsList, maxCost, candidate_positions):
         """
-		updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
+		updates the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
 
-		:param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
-		:param normalizedCost: the cost of the mapping
+		:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
+		:param maxCost: the cost of the best mapping with the highest cost out of all best mappings
+        :param candidate_positions: a list with all IDs corresponding to all candidate labels 
 		"""
         for mapp in bestMappingsList:
             normalized_cost = mapp[1]/maxCost
@@ -116,10 +125,10 @@ class graphTool:
             for(x,y) in mapped_pairs:
                 if x in candidate_positions:
                     candidate_pairs.append((x,y))
-                else:
-                    candidate_pairs.append((x,y))
-                    self.__G.add_edges_from(self.createEdgeList(candidate_pairs, normalized_cost))
-                    #self.__G.add_edges_from(self.createEdgeList(non_candidate_pairs, 0))
+                #else:
+                    #non_candidate_pairs.append((x,y))
+            self.__G.add_edges_from(self.createEdgeList(candidate_pairs, normalized_cost))
+            #self.__G.add_edges_from(self.createEdgeList(non_candidate_pairs, 0))
 
     
-
+ 
