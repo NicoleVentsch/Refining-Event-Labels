@@ -125,8 +125,8 @@ def costMatched(variant1, variant2, mapping):
     for pair in mapping:
         p1 = pair[0]-firstId1
         p2 = pair[1]-firstId2
-        sum += len(pred1[p1])+len(pred2[p2])-len(pred1[p1].intersection(pred2[p2])) #number of distinct predecessors
-        sum += len(succ1[p1])+len(succ2[p2])-len(succ1[p1].intersection(succ2[p2])) #number of distinct successors
+        sum += len(pred1[p1])+len(pred2[p2])-2*len(pred1[p1].intersection(pred2[p2])) #number of distinct predecessors
+        sum += len(succ1[p1])+len(succ2[p2])-2*len(succ1[p1].intersection(succ2[p2])) #number of distinct successors
     return sum  
 
 
@@ -153,7 +153,7 @@ def costMapping(wm,ws,wn,variant1,variant2,mapping):
 
 
 
-def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn, bestMappings):
+def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn):
 
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
@@ -173,9 +173,12 @@ def optimalMapping(variants, variant1, variant2, matrixx, wm, ws, wn, bestMappin
             if cost_new < cost_best:
                 best_mapping = mapping
                 cost_best = cost_new
-    matrixx[pos_variant1, pos_variant2] = cost_best #entry ij in matrix updated with best cost
-    matrixx[pos_variant2, pos_variant1] = cost_best #entry ji in matrix updated with best cost
-    bestMappings.append((best_mapping,cost_best))
+        matrixx[pos_variant1, pos_variant2] = cost_best #entry ij in matrix updated with best cost
+        matrixx[pos_variant2, pos_variant1] = cost_best #entry ji in matrix updated with best cost
+        #bestMappings.append((best_mapping,cost_best))
+    else:
+        matrixx[pos_variant1, pos_variant2] = -42 #entry ij in matrix updated with special cost for empty mapping
+        matrixx[pos_variant2, pos_variant1] = -42 #entry ji in matrix updated with special cost for empty mapping
     return best_mapping, cost_best
 
 
