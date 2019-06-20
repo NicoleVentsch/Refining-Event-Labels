@@ -2,6 +2,7 @@ class FileList {
     constructor(fileLoader, downloadable = true) {
         this._fileLoader = fileLoader;
         this._files = [];
+        this._file = "";
         this._downloadable = downloadable;
     }
 
@@ -17,6 +18,7 @@ class FileList {
     printFiles(destination) {
         this._fileLoader.getFiles().then(function(data) {
             this._files = data;
+            this.file = this._files[0];
             var htmlMarkup = this._getFilesHtml()
             $(destination).empty().append(htmlMarkup)
             var me = this;
@@ -24,6 +26,7 @@ class FileList {
                 e.preventDefault()
                 $(this).parent().find('li').removeClass('active');
                 $(this).addClass('active');
+                me.file = $(this).val();
                 if (me._downloadable) {
                     var urlAppendix = `fileDownload?name=${$(this).text()}`;
                     window.location.href += urlAppendix;
