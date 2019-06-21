@@ -1,1 +1,1 @@
-from refiningEventLabels.lib.graph.graph import *
+from refiningEventLabels.lib.graph.graphTool import *

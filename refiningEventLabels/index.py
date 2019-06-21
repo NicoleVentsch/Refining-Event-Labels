@@ -6,8 +6,15 @@ from refiningEventLabels.frontend.startPage import StartPage
 from refiningEventLabels.api.downloadFile import FileDownload
 from refiningEventLabels.api.fileUpload import FileUpload
 from refiningEventLabels.lib.fileStore import FileStoreConfig
+from refiningEventLabels.api.main import RefiningEventLabels
 
 app = Flask(__name__, template_folder='frontend/template')
+
+@app.route('/refining', methods = ['POST', 'GET'])
+def refine():
+    refining = RefiningEventLabels()
+    return refining.execute(request)
+
 @app.route('/')
 def startup():
     startpage = StartPage()

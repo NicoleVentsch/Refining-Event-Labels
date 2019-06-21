@@ -28,12 +28,12 @@ class graphTool:
 #        next(b, None)
 #        return zip(a, b)
     
-    def __pairwise(self, variant_nodes):
+    def __pairwise(self, variantNodes):
         """ auxiliary function to create pairs"""
         list_pairs = []
-        l = len(variant_nodes)
+        l = len(variantNodes)
         for i in range(l-1):
-            list_pairs.append((variant_nodes[i],variant_nodes[i+1]))
+            list_pairs.append((variantNodes[i],variantNodes[i+1]))
         return list_pairs
 
 
@@ -82,7 +82,7 @@ class graphTool:
         self.__G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))
     """  
         
-    def clusterDetection(self, customParams):
+    def clusterDetection(self, cp):
         """
         clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings
     
@@ -91,7 +91,7 @@ class graphTool:
     
         """
         
-        horizontalTreshold = customParams.getHorizontalThreshold()
+        horizontalTreshold = cp.getHorizontalThreshold()
 
         filteredEdges = [(u, v) for (u, v, d) in self.__G.edges(data=True) if (d['weight'] > horizontalTreshold and d['weight'] != -1 or d['weight'] == -42)]
         self.__G.remove_edges_from(filteredEdges)

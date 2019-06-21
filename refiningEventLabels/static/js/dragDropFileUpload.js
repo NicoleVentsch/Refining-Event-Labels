@@ -43,17 +43,29 @@ class FileUploader {
 
     _startUpload(files) {
 
-        var data = new FormData();
-        $.each($('files'), function(i, file) {
-            data.append('file-'+i, file);
-        });
+        // Ein Objekt um Dateien einzulesen
+        var reader = new FileReader();
+        
+        var senddata = new Object();
+        // Auslesen der Datei-Metadaten
+        senddata.name = files[0].name;
+        senddata.date = files[0].lastModified;
+        senddata.size = files[0].size;
+        senddata.type = files[0].type;
 
-        console.log(files)
-        //$('#file-name-upload').val(files[0].name)
-        $.post("fileManager", { eventLog: data } ).done(function(data){
-            alert(data)
-        });
-        return false;
+        // Wenn der Dateiinhalt ausgelesen wurde...
+        reader.onload = function(theFileData) {
+            senddata.fileData = theFileData.target.result; // Ergebnis vom FileReader auslesen
+      
+
+            $.post("fileManager", senddata ).done(function(data){
+                alert(data)
+            });
+          }
+      
+          // Die Datei einlesen und in eine Data-URL konvertieren
+        reader.readAsDataURL(files[0]);
+
     }
 }
 

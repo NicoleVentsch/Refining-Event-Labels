@@ -12,18 +12,22 @@ class ValuePicker {
                 </div>`;
     }
 
+    get value() {
+        return this._value;
+    }
+
     create(destination) {
         $(destination).append(this._createHtml());
         var me = this;
         $(`#container${me._id} input`).change(function(changedValue) {
             $(`#container${me._id} input`).each(function() {
-                var value = changedValue.target.value;
-                if (value > 1)
-                    value = 1;
-                else if (value < 0)
-                    value = 0;
-                value = Math.round(value * 10) / 10;
-                $(this).val(value);
+                this._value = changedValue.target.value;
+                if (this._value > 1)
+                    this._value = 1;
+                else if (this._value < 0)
+                    this._value = 0;
+                this._value = Math.round(value * 10) / 10;
+                $(this).val(this._value);
             });
         })
     }

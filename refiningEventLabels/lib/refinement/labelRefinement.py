@@ -44,17 +44,15 @@ def sortConectedComponents(connectedComponents, db):
 
 
 
-#For each subgraph relabel candidateLabels
-#Return a list of subgraphs with relabeled nodes
-def horizontalRefinement(candidateLabels, graphList):
+def horizontalRefinement(cp, graphList):
+        
+    candidateLabels = cp.getCandidateLabels()
     
     for i, subgraph in enumerate(graphList, start = 1):  
         for cn,_ in filter(lambda d: d[1]['curLabel'] in candidateLabels, subgraph.nodes(data=True)):
             subgraph.node[cn]['newLabel'] += str(i) 
 
     return graphList
-
-
 
 #For each subgraph relabel candidateLabels according to the paper
 def verticalRefinement(graphList, candidateLabels, db, threshold):
