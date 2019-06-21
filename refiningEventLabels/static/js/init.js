@@ -20,16 +20,17 @@ $(document).ready(function(){
     wnPicker.create('#customize');
 
     $('#submit').click(function(e) {
-        $.post('refining', {
-            fileName: uploadedFiles.file,
-            customize: {
-                vert: vertPicker.value,
-                hor : horPicker.value,
-                vm: vmPicker.value,
-                ws: wsPicker.value,
-                wn: wnPicker.value
-            }
-        }).then(function(data) {
+        var data = {
+            fileName: uploadedFiles._file,
+            vert: vertPicker.value,
+            hor : horPicker.value,
+            vm: vmPicker.value,
+            ws: wsPicker.value,
+            wn: wnPicker.value,
+            candidateLabel: $('#candidateLabels').val().split(',')
+
+        };
+        $.post('/refining', data, function(data) {
             alert(data);
         });
     })

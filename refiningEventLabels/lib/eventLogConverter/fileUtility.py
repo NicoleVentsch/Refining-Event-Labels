@@ -1,6 +1,8 @@
 from .defaultFileHandlersFactory import FileConverterFactory, FileCreatorFactory
 from pathlib import Path
 
+import os
+
 
 # Framework access to import and export event logs
 # To expand framework functionality expand this class or register new file handlers

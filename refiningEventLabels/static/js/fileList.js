@@ -26,7 +26,7 @@ class FileList {
                 e.preventDefault()
                 $(this).parent().find('li').removeClass('active');
                 $(this).addClass('active');
-                me.file = $(this).val();
+                me._file = $(this).text();
                 if (me._downloadable) {
                     var urlAppendix = `fileDownload?name=${$(this).text()}`;
                     window.location.href += urlAppendix;

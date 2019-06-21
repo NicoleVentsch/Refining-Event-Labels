@@ -12,6 +12,11 @@ app = Flask(__name__, template_folder='frontend/template')
 
 @app.route('/refining', methods = ['POST', 'GET'])
 def refine():
+    
+    #a = request.args.get('wn', 0, type=float)
+    #b = request.args.get('b', 0, type=int)
+     #   print(request.json)
+    #return str(a)
     refining = RefiningEventLabels()
     return refining.execute(request)
 
