@@ -1,1 +1,1 @@
-from refiningEventLabels.lib.refinement.labelRefinement import *
+from .labelRefinement import *

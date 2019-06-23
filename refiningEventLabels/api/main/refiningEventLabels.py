@@ -3,6 +3,8 @@ from refiningEventLabels.lib.eventLogConverter import FileUtility
 from refiningEventLabels.lib.fileStore import FileStore, FileStoreConfig
 from refiningEventLabels.lib.objects import customParameters
 
+from refiningEventLabels.lib.main import main
+
 import json
 import os
 import glob
@@ -16,7 +18,7 @@ class RefiningEventLabels(APIPage):
         return "GET"
 
     def _POST(self, request):
-        params = customParameters('no', request.form['vert'], request.form['hor'], request.form['ws'], request.form['vm'], request.form['wn'])
+        params = customParameters(["decide", "examine casually"], float(request.form['vert']), float(request.form['hor']), float(request.form['ws']), float(request.form['vm']), float(request.form['wn']))
         refinedFile = request.form['fileName']
         fileAccess = FileStore(FileStoreConfig(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'uploadedFiles'), 5,['xes', 'csv']))
         
@@ -28,8 +30,8 @@ class RefiningEventLabels(APIPage):
         fileUtility = FileUtility(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'refinedFiles'))
         print(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'refinedFiles'))
         eventLog = fileUtility.getEventLogFromFile(eventLogFile)
-        ####! Call resultEventLog = main(eventLog, customParams)
-        resultEventLog = eventLog # delte afterwards
+
+        resultEventLog = main(params, eventLog)
         fileUtility.createFile(resultEventLog, 'refined.xes', '.xes')
         return "refined"
 
