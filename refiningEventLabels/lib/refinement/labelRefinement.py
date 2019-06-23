@@ -1,8 +1,14 @@
 import networkx as nx
 
-#Get Connected components given a subgraph G
-#Return a dictionary with the form {label: [{comp1},{comp2}...]}
+
 def connectedComponents(G, candidateLabels):
+    
+    """
+    computes the connected components given a subgraph 
+    :param G: a graph object created from the networkx library
+    :param candidateLabels: a list of Strings representing the candidate lables
+    :return: a dictionary containing {candidateLabel: [[comp1],[comp2],...]}
+    """
     
     #Remove edges with 'weight' == -1
     G.remove_edges_from([(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] == -1])
@@ -14,26 +20,53 @@ def connectedComponents(G, candidateLabels):
                                      for label in candidateLabels}
 
 
-#Get the size of the largest component given a connectedComponents dictionary
-#Return a dictionary with the form {label: maxSize[{comp1},{comp2},...]}
-def sizelargestComponent(connectedComponents):  
-    return {label: len(max(cc, key=len, default=[])) 
+def sizelargestComponent(connectedComponents):
+    
+    """
+    computes the size of the largest components for each candidateLabel
+    :param connectedComponents: a dictionary containing the connected components created from the method connectedComponents()
+    :return: a dictionary with the form {candidateLabel: maxSize([[comp1],[comp2],...])}
+    """
+    
+    return {label: len(max(cc, key = len, default = [])) 
                 for label, cc in connectedComponents.items()}
 
-#Get the average position of the events for a given connectedComponent, i.e., #Gi
-#Return a list with the avg position [[avgPosComp1],[avgPosComp2],...]
-def averagePosition(Gi, db):    
+
+def averagePosition(Gi, db):
+    
+    """
+    computes the average position of the events for a given connected component, i.e., #Gi
+    :param Gi: a list representing the connected component for a given event [[comp1],[comp2],...]
+    :param db: a DBTool object
+    :return: a list with the average position [[avgPosComp1],[avgPosComp2],...]
+    """
+  
     return [sum(map(lambda eID: getPosition(eID,db), nodes))/len(nodes) 
                 for nodes in Gi]
 
-#Get the position of an event given its eventID
+
 def getPosition(eID, db):   
+    
+    """
+    get the position of an event given its eventID
+    :param eID: an eventID (integer)
+    :param db: a DBTool object
+    :return: an integer representig the position of an event within a trace
+    """
+    
     event = db.getEventByID(eID)
     return event.Position
     
-#Sort the Connected components in ascending order
-#Return a dictionary with sorted components having the form {label: [{comp1},{comp2}...]}
+
 def sortConectedComponents(connectedComponents, db):   
+    
+    """
+    sort the connected components in ascending order w.r.t. their average position
+    :param connectedComponents:  a dictionary containing the connected components created from the method connectedComponents()
+    :param db: a DBTool object
+    :return: a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],...]}
+    """
+    
     #sortCC = {event: sorted(zip(cc,averagePosition(cc,db)), key = lambda d: d[1]) 
      #           for event, cc in connectedComponents.items()}
         
@@ -43,9 +76,15 @@ def sortConectedComponents(connectedComponents, db):
     return  sortCC
 
 
-
 def horizontalRefinement(cp, graphList):
-        
+    
+    """
+    perform the horizontal relabeling according to the paper
+    :param cp:  a customParameters object
+    :param graphList: a list of graphs created from the networkx library
+    :return: the same list of graphs but with relebaled event nodes
+    """
+            
     candidateLabels = cp.getCandidateLabels()
     
     for i, subgraph in enumerate(graphList, start = 1):  
@@ -54,8 +93,19 @@ def horizontalRefinement(cp, graphList):
 
     return graphList
 
-#For each subgraph relabel candidateLabels according to the paper
-def verticalRefinement(graphList, candidateLabels, db, threshold):
+
+def verticalRefinement(cp, graphList, db):
+    
+    """
+    perform the vertical relabeling according to the paper
+    :param cp:  a customParameters object
+    :param graphList: a list of graphs created from the networkx library
+    :param db: a DBTool object
+    :return: the same list of graphs but with relebaled event nodes
+    """    
+    
+    candidateLabels = cp.getCandidateLabels()
+    threshold = cp.getVerticalThreshold()
     
     for subgraph in graphList:
         cc = connectedComponents(subgraph, candidateLabels)

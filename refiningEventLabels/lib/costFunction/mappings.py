@@ -22,7 +22,7 @@ def createEventIDs(variants=[]):
     return [[(next(seq),event) for event in variant] for variant in variants]
 
 
-def common_labels(variant1, variant2):
+def commonLabels(variant1, variant2):
 
     """
     creates a list of common event labels between two variants
@@ -48,11 +48,11 @@ def getNumberOfCommonLabels(variant1=[], variant2=[]):
     :return: number of common event labels of the two variants
     """
 
-    return len(common_labels(variant1,variant2))
+    return len(commonLabels(variant1,variant2))
 
 
 
-def get_positions_label(string, variant):
+def getPositionsLabel(string, variant):
 
     """
     gives a list of all IDs corresponding to a given event label within a given variant
@@ -72,7 +72,7 @@ def get_positions_label(string, variant):
 
 #Args: variant1, variant2 as a list of tuples from createEventIDs(variants)
 #Returns: list of all possible mappings for variant1 and variant2 where each mapping is a set of matched pairs
-def possibleMappings(variant1, variant2):
+def possibleMappings(variant1 = [], variant2 = []):
     """
     gives a list of all possible mappings between two given variants
 
@@ -80,15 +80,16 @@ def possibleMappings(variant1, variant2):
     :param variant2: second variant as a list of tuples (eventID, event label)
     :return: a list of all possible mappings between the two variants where a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
+	
     matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
     n = getNumberOfCommonLabels(variant1, variant2)
     
-    return [set(combi) for combi in it.combinations(matches, n)
+    return [list(combi) for combi in it.combinations(matches, n)
                         if len(set(it.chain.from_iterable(combi))) == (2*n)]
 
 #Args: set of candidate labels for refinement, list of all trace variants in event log
 #Returns: a list with all event IDs whose label is in the candidate set, we use this later for edge creation in the graph
-def positions_of_candidates(candidates, variants):
+def positionsOfCandidates(candidates, variants):
     """
     gives a list of all IDs referring to some candidate label
 
@@ -96,25 +97,25 @@ def positions_of_candidates(candidates, variants):
     :param variants: list of all trace variants in event log where each label has unique ID
     :return: a list with all event IDs whose label is in the candidate set
     """
-    positions_of_candidates = []
+    positionsOfCandidates = []
     for variant in variants:
         labels = set(map(itemgetter(1), variant))
         for label in labels:
             if label in candidates:
-                positions = get_positions_label(label, variant)
-                positions_of_candidates.extend(positions)
-    return positions_of_candidates
+                positions = getPositionsLabel(label, variant)
+                positionsOfCandidates.extend(positions)
+    return positionsOfCandidates
 
 #Args: variant1, variant2 as a list of tuples from createEventIDs(variants)
 #return for each common label, a list of possible matchings
 #def label_matchings(variant1, variant2):
 #    label_matchings = []
-#    commonlabels = common_labels(variant1, variant2)
+#    commonlabels = commonLabels(variant1, variant2)
 #    #l = 0
 #    if commonlabels != []:
 #        for label in commonlabels:
-#            pos1 = get_positions_label(label, variant1)
-#            pos2 = get_positions_label(label, variant2)
+#            pos1 = getPositionsLabel(label, variant1)
+#            pos2 = getPositionsLabel(label, variant2)
 #            label_mapping = list(it.product(pos1, pos2))
 #            label_matchings.append(label_mapping)
 #            #l +=1

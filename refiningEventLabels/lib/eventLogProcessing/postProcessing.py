@@ -1,12 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 21 10:54:06 2019
 
-@author: Bianka
-"""
-
-
-def postProcessingLog(subgraphList, db, eventLog, cp):
+def eventLogRenaming(cp, subgraphList, db, eventLog):
     labels = cp.getCandidateLabels()
     
     for subgraph in subgraphList:
@@ -17,8 +10,5 @@ def postProcessingLog(subgraphList, db, eventLog, cp):
             for t in traces:
                 eventLog[t][pos]['concept:name'] = data['newLabel']
                 
-
-#for case_index, case in enumerate(orgLog):
-#    print("\n case index: %d  case id: %s" % (case_index, case.attributes["concept:name"]))
-#    for event_index, event in enumerate(case):
-#        print("event index: %d  event activity: %s" % (event_index, event["concept:name"]))
+                
+                
