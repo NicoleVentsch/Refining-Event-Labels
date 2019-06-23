@@ -10,17 +10,6 @@ import numpy as np
 
 def main (cp, log):
 
-	#REPLACE with data from local web server
-	#log = xes_import_factory.apply("refiningEventLabels/lib/running-example.xes")
-	#orgLog = xes_import_factory.apply("refiningEventLabels/lib/running-example.xes")
-	#cp = customParameters(candidateLabels = ["decide", "examine casually"],
-	#					  horizontalThreshold = 0.5,
-	#					  verticalThreshold = 0.3, 
-	#					  weightStructure = 0.3, 
-	#					  weightMatch = 0.3, 
-	#					  weightNoMatch = 0.3)
-
-
 	#PreProcessing Step
 	db = DBTool(log)
 	variants = createEventIDs(db.getVariants())

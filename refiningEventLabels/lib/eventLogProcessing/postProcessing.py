@@ -9,6 +9,8 @@ def eventLogRenaming(cp, subgraphList, db, eventLog):
             traces = db.getTracesByVariantID(vID)
             for t in traces:
                 eventLog[t][pos]['concept:name'] = data['newLabel']
+    
+    return eventLog
                 
                 
                 
