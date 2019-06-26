@@ -27,11 +27,11 @@ $(document).ready(function(){
             vm: vmPicker.value,
             ws: wsPicker.value,
             wn: wnPicker.value,
-            candidateLabel: $('#candidateLabels').val().split(',')
+            candidateLabel: $('#candidateLabels').val()
 
         };
         $.post('/refining', data, function(data) {
-            alert(data);
+            location.reload(); 
         });
     })
 })
