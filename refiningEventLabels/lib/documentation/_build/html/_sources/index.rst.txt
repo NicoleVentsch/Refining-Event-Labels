@@ -17,8 +17,8 @@ The source code is available under: `<https://github.com/NicoleVentsch/Refining-
    preprocessing
    cost function
    graph
-   horizontalClustering
-   verticalClustering
+   refinement
+   postprocessing
 
 
 Indices and tables

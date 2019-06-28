@@ -1,2 +1,2 @@
-from refiningEventLabels.lib.costFunction.cost import *
-from refiningEventLabels.lib.costFunction.mappings import *
+from .cost import *
+from .mappings import *

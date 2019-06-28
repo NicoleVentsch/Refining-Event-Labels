@@ -44,25 +44,14 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="function">
-<dt id="Graph.graph.createGraph">
-<code class="descclassname">Graph.graph.</code><code class="descname">createGraph</code><span class="sig-paren">(</span><em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#createGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.createGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>gives a graph where the vertices correspond to all unique pairs (eventID, event label) appearing in the variants</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variants</strong> – list of variants given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">graph with vertices of the form (eventID, event label)</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="Graph.graph.createEdgeList">
-<code class="descclassname">Graph.graph.</code><code class="descname">createEdgeList</code><span class="sig-paren">(</span><em>edges=[]</em>, <em>weight=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#createEdgeList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.createEdgeList" title="Permalink to this definition">¶</a></dt>
+<dl class="class">
+<dt id="graph.graphTool.graphTool">
+<em class="property">class </em><code class="descclassname">graph.graphTool.</code><code class="descname">graphTool</code><a class="reference internal" href="_modules/graph/graphTool.html#graphTool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>graph class containing the main functionalities we need for the algorithm</p>
+<p>initialization of a graph</p>
+<dl class="method">
+<dt id="graph.graphTool.graphTool.createEdgeList">
+<code class="descname">createEdgeList</code><span class="sig-paren">(</span><em>edges=[]</em>, <em>weight=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.createEdgeList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.createEdgeList" title="Permalink to this definition">¶</a></dt>
 <dd><p>creates a list of tuples of edges with the corresponding weights given a list of edges and weights</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -81,52 +70,9 @@
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="Graph.graph.pairwise">
-<code class="descclassname">Graph.graph.</code><code class="descname">pairwise</code><span class="sig-paren">(</span><em>iterable</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#pairwise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.pairwise" title="Permalink to this definition">¶</a></dt>
-<dd><p>auxiliary function to create pairs</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="Graph.graph.createNodeListFromVariant">
-<code class="descclassname">Graph.graph.</code><code class="descname">createNodeListFromVariant</code><span class="sig-paren">(</span><em>variant=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#createNodeListFromVariant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.createNodeListFromVariant" title="Permalink to this definition">¶</a></dt>
-<dd><p>assigns the current label (‘curLabel’) and an empty placeholder for the new label (‘newLabel’) as attributes to the events of a given variant</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variant</strong> – variant given as a list of tuples (eventID, event label)</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of variants with the attributes ‘curLabel’ (previously event label) and ‘newLabel’ (initialized as event label)</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="Graph.graph.createEdgeListFromVariant">
-<code class="descclassname">Graph.graph.</code><code class="descname">createEdgeListFromVariant</code><span class="sig-paren">(</span><em>variant=[]</em>, <em>weight=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#createEdgeListFromVariant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.createEdgeListFromVariant" title="Permalink to this definition">¶</a></dt>
-<dd><p>creates a list of edges together with their weight for a given variant and weight</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>variant</strong> – variant given as a list of tuples (eventID, event label)</li>
-<li><strong>weight</strong> – a weight</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of edges together with their weight</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="Graph.graph.createGraphFromVariants">
-<code class="descclassname">Graph.graph.</code><code class="descname">createGraphFromVariants</code><span class="sig-paren">(</span><em>variants=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#createGraphFromVariants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.createGraphFromVariants" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="graph.graphTool.graphTool.createGraphFromVariants">
+<code class="descname">createGraphFromVariants</code><span class="sig-paren">(</span><em>variants=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.createGraphFromVariants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.createGraphFromVariants" title="Permalink to this definition">¶</a></dt>
 <dd><p>updates an empty graph, such that it becomes a weighted graph containing vertices of the form (eventID, event label) and edges of the form (eventID1, eventID2, weight) based on a given list of variants</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -138,9 +84,33 @@
 </table>
 </dd></dl>
 
-<dl class="function">
-<dt id="Graph.graph.addOptimalMapping">
-<code class="descclassname">Graph.graph.</code><code class="descname">addOptimalMapping</code><span class="sig-paren">(</span><em>optimalMapping=[]</em>, <em>normalizedCost=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Graph/graph.html#addOptimalMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Graph.graph.addOptimalMapping" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="graph.graphTool.graphTool.clusterDetection">
+<code class="descname">clusterDetection</code><span class="sig-paren">(</span><em>customParams</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.clusterDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.clusterDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>threshold</strong> – the variant threshold the algorithm should use</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of subgraphs where each subgraph represents a cluster of variants</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.getGraph">
+<code class="descname">getGraph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.getGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.getGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the graph object
+param: none
+return: nx.Graph() object</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.addOptimalMappings">
+<code class="descname">addOptimalMappings</code><span class="sig-paren">(</span><em>bestMappingsList</em>, <em>maxCost</em>, <em>candidatePositions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMappings" title="Permalink to this definition">¶</a></dt>
 <dd><p>updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -154,6 +124,8 @@
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
 </dd></dl>
 
 <div class="line-block">
@@ -176,6 +148,7 @@
 <li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="horizontalClustering.html">Module 4 - horizontal clustering of variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="verticalClustering.html">Module 5 - vertical clustering of variants</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

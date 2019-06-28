@@ -5,7 +5,7 @@ Created on Fri May 24 10:25:10 2019
 @author: Bianka
 """
 
-import itertools  as it 
+import itertools as it
 from operator import itemgetter
 
 

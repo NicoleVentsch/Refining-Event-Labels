@@ -5,7 +5,10 @@ import pandas as pd
 
 
 class DBTool:
+    """
+    class containing the main preprocessing steps; basically used to create different tables for the events and variants
 
+    """
     def __init__(self, eventLog):
         self.__vt = self.__variantTable(eventLog)
         self.__evt = self.__eventVariantTable(self.__vt)

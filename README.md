@@ -2,20 +2,20 @@
 
 ## Use Case
 
-Many processes involve carrying out an action multiple times. An example for this would be an online shop in which you first have to pay a registration fee before ordering an item and paying it. This process contains the event ìpayment" twice, but in different contexts, so that the payments are actually two different tasks. In the context of analysing processes, the event logs usually only contain the event names, so that the ìpayment" actions would be treated as the same task and loops would be induced in the resulting models. However, these loops do not match the actual process, which is the issue this project addresses. 
+Many processes involve carrying out an action multiple times. An example for this would be an online shop in which you first have to pay a registration fee before ordering an item and paying it. This process contains the event ‚Äúpayment" twice, but in different contexts, so that the payments are actually two different tasks. In the context of analysing processes, the event logs usually only contain the event names, so that the ‚Äúpayment" actions would be treated as the same task and loops would be induced in the resulting models. However, these loops do not match the actual process, which is the issue this project addresses. 
 
-These imprecise logs should be refined based on the structural contexts of the events. We want to refine the logs without any filtering. Moreover, we want to allow an interactive change of the thresholds used to refine the labels since this can vary for each log and we lack knowledge on the correctness of the refined log in general. All of this should be done by implementing an algorithm in Python and then creating a web service through which the user can modify his event log. The algorithm used for this task is based on the paper ìHandling duplicated tasks in process discovery by refining event labelsî by Xixi Lu et al. 
+These imprecise logs should be refined based on the structural contexts of the events. We want to refine the logs without any filtering. Moreover, we want to allow an interactive change of the thresholds used to refine the labels since this can vary for each log and we lack knowledge on the correctness of the refined log in general. All of this should be done by implementing an algorithm in Python and then creating a web service through which the user can modify his event log. The algorithm used for this task is based on the paper ‚ÄúHandling duplicated tasks in process discovery by refining event labels‚Äù by Xixi Lu et al. 
 
 
 ## System Overview
 
-The ìRefining Labelsî system is a web-based application that allows for relabelling of event logs based on the algorithm proposed in the paper of Xixi Lu et al. It provides all the functionalities required to carry out the refinement by relabelling events differently based on their behaviours (context in the event log). 
+The ‚ÄúRefining Labels‚Äù system is a web-based application that allows for relabelling of event logs based on the algorithm proposed in the paper of Xixi Lu et al. It provides all the functionalities required to carry out the refinement by relabelling events differently based on their behaviours (context in the event log). 
 The foundation of the system is based on the following features:
 - A flexible method to upload event log files in either XES or CSV format.
 - An interactive way to adjust the thresholds required for the algorithm.
-- An interactive way to select the candidate labels (namely, ìimprecise labelsî).
+- An interactive way to select the candidate labels (namely, ‚Äúimprecise labels‚Äù).
 -  A flexible method to download the refined event log in XES format.
-As the optimal refined event log or model may be unknown, the system provides the user with the freedom to manipulate the thresholds and candidate labels and finally chose the event log which is considered to be the best one (according to userís expertise).
+As the optimal refined event log or model may be unknown, the system provides the user with the freedom to manipulate the thresholds and candidate labels and finally chose the event log which is considered to be the best one (according to user‚Äôs expertise).
 
 
 ## The assumptions
@@ -35,5 +35,3 @@ We make use of the following open source tools (for further details and document
 - [JavaScript as front-end development language (Standard ECMAScript 2018)](https://www.ecma-international.org/ecma-262/9.0/index.html)
 
 
-## TODO
-Ö
