@@ -8,7 +8,7 @@ Created on Sun May 19 19:37:12 2019
 #from mappings import *
 from itertools import combinations
 from operator import itemgetter
-from refiningEventLabels.lib.costFunction.mappings import *
+from .mappings import *
 
 def costStructure(variant1, variant2, mapping):
 

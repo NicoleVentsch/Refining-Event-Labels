@@ -5,9 +5,13 @@ import itertools  as it
 
 
 class graphTool:
+    """ graph class containing the main functionalities we need for the algorithm"""
     
     
     def __init__(self):
+        """
+        initialization of a graph
+        """
         self.__G = nx.Graph()
         
 

@@ -44,43 +44,6 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="function">
-<dt id="HorizontalClustering.horizontalClustering.clusterDetection">
-<code class="descclassname">HorizontalClustering.horizontalClustering.</code><code class="descname">clusterDetection</code><span class="sig-paren">(</span><em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HorizontalClustering/horizontalClustering.html#clusterDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HorizontalClustering.horizontalClustering.clusterDetection" title="Permalink to this definition">¶</a></dt>
-<dd><p>clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>threshold</strong> – the variant threshold the algorithm should use</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of subgraphs where each subgraph represents a cluster of variants</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="HorizontalClustering.horizontalClustering.horizontalRefinement">
-<code class="descclassname">HorizontalClustering.horizontalClustering.</code><code class="descname">horizontalRefinement</code><span class="sig-paren">(</span><em>candidateLabels</em>, <em>graphList</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/HorizontalClustering/horizontalClustering.html#horizontalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#HorizontalClustering.horizontalClustering.horizontalRefinement" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs horizontal relabelling of event labels within a cluster; each event that belongs to the candidate labels will get a unique new label per cluster</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>candidateLabels</strong> – a list of labels that should be refined</li>
-<li><strong>graphList</strong> – a list of subgraphs where each subgraph represents a cluster of variants</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of refined subgraphs, where the attribute ‘newLabel’ is changed for each candidate label, such that the event labels are unique per cluster</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
