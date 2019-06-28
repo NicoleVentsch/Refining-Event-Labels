@@ -80,12 +80,15 @@ def possibleMappings(variant1 = [], variant2 = []):
     :param variant2: second variant as a list of tuples (eventID, event label)
     :return: a list of all possible mappings between the two variants where a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
-	
-    matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
-    n = getNumberOfCommonLabels(variant1, variant2)
     
-    return [list(combi) for combi in it.combinations(matches, n)
-                        if len(set(it.chain.from_iterable(combi))) == (2*n)]
+    matches = [(b,(a,c)) for (a,b) in variant1 for (c,d) in variant2 if b == d]
+    d = {i: [] for i in commonLabels(variant1, variant2)}
+
+    for (k, v) in matches:
+        if k in d:
+            d[k].append(v)
+
+    return [list(d) for d in (it.product(*d.values()))]
 
 #Args: set of candidate labels for refinement, list of all trace variants in event log
 #Returns: a list with all event IDs whose label is in the candidate set, we use this later for edge creation in the graph
