@@ -1,0 +1,222 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>eventLogProcessing.DBTool &#8212; Refining Event Labels  documentation</title>
+    <link rel="stylesheet" href="../../_static/graphite.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Refining Event Labels  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for eventLogProcessing.DBTool</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">from</span> <span class="nn">pm4py.algo.filtering.log.variants</span> <span class="k">import</span> <span class="n">variants_filter</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+
+<div class="viewcode-block" id="DBTool"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool">[docs]</a><span class="k">class</span> <span class="nc">DBTool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    data base class containing the main preprocessing steps and tools used to access the database</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variantTable</span><span class="p">(</span><span class="n">eventLog</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__evt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eventVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__vt</span><span class="p">)</span>
+        
+        
+    <span class="k">def</span> <span class="nf">__variantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        creates a table containing the following attributes: VariantID, Variants and Traces</span>
+<span class="sd">    </span>
+<span class="sd">        :param eventLog: an eventLog object obtained from the pm4py library</span>
+<span class="sd">        :return: a pandas DataFrame with the mentioned attributes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">variants_filter</span><span class="o">.</span><span class="n">get_variants_from_log_trace_idx</span><span class="p">(</span><span class="n">eventLog</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Variants&#39;</span><span class="p">,</span><span class="s1">&#39;Traces&#39;</span><span class="p">]</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Variants&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;Variants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;VariantID&#39;</span>
+        
+        <span class="k">return</span> <span class="n">data</span>
+    
+    
+    <span class="k">def</span> <span class="nf">__eventVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variantTable</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        creates a table containing the following attributes: EventID, VariantID, Position and Event</span>
+<span class="sd">    </span>
+<span class="sd">        :param variantTable: a pandas DataFrame obtained from the method __variantTable</span>
+<span class="sd">        :return: a pandas DataFrame with the mentioned attributes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+          
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span><span class="p">[</span><span class="s1">&#39;Variants&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> \
+        <span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;VariantID&#39;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;Position&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;Event&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span> \
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;VariantID&#39;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;mergesort&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> \
+        <span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;index&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;EventID&#39;</span>
+        
+        <span class="k">return</span> <span class="n">data</span>
+
+
+<div class="viewcode-block" id="DBTool.getVariants"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariants">[docs]</a>    <span class="k">def</span> <span class="nf">getVariants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get all the variants from the variantTable</span>
+<span class="sd">    </span>
+<span class="sd">        :return: a list of list of Strings representig all the variants</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__vt</span><span class="p">[</span><span class="s1">&#39;Variants&#39;</span><span class="p">])</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getVariantByID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantByID">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantByID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vID</span><span class="p">):</span>       
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get a variant given a variantID</span>
+<span class="sd">    </span>
+<span class="sd">        :param vID: a variantID (integer)</span>
+<span class="sd">        :return: a list of Strings representig a variant</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">vID</span><span class="p">][</span><span class="s1">&#39;Variants&#39;</span><span class="p">]</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getVariantByEventID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantByEventID">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantByEventID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eID</span><span class="p">):</span> 
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get a variant given an eventID</span>
+<span class="sd">    </span>
+<span class="sd">        :param eID: an eventID (integer)</span>
+<span class="sd">        :return: a list of Strings representig a variant</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">vID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__evt</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">eID</span><span class="p">][</span><span class="s1">&#39;VariantID&#39;</span><span class="p">]</span>    
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getVariantByID</span><span class="p">(</span><span class="n">vID</span><span class="p">)</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getTracesByVariantID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getTracesByVariantID">[docs]</a>    <span class="k">def</span> <span class="nf">getTracesByVariantID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vID</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get all traces within a variant given a variantID</span>
+<span class="sd">    </span>
+<span class="sd">        :param vID: an variantID (integer)</span>
+<span class="sd">        :return: a list of integers representig the traces within a variant</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">vID</span><span class="p">][</span><span class="s1">&#39;Traces&#39;</span><span class="p">]</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getEventByID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getEventByID">[docs]</a>    <span class="k">def</span> <span class="nf">getEventByID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eID</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get an event given its eID</span>
+<span class="sd">    </span>
+<span class="sd">        :param eID: an eventID (integer)</span>
+<span class="sd">        :return: an Object representig an event (containing:  EventID, VariantID, Position and Event)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__evt</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">eID</span><span class="p">]</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getVariantTable"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantTable">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get the variantTable</span>
+<span class="sd">    </span>
+<span class="sd">        :return: a pandas DataFrame representing the variantTable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span></div>
+    
+    
+<div class="viewcode-block" id="DBTool.getEventVariantTable"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getEventVariantTable">[docs]</a>    <span class="k">def</span> <span class="nf">getEventVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        get the eventVariantTable</span>
+<span class="sd">    </span>
+<span class="sd">        :return: a pandas DataFrame representing the eventVariantTable</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__evt</span></div></div>
+
+    
+
+
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Refining Event Labels</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customParameters.html">Custom Parameters</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Refining Event Labels  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Nicole Ventsch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>

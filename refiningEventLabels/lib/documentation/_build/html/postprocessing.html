@@ -15,6 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Graph Creation" href="graph.html" />
     <link rel="prev" title="Module 4 - Label Refinement" href="refinement.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -23,6 +24,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="graph.html" title="Graph Creation"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="refinement.html" title="Module 4 - Label Refinement"
              accesskey="P">previous</a> |</li>
@@ -40,6 +44,29 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<dl class="function">
+<dt id="eventLogProcessing.postProcessing.eventLogRenaming">
+<code class="descclassname">eventLogProcessing.postProcessing.</code><code class="descname">eventLogRenaming</code><span class="sig-paren">(</span><em>cp</em>, <em>subgraphList</em>, <em>db</em>, <em>eventLog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/postProcessing.html#eventLogRenaming"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.postProcessing.eventLogRenaming" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that renames the original event log based on the results of the refinement algorithm</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> – a customParameters object</li>
+<li><strong>subgraphList</strong> – a list of graphs created from the networkx library</li>
+<li><strong>db</strong> – a DBTool object</li>
+<li><strong>eventLog</strong> – the original event log provided by the user</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the refined event log based on the results of the refinement algorithm</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -55,12 +82,13 @@
 <h3><a href="index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refinement.html">Module 4 - Label Refinement</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -85,6 +113,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="graph.html" title="Graph Creation"
+             >next</a> |</li>
         <li class="right" >
           <a href="refinement.html" title="Module 4 - Label Refinement"
              >previous</a> |</li>

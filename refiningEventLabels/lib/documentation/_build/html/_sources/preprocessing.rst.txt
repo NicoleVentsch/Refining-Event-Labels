@@ -1,8 +1,8 @@
-Module 1.2 - Preprocessing Log
+Module 2 - Preprocessing Log
 ========================================
 |
 
-.. autoclass:: eventLogProcessing.DBTool
+.. autoclass:: eventLogProcessing.DBTool.DBTool
 
 |
 

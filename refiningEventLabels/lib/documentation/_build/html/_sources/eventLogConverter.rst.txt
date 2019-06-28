@@ -1,4 +1,4 @@
-Module 1.1 - File Converter
+Module 1 - File Converter
 ========================================
 |
 

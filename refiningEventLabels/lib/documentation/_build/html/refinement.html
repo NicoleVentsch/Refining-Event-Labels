@@ -16,7 +16,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module 5 - Post-Processing" href="postprocessing.html" />
-    <link rel="prev" title="Graph Creation" href="graph.html" /> 
+    <link rel="prev" title="Module 3 - Cost Function" href="cost function.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -28,7 +28,7 @@
           <a href="postprocessing.html" title="Module 5 - Post-Processing"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="graph.html" title="Graph Creation"
+          <a href="cost function.html" title="Module 3 - Cost Function"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
       </ul>
@@ -70,6 +70,43 @@
 :return: a list with the average position [[avgPosComp1],[avgPosComp2],…]</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="refinement.labelRefinement.getPosition">
+<code class="descclassname">refinement.labelRefinement.</code><code class="descname">getPosition</code><span class="sig-paren">(</span><em>eID</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#getPosition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.getPosition" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the position of an event given its eventID
+:param eID: an eventID (integer)
+:param db: a DBTool object
+:return: an integer representig the position of an event within a trace</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="refinement.labelRefinement.sortConectedComponents">
+<code class="descclassname">refinement.labelRefinement.</code><code class="descname">sortConectedComponents</code><span class="sig-paren">(</span><em>connectedComponents</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#sortConectedComponents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.sortConectedComponents" title="Permalink to this definition">¶</a></dt>
+<dd><p>sort the connected components in ascending order w.r.t. their average position
+:param connectedComponents:  a dictionary containing the connected components created from the method connectedComponents()
+:param db: a DBTool object
+:return: a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],…]}</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="refinement.labelRefinement.horizontalRefinement">
+<code class="descclassname">refinement.labelRefinement.</code><code class="descname">horizontalRefinement</code><span class="sig-paren">(</span><em>cp</em>, <em>graphList</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#horizontalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.horizontalRefinement" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform the horizontal relabeling according to the paper
+:param cp:  a customParameters object
+:param graphList: a list of graphs created from the networkx library
+:return: the same list of graphs but with relebaled event nodes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="refinement.labelRefinement.verticalRefinement">
+<code class="descclassname">refinement.labelRefinement.</code><code class="descname">verticalRefinement</code><span class="sig-paren">(</span><em>cp</em>, <em>graphList</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#verticalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.verticalRefinement" title="Permalink to this definition">¶</a></dt>
+<dd><p>perform the vertical relabeling according to the paper
+:param cp:  a customParameters object
+:param graphList: a list of graphs created from the networkx library
+:param db: a DBTool object
+:return: the same list of graphs but with relebaled event nodes</p>
+</dd></dl>
+
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -85,12 +122,13 @@
 <h3><a href="index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module 4 - Label Refinement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -119,7 +157,7 @@
           <a href="postprocessing.html" title="Module 5 - Post-Processing"
              >next</a> |</li>
         <li class="right" >
-          <a href="graph.html" title="Graph Creation"
+          <a href="cost function.html" title="Module 3 - Cost Function"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
       </ul>

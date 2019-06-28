@@ -8,13 +8,13 @@ Module 4 - Label Refinement
 
 .. autofunction:: refinement.labelRefinement.averagePosition
 
-.. autofunction:: refinement.labelRefinement.connectedComponents.getPosition
+.. autofunction:: refinement.labelRefinement.getPosition
 
-.. autofunction:: refinement.labelRefinement.connectedComponents.sortConnectedComponents
+.. autofunction:: refinement.labelRefinement.sortConectedComponents
 
-.. autofunction:: refinement.labelRefinement.connectedComponents.horizontalRefinement
+.. autofunction:: refinement.labelRefinement.horizontalRefinement
 
-.. autofunction:: refinement.labelRefinement.connectedComponents.verticalRefinement
+.. autofunction:: refinement.labelRefinement.verticalRefinement
 
 |
 

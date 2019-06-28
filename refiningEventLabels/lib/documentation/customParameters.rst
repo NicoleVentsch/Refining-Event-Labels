@@ -1,8 +1,9 @@
-Module 2 - Preprocessing Log
+Custom Parameters
 ========================================
+
 |
 
-.. autoclass:: eventLogProcessing.DBTool.DBTool
+.. autoclass:: objects.customParameters.customParameters
 
 |
 

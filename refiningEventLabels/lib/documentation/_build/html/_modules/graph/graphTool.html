@@ -111,23 +111,25 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__createEdgeListFromVariant</span><span class="p">(</span><span class="n">variant</span><span class="p">))</span></div>
     
 
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    def addOptimalMapping(self, optimalMapping = [], normalizedCost = -1):</span>
-<span class="sd">        </span>
+<div class="viewcode-block" id="graphTool.addOptimalMapping"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.addOptimalMapping">[docs]</a>    <span class="k">def</span> <span class="nf">addOptimalMapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimalMapping</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">normalizedCost</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+
+        <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</span>
-<span class="sd">    </span>
+
 <span class="sd">        :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
-<span class="sd">        :param normalizedCost: the cost of the mapping</span>
-<span class="sd">       </span>
-<span class="sd">        self.__G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))</span>
-<span class="sd">    &quot;&quot;&quot;</span>  
+<span class="sd">        :param normalizedCost: the value of the normalized cost of the mapping</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="n">optimalMapping</span> <span class="p">,</span> <span class="n">normalizedCost</span><span class="p">))</span></div>
+
         
 <div class="viewcode-block" id="graphTool.clusterDetection"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.clusterDetection">[docs]</a>    <span class="k">def</span> <span class="nf">clusterDetection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customParams</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</span>
 <span class="sd">    </span>
-<span class="sd">        :param threshold: the variant threshold the algorithm should use</span>
+<span class="sd">        :param customParams: custom parameter object containing the threshold the algorithm should use</span>
 <span class="sd">        :return: list of subgraphs where each subgraph represents a cluster of variants</span>
 <span class="sd">    </span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -143,9 +145,11 @@
 <div class="viewcode-block" id="graphTool.getGraph"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.getGraph">[docs]</a>    <span class="k">def</span> <span class="nf">getGraph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        returns the graph object</span>
-<span class="sd">        param: none</span>
-<span class="sd">        return: nx.Graph() object</span>
+
+<span class="sd">        function that returns the graph object</span>
+
+<span class="sd">        :return: nx.Graph() object</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
        
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__G</span></div>
@@ -154,11 +158,13 @@
 <div class="viewcode-block" id="graphTool.addOptimalMappings"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.addOptimalMappings">[docs]</a>    <span class="k">def</span> <span class="nf">addOptimalMappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bestMappingsList</span><span class="p">,</span> <span class="n">maxCost</span><span class="p">,</span> <span class="n">candidatePositions</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">		updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</span>
+<span class="sd">        function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping</span>
 
-<span class="sd">		:param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
-<span class="sd">		:param normalizedCost: the cost of the mapping</span>
-<span class="sd">		&quot;&quot;&quot;</span>
+<span class="sd">        :param bestMappingsList: a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
+<span class="sd">        :param maxCost: the maximal cost of a mapping</span>
+<span class="sd">        :param candidatePositions: list of candidate positions</span>
+<span class="sd">        :return: an updated graph using a given set of optimal mappings</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         
         <span class="k">for</span> <span class="n">mapp</span> <span class="ow">in</span> <span class="n">bestMappingsList</span><span class="p">:</span>
             <span class="n">normalized_cost</span> <span class="o">=</span> <span class="n">mapp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">maxCost</span>
@@ -185,12 +191,13 @@
 <h3><a href="../../index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../refinement.html">Module 4 - Label Refinement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

@@ -192,8 +192,12 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    given two variants the mapping with the lowest total cost together with the value of this cost will be returned</span>
 
+<span class="sd">    :param variants: a list of variants</span>
 <span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
+<span class="sd">    :param matrixx: matrix that should containing the cost of the mappings (after the function was called)</span>
+<span class="sd">    :param cp: custom parameters object</span>
+
 <span class="sd">    :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pos_variant1</span> <span class="o">=</span> <span class="n">variants</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">variant1</span><span class="p">)</span>
@@ -216,7 +220,16 @@
     <span class="k">return</span> <span class="n">best_mapping</span><span class="p">,</span> <span class="n">cost_best</span></div>
 
 
-<span class="k">def</span> <span class="nf">bestMappings</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">variants</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+<div class="viewcode-block" id="bestMappings"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.bestMappings">[docs]</a><span class="k">def</span> <span class="nf">bestMappings</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">variants</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</span>
+
+<span class="sd">    :param cp: custom parameters object</span>
+<span class="sd">    :param variants: a list of variants</span>
+<span class="sd">    :param C: the cost matrix that should be updated, so that it contains the costs of the optimal mappings</span>
+<span class="sd">    :return: a list of the best mappings between all combinations of two variants from the given variants</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">bestMappings</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="n">allPairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">variants</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">allPairs</span><span class="p">:</span>
@@ -224,7 +237,7 @@
         <span class="n">best_mapping</span> <span class="o">=</span> <span class="n">optimal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">best_cost</span> <span class="o">=</span> <span class="n">optimal</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">bestMappings</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">best_mapping</span><span class="p">,</span><span class="n">best_cost</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">bestMappings</span>
+    <span class="k">return</span> <span class="n">bestMappings</span></div>
 
 
 <div class="viewcode-block" id="context2"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.context2">[docs]</a><span class="k">def</span> <span class="nf">context2</span><span class="p">(</span><span class="n">variant</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
@@ -255,12 +268,13 @@
 <h3><a href="../../index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../refinement.html">Module 4 - Label Refinement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

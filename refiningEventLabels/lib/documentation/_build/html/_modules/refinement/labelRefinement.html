@@ -80,7 +80,7 @@
                 <span class="k">for</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">Gi</span><span class="p">]</span></div>
 
 
-<span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="n">eID</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
+<div class="viewcode-block" id="getPosition"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.getPosition">[docs]</a><span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="n">eID</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
     
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    get the position of an event given its eventID</span>
@@ -90,10 +90,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="n">event</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">getEventByID</span><span class="p">(</span><span class="n">eID</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">Position</span>
+    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">Position</span></div>
     
 
-<span class="k">def</span> <span class="nf">sortConectedComponents</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
+<div class="viewcode-block" id="sortConectedComponents"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.sortConectedComponents">[docs]</a><span class="k">def</span> <span class="nf">sortConectedComponents</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
     
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    sort the connected components in ascending order w.r.t. their average position</span>
@@ -108,10 +108,10 @@
     <span class="n">sortCC</span> <span class="o">=</span> <span class="p">{</span><span class="n">event</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span><span class="n">averagePosition</span><span class="p">(</span><span class="n">cc</span><span class="p">,</span><span class="n">db</span><span class="p">)),</span> <span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">])))</span>
                  <span class="k">for</span> <span class="n">event</span><span class="p">,</span> <span class="n">cc</span> <span class="ow">in</span> <span class="n">connectedComponents</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
     
-    <span class="k">return</span>  <span class="n">sortCC</span>
+    <span class="k">return</span>  <span class="n">sortCC</span></div>
 
 
-<span class="k">def</span> <span class="nf">horizontalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">):</span>
+<div class="viewcode-block" id="horizontalRefinement"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.horizontalRefinement">[docs]</a><span class="k">def</span> <span class="nf">horizontalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    perform the horizontal relabeling according to the paper</span>
@@ -126,10 +126,10 @@
         <span class="k">for</span> <span class="n">cn</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;curLabel&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">candidateLabels</span><span class="p">,</span> <span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
             <span class="n">subgraph</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">cn</span><span class="p">][</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> 
 
-    <span class="k">return</span> <span class="n">graphList</span>
+    <span class="k">return</span> <span class="n">graphList</span></div>
 
 
-<span class="k">def</span> <span class="nf">verticalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
+<div class="viewcode-block" id="verticalRefinement"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.verticalRefinement">[docs]</a><span class="k">def</span> <span class="nf">verticalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    perform the vertical relabeling according to the paper</span>
@@ -157,7 +157,7 @@
                         <span class="n">subgraph</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">cn</span><span class="p">][</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prevLabel</span>
             <span class="n">prevLabel</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> 
                         
-    <span class="k">return</span> <span class="n">graphList</span>
+    <span class="k">return</span> <span class="n">graphList</span></div>
 </pre></div>
 
           </div>
@@ -168,12 +168,13 @@
 <h3><a href="../../index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../refinement.html">Module 4 - Label Refinement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">

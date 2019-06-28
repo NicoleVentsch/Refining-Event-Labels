@@ -15,8 +15,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Module 4 - horizontal clustering of variants" href="horizontalClustering.html" />
-    <link rel="prev" title="Module 3 - Cost Function" href="cost function.html" /> 
+    <link rel="next" title="Custom Parameters" href="customParameters.html" />
+    <link rel="prev" title="Module 5 - Post-Processing" href="postprocessing.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -25,10 +25,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="horizontalClustering.html" title="Module 4 - horizontal clustering of variants"
+          <a href="customParameters.html" title="Custom Parameters"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="cost function.html" title="Module 3 - Cost Function"
+          <a href="postprocessing.html" title="Module 5 - Post-Processing"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
       </ul>
@@ -85,6 +85,24 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="graph.graphTool.graphTool.addOptimalMapping">
+<code class="descname">addOptimalMapping</code><span class="sig-paren">(</span><em>optimalMapping=[]</em>, <em>normalizedCost=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>optimalMapping</strong> – a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</li>
+<li><strong>normalizedCost</strong> – the value of the normalized cost of the mapping</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="graph.graphTool.graphTool.clusterDetection">
 <code class="descname">clusterDetection</code><span class="sig-paren">(</span><em>customParams</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.clusterDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.clusterDetection" title="Permalink to this definition">¶</a></dt>
 <dd><p>clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</p>
@@ -92,7 +110,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>threshold</strong> – the variant threshold the algorithm should use</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>customParams</strong> – custom parameter object containing the threshold the algorithm should use</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of subgraphs where each subgraph represents a cluster of variants</td>
 </tr>
@@ -103,23 +121,33 @@
 <dl class="method">
 <dt id="graph.graphTool.graphTool.getGraph">
 <code class="descname">getGraph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.getGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.getGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>returns the graph object
-param: none
-return: nx.Graph() object</p>
+<dd><p>function that returns the graph object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">nx.Graph() object</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="graph.graphTool.graphTool.addOptimalMappings">
 <code class="descname">addOptimalMappings</code><span class="sig-paren">(</span><em>bestMappingsList</em>, <em>maxCost</em>, <em>candidatePositions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMappings" title="Permalink to this definition">¶</a></dt>
-<dd><p>updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</p>
+<dd><p>function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>optimalMapping</strong> – a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</li>
-<li><strong>normalizedCost</strong> – the cost of the mapping</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>bestMappingsList</strong> – a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</li>
+<li><strong>maxCost</strong> – the maximal cost of a mapping</li>
+<li><strong>candidatePositions</strong> – list of candidate positions</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an updated graph using a given set of optimal mappings</p>
 </td>
 </tr>
 </tbody>
@@ -143,12 +171,13 @@ return: nx.Graph() object</p>
 <h3><a href="index.html">Refining Event Labels</a></h3>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1.1 - File Converter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 1.2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 2 - Preprocessing Log</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Module 5 - Post-Processing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graph Creation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="horizontalClustering.html">Module 4 - horizontal clustering of variants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="verticalClustering.html">Module 5 - vertical clustering of variants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -174,10 +203,10 @@ return: nx.Graph() object</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="horizontalClustering.html" title="Module 4 - horizontal clustering of variants"
+          <a href="customParameters.html" title="Custom Parameters"
              >next</a> |</li>
         <li class="right" >
-          <a href="cost function.html" title="Module 3 - Cost Function"
+          <a href="postprocessing.html" title="Module 5 - Post-Processing"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
       </ul>

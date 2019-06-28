@@ -157,8 +157,12 @@ def optimalMapping(variants, variant1, variant2, matrixx, cp):
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
 
+    :param variants: a list of variants
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
+    :param matrixx: matrix that should containing the cost of the mappings (after the function was called)
+    :param cp: custom parameters object
+
     :return: a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
     pos_variant1 = variants.index(variant1)
@@ -182,6 +186,15 @@ def optimalMapping(variants, variant1, variant2, matrixx, cp):
 
 
 def bestMappings(cp, variants, C):
+
+    """
+    get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping
+
+    :param cp: custom parameters object
+    :param variants: a list of variants
+    :param C: the cost matrix that should be updated, so that it contains the costs of the optimal mappings
+    :return: a list of the best mappings between all combinations of two variants from the given variants
+    """
     bestMappings = [] 
     allPairs = list(combinations(variants, 2))
     for pair in allPairs:
