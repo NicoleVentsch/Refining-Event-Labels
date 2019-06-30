@@ -1,7 +1,7 @@
-from refiningEventLabels.lib.graph.graphTool import graphTool 
+from refiningEventLabels.lib.graph.graphTool import graphTool
 from refiningEventLabels.lib.objects.customParameters import customParameters
-from refiningEventLabels.lib.Refinement.labelRefinement import verticalRefinement, horizontalRefinement
-from refiningEventLabels.lib.eventLogProcessing.DBTool import DBTool 
+from refiningEventLabels.lib.refinement.labelRefinement import verticalRefinement, horizontalRefinement
+from refiningEventLabels.lib.eventLogProcessing.DBTool import DBTool
 #from refiningEventLabels.lib.eventLogProcessing.filtering import getRelevant
 from refiningEventLabels.lib.eventLogProcessing.postProcessing import eventLogRenaming
 from refiningEventLabels.lib.costFunction.mappings import createEventIDs, positionsOfCandidates

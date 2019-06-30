@@ -2,5 +2,5 @@
 \contentsline {section}{\numberline {2}The Start Page}{1}
 \contentsline {subsection}{\numberline {2.1}Upload Event Log for refining}{1}
 \contentsline {subsection}{\numberline {2.2}Customize}{1}
-\contentsline {subsection}{\numberline {2.3}Last uploaded files}{1}
-\contentsline {subsection}{\numberline {2.4}Last refined files}{1}
+\contentsline {subsection}{\numberline {2.3}Last uploaded files}{2}
+\contentsline {subsection}{\numberline {2.4}Last refined files}{2}
