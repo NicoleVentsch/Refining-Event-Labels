@@ -5,7 +5,7 @@ Created on Fri May 24 10:25:10 2019
 @author: Bianka
 """
 
-import itertools  as it 
+import itertools as it
 from operator import itemgetter
 
 
@@ -80,7 +80,15 @@ def possibleMappings(variant1 = [], variant2 = []):
     :param variant2: second variant as a list of tuples (eventID, event label)
     :return: a list of all possible mappings between the two variants where a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
     """
+	
+    #old version, huge number of combinations when event log is too big
+    """matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
+    n = getNumberOfCommonLabels(variant1, variant2)
     
+    return [list(combi) for combi in it.combinations(matches, n)
+                        if len(set(it.chain.from_iterable(combi))) == (2*n)]"""
+    
+    #optimized version
     matches = [(b,(a,c)) for (a,b) in variant1 for (c,d) in variant2 if b == d]
     d = {i: [] for i in commonLabels(variant1, variant2)}
 

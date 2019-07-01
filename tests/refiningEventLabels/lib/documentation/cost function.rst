@@ -1,29 +1,35 @@
 Module 3 - Cost Function
 ========================================
+
 |
-.. autofunction:: CostFunction.mappings.createEventIDs
 
-.. autofunction:: CostFunction.mappings.common_labels
+.. autofunction:: costFunction.mappings.createEventIDs
 
-.. autofunction:: CostFunction.mappings.getNumberOfCommonLabels
+.. autofunction:: costFunction.mappings.commonLabels
 
-.. autofunction:: CostFunction.mappings.get_positions_label
+.. autofunction:: costFunction.mappings.getNumberOfCommonLabels
 
-.. autofunction:: CostFunction.mappings.possibleMappings
+.. autofunction:: costFunction.mappings.getPositionsLabel
 
-.. autofunction:: CostFunction.cost.costStructure
+.. autofunction:: costFunction.mappings.possibleMappings
 
-.. autofunction:: CostFunction.cost.context
+.. autofunction:: costFunction.mappings.positionsOfCandidates
 
-.. autofunction:: CostFunction.cost.costNoMatch
+.. autofunction:: costFunction.cost.costStructure
 
-.. autofunction:: CostFunction.cost.costMatched
+.. autofunction:: costFunction.cost.context
 
-.. autofunction:: CostFunction.cost.costMapping
+.. autofunction:: costFunction.cost.costNoMatch
 
-.. autofunction:: CostFunction.cost.optimalMapping
+.. autofunction:: costFunction.cost.costMatched
 
-.. autofunction:: CostFunction.cost.context2
+.. autofunction:: costFunction.cost.costMapping
+
+.. autofunction:: costFunction.cost.optimalMapping
+
+.. autofunction:: costFunction.cost.bestMappings
+
+.. autofunction:: costFunction.cost.context2
 
 |
 
