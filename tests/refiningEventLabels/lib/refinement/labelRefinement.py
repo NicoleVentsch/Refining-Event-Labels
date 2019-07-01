@@ -15,26 +15,26 @@ def connectedComponents(G, candidateLabels):
     
     #1st find nodes with candidate labels, 2nd find connected components of each node, 3rd remove duplicate connected components 
     #since two connected nodes may have equal connected components   
-    return {label : [list(cc) for cc in set([tuple(nx.node_connected_component(G, cnode[0]))
+    return {label : [list(cc) for cc in set([tuple(sorted(nx.node_connected_component(G, cnode[0])))
                                  for cnode in filter(lambda node: node[1]['curLabel'] == label, G.nodes(data=True))])]
                                      for label in candidateLabels}
     
     
-def removeDupInComponents(llist):
-    
-    res = []
-
-    for i in range(len(llist)):
-        elem = llist[i]
-        new = set(elem)
-        if i == 0:
-            res.append(new)
-        else:
-            last = res[i-1]
-            if last != new:
-                res.append(new)
-    return res
-        
+#def removeDupInComponents(llist):
+#    
+#    res = []
+#
+#    for i in range(len(llist)):
+#        elem = llist[i]
+#        new = set(elem)
+#        if i == 0:
+#            res.append(new)
+#        else:
+#            last = res[i-1]
+#            if last != new:
+#                res.append(new)
+#    return res
+#        
 
 
 def sizelargestComponent(connectedComponents):
@@ -126,16 +126,12 @@ def verticalRefinement(cp, graphList, db):
 
     for subgraph in graphList:
         cc = connectedComponents(subgraph, candidateLabels)
-        print(cc)
-        #cc = removeDupInComponents(cc)
-        cc2 = sortConectedComponents(cc, db)
-        mSize = sizelargestComponent(cc2)
-     
-        for event, nG in cc2.items():
-            nG = removeDupInComponents(nG)
+        cc = sortConectedComponents(cc, db)
+        mSize = sizelargestComponent(cc)
+        
+        for event, nG in cc.items():
             for i,G in enumerate(nG, start = 1):
                 for cn in G:
-                    print(i,subgraph.node[cn])
                     if i == 1 or len(G) >= threshold * mSize[event]:
                         subgraph.node[cn]['newLabel'] += '.' + str(i)
                         prevLabel = subgraph.node[cn]['newLabel']
