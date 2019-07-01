@@ -5,9 +5,13 @@ import itertools  as it
 
 
 class graphTool:
+    """ graph class containing the main functionalities we need for the algorithm"""
     
     
     def __init__(self):
+        """
+        initialization of a graph
+        """
         self.__G = nx.Graph()
         
 
@@ -72,23 +76,25 @@ class graphTool:
             self.__G.add_edges_from(self.__createEdgeListFromVariant(variant))
     
 
-    """
     def addOptimalMapping(self, optimalMapping = [], normalizedCost = -1):
-        
+
+        """
         updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
-    
+
         :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
-        :param normalizedCost: the cost of the mapping
-       
+        :param normalizedCost: the value of the normalized cost of the mapping
+
+        """
+
         self.__G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))
-    """  
+
         
     def clusterDetection(self, customParams):
         
         """
         clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings
     
-        :param threshold: the variant threshold the algorithm should use
+        :param customParams: custom parameter object containing the threshold the algorithm should use
         :return: list of subgraphs where each subgraph represents a cluster of variants
     
         """
@@ -104,9 +110,11 @@ class graphTool:
     def getGraph(self):
         
         """
-        returns the graph object
-        param: none
-        return: nx.Graph() object
+
+        function that returns the graph object
+
+        :return: nx.Graph() object
+
         """
        
         return self.__G
@@ -115,11 +123,13 @@ class graphTool:
     def addOptimalMappings(self, bestMappingsList, maxCost, candidatePositions):
         
         """
-		updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping
+        function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping
 
-		:param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
-		:param normalizedCost: the cost of the mapping
-		"""
+        :param bestMappingsList: a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant
+        :param maxCost: the maximal cost of a mapping
+        :param candidatePositions: list of candidate positions
+        :return: an updated graph using a given set of optimal mappings
+        """
         
         for mapp in bestMappingsList:
             normalized_cost = mapp[1]/maxCost

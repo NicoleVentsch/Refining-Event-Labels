@@ -1,10 +1,9 @@
-Module 1.2 - Preprocessing Log
+Module 2 - Preprocessing Log
 ========================================
 |
 
-.. autofunction:: PreprocessingLog.preprocessing.lookUpTable
+.. autoclass:: eventLogProcessing.DBTool.DBTool
 
-.. autofunction:: PreprocessingLog.preprocessing.getVariants
 |
 
 :ref:`Return Home <mastertoc>`
