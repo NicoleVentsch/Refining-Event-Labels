@@ -21,13 +21,13 @@ class ValuePicker {
         var me = this;
         $(`#container${me._id} input`).change(function(changedValue) {
             $(`#container${me._id} input`).each(function() {
-                this._value = changedValue.target.value;
-                if (this._value > 1)
-                    this._value = 1;
-                else if (this._value < 0)
-                    this._value = 0;
-                this._value = Math.round(value * 10) / 10;
-                $(this).val(this._value);
+                me._value = changedValue.target.value;
+                if (me._value > 1)
+                    me._value = 1;
+                else if (me._value < 0)
+                    me._value = 0;
+                me._value = Math.round(me._value * 10) / 10;
+                $(this).val(me._value);
             });
         })
     }

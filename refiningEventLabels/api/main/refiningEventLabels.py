@@ -21,15 +21,17 @@ class RefiningEventLabels(APIPage):
         params = customParameters(str(request.form['candidateLabel']).split(','), float(request.form['vert']), float(request.form['hor']), float(request.form['ws']), float(request.form['vm']), float(request.form['wn']))
         refinedFile = request.form['fileName']
         fileAccess = FileStore(FileStoreConfig(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'uploadedFiles'), 5,['xes', 'csv']))
+        
 
         eventLogFile = ""
         for files in fileAccess.filesInfo:
             if os.path.basename(files["name"]) == refinedFile:
                 eventLogFile = files["name"]
-
+        
         fileUtility = FileUtility(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'refinedFiles'))
         print(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'refinedFiles'))
         eventLog = fileUtility.getEventLogFromFile(eventLogFile)
+
         resultEventLog = main(params, eventLog)
         fileUtility.createFile(resultEventLog, refinedFile, '.xes')
         return "refined"

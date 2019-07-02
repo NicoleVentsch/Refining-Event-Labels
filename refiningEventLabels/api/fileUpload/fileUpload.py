@@ -43,8 +43,8 @@ class FileUpload(APIPage):
         pass
 
     def _validFileUpload(self, files):
-        if self._requiredFileName not in files:
-            return "No file Uploaded"
+        #if self._requiredFileName not in files:
+            #return "No file Uploaded"
         file = files[self._requiredFileName]
         if file.filename == "":
             "No file selected"        
