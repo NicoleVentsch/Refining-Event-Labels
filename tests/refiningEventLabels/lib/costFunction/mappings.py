@@ -7,6 +7,7 @@ Created on Fri May 24 10:25:10 2019
 
 import itertools as it
 from operator import itemgetter
+from collections import defaultdict
 
 
 def createEventIDs(variants=[]):
@@ -90,11 +91,10 @@ def possibleMappings(variant1 = [], variant2 = []):
     
     #optimized version
     matches = [(b,(a,c)) for (a,b) in variant1 for (c,d) in variant2 if b == d]
-    d = {i: [] for i in commonLabels(variant1, variant2)}
+    d = defaultdict(list)
 
-    for (k, v) in matches:
-        if k in d:
-            d[k].append(v)
+    for k,v in matches:
+        d[k].append(v)
 
     return [list(d) for d in (it.product(*d.values()))]
 

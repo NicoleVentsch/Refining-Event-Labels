@@ -1,5 +1,5 @@
 import networkx as nx
-
+from collections import defaultdict
 
 def connectedComponents(G, candidateLabels):
     
@@ -13,11 +13,24 @@ def connectedComponents(G, candidateLabels):
     #Remove edges with 'weight' == -1
     G.remove_edges_from([(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] == -1])
     
+    #need to remove duplicated components since the function returns the component with the node itself
+    """
     #1st find nodes with candidate labels, 2nd find connected components of each node, 3rd remove duplicate connected components 
-    #since two connected nodes may have equal connected components   
+    #since two connected nodes may have equal connected components  
     return {label : [list(cc) for cc in set([tuple(sorted(nx.node_connected_component(G, cnode[0])))
                                  for cnode in filter(lambda node: node[1]['curLabel'] == label, G.nodes(data=True))])]
                                      for label in candidateLabels}
+    """
+    
+    #optimized version 
+    components = [(G.node[cc[0]]['curLabel'],cc) for cc in map(list,nx.connected_components(G)) 
+                                                     if G.node[cc[0]]['curLabel'] in candidateLabels]
+
+    d = defaultdict(list)
+    for k,v in components:
+        d[k].append(v)
+        
+    return d
     
     
 #def removeDupInComponents(llist):
