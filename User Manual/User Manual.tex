@@ -96,28 +96,47 @@ In the following chapters, the usage of this web service will be explained.
 
 \section{The Start Page}
 
-The start page of our web service consists of different parts, which will be explained in the following subsections. Namely, we have the parts "Upload Event Log for refining" (1), "Customize" (2), "Last uploaded files" (3) and "Last refined files" (4), which can be viewed in Figure 1.
+The start page of our web service consists of different parts, which will be explained in the following subsections. Namely, we have the parts "Upload Event Log for refining" (1), "Customize" (2), "Last uploaded files" (3), "Last refined files" (4) and "Candidate Labels" (5), which can be viewed in Figure 1.
 
 \begin{figure}[h]
-\includegraphics[scale=0.42]{startpage.png}
+\includegraphics[scale=0.33]{startpage.png}
 \caption{Overview of the start page with the different parts marked in red numbers}
 \end{figure}
 
 \subsection{Upload Event Log for refining}
-In this part of the start page, an event log can be uploaded. In order to do so, the user can either directly type in a path to a file and press the "Upload files" button or he can use the "search" button to search local files on your pc or drag a file into the big box with "upload file" written in it. Afterwards, he has to press the "Upload files" button in order to upload the selected file, he can add a comment on the file in the blanc box and press submit to start the upload. 
+
+\includegraphics[scale=0.5]{uploadEventLog.png}
+
+In this part of the start page, an event log can be uploaded. In order to do so, the user can either directly type in a path to a file and press the "Upload files" button, he can use the "search" button to search local files on your pc or drag a file into the big box with "upload file" written in it. Afterwards, he has to press the "Upload files" button in order to upload the selected file. 
 
 In order to successfully upload a file, this file has to be in XES or csv format, otherwise an error will occur. 
 
+
+
 \subsection{Customize}
-In this section, the user can adjust the thresholds in order to fit his needs. To do so, he can either adjust them using the provided slide control or by typing them manually. The thresholds the user can adjust are the horizontal threshold, the vertical threshold, the weight structure, the weight for matched pairs of actions and the weight for not matched pairs of actions.
+
+\includegraphics[scale=0.5]{customize.png}
+
+In this section, the user can adjust the thresholds in order to fit his needs. To do so, he can either adjust them using the provided slide control or by typing them manually. The thresholds the user can adjust are the horizontal threshold, the vertical threshold, the weight structure, the weight for matched pairs of actions and the weight for not matched pairs of actions. All of the thresholds and weights have to be in the range from 0 to 1.
 
 \subsection{Last uploaded files}
-In this part of the start page, the user can see up to five of his last uploaded files. These files are not refined yet.
+
+\includegraphics[scale=0.5]{lastUploadedFiles.png}
+
+In this part of the start page, the user can see up to five of his last uploaded files. These files are not refined yet. By clicking on them, he can select them and apply the refinement algorithm on them again.
 
 \subsection{Last refined files}
-In this part of the start page, the user can see up to five of his last refined files. These files are already refined.
 
+\includegraphics[scale=0.5]{lastRefinedFile.png}
 
+In this part of the start page, the user can see up to five of his last refined files. These files are already refined. By clicking on them, the user can download them.
+
+\subsection{Candidate Labels}
+
+\includegraphics[scale=0.5]{candidateLabels.png}
+
+In this section, the user provides the algorithm with the candidate labels that should be refined. To do so, he enters the label of the events into the white box. The format should be: label 1, label 2, label 3, ...
+After entering the candidate labels, the user can click on the "submit" button, so that the refinement algorithm will be started using the current thresholds, the chosen file and the provided candidate labels.
 
 %\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
