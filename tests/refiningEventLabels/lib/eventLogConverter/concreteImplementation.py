@@ -45,7 +45,7 @@ class XESFileCreator(FileCreator):
         destinationPath = self.getDestinationPath()
         if filePath != "":
             destinationPath = filePath
-        destinationPath = os.path.join(destinationPath, fileName)
+        destinationPath = os.path.join(fileName, filePath)
         xes_exporter.export_log(eventLog, destinationPath)
         return destinationPath
         

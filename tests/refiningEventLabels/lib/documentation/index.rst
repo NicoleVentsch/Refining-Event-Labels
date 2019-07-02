@@ -16,9 +16,10 @@ The source code is available under: `<https://github.com/NicoleVentsch/Refining-
    eventLogConverter
    preprocessing
    cost function
+   refinement
+   postprocessing
    graph
-   horizontalClustering
-   verticalClustering
+   customParameters
 
 
 Indices and tables

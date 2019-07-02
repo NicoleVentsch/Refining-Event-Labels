@@ -5,7 +5,9 @@ import pandas as pd
 
 
 class DBTool:
-
+    """
+    data base class containing the main preprocessing steps and tools used to access the database
+    """
     def __init__(self, eventLog):
         self.__vt = self.__variantTable(eventLog)
         self.__evt = self.__eventVariantTable(self.__vt)
@@ -51,7 +53,6 @@ class DBTool:
         """
         get all the variants from the variantTable
     
-        :param none
         :return: a list of list of Strings representig all the variants
         """
         
@@ -112,7 +113,6 @@ class DBTool:
         """
         get the variantTable
     
-        :param none
         :return: a pandas DataFrame representing the variantTable
         """
         
@@ -124,7 +124,6 @@ class DBTool:
         """
         get the eventVariantTable
     
-        :param none
         :return: a pandas DataFrame representing the eventVariantTable
         """
         

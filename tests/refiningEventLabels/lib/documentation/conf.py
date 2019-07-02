@@ -17,7 +17,8 @@ To configure this for YOUR next project - search for the pattern #CHNAGEME# in t
 
 import os
 import sys
-sys.path.append(os.path.abspath('C:/Users/Nicole/Documents/Uni/Praktikum Process Mining/Refining-Event-Labels/refiningEventLabels'))
+sys.path.append(os.path.abspath('C:/Users/Nicole/Documents/Uni/Praktikum Process Mining/Refining-Event-Labels/'
+                                'refiningEventLabels/lib'))
 
 
 # -- Some general info  about the project -----------------------------------------------------------------------------
@@ -128,5 +129,4 @@ html_sidebars = {
 }
 
 
-#CHNAGEME# Finished personalizing all the relevant details? Great! Now make this your main conf.py :)
 
