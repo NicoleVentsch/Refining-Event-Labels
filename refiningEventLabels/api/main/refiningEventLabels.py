@@ -18,8 +18,9 @@ class RefiningEventLabels(APIPage):
         return "GET"
 
     def _POST(self, request):
-        params = customParameters(str(request.form['candidateLabel']).split(','), float(request.form['vert']), float(request.form['hor']), float(request.form['ws']), float(request.form['vm']), float(request.form['wn']))
+        params = customParameters(str(request.form['candidateLabel']).split(','), float(request.form['hor']), float(request.form['vert']), float(request.form['ws']), float(request.form['wm']), float(request.form['wn']))
         refinedFile = request.form['fileName']
+        
         fileAccess = FileStore(FileStoreConfig(os.path.join(os.path.dirname(os.path.dirname(__file__)),  'uploadedFiles'), 5,['xes', 'csv']))
         
 
@@ -33,6 +34,19 @@ class RefiningEventLabels(APIPage):
         eventLog = fileUtility.getEventLogFromFile(eventLogFile)
 
         resultEventLog = main(params, eventLog)
+        
+        for case_index, case in enumerate(resultEventLog):
+            print("\n case index: %d  case id: %s" % (case_index, case.attributes["concept:name"]))
+            for event_index, event in enumerate(case):
+                print("event index: %d  event activity: %s" % (event_index, event["concept:name"]))
+                
+        print(str(request.form['candidateLabel']).split(','))
+        print(float(request.form['hor']))
+        print(float(request.form['vert']))
+        print(float(request.form['ws']))
+        print(float(request.form['wm']))
+        print(float(request.form['wn']))
+        
         fileUtility.createFile(resultEventLog, refinedFile, '.xes')
         return "refined"
 

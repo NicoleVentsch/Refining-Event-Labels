@@ -7,8 +7,8 @@ $(document).ready(function(){
     var refinedFiles = new FileList(fileLoader, true);
     refinedFiles.printFiles("#refinedFiles");
 
-    var vertPicker = new ValuePicker("horizontalThreshold", "Horizontal threshold");
-    var horPicker = new ValuePicker("verticalThreshold", "Vertical threshold");
+	var horPicker = new ValuePicker("horizontalThreshold", "Horizontal threshold");
+	var vertPicker = new ValuePicker("verticalThreshold", "Vertical threshold");
     var vmPicker = new ValuePicker("costMatchedLabels", "matched labels weight");
     var wsPicker = new ValuePicker("structuralCost", "structural cost weight");
     var wnPicker = new ValuePicker("costNonMatched", "non-matched labels weight");
@@ -22,9 +22,9 @@ $(document).ready(function(){
     $('#submit').click(function(e) {
         var data = {
             fileName: uploadedFiles._file,
-            vert: vertPicker.value,
             hor : horPicker.value,
-            vm: vmPicker.value,
+			vert: vertPicker.value,
+            wm: vmPicker.value,
             ws: wsPicker.value,
             wn: wnPicker.value,
             candidateLabel: $('#candidateLabels').val()
