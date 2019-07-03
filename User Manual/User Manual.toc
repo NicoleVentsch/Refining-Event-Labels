@@ -1,7 +1,8 @@
 \contentsline {section}{\numberline {1}Overview}{1}
-\contentsline {section}{\numberline {2}The Start Page}{1}
-\contentsline {subsection}{\numberline {2.1}Upload Event Log for refining}{1}
+\contentsline {section}{\numberline {2}Instructions}{1}
+\contentsline {subsection}{\numberline {2.1}Upload Event Log for refining}{2}
 \contentsline {subsection}{\numberline {2.2}Customize}{2}
-\contentsline {subsection}{\numberline {2.3}Last uploaded files}{2}
-\contentsline {subsection}{\numberline {2.4}Last refined files}{2}
+\contentsline {subsection}{\numberline {2.3}Last uploaded files}{3}
+\contentsline {subsection}{\numberline {2.4}Last refined files}{3}
 \contentsline {subsection}{\numberline {2.5}Candidate Labels}{3}
+\contentsline {section}{\numberline {3}Glossary}{3}

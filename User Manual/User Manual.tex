@@ -85,16 +85,26 @@
 
 \section{Overview}
 
-Many processes involve carrying out an action multiple times. An example for this would be an online shop in which you first have to pay a registration fee before ordering an item and paying it. This process contains the event ``payment" twice, but in different contexts, so that the payments are actually two different tasks. In the context of analysing processes, the event logs usually only contain the event names, so that the ``payment" actions would be treated as the same task and loops would be induced in the resulting models. However, these loops do not match the actual process, which is the issue this project addresses. 
+Many processes involve carrying out an action multiple times. 
+An example for this would be an online shop in which you first have to pay a registration fee before ordering an item and paying it. 
+This process contains the event “payment" twice, but in different contexts, so that the payments are actually two different tasks. 
+When analysing processes behind event logs, each event appearing in the log has a certain label as its \textit{activity name}, so if both tasks above had the label “payment", the process discovery algorithms would treat them as the same task, yielding models which contain loops. 
+However, these loops do not match the actual process and make the model imprecise.
+This could be avoided if the tasks above were assigned different labels, e.g: "payment1" and "payment2".
+Manipulating the event log by refinining its event labels could lead to more precise process models. 
+The way the labels are refined is the issue this project addresses.
 
-Using the webservice we provide, imprecise logs can be refined based on the structural contexts of the events. The refinement is executed by relabeling the original log and no filtering is applied to the log. Moreover, it is possible for the user to interactively change the thresholds used by the algorithm. The algorithm we use is based on \cite{paper}.
+Using the web service we provide, imprecise logs are refined based on the structural contexts of the events. 
+The refinement is executed by relabeling the original log and no filtering is applied to the log. 
+Moreover, it is possible for the user to interactively change the thresholds used by the algorithm to influence the result. 
+The approach we have implemented is described in \cite{paper}.
 
 In the following chapters, the usage of this web service will be explained.
 
 
+%\section{Technical Background}
 
-
-\section{The Start Page}
+\section{Instructions}
 
 The start page of our web service consists of different parts, which will be explained in the following subsections. Namely, we have the parts "Upload Event Log for refining" (1), "Customize" (2), "Last uploaded files" (3), "Last refined files" (4) and "Candidate Labels" (5), which can be viewed in Figure 1.
 
@@ -107,36 +117,105 @@ The start page of our web service consists of different parts, which will be exp
 
 \includegraphics[scale=0.5]{uploadEventLog.png}
 
-In this part of the start page, an event log can be uploaded. In order to do so, the user can either directly type in a path to a file and press the "Upload files" button, he can use the "search" button to search local files on your pc or drag a file into the big box with "upload file" written in it. Afterwards, he has to press the "Upload files" button in order to upload the selected file. 
+In this part of the start page, an event log can be uploaded. In order to do so, the user can either directly type in a path to a file and press the "Upload files" button, or he can use the "Search" button to search local files on his PC or drag a file into the big box with "Upload file" written in it. 
+Afterwards, he has to press the "Upload files" button in order to upload the selected file. 
 
-In order to successfully upload a file, this file has to be in XES or csv format, otherwise an error will occur. 
+In order to successfully upload a file, this file has to be in XES or CSV format, otherwise an error will occur. 
 
 
 
 \subsection{Customize}
 
-\includegraphics[scale=0.5]{customize.png}
+\includegraphics[scale=0.6]{customize.png}
 
-In this section, the user can adjust the thresholds in order to fit his needs. To do so, he can either adjust them using the provided slide control or by typing them manually. The thresholds the user can adjust are the horizontal threshold, the vertical threshold, the weight structure, the weight for matched pairs of actions and the weight for not matched pairs of actions. All of the thresholds and weights have to be in the range from 0 to 1.
+In this section, the user can adjust the thresholds in order to fit his needs. 
+To do so, he can either adjust them using the provided slide control or by typing them manually. 
+The thresholds the user can adjust are the horizontal threshold, the vertical threshold, the weight structure, the weight for matched pairs of activities and the weight for not matched pairs of activities. 
+All of the thresholds and weights have to be in the range from 0 to 1.
+By default, all values are set to 0.5.
 
 \subsection{Last uploaded files}
 
-\includegraphics[scale=0.5]{lastUploadedFiles.png}
+\includegraphics[scale=0.6]{lastUploadedFiles.png}
 
-In this part of the start page, the user can see up to five of his last uploaded files. These files are not refined yet. By clicking on them, he can select them and apply the refinement algorithm on them again.
+In this part of the start page, the user can see up to five of his last uploaded files. 
+These files are not refined yet.
+By clicking on them, he can select them and apply the refinement algorithm on them.
 
 \subsection{Last refined files}
 
-\includegraphics[scale=0.5]{lastRefinedFile.png}
+\includegraphics[scale=0.6]{lastRefinedFiles.png}
 
-In this part of the start page, the user can see up to five of his last refined files. These files are already refined. By clicking on them, the user can download them.
+In this part of the start page, the user can see up to five of his last refined files. 
+These files are already refined. 
+By clicking on them, the user can download them.
+The downloaded file has XES format and can be further used as input to process discovery algorithms.
 
 \subsection{Candidate Labels}
 
 \includegraphics[scale=0.5]{candidateLabels.png}
 
-In this section, the user provides the algorithm with the candidate labels that should be refined. To do so, he enters the label of the events into the white box. The format should be: label 1, label 2, label 3, ...
-After entering the candidate labels, the user can click on the "submit" button, so that the refinement algorithm will be started using the current thresholds, the chosen file and the provided candidate labels.
+In this section, the user provides the algorithm with the candidate labels that should be refined. 
+To do so, he enters the label of the events into the white box. 
+The format should be: $label_1$,$label_2$,...,$label_n$.
+After entering the candidate labels, the user can click on the "submit" button, so that the refinement algorithm will be run using the current thresholds, the chosen file and the provided candidate labels.
+The fresh labels have the form $labelx.y$ with $x,y$ natural numbers.
+Here $x$ identifies the refinement made in the horizontal refinement part of the algorithm, whereas $y$ identifies the refinement made in the vertical refinement part. 
+If no labels are given or the given labels do not appear in the log, the refined log will be identical with the original one.
+
+
+
+
+\section{Glossary}
+In this section we give some brief description of the basic concepts used in the approach.
+\medskip
+
+\textbf{-task}\\
+This is a synonym for the word event.
+A task/event is unique in the log and it represents the recording of some action happening on a particular time.
+We usually identify an event by the activity name assigned to it.
+Many events (usually) have the same activity name describing "what" happened.
+\medskip
+
+\textbf{-label}\\
+The labels stand for the activity names.
+An event label is equal to the activity name of that event.
+\medskip
+
+\textbf{-label refinement}\\
+By refining a label, we assign to it an other fresh label.
+By definition of a refining function, two distinct labels do not get assigned the same new label.
+\medskip
+
+\textbf{-relabel}\\
+A synonym for assigning a new name to a label.
+\medskip
+
+\textbf{-horizontal threshold}\\
+This threshold is important in the horizontal refinement part of the algorithm.
+For all pairs of traces in the log, we measure a value to capture the similarity (or dissimilarity) between them.
+Traces are considered similar if this value is under the horizontal threshold.
+The smaller the horizontal threshold, the more refinements take place.
+\medskip
+
+\textbf{-vertical threshold}\\
+This threshold is important in the vertical refinement part of the algorithm.
+In a set of traces which were considered similar in the horizontal refinement part of the algorithm, the same label may still appear many times.
+By adjusting the vertical thresholds one affects the strictness of the refinement computed on these labels.
+A lower threshold may induce more refinements.
+\medskip
+
+\textbf{-matched labels weight}\\
+If a pair of events appears in a mapping, this weight denotes the importance we give to the dissimilarity these two events have in the set of their predecessor and successor labels.
+\medskip
+
+\textbf{-structural cost weight}\\
+If a pair of events appears in a mapping, this weight denotes the importance we give to the dissimilarity these two events have in the positions they appear in the respective traces.
+\medskip
+
+\textbf{-non-matched labels weight}\\
+For an event not appearing in a mapping, the cost of the mapping regarding the event is increased by the product of this weight with the number of predecessors and successors of this event.
+\medskip
 
 %\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
