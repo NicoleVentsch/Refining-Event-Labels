@@ -75,6 +75,8 @@ def costNoMatch(variant1, variant2, context1, context2, mapping):
 
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
+    :param context1: predecessors,successors of variant1
+    :param context2: predecessors,successors of variant2
     :param mapping: the mapping for which the costs for the non-matched labels are calculated
     :return: the cost for the non-matched labels
 
@@ -111,6 +113,8 @@ def costMatched(variant1, variant2, context1, context2, mapping):
 
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
+    :param context1: predecessors,successors of variant1
+    :param context2: predecessors,successors of variant2
     :param mapping: the mapping for which the costs for the matched labels are calculated
     :return: the cost for the matched labels
 
@@ -137,6 +141,8 @@ def costMapping(cp,variant1,variant2,context1,context2,mapping):
     :param cp: custom parameters object
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
+    :param context1: predecessors,successors of variant1
+    :param context2: predecessors,successors of variant2
     :param mapping: the mapping for which the total cost is calculated
     :return: the total cost of the mapping
     """
@@ -158,9 +164,12 @@ def optimalMapping(variant_i, variant_j, i, j, context_i, context_j, matrixx, cp
     """
     given two variants the mapping with the lowest total cost together with the value of this cost will be returned
 
-    :param variants: a list of variants
-    :param variant1: the first variant as a list of tuples (eventID, event label)
-    :param variant2: the second variant as a list of tuples (eventID, event label)
+    :param variant_i: the first variant as a list of tuples (eventID, event label)
+    :param variant_j: the second variant as a list of tuples (eventID, event label)
+    :param i: index of variant_i in variants
+    :param j: index of variant_j in variants
+    :param context_i: predecessors,successors of variant_i
+    :param context_j: predecessors,successors of variant_j
     :param matrixx: matrix that should containing the cost of the mappings (after the function was called)
     :param cp: custom parameters object
 
