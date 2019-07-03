@@ -217,6 +217,23 @@ If a pair of events appears in a mapping, this weight denotes the importance we 
 For an event not appearing in a mapping, the cost of the mapping regarding the event is increased by the product of this weight with the number of predecessors and successors of this event.
 \medskip
 
+
+\section{Further improvements}
+In this section we give some recommendations on how the algorithm can be adjusted or improved.
+\medskip
+
+$\bullet$
+Instead of feeding the set of all variants to the refinement steps, one could remove those variants that do not contain any candidate labels.
+This does not change the logic behind the approach.
+However, in the case that the mapping with the maximal cost is one between two filtered variants, the normalized weights of the graph are going to be affected.
+One can still obtain the same refined logs, but the corresponding thresholds yielding them would be slightly different.
+\medskip
+
+$\bullet$
+In our implementation, we compute the context of each event by looking at the set of all its predecessors and successors.
+One can change this to consider only the neighbors with maximal distance $k$ for some arbitrary $k$.
+Moreover, one could add this parameter to the other Custom parameters, so that a user that has a good domain knowledge regarding his event log can determine the scope $k$.
+
 %\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
 %\bibliography{uw-ethesis}

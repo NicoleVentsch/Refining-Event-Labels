@@ -6,3 +6,4 @@
 \contentsline {subsection}{\numberline {2.4}Last refined files}{3}
 \contentsline {subsection}{\numberline {2.5}Candidate Labels}{3}
 \contentsline {section}{\numberline {3}Glossary}{3}
+\contentsline {section}{\numberline {4}Further improvements}{4}
