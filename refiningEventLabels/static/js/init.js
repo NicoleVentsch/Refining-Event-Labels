@@ -13,8 +13,8 @@ $(document).ready(function(){
     var wsPicker = new ValuePicker("structuralCost", "structural cost weight");
     var wnPicker = new ValuePicker("costNonMatched", "non-matched labels weight");
 
-    vertPicker.create('#customize');
     horPicker.create('#customize');
+    vertPicker.create('#customize');
     vmPicker.create('#customize');
     wsPicker.create('#customize');
     wnPicker.create('#customize');
