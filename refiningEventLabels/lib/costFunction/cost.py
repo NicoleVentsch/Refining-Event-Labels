@@ -208,12 +208,13 @@ def bestMappings(cp, variants, C):
     bestMappings = [] 
     #left = len(variants)
     number = len(variants)
+    contexts_list = [context(v) for v in variants]
     for i in range(number):
         v_i = variants[i]
-        context_i = context(v_i)
+        context_i = contexts_list[i]
         for j in range(i+1,number):
             v_j = variants[j]
-            context_j = context(v_j)
+            context_j = contexts_list[j]
             optimal = optimalMapping(v_i,v_j,i,j,context_i,context_j,C,cp)
             best_mapping = optimal[0]
             best_cost = optimal[1]
