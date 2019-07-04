@@ -1,0 +1,111 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>eventLogProcessing.postProcessing &#8212; Refining Event Labels  documentation</title>
+    <link rel="stylesheet" href="../../_static/graphite.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Refining Event Labels  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for eventLogProcessing.postProcessing</h1><div class="highlight"><pre>
+<span></span>
+<div class="viewcode-block" id="eventLogRenaming"><a class="viewcode-back" href="../../postprocessing.html#eventLogProcessing.postProcessing.eventLogRenaming">[docs]</a><span class="k">def</span> <span class="nf">eventLogRenaming</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">subgraphList</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rename the original eventLog based on the results of the refinement algorithm</span>
+
+<span class="sd">    :param cp: a customParameters object</span>
+<span class="sd">    :param subgraphList: a list of graphs created from the networkx library</span>
+<span class="sd">    :param db: a DBTool object</span>
+<span class="sd">    :param eventLog: the original event log provided by the user</span>
+<span class="sd">    :return: the refined event log based on the results of the refinement algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getCandidateLabels</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">subgraph</span> <span class="ow">in</span> <span class="n">subgraphList</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">eID</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;curLabel&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">,</span> <span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>            
+            <span class="n">vID</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">getEventByID</span><span class="p">(</span><span class="n">eID</span><span class="p">)</span><span class="o">.</span><span class="n">VariantID</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">getEventByID</span><span class="p">(</span><span class="n">eID</span><span class="p">)</span><span class="o">.</span><span class="n">Position</span>
+            <span class="n">traces</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">getTracesByVariantID</span><span class="p">(</span><span class="n">vID</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">traces</span><span class="p">:</span>
+                <span class="n">eventLog</span><span class="p">[</span><span class="n">t</span><span class="p">][</span><span class="n">pos</span><span class="p">][</span><span class="s1">&#39;concept:name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;newLabel&#39;</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">eventLog</span></div>
+                
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="../../index.html">Refining Event Labels</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../preprocessing.html">Module 2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../customParameters.html">Custom Parameters</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Refining Event Labels  documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Nicole Ventsch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>

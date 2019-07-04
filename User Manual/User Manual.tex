@@ -30,7 +30,7 @@
 %START DEFINE YOUR VARIABLES HERE
 
 \newcommand{\documentName}{User Manual}
-\newcommand{\projectName}{Label Refinement by Behavioral Similarity - WEBSITENAME}
+\newcommand{\projectName}{Label Refinement by Behavioral Similarity}
 
 %END DEFINE YOUR VARIABLES HERE
 
@@ -155,9 +155,9 @@ The downloaded file has XES format and can be further used as input to process d
 
 \includegraphics[scale=0.5]{candidateLabels.png}
 
-In this section, the user provides the algorithm with the candidate labels that should be refined. 
-To do so, he enters the label of the events into the white box. 
-The format should be: $label_1$,$label_2$,...,$label_n$.
+In this section, the user provides the algorithm with the candidate labels that should be subject to possible refinements. 
+To do so, he enters the labels into the white box. 
+The format should be: $label_1$,$label_2$,...,$label_n$ and the order of the labels does not matter.
 After entering the candidate labels, the user can click on the "submit" button, so that the refinement algorithm will be run using the current thresholds, the chosen file and the provided candidate labels.
 The fresh labels have the form $labelx.y$ with $x,y$ natural numbers.
 Here $x$ identifies the refinement made in the horizontal refinement part of the algorithm, whereas $y$ identifies the refinement made in the vertical refinement part. 
@@ -168,12 +168,12 @@ If no labels are given or the given labels do not appear in the log, the refined
 
 \subsection{Frontend}
 The webapplication is optimized for Google Chrome (Version 65) and Mozilla Firefox (Version 60). 
-The application has not been tested for Internet Explorer or other browser versions, so that some parts may not work properly 
-or the webinterface differs from the pictures. In order to access the API it is necessary to interpret JSON object corretly.
+The application has not been tested for Internet Explorer or other browser versions, so some parts may not work properly 
+or the webinterface differs from the pictures. In order to access the API it is necessary to interpret the JSON object correctly.
 
 
 \subsection{Backend}
-The application backend can be executed an Windows and Linux applicatoin server. 
+The application backend can be executed on an Windows and Linux application server. 
 This requires a Python version later than 3.6 and a Flask version later than 1.0. The index.py file in the application root dir indicates the 
 entry point for the webapplication.
 

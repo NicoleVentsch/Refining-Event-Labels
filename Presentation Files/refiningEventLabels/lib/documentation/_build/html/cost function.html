@@ -1,0 +1,409 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Module 3 - Cost Function &#8212; Refining Event Labels  documentation</title>
+    <link rel="stylesheet" href="_static/graphite.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 4 - Label Refinement" href="refinement.html" />
+    <link rel="prev" title="Module 2 - Preprocessing Log" href="preprocessing.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="refinement.html" title="Module 4 - Label Refinement"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Module 2 - Preprocessing Log"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-3-cost-function">
+<h1>Module 3 - Cost Function<a class="headerlink" href="#module-3-cost-function" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt id="costFunction.mappings.createEventIDs">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">createEventIDs</code><span class="sig-paren">(</span><em>variants=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#createEventIDs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.createEventIDs" title="Permalink to this definition">¶</a></dt>
+<dd><p>assigns a unique ID to each event of a variant given a list of variants</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variants</strong> – list of variants, i.e., a list of lists</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of list of tuples (ID,Event), where each ID is unique</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.mappings.commonLabels">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">commonLabels</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#commonLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.commonLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates a list of common event labels between two variants</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – second variant as a list of tuples (eventID, event label)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of common event labels (without IDs) between the two variants</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.mappings.getNumberOfCommonLabels">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">getNumberOfCommonLabels</code><span class="sig-paren">(</span><em>variant1=[]</em>, <em>variant2=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#getNumberOfCommonLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.getNumberOfCommonLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives the number of common event labels between two variants</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – second variant as a list of tuples (eventID, event label)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">number of common event labels of the two variants</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.mappings.getPositionsLabel">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">getPositionsLabel</code><span class="sig-paren">(</span><em>string</em>, <em>variant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#getPositionsLabel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.getPositionsLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives a list of all IDs corresponding to a given event label within a given variant</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> – event label</li>
+<li><strong>variant</strong> – variant as a list of tuples (eventID, event label)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of all IDs corresponding to the given event label within the variant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.mappings.possibleMappings">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">possibleMappings</code><span class="sig-paren">(</span><em>variant1=[]</em>, <em>variant2=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#possibleMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.possibleMappings" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives a list of all possible mappings between two given variants</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – second variant as a list of tuples (eventID, event label)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of all possible mappings between the two variants where a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.mappings.positionsOfCandidates">
+<code class="descclassname">costFunction.mappings.</code><code class="descname">positionsOfCandidates</code><span class="sig-paren">(</span><em>candidates</em>, <em>variants</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/mappings.html#positionsOfCandidates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.mappings.positionsOfCandidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>gives a list of all IDs referring to some candidate label</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>candidates</strong> – set of candidate labels for refinement chosen by the user</li>
+<li><strong>variants</strong> – list of all trace variants in event log where each label has unique ID</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list with all event IDs whose label is in the candidate set</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.costStructure">
+<code class="descclassname">costFunction.cost.</code><code class="descname">costStructure</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costStructure" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the sum of the differences in the distances between each matched pair and other matches pairs</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – the first variant</li>
+<li><strong>variant2</strong> – the second variant</li>
+<li><strong>mapping</strong> – the mapping of the actions from the first to the second variant</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">sum of the differences in the distances</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.context">
+<code class="descclassname">costFunction.cost.</code><code class="descname">context</code><span class="sig-paren">(</span><em>variant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variant</strong> – the variant as a list of tuples (eventID, event label) of which we get the list of predecessors and successors</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.costNoMatch">
+<code class="descclassname">costFunction.cost.</code><code class="descname">costNoMatch</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costNoMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costNoMatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – the first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – the second variant as a list of tuples (eventID, event label)</li>
+<li><strong>context1</strong> – predecessors,successors of variant1</li>
+<li><strong>context2</strong> – predecessors,successors of variant2</li>
+<li><strong>mapping</strong> – the mapping for which the costs for the non-matched labels are calculated</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the cost for the non-matched labels</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.costMatched">
+<code class="descclassname">costFunction.cost.</code><code class="descname">costMatched</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costMatched"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costMatched" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant1</strong> – the first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – the second variant as a list of tuples (eventID, event label)</li>
+<li><strong>context1</strong> – predecessors,successors of variant1</li>
+<li><strong>context2</strong> – predecessors,successors of variant2</li>
+<li><strong>mapping</strong> – the mapping for which the costs for the matched labels are calculated</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the cost for the matched labels</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.costMapping">
+<code class="descclassname">costFunction.cost.</code><code class="descname">costMapping</code><span class="sig-paren">(</span><em>cp</em>, <em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> – custom parameters object</li>
+<li><strong>variant1</strong> – the first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant2</strong> – the second variant as a list of tuples (eventID, event label)</li>
+<li><strong>context1</strong> – predecessors,successors of variant1</li>
+<li><strong>context2</strong> – predecessors,successors of variant2</li>
+<li><strong>mapping</strong> – the mapping for which the total cost is calculated</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the total cost of the mapping</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.optimalMapping">
+<code class="descclassname">costFunction.cost.</code><code class="descname">optimalMapping</code><span class="sig-paren">(</span><em>variant_i</em>, <em>variant_j</em>, <em>i</em>, <em>j</em>, <em>context_i</em>, <em>context_j</em>, <em>matrixx</em>, <em>cp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#optimalMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.optimalMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the mapping, between two variants, with the lowest total cost along with such cost</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant_i</strong> – the first variant as a list of tuples (eventID, event label)</li>
+<li><strong>variant_j</strong> – the second variant as a list of tuples (eventID, event label)</li>
+<li><strong>i</strong> – index of variant_i in variants</li>
+<li><strong>j</strong> – index of variant_j in variants</li>
+<li><strong>context_i</strong> – predecessors,successors of variant_i</li>
+<li><strong>context_j</strong> – predecessors,successors of variant_j</li>
+<li><strong>matrixx</strong> – matrix that should containing the cost of the mappings (after the function was called)</li>
+<li><strong>cp</strong> – custom parameters object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a tuple (mapping, cost) of the mapping with the lowest total cost and the corresponding cost value; a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.bestMappings">
+<code class="descclassname">costFunction.cost.</code><code class="descname">bestMappings</code><span class="sig-paren">(</span><em>cp</em>, <em>variants</em>, <em>C</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#bestMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.bestMappings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> – custom parameters object</li>
+<li><strong>variants</strong> – a list of variants</li>
+<li><strong>C</strong> – the cost matrix that should be updated, so that it contains the costs of the optimal mappings</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of the best mappings between all combinations of two variants from the given variants</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="costFunction.cost.context2">
+<code class="descclassname">costFunction.cost.</code><code class="descname">context2</code><span class="sig-paren">(</span><em>variant</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#context2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.context2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of k predecessors and successors of all events of a given variant</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>variant</strong> – variant as a list of tuples (eventID, event label)</li>
+<li><strong>k</strong> – integer specifying the number of predecessors and successors we consider</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of sets of predecessors and successors of each event within a variant</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><a class="reference internal" href="index.html#mastertoc"><span class="std std-ref">Return Home</span></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Refining Event Labels</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 2 - Preprocessing Log</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="refinement.html" title="Module 4 - Label Refinement"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="preprocessing.html" title="Module 2 - Preprocessing Log"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Nicole Ventsch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>

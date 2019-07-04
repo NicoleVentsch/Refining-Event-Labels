@@ -1,0 +1,197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Graph Creation &#8212; Refining Event Labels  documentation</title>
+    <link rel="stylesheet" href="_static/graphite.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Custom Parameters" href="customParameters.html" />
+    <link rel="prev" title="Module 5 - Post-Processing" href="postprocessing.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="customParameters.html" title="Custom Parameters"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="postprocessing.html" title="Module 5 - Post-Processing"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="graph-creation">
+<h1>Graph Creation<a class="headerlink" href="#graph-creation" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
+<dt id="graph.graphTool.graphTool">
+<em class="property">class </em><code class="descclassname">graph.graphTool.</code><code class="descname">graphTool</code><a class="reference internal" href="_modules/graph/graphTool.html#graphTool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graph class containing the main functionalities needed for the algorithm</p>
+<dl class="method">
+<dt id="graph.graphTool.graphTool.createEdgeList">
+<code class="descname">createEdgeList</code><span class="sig-paren">(</span><em>edges=[]</em>, <em>weight=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.createEdgeList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.createEdgeList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of tuples of edges with the corresponding weights given a list of edges and weights</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>edges</strong> – edges given as a list of tuples (eventID1,eventID2)</li>
+<li><strong>weight</strong> – a weight</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of tuples (eventID1, eventID2, weight) of edges together with their weight</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.createGraphFromVariants">
+<code class="descname">createGraphFromVariants</code><span class="sig-paren">(</span><em>variants=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.createGraphFromVariants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.createGraphFromVariants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the initial graph object, such that it becomes a weighted graph containing vertices of the form (eventID, event label) and edges of the form (eventID1, eventID2, weight) based on a given list of variants</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variants</strong> – list of variants, where a variant is given as a list of tuples (eventID, event label), i.e., a list of lists of tuples</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.clusterDetection">
+<code class="descname">clusterDetection</code><span class="sig-paren">(</span><em>customParams</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.clusterDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.clusterDetection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>customParams</strong> – custom parameter object containing the threshold the algorithm should use</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of subgraphs where each subgraph represents a cluster of variants</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.getGraph">
+<code class="descname">getGraph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.getGraph"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.getGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the current networkx graph object</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">networkx graph object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graph.graphTool.graphTool.addOptimalMappings">
+<code class="descname">addOptimalMappings</code><span class="sig-paren">(</span><em>bestMappingsList</em>, <em>maxCost</em>, <em>candidate_positions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMappings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>bestMappingsList</strong> – a list containing all best mappings and their costs as tuples (best mapping, cost)</li>
+<li><strong>maxCost</strong> – the cost of the best mapping with the highest cost out of all best mappings</li>
+<li><strong>candidate_positions</strong> – a list with all IDs corresponding to all candidate labels</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><a class="reference internal" href="index.html#mastertoc"><span class="std std-ref">Return Home</span></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Refining Event Labels</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Module 2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="customParameters.html" title="Custom Parameters"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="postprocessing.html" title="Module 5 - Post-Processing"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Nicole Ventsch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>

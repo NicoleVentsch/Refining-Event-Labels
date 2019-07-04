@@ -1,0 +1,219 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Module 2 - Preprocessing Log &#8212; Refining Event Labels  documentation</title>
+    <link rel="stylesheet" href="_static/graphite.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 3 - Cost Function" href="cost function.html" />
+    <link rel="prev" title="Module 1 - File Converter" href="eventLogConverter.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cost function.html" title="Module 3 - Cost Function"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="eventLogConverter.html" title="Module 1 - File Converter"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-2-preprocessing-log">
+<h1>Module 2 - Preprocessing Log<a class="headerlink" href="#module-2-preprocessing-log" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="class">
+<dt id="eventLogProcessing.DBTool.DBTool">
+<em class="property">class </em><code class="descclassname">eventLogProcessing.DBTool.</code><code class="descname">DBTool</code><span class="sig-paren">(</span><em>eventLog</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Virtual Database containing the main preprocessing steps and tools used to access the eventLog data</p>
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getVariants">
+<code class="descname">getVariants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getVariants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getVariants" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the variants from the variantTable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of list of Strings representig all the variants</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getVariantByID">
+<code class="descname">getVariantByID</code><span class="sig-paren">(</span><em>vID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getVariantByID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getVariantByID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a variant given a variantID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vID</strong> – a variantID (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of Strings representig a variant</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getVariantByEventID">
+<code class="descname">getVariantByEventID</code><span class="sig-paren">(</span><em>eID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getVariantByEventID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getVariantByEventID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a variant given an eventID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>eID</strong> – an eventID (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of Strings representig a variant</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getTracesByVariantID">
+<code class="descname">getTracesByVariantID</code><span class="sig-paren">(</span><em>vID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getTracesByVariantID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getTracesByVariantID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all traces within a variant given a variantID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vID</strong> – an variantID (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of integers representig the traces within a variant</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getEventByID">
+<code class="descname">getEventByID</code><span class="sig-paren">(</span><em>eID</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getEventByID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getEventByID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an event given its eID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>eID</strong> – an eventID (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an Object representig an event (containing:  EventID, VariantID, Position and Event)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getVariantTable">
+<code class="descname">getVariantTable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getVariantTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getVariantTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the variantTable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a pandas DataFrame representing the variantTable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogProcessing.DBTool.DBTool.getEventVariantTable">
+<code class="descname">getEventVariantTable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogProcessing/DBTool.html#DBTool.getEventVariantTable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogProcessing.DBTool.DBTool.getEventVariantTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the eventVariantTable</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a pandas DataFrame representing the eventVariantTable</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><a class="reference internal" href="index.html#mastertoc"><span class="std std-ref">Return Home</span></a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Refining Event Labels</a></h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="eventLogConverter.html">Module 1 - File Converter</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 2 - Preprocessing Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cost function.html">Module 3 - Cost Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refinement.html">Module 4 - Label Refinement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="postprocessing.html">Module 5 - Post-Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph.html">Graph Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="customParameters.html">Custom Parameters</a></li>
+</ul>
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cost function.html" title="Module 3 - Cost Function"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="eventLogConverter.html" title="Module 1 - File Converter"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Refining Event Labels  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Nicole Ventsch.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.2.
+    </div>
+  </body>
+</html>
