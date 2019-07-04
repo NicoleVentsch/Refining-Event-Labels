@@ -4,7 +4,8 @@ from collections import defaultdict
 def connectedComponents(G, candidateLabels):
     
     """
-    computes the connected components given a subgraph 
+    Compute the connected components given a subgraph
+    
     :param G: a graph object created from the networkx library
     :param candidateLabels: a list of Strings representing the candidate lables
     :return: a dictionary containing {candidateLabel: [[comp1],[comp2],...]}
@@ -53,7 +54,8 @@ def connectedComponents(G, candidateLabels):
 def sizelargestComponent(connectedComponents):
     
     """
-    computes the size of the largest components for each candidateLabel
+    Compute the size of the largest components for each candidateLabel
+    
     :param connectedComponents: a dictionary containing the connected components created from the method connectedComponents()
     :return: a dictionary with the form {candidateLabel: maxSize([[comp1],[comp2],...])}
     """
@@ -65,7 +67,8 @@ def sizelargestComponent(connectedComponents):
 def averagePosition(Gi, db):
     
     """
-    computes the average position of the events for a given connected component, i.e., #Gi
+    Compute the average position of the events for a given connected component, i.e., #Gi
+    
     :param Gi: a list representing the connected component for a given event [[comp1],[comp2],...]
     :param db: a DBTool object
     :return: a list with the average position [[avgPosComp1],[avgPosComp2],...]
@@ -78,7 +81,8 @@ def averagePosition(Gi, db):
 def getPosition(eID, db):   
     
     """
-    get the position of an event given its eventID
+    Get the position of an event given its eventID
+    
     :param eID: an eventID (integer)
     :param db: a DBTool object
     :return: an integer representig the position of an event within a trace
@@ -91,7 +95,8 @@ def getPosition(eID, db):
 def sortConectedComponents(connectedComponents, db):   
     
     """
-    sort the connected components in ascending order w.r.t. their average position
+    Sort the connected components in ascending order w.r.t. their average position
+    
     :param connectedComponents:  a dictionary containing the connected components created from the method connectedComponents()
     :param db: a DBTool object
     :return: a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],...]}
@@ -109,7 +114,8 @@ def sortConectedComponents(connectedComponents, db):
 def horizontalRefinement(cp, graphList):
     
     """
-    perform the horizontal relabeling according to the paper
+    Perform the horizontal relabeling according to the paper
+    
     :param cp:  a customParameters object
     :param graphList: a list of graphs created from the networkx library
     :return: the same list of graphs but with relebaled event nodes
@@ -127,7 +133,8 @@ def horizontalRefinement(cp, graphList):
 def verticalRefinement(cp, graphList, db):
     
     """
-    perform the vertical relabeling according to the paper
+    Perform the vertical relabeling according to the paper
+    
     :param cp:  a customParameters object
     :param graphList: a list of graphs created from the networkx library
     :param db: a DBTool object

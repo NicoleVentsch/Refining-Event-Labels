@@ -5,12 +5,12 @@ import itertools  as it
 
 
 class graphTool:
-    """ graph class containing the main functionalities we need for the algorithm"""
+    """ Graph class containing the main functionalities needed for the algorithm"""
     
     
     def __init__(self):
         """
-        initialization of a graph
+        Instantiation of a networkx graph object
         """
         self.__G = nx.Graph()
         
@@ -18,7 +18,7 @@ class graphTool:
     def createEdgeList(self, edges = [], weight = -1):
         
         """
-        creates a list of tuples of edges with the corresponding weights given a list of edges and weights
+        Create a list of tuples of edges with the corresponding weights given a list of edges and weights
     
         :param edges: edges given as a list of tuples (eventID1,eventID2)
         :param weight: a weight
@@ -42,7 +42,7 @@ class graphTool:
     def __createNodeListFromVariant(self, variant = []):
        
         """
-        assigns the current label ('curLabel') and an empty placeholder for the new label ('newLabel') as attributes to the events of a given variant
+        Assign the current label ('curLabel') and an empty placeholder for the new label ('newLabel') as attributes to the events of a given variant
     
         :param variant: variant given as a list of tuples (eventID, event label)
         :return: list of variants with the attributes 'curLabel' (current event label) and 'newLabel' (initialized as event label)
@@ -54,7 +54,7 @@ class graphTool:
     def __createEdgeListFromVariant(self, variant = [], weight = -1):
        
         """
-        creates a list of edges together with their weight for a given variant and weight
+        Create a list of edges together with their weight for a given variant
     
         :param variant: variant given as a list of tuples (eventID, event label)
         :param weight: a weight
@@ -68,7 +68,7 @@ class graphTool:
     def createGraphFromVariants(self, variants = []):
        
         """
-        updates an empty graph, such that it becomes a weighted graph containing vertices of the form (eventID, event label) and edges of the form (eventID1, eventID2, weight) based on a given list of variants
+        Update the initial graph object, such that it becomes a weighted graph containing vertices of the form (eventID, event label) and edges of the form (eventID1, eventID2, weight) based on a given list of variants
     
         :param variants: list of variants, where a variant is given as a list of tuples (eventID, event label), i.e., a list of lists of tuples
         """
@@ -94,11 +94,10 @@ class graphTool:
     def clusterDetection(self, customParams):
         
         """
-        clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings
+        Group the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings
     
         :param customParams: custom parameter object containing the threshold the algorithm should use
-        :return: list of subgraphs where each subgraph represents a cluster of variants
-    
+        :return: list of subgraphs where each subgraph represents a cluster of variants  
         """
         
         horizontalTreshold = customParams.getHorizontalThreshold()
@@ -113,11 +112,9 @@ class graphTool:
     def getGraph(self):
         
         """
-
-        function that returns the graph object
-
-        :return: nx.Graph() object
-
+        Get the current networkx graph object
+        
+        :return: networkx graph object
         """
        
         return self.__G
@@ -125,11 +122,13 @@ class graphTool:
     
     def addOptimalMappings(self, bestMappingsList, maxCost, candidate_positions):
         """
-		updates the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
+		Update the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
+        
 		:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
 		:param maxCost: the cost of the best mapping with the highest cost out of all best mappings
         :param candidate_positions: a list with all IDs corresponding to all candidate labels 
 		"""
+        
         for mapp in bestMappingsList:
             normalized_cost = mapp[1]/maxCost
             mapped_pairs = mapp[0]

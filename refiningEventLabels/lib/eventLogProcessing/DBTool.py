@@ -6,7 +6,7 @@ import pandas as pd
 
 class DBTool:
     """
-    data base class containing the main preprocessing steps and tools used to access the database
+    Virtual Database containing the main preprocessing steps and tools used to access the eventLog data
     """
     def __init__(self, eventLog):
         self.__vt = self.__variantTable(eventLog)
@@ -16,7 +16,7 @@ class DBTool:
     def __variantTable(self, eventLog):
         
         """
-        creates a table containing the following attributes: VariantID, Variants and Traces
+        Create a table containing the following attributes: VariantID, Variants and Traces
     
         :param eventLog: an eventLog object obtained from the pm4py library
         :return: a pandas DataFrame with the mentioned attributes
@@ -33,7 +33,7 @@ class DBTool:
     def __eventVariantTable(self, variantTable):
         
         """
-        creates a table containing the following attributes: EventID, VariantID, Position and Event
+        Create a table containing the following attributes: EventID, VariantID, Position and Event
     
         :param variantTable: a pandas DataFrame obtained from the method __variantTable
         :return: a pandas DataFrame with the mentioned attributes
@@ -51,7 +51,7 @@ class DBTool:
     def getVariants(self): 
         
         """
-        get all the variants from the variantTable
+        Get all the variants from the variantTable
     
         :return: a list of list of Strings representig all the variants
         """
@@ -62,7 +62,7 @@ class DBTool:
     def getVariantByID(self, vID):       
         
         """
-        get a variant given a variantID
+        Get a variant given a variantID
     
         :param vID: a variantID (integer)
         :return: a list of Strings representig a variant
@@ -74,7 +74,7 @@ class DBTool:
     def getVariantByEventID(self, eID): 
         
         """
-        get a variant given an eventID
+        Get a variant given an eventID
     
         :param eID: an eventID (integer)
         :return: a list of Strings representig a variant
@@ -87,7 +87,7 @@ class DBTool:
     def getTracesByVariantID(self, vID):
         
         """
-        get all traces within a variant given a variantID
+        Get all traces within a variant given a variantID
     
         :param vID: an variantID (integer)
         :return: a list of integers representig the traces within a variant
@@ -99,7 +99,7 @@ class DBTool:
     def getEventByID(self, eID):
         
         """
-        get an event given its eID
+        Get an event given its eID
     
         :param eID: an eventID (integer)
         :return: an Object representig an event (containing:  EventID, VariantID, Position and Event)
@@ -111,7 +111,7 @@ class DBTool:
     def getVariantTable(self):
         
         """
-        get the variantTable
+        Get the variantTable
     
         :return: a pandas DataFrame representing the variantTable
         """
@@ -122,7 +122,7 @@ class DBTool:
     def getEventVariantTable(self):
         
         """
-        get the eventVariantTable
+        Get the eventVariantTable
     
         :return: a pandas DataFrame representing the eventVariantTable
         """

@@ -12,8 +12,8 @@ from .mappings import *
 
 def costStructure(variant1, variant2, mapping):
 
-    """
-   get the sum of the differences in the distances between each matched pair and other matches pairs
+   """
+   Get the sum of the differences in the distances between each matched pair and other matches pairs
 
    :param variant1: the first variant
    :param variant2: the second variant
@@ -34,7 +34,7 @@ def costStructure(variant1, variant2, mapping):
 def context(variant):
 
     """
-    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant
+    Create a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant
 
     :param variant: the variant as a list of tuples (eventID, event label) of which we get the list of predecessors and successors
     :return: a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i
@@ -71,7 +71,7 @@ def costNoMatch(variant1, variant2, context1, context2, mapping):
 
     """
 
-    calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.
+    Compute the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.
 
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
@@ -109,7 +109,7 @@ def costNoMatch(variant1, variant2, context1, context2, mapping):
 def costMatched(variant1, variant2, context1, context2, mapping):
     """
 
-    calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.
+    Compute the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.
 
     :param variant1: the first variant as a list of tuples (eventID, event label)
     :param variant2: the second variant as a list of tuples (eventID, event label)
@@ -136,7 +136,7 @@ def costMatched(variant1, variant2, context1, context2, mapping):
 def costMapping(cp,variant1,variant2,context1,context2,mapping):
 
     """
-    gives the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels
+    Compute the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels
 
     :param cp: custom parameters object
     :param variant1: the first variant as a list of tuples (eventID, event label)
@@ -162,7 +162,7 @@ def costMapping(cp,variant1,variant2,context1,context2,mapping):
 def optimalMapping(variant_i, variant_j, i, j, context_i, context_j, matrixx, cp):
 
     """
-    given two variants the mapping with the lowest total cost together with the value of this cost will be returned
+    Get the mapping, between two variants, with the lowest total cost along with such cost
 
     :param variant_i: the first variant as a list of tuples (eventID, event label)
     :param variant_j: the second variant as a list of tuples (eventID, event label)
@@ -198,7 +198,7 @@ def optimalMapping(variant_i, variant_j, i, j, context_i, context_j, matrixx, cp
 def bestMappings(cp, variants, C):
 
     """
-    get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping
+    Get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping
 
     :param cp: custom parameters object
     :param variants: a list of variants
@@ -231,7 +231,7 @@ def bestMappings(cp, variants, C):
 def context2(variant,k):
 
     """
-    creates a list of k predecessors and successors of all events of a given variant
+    Create a list of k predecessors and successors of all events of a given variant
 
     :param variant: variant as a list of tuples (eventID, event label)
     :param k: integer specifying the number of predecessors and successors we consider

@@ -1,12 +1,12 @@
 
 class customParameters:
     """
-    class for the custom parameters
+    customParameters class containing all the parameters needed for the algorithm
     """
+    
     def __init__(self, candidateLabels, horizontalThreshold, verticalThreshold, weightStructure, weightMatch, weightNoMatch):
         """
-        initialization function
-
+         Instantiation of the the parameters
         """
 
         self.__candidateLabels = candidateLabels
@@ -15,40 +15,41 @@ class customParameters:
         self.__weightStructure = weightStructure
         self.__weightMatch = weightMatch
         self.__weightNoMatch = weightNoMatch
+        
 
     def getCandidateLabels(self):
-
         """
-        function that returns the candidate labels
-
+        Get the list of candidate labels
+    
+        :return: a list containing the candidate labels
         """
 
         return self.__candidateLabels
 
     def getHorizontalThreshold(self):
         """
-        function that returns the horizontal threshold
-
+        Get the horizontal threshold
+    
+        :return: horizontal threshold (floating point number)
         """
 
         return self.__horizontalThreshold
 
 
     def getVerticalThreshold(self):
-
         """
-        function that returns the vertical threshold
-
+        Get the vertical threshold
+    
+        :return: vertical threshold (floating point number)
         """
 
         return self.__verticalThreshold
 
     def getStructureWeight(self):
-
         """
-
-        function that returns the weight structure
-
+        Get the structure weight
+    
+        :return: structure weight (floating point number)
         """
 
         return self.__weightStructure
@@ -56,9 +57,9 @@ class customParameters:
 
     def getNoMatchWeight(self):
         """
-
-        function that returns the weight for not matched pairs
-
+        Get the no match weight
+    
+        :return: no match weight (floating point number)
         """
 
         return self.__weightNoMatch
@@ -66,9 +67,9 @@ class customParameters:
 
     def getMatchWeight(self):
         """
-
-        function that returns the weight for matched pairs
-
+        Get the match weight
+    
+        :return: match weight (floating point number)
         """
 
         return self.__weightMatch
@@ -76,9 +77,9 @@ class customParameters:
 
     def setcandidateLabels(self, candidateLabels):
         """
-
-        function that sets the candidate labels
-
+        Update the list of candidate labels
+    
+        :param candidateLabels: a list with the new candidate labels
         """
 
         self.__candidateLabels = candidateLabels
@@ -86,9 +87,9 @@ class customParameters:
 
     def setHorizontalThreshold(self, horizontalThreshold):
         """
-
-        function that sets the horizontal threshold
-
+        Update the horizontal threshold parameter
+    
+        :param horizontalThreshold: a floating point number 
         """
 
         self.__horizontalThreshold = horizontalThreshold
@@ -96,8 +97,9 @@ class customParameters:
 
     def setVerticalThreshold(self, verticalThreshold):
         """
-        function that sets the vertical threshold
-
+        Update the horizontal threshold parameter
+    
+        :param horizontalThreshold: a floating point number 
         """
 
         self.__verticalThreshold = verticalThreshold
@@ -105,8 +107,9 @@ class customParameters:
 
     def setStructureWeight(self, weightStructure):
         """
-        function that sets the weight structure
-
+        Update the structure weight parameter
+    
+        :param weightStructure: a floating point number 
         """
 
         self.__weightStructure = weightStructure
@@ -114,9 +117,9 @@ class customParameters:
 
     def setNoMatchWeight(self, weightNoMatch):
         """
-
-        function that sets the weight for not matched pairs
-
+        Update the no match weight parameter
+    
+        :param weightNoMatch: a floating point number 
         """
 
         self.__weightNoMatch = weightNoMatch
@@ -124,9 +127,9 @@ class customParameters:
 
     def setMatchWeight(self, weightMatch):
         """
-
-        function that sets the weight for matched pairs
-
+        Update the match weight parameter
+    
+        :param weightMatch: a floating point number 
         """
 
         self.__weightMatch = weightMatch
