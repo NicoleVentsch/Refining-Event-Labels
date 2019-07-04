@@ -20,7 +20,7 @@ def refine():
     refining = RefiningEventLabels()
     return refining.execute(request)
 
-@app.route('/')
+@app.route('/', methods = ['POST', 'GET'])
 def startup():
     startpage = StartPage()
     return startpage.execute(request)
