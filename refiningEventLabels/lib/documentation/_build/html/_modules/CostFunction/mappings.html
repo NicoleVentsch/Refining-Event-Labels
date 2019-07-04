@@ -42,6 +42,7 @@
 
 <span class="kn">import</span> <span class="nn">itertools</span> <span class="k">as</span> <span class="nn">it</span>
 <span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">itemgetter</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">defaultdict</span>
 
 
 <div class="viewcode-block" id="createEventIDs"><a class="viewcode-back" href="../../cost function.html#costFunction.mappings.createEventIDs">[docs]</a><span class="k">def</span> <span class="nf">createEventIDs</span><span class="p">(</span><span class="n">variants</span><span class="o">=</span><span class="p">[]):</span>
@@ -116,11 +117,21 @@
 <span class="sd">    :return: a list of all possible mappings between the two variants where a mapping is a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 	
-    <span class="n">matches</span> <span class="o">=</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant1</span> <span class="k">for</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant2</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="n">d</span><span class="p">]</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">getNumberOfCommonLabels</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">)</span>
+    <span class="c1">#old version, huge number of combinations when event log is too big</span>
+    <span class="sd">&quot;&quot;&quot;matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]</span>
+<span class="sd">    n = getNumberOfCommonLabels(variant1, variant2)</span>
+<span class="sd">    </span>
+<span class="sd">    return [list(combi) for combi in it.combinations(matches, n)</span>
+<span class="sd">                        if len(set(it.chain.from_iterable(combi))) == (2*n)]&quot;&quot;&quot;</span>
     
-    <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">combi</span><span class="p">)</span> <span class="k">for</span> <span class="n">combi</span> <span class="ow">in</span> <span class="n">it</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">matches</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-                        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">combi</span><span class="p">)))</span> <span class="o">==</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)]</span></div>
+    <span class="c1">#optimized version</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[(</span><span class="n">b</span><span class="p">,(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant1</span> <span class="k">for</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant2</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="n">d</span><span class="p">]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="p">(</span><span class="n">it</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="o">*</span><span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">()))]</span></div>
 
 <span class="c1">#Args: set of candidate labels for refinement, list of all trace variants in event log</span>
 <span class="c1">#Returns: a list with all event IDs whose label is in the candidate set, we use this later for edge creation in the graph</span>

@@ -85,24 +85,6 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="graph.graphTool.graphTool.addOptimalMapping">
-<code class="descname">addOptimalMapping</code><span class="sig-paren">(</span><em>optimalMapping=[]</em>, <em>normalizedCost=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMapping" title="Permalink to this definition">¶</a></dt>
-<dd><p>updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>optimalMapping</strong> – a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</li>
-<li><strong>normalizedCost</strong> – the value of the normalized cost of the mapping</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="graph.graphTool.graphTool.clusterDetection">
 <code class="descname">clusterDetection</code><span class="sig-paren">(</span><em>customParams</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.clusterDetection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.clusterDetection" title="Permalink to this definition">¶</a></dt>
 <dd><p>clusters the variants based on a given threshold; to do so, edges with a weight above the threshold are deleted from the given graph respresenting the optimal mappings</p>
@@ -134,21 +116,16 @@
 
 <dl class="method">
 <dt id="graph.graphTool.graphTool.addOptimalMappings">
-<code class="descname">addOptimalMappings</code><span class="sig-paren">(</span><em>bestMappingsList</em>, <em>maxCost</em>, <em>candidatePositions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMappings" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping</p>
+<code class="descname">addOptimalMappings</code><span class="sig-paren">(</span><em>bestMappingsList</em>, <em>maxCost</em>, <em>candidate_positions</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graph/graphTool.html#graphTool.addOptimalMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graph.graphTool.graphTool.addOptimalMappings" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>updates the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
+:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
+:param maxCost: the cost of the best mapping with the highest cost out of all best mappings</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>bestMappingsList</strong> – a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</li>
-<li><strong>maxCost</strong> – the maximal cost of a mapping</li>
-<li><strong>candidatePositions</strong> – list of candidate positions</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an updated graph using a given set of optimal mappings</p>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>candidate_positions</strong> – a list with all IDs corresponding to all candidate labels</td>
 </tr>
 </tbody>
 </table>

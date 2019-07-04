@@ -63,13 +63,15 @@
         <span class="k">return</span> <span class="p">[(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="n">weight</span><span class="p">})</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">]</span></div>
     
     
-    <span class="k">def</span> <span class="nf">__pairwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterable</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__pairwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variant_nodes</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot; auxiliary function to create pairs&quot;&quot;&quot;</span>
         
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">tee</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
-        <span class="nb">next</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">list_pairs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variant_nodes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">list_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">variant_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">variant_nodes</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">list_pairs</span>
     
 
     <span class="k">def</span> <span class="nf">__createNodeListFromVariant</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variant</span> <span class="o">=</span> <span class="p">[]):</span>
@@ -94,8 +96,8 @@
 <span class="sd">        :return: a list of edges together with their weight</span>
 <span class="sd">        &quot;&quot;&quot;</span>
        
-        <span class="n">edges</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">variant</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pairwise</span><span class="p">(</span><span class="n">edges</span><span class="p">),</span> <span class="n">weight</span><span class="p">)</span>
+        <span class="n">nodes</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">variant</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__pairwise</span><span class="p">(</span><span class="n">nodes</span><span class="p">),</span> <span class="n">weight</span><span class="p">)</span>
     
     
 <div class="viewcode-block" id="graphTool.createGraphFromVariants"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.createGraphFromVariants">[docs]</a>    <span class="k">def</span> <span class="nf">createGraphFromVariants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variants</span> <span class="o">=</span> <span class="p">[]):</span>
@@ -111,17 +113,17 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__createEdgeListFromVariant</span><span class="p">(</span><span class="n">variant</span><span class="p">))</span></div>
     
 
-<div class="viewcode-block" id="graphTool.addOptimalMapping"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.addOptimalMapping">[docs]</a>    <span class="k">def</span> <span class="nf">addOptimalMapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">optimalMapping</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">normalizedCost</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</span>
-
-<span class="sd">        :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
-<span class="sd">        :param normalizedCost: the value of the normalized cost of the mapping</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="n">optimalMapping</span> <span class="p">,</span> <span class="n">normalizedCost</span><span class="p">))</span></div>
+<span class="c1">#    def addOptimalMapping(self, optimalMapping = [], normalizedCost = -1):</span>
+<span class="c1">#</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        updates the graph using a given optimal mapping between two variants and the normalized cost for this mapping</span>
+<span class="c1">#</span>
+<span class="c1">#        :param optimalMapping: a mapping as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
+<span class="c1">#        :param normalizedCost: the value of the normalized cost of the mapping</span>
+<span class="c1">#</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#        self.__G.add_edges_from(self.createEdgeList(optimalMapping , normalizedCost))</span>
 
         
 <div class="viewcode-block" id="graphTool.clusterDetection"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.clusterDetection">[docs]</a>    <span class="k">def</span> <span class="nf">clusterDetection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">customParams</span><span class="p">):</span>
@@ -136,7 +138,8 @@
         
         <span class="n">horizontalTreshold</span> <span class="o">=</span> <span class="n">customParams</span><span class="o">.</span><span class="n">getHorizontalThreshold</span><span class="p">()</span>
 
-        <span class="n">filteredEdges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">horizontalTreshold</span> <span class="ow">and</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+        <span class="c1">#filteredEdges = [(u, v) for (u, v, d) in self.__G.edges(data=True) if (d[&#39;weight&#39;] &gt; horizontalTreshold and d[&#39;weight&#39;] != -1)]</span>
+        <span class="n">filteredEdges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">horizontalTreshold</span> <span class="ow">and</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">42</span><span class="p">)]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">remove_edges_from</span><span class="p">(</span><span class="n">filteredEdges</span><span class="p">)</span>
     
         <span class="k">return</span> <span class="p">[</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">k_edge_subgraphs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)]</span> <span class="c1">#or also use nx.connected_components(G)</span></div>
@@ -155,29 +158,48 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__G</span></div>
     
     
-<div class="viewcode-block" id="graphTool.addOptimalMappings"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.addOptimalMappings">[docs]</a>    <span class="k">def</span> <span class="nf">addOptimalMappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bestMappingsList</span><span class="p">,</span> <span class="n">maxCost</span><span class="p">,</span> <span class="n">candidatePositions</span><span class="p">):</span>
-        
+<div class="viewcode-block" id="graphTool.addOptimalMappings"><a class="viewcode-back" href="../../graph.html#graph.graphTool.graphTool.addOptimalMappings">[docs]</a>    <span class="k">def</span> <span class="nf">addOptimalMappings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bestMappingsList</span><span class="p">,</span> <span class="n">maxCost</span><span class="p">,</span> <span class="n">candidate_positions</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping</span>
-
-<span class="sd">        :param bestMappingsList: a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
-<span class="sd">        :param maxCost: the maximal cost of a mapping</span>
-<span class="sd">        :param candidatePositions: list of candidate positions</span>
-<span class="sd">        :return: an updated graph using a given set of optimal mappings</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        
+<span class="sd">		updates the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels</span>
+<span class="sd">		:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)</span>
+<span class="sd">		:param maxCost: the cost of the best mapping with the highest cost out of all best mappings</span>
+<span class="sd">        :param candidate_positions: a list with all IDs corresponding to all candidate labels </span>
+<span class="sd">		&quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">mapp</span> <span class="ow">in</span> <span class="n">bestMappingsList</span><span class="p">:</span>
             <span class="n">normalized_cost</span> <span class="o">=</span> <span class="n">mapp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">maxCost</span>
             <span class="n">mapped_pairs</span> <span class="o">=</span> <span class="n">mapp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">candidate_pairs</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="c1">#non_candidate_pairs = []</span>
             <span class="k">for</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">mapped_pairs</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">candidatePositions</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">candidate_positions</span><span class="p">:</span>
                     <span class="n">candidate_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">candidate_pairs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">))</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="n">candidate_pairs</span><span class="p">,</span> <span class="n">normalized_cost</span><span class="p">))</span></div></div>
-                    <span class="c1">#self.__G.add_edges_from(self.createEdgeList(non_candidate_pairs, 0))</span>
+                <span class="c1">#else:</span>
+                    <span class="c1">#non_candidate_pairs.append((x,y))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__G</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">createEdgeList</span><span class="p">(</span><span class="n">candidate_pairs</span><span class="p">,</span> <span class="n">normalized_cost</span><span class="p">))</span></div></div>
+<span class="c1">#self.__G.add_edges_from(self.createEdgeList(non_candidate_pairs, 0))    </span>
+<span class="c1">#    def addOptimalMappings(self, bestMappingsList, maxCost, candidatePositions):</span>
+<span class="c1">#        </span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        function that updates the graph using a given set of optimal mapping between two variants and the normalized cost for this mapping</span>
+<span class="c1">#</span>
+<span class="c1">#        :param bestMappingsList: a list of mappings as a set of matched pairs (ID1,ID2), where the event label corresponding to ID1 is the same as that corresponding to ID2; ID1 is from the first variant and ID2 from the second variant</span>
+<span class="c1">#        :param maxCost: the maximal cost of a mapping</span>
+<span class="c1">#        :param candidatePositions: list of candidate positions</span>
+<span class="c1">#        :return: an updated graph using a given set of optimal mappings</span>
+<span class="c1">#        &quot;&quot;&quot;</span>
+<span class="c1">#        </span>
+<span class="c1">#        for mapp in bestMappingsList:</span>
+<span class="c1">#            normalized_cost = mapp[1]/maxCost</span>
+<span class="c1">#            mapped_pairs = mapp[0]</span>
+<span class="c1">#            candidate_pairs = []</span>
+<span class="c1">#            #non_candidate_pairs = []</span>
+<span class="c1">#            for(x,y) in mapped_pairs:</span>
+<span class="c1">#                if x in candidatePositions:</span>
+<span class="c1">#                    candidate_pairs.append((x,y))</span>
+<span class="c1">#                #else:</span>
+<span class="c1">#                    #candidate_pairs.append((x,y))</span>
+<span class="c1">#        self.__G.add_edges_from(self.createEdgeList(candidate_pairs, normalized_cost))</span>
+<span class="c1">#                    #self.__G.add_edges_from(self.createEdgeList(non_candidate_pairs, 0))</span>
 
     
 

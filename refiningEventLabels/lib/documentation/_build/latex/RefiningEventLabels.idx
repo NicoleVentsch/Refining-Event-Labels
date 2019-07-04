@@ -1,0 +1,60 @@
+\indexentry{FileUtility (class in eventLogConverter.concreteImplementation)@\spxentry{FileUtility}\spxextra{class in eventLogConverter.concreteImplementation}|hyperpage}{3}
+\indexentry{XESFileConverter (class in eventLogConverter.concreteImplementation)@\spxentry{XESFileConverter}\spxextra{class in eventLogConverter.concreteImplementation}|hyperpage}{3}
+\indexentry{CSVFileConverter (class in eventLogConverter.concreteImplementation)@\spxentry{CSVFileConverter}\spxextra{class in eventLogConverter.concreteImplementation}|hyperpage}{3}
+\indexentry{XESFileCreator (class in eventLogConverter.concreteImplementation)@\spxentry{XESFileCreator}\spxextra{class in eventLogConverter.concreteImplementation}|hyperpage}{3}
+\indexentry{FileConverterFactory (class in eventLogConverter.defaultFileHandlersFactory)@\spxentry{FileConverterFactory}\spxextra{class in eventLogConverter.defaultFileHandlersFactory}|hyperpage}{3}
+\indexentry{FileCreatorFactory (class in eventLogConverter.defaultFileHandlersFactory)@\spxentry{FileCreatorFactory}\spxextra{class in eventLogConverter.defaultFileHandlersFactory}|hyperpage}{3}
+\indexentry{FileHandlerFactory (class in eventLogConverter.fileHandlerBase)@\spxentry{FileHandlerFactory}\spxextra{class in eventLogConverter.fileHandlerBase}|hyperpage}{3}
+\indexentry{register() (eventLogConverter.fileHandlerBase.FileHandlerFactory method)@\spxentry{register()}\spxextra{eventLogConverter.fileHandlerBase.FileHandlerFactory method}|hyperpage}{3}
+\indexentry{FileCreator (class in eventLogConverter.fileHandlerBase)@\spxentry{FileCreator}\spxextra{class in eventLogConverter.fileHandlerBase}|hyperpage}{3}
+\indexentry{FileConverter (class in eventLogConverter.fileHandlerBase)@\spxentry{FileConverter}\spxextra{class in eventLogConverter.fileHandlerBase}|hyperpage}{3}
+\indexentry{FileUtilityBase (class in eventLogConverter.fileUtility)@\spxentry{FileUtilityBase}\spxextra{class in eventLogConverter.fileUtility}|hyperpage}{3}
+\indexentry{DBTool (class in eventLogProcessing.DBTool)@\spxentry{DBTool}\spxextra{class in eventLogProcessing.DBTool}|hyperpage}{5}
+\indexentry{getVariants() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getVariants()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getVariantByID() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getVariantByID()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getVariantByEventID() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getVariantByEventID()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getTracesByVariantID() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getTracesByVariantID()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getEventByID() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getEventByID()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getVariantTable() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getVariantTable()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{getEventVariantTable() (eventLogProcessing.DBTool.DBTool method)@\spxentry{getEventVariantTable()}\spxextra{eventLogProcessing.DBTool.DBTool method}|hyperpage}{5}
+\indexentry{createEventIDs() (in module costFunction.mappings)@\spxentry{createEventIDs()}\spxextra{in module costFunction.mappings}|hyperpage}{7}
+\indexentry{commonLabels() (in module costFunction.mappings)@\spxentry{commonLabels()}\spxextra{in module costFunction.mappings}|hyperpage}{7}
+\indexentry{getNumberOfCommonLabels() (in module costFunction.mappings)@\spxentry{getNumberOfCommonLabels()}\spxextra{in module costFunction.mappings}|hyperpage}{7}
+\indexentry{getPositionsLabel() (in module costFunction.mappings)@\spxentry{getPositionsLabel()}\spxextra{in module costFunction.mappings}|hyperpage}{7}
+\indexentry{possibleMappings() (in module costFunction.mappings)@\spxentry{possibleMappings()}\spxextra{in module costFunction.mappings}|hyperpage}{7}
+\indexentry{positionsOfCandidates() (in module costFunction.mappings)@\spxentry{positionsOfCandidates()}\spxextra{in module costFunction.mappings}|hyperpage}{8}
+\indexentry{costStructure() (in module costFunction.cost)@\spxentry{costStructure()}\spxextra{in module costFunction.cost}|hyperpage}{8}
+\indexentry{context() (in module costFunction.cost)@\spxentry{context()}\spxextra{in module costFunction.cost}|hyperpage}{8}
+\indexentry{costNoMatch() (in module costFunction.cost)@\spxentry{costNoMatch()}\spxextra{in module costFunction.cost}|hyperpage}{8}
+\indexentry{costMatched() (in module costFunction.cost)@\spxentry{costMatched()}\spxextra{in module costFunction.cost}|hyperpage}{8}
+\indexentry{costMapping() (in module costFunction.cost)@\spxentry{costMapping()}\spxextra{in module costFunction.cost}|hyperpage}{9}
+\indexentry{optimalMapping() (in module costFunction.cost)@\spxentry{optimalMapping()}\spxextra{in module costFunction.cost}|hyperpage}{9}
+\indexentry{bestMappings() (in module costFunction.cost)@\spxentry{bestMappings()}\spxextra{in module costFunction.cost}|hyperpage}{9}
+\indexentry{context2() (in module costFunction.cost)@\spxentry{context2()}\spxextra{in module costFunction.cost}|hyperpage}{9}
+\indexentry{connectedComponents() (in module refinement.labelRefinement)@\spxentry{connectedComponents()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{sizelargestComponent() (in module refinement.labelRefinement)@\spxentry{sizelargestComponent()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{averagePosition() (in module refinement.labelRefinement)@\spxentry{averagePosition()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{getPosition() (in module refinement.labelRefinement)@\spxentry{getPosition()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{sortConectedComponents() (in module refinement.labelRefinement)@\spxentry{sortConectedComponents()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{horizontalRefinement() (in module refinement.labelRefinement)@\spxentry{horizontalRefinement()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{verticalRefinement() (in module refinement.labelRefinement)@\spxentry{verticalRefinement()}\spxextra{in module refinement.labelRefinement}|hyperpage}{11}
+\indexentry{eventLogRenaming() (in module eventLogProcessing.postProcessing)@\spxentry{eventLogRenaming()}\spxextra{in module eventLogProcessing.postProcessing}|hyperpage}{13}
+\indexentry{graphTool (class in graph.graphTool)@\spxentry{graphTool}\spxextra{class in graph.graphTool}|hyperpage}{15}
+\indexentry{createEdgeList() (graph.graphTool.graphTool method)@\spxentry{createEdgeList()}\spxextra{graph.graphTool.graphTool method}|hyperpage}{15}
+\indexentry{createGraphFromVariants() (graph.graphTool.graphTool method)@\spxentry{createGraphFromVariants()}\spxextra{graph.graphTool.graphTool method}|hyperpage}{15}
+\indexentry{clusterDetection() (graph.graphTool.graphTool method)@\spxentry{clusterDetection()}\spxextra{graph.graphTool.graphTool method}|hyperpage}{15}
+\indexentry{getGraph() (graph.graphTool.graphTool method)@\spxentry{getGraph()}\spxextra{graph.graphTool.graphTool method}|hyperpage}{15}
+\indexentry{addOptimalMappings() (graph.graphTool.graphTool method)@\spxentry{addOptimalMappings()}\spxextra{graph.graphTool.graphTool method}|hyperpage}{15}
+\indexentry{customParameters (class in objects.customParameters)@\spxentry{customParameters}\spxextra{class in objects.customParameters}|hyperpage}{17}
+\indexentry{getCandidateLabels() (objects.customParameters.customParameters method)@\spxentry{getCandidateLabels()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{getHorizontalThreshold() (objects.customParameters.customParameters method)@\spxentry{getHorizontalThreshold()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{getVerticalThreshold() (objects.customParameters.customParameters method)@\spxentry{getVerticalThreshold()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{getStructureWeight() (objects.customParameters.customParameters method)@\spxentry{getStructureWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{getNoMatchWeight() (objects.customParameters.customParameters method)@\spxentry{getNoMatchWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{getMatchWeight() (objects.customParameters.customParameters method)@\spxentry{getMatchWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setcandidateLabels() (objects.customParameters.customParameters method)@\spxentry{setcandidateLabels()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setHorizontalThreshold() (objects.customParameters.customParameters method)@\spxentry{setHorizontalThreshold()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setVerticalThreshold() (objects.customParameters.customParameters method)@\spxentry{setVerticalThreshold()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setStructureWeight() (objects.customParameters.customParameters method)@\spxentry{setStructureWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setNoMatchWeight() (objects.customParameters.customParameters method)@\spxentry{setNoMatchWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
+\indexentry{setMatchWeight() (objects.customParameters.customParameters method)@\spxentry{setMatchWeight()}\spxextra{objects.customParameters.customParameters method}|hyperpage}{17}
