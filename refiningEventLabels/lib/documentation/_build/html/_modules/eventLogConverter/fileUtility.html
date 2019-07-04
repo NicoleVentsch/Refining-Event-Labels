@@ -68,6 +68,7 @@
 <div class="viewcode-block" id="FileUtilityBase.getEventLogFromFile"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.getEventLogFromFile">[docs]</a>    <span class="k">def</span> <span class="nf">getEventLogFromFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that converts a file to an event log</span>
+
 <span class="sd">        :param path: path of the file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fileExtension</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getFileExtension</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -78,6 +79,7 @@
 <div class="viewcode-block" id="FileUtilityBase.registerImport"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.registerImport">[docs]</a>    <span class="k">def</span> <span class="nf">registerImport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that registers a new file converter to expand the import functionality</span>
+
 <span class="sd">        :param fileType: type of the files that can be converted using the fileConverter</span>
 <span class="sd">        :param fileConverter: file converter</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -87,6 +89,7 @@
 <div class="viewcode-block" id="FileUtilityBase.registerExport"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.registerExport">[docs]</a>    <span class="k">def</span> <span class="nf">registerExport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that registers a new file converter to expand the export functionality</span>
+
 <span class="sd">        :param fileType: type of the files that can be converted using the fileConverter</span>
 <span class="sd">        :param fileConverter: file converter</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -96,6 +99,7 @@
     <span class="k">def</span> <span class="nf">__getFileExtension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that extracts the file extension from the file path</span>
+
 <span class="sd">        :param filePath: path of the file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span></div>

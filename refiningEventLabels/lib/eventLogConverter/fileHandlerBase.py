@@ -13,6 +13,7 @@ class FileHandlerFactory(ABC):
     def create(self, fileType):
         """
         returns the right file handler depending on the file type
+
         :param fileType: the file type of the provided file
         :return: file handler according to file type
         """
@@ -22,6 +23,7 @@ class FileHandlerFactory(ABC):
     def register(self, fileType, fileHandler):
         """
         register a new file handler for a given file type
+
         :param fileType: the file type of the provided file
         :param fileHandler: the handler that should be registered
         """
@@ -61,6 +63,7 @@ class FileCreator(ABC):
     def createFile(self, eventLog, fileName = "", filePath = ""):
         """
         function that creates a file from a given event log
+
         :param eventLog: event log
         :param fileName: name of the file that will be created
         :param filePath: path of the file that will be created
@@ -88,6 +91,7 @@ class FileConverter(ABC):
     def convert(self, filePath):
         """
         function that converts a file to an event log
+
         :param filePath: path of the file
         """
         pass

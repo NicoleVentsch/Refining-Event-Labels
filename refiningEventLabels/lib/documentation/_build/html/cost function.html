@@ -168,7 +168,7 @@
 <dl class="function">
 <dt id="costFunction.cost.costStructure">
 <code class="descclassname">costFunction.cost.</code><code class="descname">costStructure</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costStructure"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costStructure" title="Permalink to this definition">¶</a></dt>
-<dd><p>get the sum of the differences in the distances between each matched pair and other matches pairs</p>
+<dd><p>Get the sum of the differences in the distances between each matched pair and other matches pairs</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -190,7 +190,7 @@
 <dl class="function">
 <dt id="costFunction.cost.context">
 <code class="descclassname">costFunction.cost.</code><code class="descname">context</code><span class="sig-paren">(</span><em>variant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#context"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.context" title="Permalink to this definition">¶</a></dt>
-<dd><p>gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</p>
+<dd><p>Create a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -206,7 +206,7 @@
 <dl class="function">
 <dt id="costFunction.cost.costNoMatch">
 <code class="descclassname">costFunction.cost.</code><code class="descname">costNoMatch</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costNoMatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costNoMatch" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</p>
+<dd><p>Compute the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -230,7 +230,7 @@
 <dl class="function">
 <dt id="costFunction.cost.costMatched">
 <code class="descclassname">costFunction.cost.</code><code class="descname">costMatched</code><span class="sig-paren">(</span><em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costMatched"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costMatched" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</p>
+<dd><p>Compute the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -254,7 +254,7 @@
 <dl class="function">
 <dt id="costFunction.cost.costMapping">
 <code class="descclassname">costFunction.cost.</code><code class="descname">costMapping</code><span class="sig-paren">(</span><em>cp</em>, <em>variant1</em>, <em>variant2</em>, <em>context1</em>, <em>context2</em>, <em>mapping</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#costMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.costMapping" title="Permalink to this definition">¶</a></dt>
-<dd><p>gives the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels</p>
+<dd><p>Compute the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -279,7 +279,7 @@
 <dl class="function">
 <dt id="costFunction.cost.optimalMapping">
 <code class="descclassname">costFunction.cost.</code><code class="descname">optimalMapping</code><span class="sig-paren">(</span><em>variant_i</em>, <em>variant_j</em>, <em>i</em>, <em>j</em>, <em>context_i</em>, <em>context_j</em>, <em>matrixx</em>, <em>cp</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#optimalMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.optimalMapping" title="Permalink to this definition">¶</a></dt>
-<dd><p>given two variants the mapping with the lowest total cost together with the value of this cost will be returned</p>
+<dd><p>Get the mapping, between two variants, with the lowest total cost along with such cost</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -306,7 +306,7 @@
 <dl class="function">
 <dt id="costFunction.cost.bestMappings">
 <code class="descclassname">costFunction.cost.</code><code class="descname">bestMappings</code><span class="sig-paren">(</span><em>cp</em>, <em>variants</em>, <em>C</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#bestMappings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.bestMappings" title="Permalink to this definition">¶</a></dt>
-<dd><p>get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</p>
+<dd><p>Get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -328,7 +328,7 @@
 <dl class="function">
 <dt id="costFunction.cost.context2">
 <code class="descclassname">costFunction.cost.</code><code class="descname">context2</code><span class="sig-paren">(</span><em>variant</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/costFunction/cost.html#context2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#costFunction.cost.context2" title="Permalink to this definition">¶</a></dt>
-<dd><p>creates a list of k predecessors and successors of all events of a given variant</p>
+<dd><p>Create a list of k predecessors and successors of all events of a given variant</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

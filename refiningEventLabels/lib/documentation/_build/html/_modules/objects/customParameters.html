@@ -36,13 +36,11 @@
 <span></span>
 <div class="viewcode-block" id="customParameters"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters">[docs]</a><span class="k">class</span> <span class="nc">customParameters</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    class for the custom parameters</span>
+<span class="sd">    customParameters class containing all the parameters needed for the algorithm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidateLabels</span><span class="p">,</span> <span class="n">horizontalThreshold</span><span class="p">,</span> <span class="n">verticalThreshold</span><span class="p">,</span> <span class="n">weightStructure</span><span class="p">,</span> <span class="n">weightMatch</span><span class="p">,</span> <span class="n">weightNoMatch</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        initialization function</span>
 
-<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__candidateLabels</span> <span class="o">=</span> <span class="n">candidateLabels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__horizontalThreshold</span> <span class="o">=</span> <span class="n">horizontalThreshold</span>
@@ -50,40 +48,41 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightStructure</span> <span class="o">=</span> <span class="n">weightStructure</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightMatch</span> <span class="o">=</span> <span class="n">weightMatch</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightNoMatch</span> <span class="o">=</span> <span class="n">weightNoMatch</span>
+        
 
 <div class="viewcode-block" id="customParameters.getCandidateLabels"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getCandidateLabels">[docs]</a>    <span class="k">def</span> <span class="nf">getCandidateLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that returns the candidate labels</span>
-
+<span class="sd">        Get the list of candidate labels</span>
+<span class="sd">    </span>
+<span class="sd">        :return: a list containing the candidate labels</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__candidateLabels</span></div>
 
 <div class="viewcode-block" id="customParameters.getHorizontalThreshold"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getHorizontalThreshold">[docs]</a>    <span class="k">def</span> <span class="nf">getHorizontalThreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that returns the horizontal threshold</span>
-
+<span class="sd">        Get the horizontal threshold</span>
+<span class="sd">    </span>
+<span class="sd">        :return: horizontal threshold (floating point number)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__horizontalThreshold</span></div>
 
 
 <div class="viewcode-block" id="customParameters.getVerticalThreshold"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getVerticalThreshold">[docs]</a>    <span class="k">def</span> <span class="nf">getVerticalThreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that returns the vertical threshold</span>
-
+<span class="sd">        Get the vertical threshold</span>
+<span class="sd">    </span>
+<span class="sd">        :return: vertical threshold (floating point number)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__verticalThreshold</span></div>
 
 <div class="viewcode-block" id="customParameters.getStructureWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getStructureWeight">[docs]</a>    <span class="k">def</span> <span class="nf">getStructureWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that returns the weight structure</span>
-
+<span class="sd">        Get the structure weight</span>
+<span class="sd">    </span>
+<span class="sd">        :return: structure weight (floating point number)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weightStructure</span></div>
@@ -91,9 +90,9 @@
 
 <div class="viewcode-block" id="customParameters.getNoMatchWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getNoMatchWeight">[docs]</a>    <span class="k">def</span> <span class="nf">getNoMatchWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that returns the weight for not matched pairs</span>
-
+<span class="sd">        Get the no match weight</span>
+<span class="sd">    </span>
+<span class="sd">        :return: no match weight (floating point number)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weightNoMatch</span></div>
@@ -101,9 +100,9 @@
 
 <div class="viewcode-block" id="customParameters.getMatchWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.getMatchWeight">[docs]</a>    <span class="k">def</span> <span class="nf">getMatchWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that returns the weight for matched pairs</span>
-
+<span class="sd">        Get the match weight</span>
+<span class="sd">    </span>
+<span class="sd">        :return: match weight (floating point number)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weightMatch</span></div>
@@ -111,9 +110,9 @@
 
 <div class="viewcode-block" id="customParameters.setcandidateLabels"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setcandidateLabels">[docs]</a>    <span class="k">def</span> <span class="nf">setcandidateLabels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidateLabels</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that sets the candidate labels</span>
-
+<span class="sd">        Update the list of candidate labels</span>
+<span class="sd">    </span>
+<span class="sd">        :param candidateLabels: a list with the new candidate labels</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__candidateLabels</span> <span class="o">=</span> <span class="n">candidateLabels</span></div>
@@ -121,9 +120,9 @@
 
 <div class="viewcode-block" id="customParameters.setHorizontalThreshold"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setHorizontalThreshold">[docs]</a>    <span class="k">def</span> <span class="nf">setHorizontalThreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">horizontalThreshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that sets the horizontal threshold</span>
-
+<span class="sd">        Update the horizontal threshold parameter</span>
+<span class="sd">    </span>
+<span class="sd">        :param horizontalThreshold: a floating point number </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__horizontalThreshold</span> <span class="o">=</span> <span class="n">horizontalThreshold</span></div>
@@ -131,8 +130,9 @@
 
 <div class="viewcode-block" id="customParameters.setVerticalThreshold"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setVerticalThreshold">[docs]</a>    <span class="k">def</span> <span class="nf">setVerticalThreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verticalThreshold</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that sets the vertical threshold</span>
-
+<span class="sd">        Update the horizontal threshold parameter</span>
+<span class="sd">    </span>
+<span class="sd">        :param horizontalThreshold: a floating point number </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__verticalThreshold</span> <span class="o">=</span> <span class="n">verticalThreshold</span></div>
@@ -140,8 +140,9 @@
 
 <div class="viewcode-block" id="customParameters.setStructureWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setStructureWeight">[docs]</a>    <span class="k">def</span> <span class="nf">setStructureWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weightStructure</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        function that sets the weight structure</span>
-
+<span class="sd">        Update the structure weight parameter</span>
+<span class="sd">    </span>
+<span class="sd">        :param weightStructure: a floating point number </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightStructure</span> <span class="o">=</span> <span class="n">weightStructure</span></div>
@@ -149,9 +150,9 @@
 
 <div class="viewcode-block" id="customParameters.setNoMatchWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setNoMatchWeight">[docs]</a>    <span class="k">def</span> <span class="nf">setNoMatchWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weightNoMatch</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that sets the weight for not matched pairs</span>
-
+<span class="sd">        Update the no match weight parameter</span>
+<span class="sd">    </span>
+<span class="sd">        :param weightNoMatch: a floating point number </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightNoMatch</span> <span class="o">=</span> <span class="n">weightNoMatch</span></div>
@@ -159,9 +160,9 @@
 
 <div class="viewcode-block" id="customParameters.setMatchWeight"><a class="viewcode-back" href="../../customParameters.html#objects.customParameters.customParameters.setMatchWeight">[docs]</a>    <span class="k">def</span> <span class="nf">setMatchWeight</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weightMatch</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        function that sets the weight for matched pairs</span>
-
+<span class="sd">        Update the match weight parameter</span>
+<span class="sd">    </span>
+<span class="sd">        :param weightMatch: a floating point number </span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__weightMatch</span> <span class="o">=</span> <span class="n">weightMatch</span></div></div>

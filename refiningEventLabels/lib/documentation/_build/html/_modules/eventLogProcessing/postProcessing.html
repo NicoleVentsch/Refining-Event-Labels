@@ -36,7 +36,7 @@
 <span></span>
 <div class="viewcode-block" id="eventLogRenaming"><a class="viewcode-back" href="../../postprocessing.html#eventLogProcessing.postProcessing.eventLogRenaming">[docs]</a><span class="k">def</span> <span class="nf">eventLogRenaming</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">subgraphList</span><span class="p">,</span> <span class="n">db</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    function that renames the original event log based on the results of the refinement algorithm</span>
+<span class="sd">    Rename the original eventLog based on the results of the refinement algorithm</span>
 
 <span class="sd">    :param cp: a customParameters object</span>
 <span class="sd">    :param subgraphList: a list of graphs created from the networkx library</span>
@@ -44,6 +44,7 @@
 <span class="sd">    :param eventLog: the original event log provided by the user</span>
 <span class="sd">    :return: the refined event log based on the results of the refinement algorithm</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="n">labels</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">getCandidateLabels</span><span class="p">()</span>
     
     <span class="k">for</span> <span class="n">subgraph</span> <span class="ow">in</span> <span class="n">subgraphList</span><span class="p">:</span>

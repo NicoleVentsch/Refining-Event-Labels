@@ -9,9 +9,6 @@ class graphTool:
     
     
     def __init__(self):
-        """
-        Instantiation of a networkx graph object
-        """
         self.__G = nx.Graph()
         
 
@@ -122,13 +119,14 @@ class graphTool:
     
     def addOptimalMappings(self, bestMappingsList, maxCost, candidate_positions):
         """
-		Update the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
+        Update the graph by assigning new weights to edges between mapped pairs of candidate labels given a list of all optimal mappings between all variants, the max cost for normalization and the positions of the candidate labels
         
-		:param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
-		:param maxCost: the cost of the best mapping with the highest cost out of all best mappings
-        :param candidate_positions: a list with all IDs corresponding to all candidate labels 
-		"""
-        
+        :param bestMappingsList: a list containing all best mappings and their costs as tuples (best mapping, cost)
+        :param maxCost: the cost of the best mapping with the highest cost out of all best mappings
+        :param candidate_positions: a list with all IDs corresponding to all candidate labels
+        """
+
+
         for mapp in bestMappingsList:
             normalized_cost = mapp[1]/maxCost
             mapped_pairs = mapp[0]

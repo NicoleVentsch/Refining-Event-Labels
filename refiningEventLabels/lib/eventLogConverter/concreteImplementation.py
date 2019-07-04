@@ -30,6 +30,7 @@ class XESFileConverter(FileConverter):
     def convert(self, filePath):
         """
         function that converts xes files into event logs
+
         :param filePath: the path to the file
         :return: event log
         """
@@ -46,6 +47,7 @@ class CSVFileConverter(FileConverter):
     def convert(self, filePath):
         """
         function that converts csv files into event logs
+
         :param filePath: the path to the file
         :return: event log
         """
@@ -65,6 +67,7 @@ class XESFileCreator(FileCreator):
     def createFile(self, eventLog, fileName = "", filePath = ""):
         """
         function that creates an XES file from an event log
+
         :param eventLog: given event log
         :param fileName: name of the file that will be created
         :param filePath: path where the created file should be stored

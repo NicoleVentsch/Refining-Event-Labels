@@ -39,7 +39,8 @@
 <div class="viewcode-block" id="connectedComponents"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.connectedComponents">[docs]</a><span class="k">def</span> <span class="nf">connectedComponents</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">candidateLabels</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    computes the connected components given a subgraph </span>
+<span class="sd">    Compute the connected components given a subgraph</span>
+<span class="sd">    </span>
 <span class="sd">    :param G: a graph object created from the networkx library</span>
 <span class="sd">    :param candidateLabels: a list of Strings representing the candidate lables</span>
 <span class="sd">    :return: a dictionary containing {candidateLabel: [[comp1],[comp2],...]}</span>
@@ -88,7 +89,8 @@
 <div class="viewcode-block" id="sizelargestComponent"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.sizelargestComponent">[docs]</a><span class="k">def</span> <span class="nf">sizelargestComponent</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    computes the size of the largest components for each candidateLabel</span>
+<span class="sd">    Compute the size of the largest components for each candidateLabel</span>
+<span class="sd">    </span>
 <span class="sd">    :param connectedComponents: a dictionary containing the connected components created from the method connectedComponents()</span>
 <span class="sd">    :return: a dictionary with the form {candidateLabel: maxSize([[comp1],[comp2],...])}</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -100,7 +102,8 @@
 <div class="viewcode-block" id="averagePosition"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.averagePosition">[docs]</a><span class="k">def</span> <span class="nf">averagePosition</span><span class="p">(</span><span class="n">Gi</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    computes the average position of the events for a given connected component, i.e., #Gi</span>
+<span class="sd">    Compute the average position of the events for a given connected component, i.e., #Gi</span>
+<span class="sd">    </span>
 <span class="sd">    :param Gi: a list representing the connected component for a given event [[comp1],[comp2],...]</span>
 <span class="sd">    :param db: a DBTool object</span>
 <span class="sd">    :return: a list with the average position [[avgPosComp1],[avgPosComp2],...]</span>
@@ -113,7 +116,8 @@
 <div class="viewcode-block" id="getPosition"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.getPosition">[docs]</a><span class="k">def</span> <span class="nf">getPosition</span><span class="p">(</span><span class="n">eID</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    get the position of an event given its eventID</span>
+<span class="sd">    Get the position of an event given its eventID</span>
+<span class="sd">    </span>
 <span class="sd">    :param eID: an eventID (integer)</span>
 <span class="sd">    :param db: a DBTool object</span>
 <span class="sd">    :return: an integer representig the position of an event within a trace</span>
@@ -126,7 +130,8 @@
 <div class="viewcode-block" id="sortConectedComponents"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.sortConectedComponents">[docs]</a><span class="k">def</span> <span class="nf">sortConectedComponents</span><span class="p">(</span><span class="n">connectedComponents</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    sort the connected components in ascending order w.r.t. their average position</span>
+<span class="sd">    Sort the connected components in ascending order w.r.t. their average position</span>
+<span class="sd">    </span>
 <span class="sd">    :param connectedComponents:  a dictionary containing the connected components created from the method connectedComponents()</span>
 <span class="sd">    :param db: a DBTool object</span>
 <span class="sd">    :return: a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],...]}</span>
@@ -144,7 +149,8 @@
 <div class="viewcode-block" id="horizontalRefinement"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.horizontalRefinement">[docs]</a><span class="k">def</span> <span class="nf">horizontalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    perform the horizontal relabeling according to the paper</span>
+<span class="sd">    Perform the horizontal relabeling according to the paper</span>
+<span class="sd">    </span>
 <span class="sd">    :param cp:  a customParameters object</span>
 <span class="sd">    :param graphList: a list of graphs created from the networkx library</span>
 <span class="sd">    :return: the same list of graphs but with relebaled event nodes</span>
@@ -162,7 +168,8 @@
 <div class="viewcode-block" id="verticalRefinement"><a class="viewcode-back" href="../../refinement.html#refinement.labelRefinement.verticalRefinement">[docs]</a><span class="k">def</span> <span class="nf">verticalRefinement</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">graphList</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>
     
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    perform the vertical relabeling according to the paper</span>
+<span class="sd">    Perform the vertical relabeling according to the paper</span>
+<span class="sd">    </span>
 <span class="sd">    :param cp:  a customParameters object</span>
 <span class="sd">    :param graphList: a list of graphs created from the networkx library</span>
 <span class="sd">    :param db: a DBTool object</span>

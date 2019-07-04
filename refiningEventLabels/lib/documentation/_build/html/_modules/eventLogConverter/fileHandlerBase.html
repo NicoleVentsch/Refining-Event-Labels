@@ -48,6 +48,7 @@
 <div class="viewcode-block" id="FileHandlerFactory.create"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileHandlerBase.FileHandlerFactory.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        returns the right file handler depending on the file type</span>
+
 <span class="sd">        :param fileType: the file type of the provided file</span>
 <span class="sd">        :return: file handler according to file type</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -57,6 +58,7 @@
 <div class="viewcode-block" id="FileHandlerFactory.register"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileHandlerBase.FileHandlerFactory.register">[docs]</a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileHandler</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        register a new file handler for a given file type</span>
+
 <span class="sd">        :param fileType: the file type of the provided file</span>
 <span class="sd">        :param fileHandler: the handler that should be registered</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -96,6 +98,7 @@
 <div class="viewcode-block" id="FileCreator.createFile"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileHandlerBase.FileCreator.createFile">[docs]</a>    <span class="k">def</span> <span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that creates a file from a given event log</span>
+
 <span class="sd">        :param eventLog: event log</span>
 <span class="sd">        :param fileName: name of the file that will be created</span>
 <span class="sd">        :param filePath: path of the file that will be created</span>
@@ -123,6 +126,7 @@
 <div class="viewcode-block" id="FileConverter.convert"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileHandlerBase.FileConverter.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        function that converts a file to an event log</span>
+
 <span class="sd">        :param filePath: path of the file</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div></div>

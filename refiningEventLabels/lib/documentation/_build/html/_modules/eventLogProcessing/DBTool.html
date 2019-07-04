@@ -41,7 +41,7 @@
 
 <div class="viewcode-block" id="DBTool"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool">[docs]</a><span class="k">class</span> <span class="nc">DBTool</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    data base class containing the main preprocessing steps and tools used to access the database</span>
+<span class="sd">    Virtual Database containing the main preprocessing steps and tools used to access the eventLog data</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__vt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__variantTable</span><span class="p">(</span><span class="n">eventLog</span><span class="p">)</span>
@@ -51,7 +51,7 @@
     <span class="k">def</span> <span class="nf">__variantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        creates a table containing the following attributes: VariantID, Variants and Traces</span>
+<span class="sd">        Create a table containing the following attributes: VariantID, Variants and Traces</span>
 <span class="sd">    </span>
 <span class="sd">        :param eventLog: an eventLog object obtained from the pm4py library</span>
 <span class="sd">        :return: a pandas DataFrame with the mentioned attributes</span>
@@ -68,7 +68,7 @@
     <span class="k">def</span> <span class="nf">__eventVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variantTable</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        creates a table containing the following attributes: EventID, VariantID, Position and Event</span>
+<span class="sd">        Create a table containing the following attributes: EventID, VariantID, Position and Event</span>
 <span class="sd">    </span>
 <span class="sd">        :param variantTable: a pandas DataFrame obtained from the method __variantTable</span>
 <span class="sd">        :return: a pandas DataFrame with the mentioned attributes</span>
@@ -86,7 +86,7 @@
 <div class="viewcode-block" id="DBTool.getVariants"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariants">[docs]</a>    <span class="k">def</span> <span class="nf">getVariants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get all the variants from the variantTable</span>
+<span class="sd">        Get all the variants from the variantTable</span>
 <span class="sd">    </span>
 <span class="sd">        :return: a list of list of Strings representig all the variants</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -97,7 +97,7 @@
 <div class="viewcode-block" id="DBTool.getVariantByID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantByID">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantByID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vID</span><span class="p">):</span>       
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get a variant given a variantID</span>
+<span class="sd">        Get a variant given a variantID</span>
 <span class="sd">    </span>
 <span class="sd">        :param vID: a variantID (integer)</span>
 <span class="sd">        :return: a list of Strings representig a variant</span>
@@ -109,7 +109,7 @@
 <div class="viewcode-block" id="DBTool.getVariantByEventID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantByEventID">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantByEventID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eID</span><span class="p">):</span> 
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get a variant given an eventID</span>
+<span class="sd">        Get a variant given an eventID</span>
 <span class="sd">    </span>
 <span class="sd">        :param eID: an eventID (integer)</span>
 <span class="sd">        :return: a list of Strings representig a variant</span>
@@ -122,7 +122,7 @@
 <div class="viewcode-block" id="DBTool.getTracesByVariantID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getTracesByVariantID">[docs]</a>    <span class="k">def</span> <span class="nf">getTracesByVariantID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vID</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get all traces within a variant given a variantID</span>
+<span class="sd">        Get all traces within a variant given a variantID</span>
 <span class="sd">    </span>
 <span class="sd">        :param vID: an variantID (integer)</span>
 <span class="sd">        :return: a list of integers representig the traces within a variant</span>
@@ -134,7 +134,7 @@
 <div class="viewcode-block" id="DBTool.getEventByID"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getEventByID">[docs]</a>    <span class="k">def</span> <span class="nf">getEventByID</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eID</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get an event given its eID</span>
+<span class="sd">        Get an event given its eID</span>
 <span class="sd">    </span>
 <span class="sd">        :param eID: an eventID (integer)</span>
 <span class="sd">        :return: an Object representig an event (containing:  EventID, VariantID, Position and Event)</span>
@@ -146,7 +146,7 @@
 <div class="viewcode-block" id="DBTool.getVariantTable"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getVariantTable">[docs]</a>    <span class="k">def</span> <span class="nf">getVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get the variantTable</span>
+<span class="sd">        Get the variantTable</span>
 <span class="sd">    </span>
 <span class="sd">        :return: a pandas DataFrame representing the variantTable</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -157,7 +157,7 @@
 <div class="viewcode-block" id="DBTool.getEventVariantTable"><a class="viewcode-back" href="../../preprocessing.html#eventLogProcessing.DBTool.DBTool.getEventVariantTable">[docs]</a>    <span class="k">def</span> <span class="nf">getEventVariantTable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        get the eventVariantTable</span>
+<span class="sd">        Get the eventVariantTable</span>
 <span class="sd">    </span>
 <span class="sd">        :return: a pandas DataFrame representing the eventVariantTable</span>
 <span class="sd">        &quot;&quot;&quot;</span>

@@ -5,9 +5,7 @@ class customParameters:
     """
     
     def __init__(self, candidateLabels, horizontalThreshold, verticalThreshold, weightStructure, weightMatch, weightNoMatch):
-        """
-         Instantiation of the the parameters
-        """
+
 
         self.__candidateLabels = candidateLabels
         self.__horizontalThreshold = horizontalThreshold

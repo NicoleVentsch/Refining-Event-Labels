@@ -43,78 +43,173 @@
 <dl class="class">
 <dt id="objects.customParameters.customParameters">
 <em class="property">class </em><code class="descclassname">objects.customParameters.</code><code class="descname">customParameters</code><span class="sig-paren">(</span><em>candidateLabels</em>, <em>horizontalThreshold</em>, <em>verticalThreshold</em>, <em>weightStructure</em>, <em>weightMatch</em>, <em>weightNoMatch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>class for the custom parameters</p>
-<p>initialization function</p>
+<dd><p>customParameters class containing all the parameters needed for the algorithm</p>
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getCandidateLabels">
 <code class="descname">getCandidateLabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getCandidateLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getCandidateLabels" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the candidate labels</p>
+<dd><p>Get the list of candidate labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list containing the candidate labels</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getHorizontalThreshold">
 <code class="descname">getHorizontalThreshold</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getHorizontalThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getHorizontalThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the horizontal threshold</p>
+<dd><p>Get the horizontal threshold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">horizontal threshold (floating point number)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getVerticalThreshold">
 <code class="descname">getVerticalThreshold</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getVerticalThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getVerticalThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the vertical threshold</p>
+<dd><p>Get the vertical threshold</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">vertical threshold (floating point number)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getStructureWeight">
 <code class="descname">getStructureWeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getStructureWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getStructureWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the weight structure</p>
+<dd><p>Get the structure weight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">structure weight (floating point number)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getNoMatchWeight">
 <code class="descname">getNoMatchWeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getNoMatchWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getNoMatchWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the weight for not matched pairs</p>
+<dd><p>Get the no match weight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">no match weight (floating point number)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.getMatchWeight">
 <code class="descname">getMatchWeight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.getMatchWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.getMatchWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that returns the weight for matched pairs</p>
+<dd><p>Get the match weight</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">match weight (floating point number)</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setcandidateLabels">
 <code class="descname">setcandidateLabels</code><span class="sig-paren">(</span><em>candidateLabels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setcandidateLabels"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setcandidateLabels" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the candidate labels</p>
+<dd><p>Update the list of candidate labels</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>candidateLabels</strong> – a list with the new candidate labels</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setHorizontalThreshold">
 <code class="descname">setHorizontalThreshold</code><span class="sig-paren">(</span><em>horizontalThreshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setHorizontalThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setHorizontalThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the horizontal threshold</p>
+<dd><p>Update the horizontal threshold parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>horizontalThreshold</strong> – a floating point number</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setVerticalThreshold">
 <code class="descname">setVerticalThreshold</code><span class="sig-paren">(</span><em>verticalThreshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setVerticalThreshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setVerticalThreshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the vertical threshold</p>
+<dd><p>Update the horizontal threshold parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>horizontalThreshold</strong> – a floating point number</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setStructureWeight">
 <code class="descname">setStructureWeight</code><span class="sig-paren">(</span><em>weightStructure</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setStructureWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setStructureWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the weight structure</p>
+<dd><p>Update the structure weight parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>weightStructure</strong> – a floating point number</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setNoMatchWeight">
 <code class="descname">setNoMatchWeight</code><span class="sig-paren">(</span><em>weightNoMatch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setNoMatchWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setNoMatchWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the weight for not matched pairs</p>
+<dd><p>Update the no match weight parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>weightNoMatch</strong> – a floating point number</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="objects.customParameters.customParameters.setMatchWeight">
 <code class="descname">setMatchWeight</code><span class="sig-paren">(</span><em>weightMatch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/objects/customParameters.html#customParameters.setMatchWeight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#objects.customParameters.customParameters.setMatchWeight" title="Permalink to this definition">¶</a></dt>
-<dd><p>function that sets the weight for matched pairs</p>
+<dd><p>Update the match weight parameter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>weightMatch</strong> – a floating point number</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>

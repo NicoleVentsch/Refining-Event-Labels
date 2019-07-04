@@ -11,9 +11,9 @@ from operator import itemgetter
 from .mappings import *
 
 def costStructure(variant1, variant2, mapping):
-
-   """
+    """
    Get the sum of the differences in the distances between each matched pair and other matches pairs
+
 
    :param variant1: the first variant
    :param variant2: the second variant
@@ -21,6 +21,7 @@ def costStructure(variant1, variant2, mapping):
    :return: sum of the differences in the distances
 
     """
+
     cost_structure = 0
     combis = list(combinations(mapping, 2)) 
     for (pair1, pair2) in combis:

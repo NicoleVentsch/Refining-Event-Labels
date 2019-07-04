@@ -118,11 +118,11 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 	
     <span class="c1">#old version, huge number of combinations when event log is too big</span>
-    <span class="sd">&quot;&quot;&quot;matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]</span>
-<span class="sd">    n = getNumberOfCommonLabels(variant1, variant2)</span>
-<span class="sd">    </span>
-<span class="sd">    return [list(combi) for combi in it.combinations(matches, n)</span>
-<span class="sd">                        if len(set(it.chain.from_iterable(combi))) == (2*n)]&quot;&quot;&quot;</span>
+    <span class="c1">#matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]</span>
+    <span class="c1">#n = getNumberOfCommonLabels(variant1, variant2)</span>
+    
+    <span class="c1">#return [list(combi) for combi in it.combinations(matches, n)</span>
+    <span class="c1">#                    if len(set(it.chain.from_iterable(combi))) == (2*n)]&quot;&quot;&quot;</span>
     
     <span class="c1">#optimized version</span>
     <span class="n">matches</span> <span class="o">=</span> <span class="p">[(</span><span class="n">b</span><span class="p">,(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant1</span> <span class="k">for</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="ow">in</span> <span class="n">variant2</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="n">d</span><span class="p">]</span>

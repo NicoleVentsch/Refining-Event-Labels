@@ -47,64 +47,144 @@
 <dl class="function">
 <dt id="refinement.labelRefinement.connectedComponents">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">connectedComponents</code><span class="sig-paren">(</span><em>G</em>, <em>candidateLabels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#connectedComponents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.connectedComponents" title="Permalink to this definition">¶</a></dt>
-<dd><p>computes the connected components given a subgraph 
-:param G: a graph object created from the networkx library
-:param candidateLabels: a list of Strings representing the candidate lables
-:return: a dictionary containing {candidateLabel: [[comp1],[comp2],…]}</p>
+<dd><p>Compute the connected components given a subgraph</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>G</strong> – a graph object created from the networkx library</li>
+<li><strong>candidateLabels</strong> – a list of Strings representing the candidate lables</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a dictionary containing {candidateLabel: [[comp1],[comp2],…]}</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.sizelargestComponent">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">sizelargestComponent</code><span class="sig-paren">(</span><em>connectedComponents</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#sizelargestComponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.sizelargestComponent" title="Permalink to this definition">¶</a></dt>
-<dd><p>computes the size of the largest components for each candidateLabel
-:param connectedComponents: a dictionary containing the connected components created from the method connectedComponents()
-:return: a dictionary with the form {candidateLabel: maxSize([[comp1],[comp2],…])}</p>
+<dd><p>Compute the size of the largest components for each candidateLabel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>connectedComponents</strong> – a dictionary containing the connected components created from the method connectedComponents()</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary with the form {candidateLabel: maxSize([[comp1],[comp2],…])}</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.averagePosition">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">averagePosition</code><span class="sig-paren">(</span><em>Gi</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#averagePosition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.averagePosition" title="Permalink to this definition">¶</a></dt>
-<dd><p>computes the average position of the events for a given connected component, i.e., #Gi
-:param Gi: a list representing the connected component for a given event [[comp1],[comp2],…]
-:param db: a DBTool object
-:return: a list with the average position [[avgPosComp1],[avgPosComp2],…]</p>
+<dd><p>Compute the average position of the events for a given connected component, i.e., #Gi</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Gi</strong> – a list representing the connected component for a given event [[comp1],[comp2],…]</li>
+<li><strong>db</strong> – a DBTool object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list with the average position [[avgPosComp1],[avgPosComp2],…]</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.getPosition">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">getPosition</code><span class="sig-paren">(</span><em>eID</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#getPosition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.getPosition" title="Permalink to this definition">¶</a></dt>
-<dd><p>get the position of an event given its eventID
-:param eID: an eventID (integer)
-:param db: a DBTool object
-:return: an integer representig the position of an event within a trace</p>
+<dd><p>Get the position of an event given its eventID</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>eID</strong> – an eventID (integer)</li>
+<li><strong>db</strong> – a DBTool object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">an integer representig the position of an event within a trace</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.sortConectedComponents">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">sortConectedComponents</code><span class="sig-paren">(</span><em>connectedComponents</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#sortConectedComponents"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.sortConectedComponents" title="Permalink to this definition">¶</a></dt>
-<dd><p>sort the connected components in ascending order w.r.t. their average position
-:param connectedComponents:  a dictionary containing the connected components created from the method connectedComponents()
-:param db: a DBTool object
-:return: a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],…]}</p>
+<dd><p>Sort the connected components in ascending order w.r.t. their average position</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>connectedComponents</strong> – a dictionary containing the connected components created from the method connectedComponents()</li>
+<li><strong>db</strong> – a DBTool object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a dictionary containing the sorted components, i.e., {candidateLabel: [[comp1],[comp2],…]}</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.horizontalRefinement">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">horizontalRefinement</code><span class="sig-paren">(</span><em>cp</em>, <em>graphList</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#horizontalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.horizontalRefinement" title="Permalink to this definition">¶</a></dt>
-<dd><p>perform the horizontal relabeling according to the paper
-:param cp:  a customParameters object
-:param graphList: a list of graphs created from the networkx library
-:return: the same list of graphs but with relebaled event nodes</p>
+<dd><p>Perform the horizontal relabeling according to the paper</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> – a customParameters object</li>
+<li><strong>graphList</strong> – a list of graphs created from the networkx library</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the same list of graphs but with relebaled event nodes</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="refinement.labelRefinement.verticalRefinement">
 <code class="descclassname">refinement.labelRefinement.</code><code class="descname">verticalRefinement</code><span class="sig-paren">(</span><em>cp</em>, <em>graphList</em>, <em>db</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/refinement/labelRefinement.html#verticalRefinement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#refinement.labelRefinement.verticalRefinement" title="Permalink to this definition">¶</a></dt>
-<dd><p>perform the vertical relabeling according to the paper
-:param cp:  a customParameters object
-:param graphList: a list of graphs created from the networkx library
-:param db: a DBTool object
-:return: the same list of graphs but with relebaled event nodes</p>
+<dd><p>Perform the vertical relabeling according to the paper</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cp</strong> – a customParameters object</li>
+<li><strong>graphList</strong> – a list of graphs created from the networkx library</li>
+<li><strong>db</strong> – a DBTool object</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the same list of graphs but with relebaled event nodes</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <div class="line-block">

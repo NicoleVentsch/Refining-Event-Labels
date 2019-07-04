@@ -33,6 +33,7 @@ class FileUtilityBase:
     def getEventLogFromFile(self, path):
         """
         function that converts a file to an event log
+
         :param path: path of the file
         """
         fileExtension = self.__getFileExtension(path)
@@ -43,6 +44,7 @@ class FileUtilityBase:
     def registerImport(self, fileType, fileConverter):
         """
         function that registers a new file converter to expand the import functionality
+
         :param fileType: type of the files that can be converted using the fileConverter
         :param fileConverter: file converter
         """
@@ -52,6 +54,7 @@ class FileUtilityBase:
     def registerExport(self, fileType, fileConverter):
         """
         function that registers a new file converter to expand the export functionality
+
         :param fileType: type of the files that can be converted using the fileConverter
         :param fileConverter: file converter
         """
@@ -61,6 +64,7 @@ class FileUtilityBase:
     def __getFileExtension(self, filePath):
         """
         function that extracts the file extension from the file path
+
         :param filePath: path of the file
         """
         return Path(filePath).suffix

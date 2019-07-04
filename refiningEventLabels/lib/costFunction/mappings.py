@@ -83,11 +83,11 @@ def possibleMappings(variant1 = [], variant2 = []):
     """
 	
     #old version, huge number of combinations when event log is too big
-    """matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
-    n = getNumberOfCommonLabels(variant1, variant2)
+    #matches = [(a,c) for (a,b) in variant1 for (c,d) in variant2 if b == d]
+    #n = getNumberOfCommonLabels(variant1, variant2)
     
-    return [list(combi) for combi in it.combinations(matches, n)
-                        if len(set(it.chain.from_iterable(combi))) == (2*n)]"""
+    #return [list(combi) for combi in it.combinations(matches, n)
+    #                    if len(set(it.chain.from_iterable(combi))) == (2*n)]"""
     
     #optimized version
     matches = [(b,(a,c)) for (a,b) in variant1 for (c,d) in variant2 if b == d]

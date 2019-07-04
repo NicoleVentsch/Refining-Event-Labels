@@ -46,9 +46,9 @@
 <span class="kn">from</span> <span class="nn">.mappings</span> <span class="k">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="costStructure"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.costStructure">[docs]</a><span class="k">def</span> <span class="nf">costStructure</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
-
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">   get the sum of the differences in the distances between each matched pair and other matches pairs</span>
+<span class="sd">   Get the sum of the differences in the distances between each matched pair and other matches pairs</span>
+
 
 <span class="sd">   :param variant1: the first variant</span>
 <span class="sd">   :param variant2: the second variant</span>
@@ -56,6 +56,7 @@
 <span class="sd">   :return: sum of the differences in the distances</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">cost_structure</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">combis</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">combinations</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> 
     <span class="k">for</span> <span class="p">(</span><span class="n">pair1</span><span class="p">,</span> <span class="n">pair2</span><span class="p">)</span> <span class="ow">in</span> <span class="n">combis</span><span class="p">:</span>
@@ -69,7 +70,7 @@
 <div class="viewcode-block" id="context"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.context">[docs]</a><span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="n">variant</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    gives a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</span>
+<span class="sd">    Create a two list (x,y) for the variant, the first one containing the set of predecessors of each action in the variant and the second one containing the set of successors of each action in the variant</span>
 
 <span class="sd">    :param variant: the variant as a list of tuples (eventID, event label) of which we get the list of predecessors and successors</span>
 <span class="sd">    :return: a tuple (x,y) of lists of sets, where x[i] is the set of predecessors of label on position i and y[i] the set of successors of label on position i</span>
@@ -106,7 +107,7 @@
 
     <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">    calculates the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</span>
+<span class="sd">    Compute the cost for labels that are not matched. This cost is given as the sum of the number of their predecessors and successors.</span>
 
 <span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
@@ -144,7 +145,7 @@
 <div class="viewcode-block" id="costMatched"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.costMatched">[docs]</a><span class="k">def</span> <span class="nf">costMatched</span><span class="p">(</span><span class="n">variant1</span><span class="p">,</span> <span class="n">variant2</span><span class="p">,</span> <span class="n">context1</span><span class="p">,</span> <span class="n">context2</span><span class="p">,</span> <span class="n">mapping</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">    calculates the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</span>
+<span class="sd">    Compute the cost for labels that are matched. This cost is given as the sum of the differences in the direct/indirect neighbors of the matched pairs.</span>
 
 <span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param variant2: the second variant as a list of tuples (eventID, event label)</span>
@@ -171,7 +172,7 @@
 <div class="viewcode-block" id="costMapping"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.costMapping">[docs]</a><span class="k">def</span> <span class="nf">costMapping</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span><span class="n">variant1</span><span class="p">,</span><span class="n">variant2</span><span class="p">,</span><span class="n">context1</span><span class="p">,</span><span class="n">context2</span><span class="p">,</span><span class="n">mapping</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    gives the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels</span>
+<span class="sd">    Compute the total cost of a mapping between two variants based on a weighted sum of the structural costs and the costs for matched and non-matched labels</span>
 
 <span class="sd">    :param cp: custom parameters object</span>
 <span class="sd">    :param variant1: the first variant as a list of tuples (eventID, event label)</span>
@@ -197,7 +198,7 @@
 <div class="viewcode-block" id="optimalMapping"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.optimalMapping">[docs]</a><span class="k">def</span> <span class="nf">optimalMapping</span><span class="p">(</span><span class="n">variant_i</span><span class="p">,</span> <span class="n">variant_j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">context_i</span><span class="p">,</span> <span class="n">context_j</span><span class="p">,</span> <span class="n">matrixx</span><span class="p">,</span> <span class="n">cp</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    given two variants the mapping with the lowest total cost together with the value of this cost will be returned</span>
+<span class="sd">    Get the mapping, between two variants, with the lowest total cost along with such cost</span>
 
 <span class="sd">    :param variant_i: the first variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param variant_j: the second variant as a list of tuples (eventID, event label)</span>
@@ -233,7 +234,7 @@
 <div class="viewcode-block" id="bestMappings"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.bestMappings">[docs]</a><span class="k">def</span> <span class="nf">bestMappings</span><span class="p">(</span><span class="n">cp</span><span class="p">,</span> <span class="n">variants</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</span>
+<span class="sd">    Get the best mappings for the given variants and update the cost matrix, so that it contains the cost for each optimal mapping</span>
 
 <span class="sd">    :param cp: custom parameters object</span>
 <span class="sd">    :param variants: a list of variants</span>
@@ -266,7 +267,7 @@
 <div class="viewcode-block" id="context2"><a class="viewcode-back" href="../../cost function.html#costFunction.cost.context2">[docs]</a><span class="k">def</span> <span class="nf">context2</span><span class="p">(</span><span class="n">variant</span><span class="p">,</span><span class="n">k</span><span class="p">):</span>
 
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    creates a list of k predecessors and successors of all events of a given variant</span>
+<span class="sd">    Create a list of k predecessors and successors of all events of a given variant</span>
 
 <span class="sd">    :param variant: variant as a list of tuples (eventID, event label)</span>
 <span class="sd">    :param k: integer specifying the number of predecessors and successors we consider</span>
