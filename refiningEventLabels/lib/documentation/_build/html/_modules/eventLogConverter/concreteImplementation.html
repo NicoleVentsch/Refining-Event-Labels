@@ -45,7 +45,9 @@
 
 <span class="c1"># provides file import and export for .xes and .csv files</span>
 <div class="viewcode-block" id="FileUtility"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.FileUtility">[docs]</a><span class="k">class</span> <span class="nc">FileUtility</span><span class="p">(</span><span class="n">FileUtilityBase</span><span class="p">):</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    provides file import and export for XES and csv files</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaultDirectory</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FileUtility</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">defaultDirectory</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">registerImport</span><span class="p">(</span><span class="s1">&#39;.xes&#39;</span><span class="p">,</span> <span class="n">XESFileConverter</span><span class="p">())</span>
@@ -54,35 +56,61 @@
 
 <span class="c1"># provides .xes to event log conversion using pm4py</span>
 <div class="viewcode-block" id="XESFileConverter"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.XESFileConverter">[docs]</a><span class="k">class</span> <span class="nc">XESFileConverter</span><span class="p">(</span><span class="n">FileConverter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    provides XES to event log conversion using pm4py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileType</span> <span class="o">=</span> <span class="s1">&#39;.xes&#39;</span>
 
-    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">xes_importer</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span></div>
+<div class="viewcode-block" id="XESFileConverter.convert"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.XESFileConverter.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that converts xes files into event logs</span>
+<span class="sd">        :param filePath: the path to the file</span>
+<span class="sd">        :return: event log</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">xes_importer</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span></div></div>
 
 <span class="c1"># provides .csv to event log converstion using pm4py</span>
 <div class="viewcode-block" id="CSVFileConverter"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.CSVFileConverter">[docs]</a><span class="k">class</span> <span class="nc">CSVFileConverter</span><span class="p">(</span><span class="n">FileConverter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    provides csv to event log conversion using pm4py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileType</span> <span class="o">=</span> <span class="s1">&#39;.csv&#39;</span>
 
-    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
+<div class="viewcode-block" id="CSVFileConverter.convert"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.CSVFileConverter.convert">[docs]</a>    <span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that converts csv files into event logs</span>
+<span class="sd">        :param filePath: the path to the file</span>
+<span class="sd">        :return: event log</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">csvEventStream</span> <span class="o">=</span> <span class="n">csv_importer</span><span class="o">.</span><span class="n">import_event_stream</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">conversion_factory</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">csvEventStream</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">conversion_factory</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">csvEventStream</span><span class="p">)</span></div></div>
 
 <span class="c1"># provides event log to .xes file creation using pm4py</span>
-<div class="viewcode-block" id="XESFileCreator"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.XESFileCreator">[docs]</a><span class="k">class</span> <span class="nc">XESFileCreator</span><span class="p">(</span><span class="n">FileCreator</span><span class="p">):</span> 
+<div class="viewcode-block" id="XESFileCreator"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.XESFileCreator">[docs]</a><span class="k">class</span> <span class="nc">XESFileCreator</span><span class="p">(</span><span class="n">FileCreator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    provides creation of XES files from event logs using pm4py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">XESFileCreator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileType</span> <span class="o">=</span> <span class="s1">&#39;.xes&#39;</span>
 
-    <span class="k">def</span> <span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="XESFileCreator.createFile"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.concreteImplementation.XESFileCreator.createFile">[docs]</a>    <span class="k">def</span> <span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">,</span> <span class="n">fileName</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that creates an XES file from an event log</span>
+<span class="sd">        :param eventLog: given event log</span>
+<span class="sd">        :param fileName: name of the file that will be created</span>
+<span class="sd">        :param filePath: path where the created file should be stored</span>
+<span class="sd">        :return: path of the stored converted XES file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">destinationPath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDestinationPath</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">filePath</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
             <span class="n">destinationPath</span> <span class="o">=</span> <span class="n">filePath</span>
         <span class="n">destinationPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">filePath</span><span class="p">)</span>
         <span class="n">xes_exporter</span><span class="o">.</span><span class="n">export_log</span><span class="p">(</span><span class="n">eventLog</span><span class="p">,</span> <span class="n">destinationPath</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">destinationPath</span></div>
+        <span class="k">return</span> <span class="n">destinationPath</span></div></div>
         
         
 </pre></div>

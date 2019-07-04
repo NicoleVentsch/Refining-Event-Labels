@@ -35,20 +35,21 @@
   <h1>Source code for eventLogConverter.defaultFileHandlersFactory</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">.fileHandlerBase</span> <span class="k">import</span> <span class="n">FileHandlerFactory</span>
 
+
 <div class="viewcode-block" id="FileConverterFactory"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.defaultFileHandlersFactory.FileConverterFactory">[docs]</a><span class="k">class</span> <span class="nc">FileConverterFactory</span><span class="p">(</span><span class="n">FileHandlerFactory</span><span class="p">):</span>
     
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">):</span> 
+<div class="viewcode-block" id="FileConverterFactory.create"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.defaultFileHandlersFactory.FileConverterFactory.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">):</span> 
         <span class="k">if</span> <span class="n">fileType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">[</span><span class="n">fileType</span><span class="p">]</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">[</span><span class="n">fileType</span><span class="p">]</span></div></div>
         <span class="c1">#TODO: raise WrongFileFromatError</span>
 
 <div class="viewcode-block" id="FileCreatorFactory"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory">[docs]</a><span class="k">class</span> <span class="nc">FileCreatorFactory</span><span class="p">(</span><span class="n">FileHandlerFactory</span><span class="p">):</span>
     
-    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">):</span> 
+<div class="viewcode-block" id="FileCreatorFactory.create"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory.create">[docs]</a>    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">):</span> 
         <span class="k">if</span> <span class="n">fileType</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">[</span><span class="n">fileType</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileHandlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div></div>
 </pre></div>
 
           </div>

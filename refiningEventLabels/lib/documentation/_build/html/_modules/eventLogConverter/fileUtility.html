@@ -42,6 +42,9 @@
 <span class="c1"># Framework access to import and export event logs</span>
 <span class="c1"># To expand framework functionality expand this class or register new file handlers</span>
 <div class="viewcode-block" id="FileUtilityBase"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase">[docs]</a><span class="k">class</span> <span class="nc">FileUtilityBase</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Framework access to import and export event logs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defaultDirectory</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fileConverterFactory</span> <span class="o">=</span> <span class="n">FileConverterFactory</span><span class="p">()</span>
@@ -49,26 +52,52 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">__defaultDirectory</span> <span class="o">=</span> <span class="n">defaultDirectory</span>
 
     <span class="c1"># creates file from event log</span>
-    <span class="k">def</span> <span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">,</span> <span class="n">fileName</span> <span class="p">,</span><span class="n">fileType</span><span class="p">):</span>
+<div class="viewcode-block" id="FileUtilityBase.createFile"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.createFile">[docs]</a>    <span class="k">def</span> <span class="nf">createFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eventLog</span><span class="p">,</span> <span class="n">fileName</span> <span class="p">,</span><span class="n">fileType</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that creates a file from an event log</span>
+
+<span class="sd">        :param eventLog: provided event log</span>
+<span class="sd">        :param fileName: name of the created file</span>
+<span class="sd">        :param fileType: file type of the created file</span>
+<span class="sd">        :return: file created from the given event log with the given name and the given file type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fileCreator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileCreatorFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">fileType</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fileCreator</span><span class="o">.</span><span class="n">createFile</span><span class="p">(</span><span class="n">eventLog</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__defaultDirectory</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fileCreator</span><span class="o">.</span><span class="n">createFile</span><span class="p">(</span><span class="n">eventLog</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__defaultDirectory</span><span class="p">,</span> <span class="n">fileName</span><span class="p">)</span></div>
 
     <span class="c1"># converts file to event log</span>
-    <span class="k">def</span> <span class="nf">getEventLogFromFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<div class="viewcode-block" id="FileUtilityBase.getEventLogFromFile"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.getEventLogFromFile">[docs]</a>    <span class="k">def</span> <span class="nf">getEventLogFromFile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that converts a file to an event log</span>
+<span class="sd">        :param path: path of the file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">fileExtension</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__getFileExtension</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
         <span class="n">fileConverter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fileConverterFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">fileExtension</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">fileConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fileConverter</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">path</span><span class="p">)</span></div>
     
     <span class="c1"># register a new file converter to expand import functionality</span>
-    <span class="k">def</span> <span class="nf">registerImport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fileConverterFactory</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">)</span>
+<div class="viewcode-block" id="FileUtilityBase.registerImport"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.registerImport">[docs]</a>    <span class="k">def</span> <span class="nf">registerImport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that registers a new file converter to expand the import functionality</span>
+<span class="sd">        :param fileType: type of the files that can be converted using the fileConverter</span>
+<span class="sd">        :param fileConverter: file converter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fileConverterFactory</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">)</span></div>
 
     <span class="c1"># register a new file creator to expand export functionality</span>
-    <span class="k">def</span> <span class="nf">registerExport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_fileCreatorFactory</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">)</span>
+<div class="viewcode-block" id="FileUtilityBase.registerExport"><a class="viewcode-back" href="../../eventLogConverter.html#eventLogConverter.fileUtility.FileUtilityBase.registerExport">[docs]</a>    <span class="k">def</span> <span class="nf">registerExport</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that registers a new file converter to expand the export functionality</span>
+<span class="sd">        :param fileType: type of the files that can be converted using the fileConverter</span>
+<span class="sd">        :param fileConverter: file converter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fileCreatorFactory</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">fileType</span><span class="p">,</span> <span class="n">fileConverter</span><span class="p">)</span></div>
 
     <span class="c1"># private method to extract file extension from path</span>
     <span class="k">def</span> <span class="nf">__getFileExtension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        function that extracts the file extension from the file path</span>
+<span class="sd">        :param filePath: path of the file</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span></div>
 
 
