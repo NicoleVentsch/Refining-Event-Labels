@@ -244,6 +244,12 @@ $\bullet$
 In our implementation, we compute the context of each event by looking at the set of all its predecessors and successors.
 One can change this to consider only the neighbors with maximal distance $k$ for some arbitrary $k$.
 Moreover, one could add this parameter to the other Custom parameters, so that a user that has a good domain knowledge regarding his event log can determine the scope $k$.
+\medskip
+
+$\bullet$
+For event logs containing a high number of trace variants or have long trace lengths which contain candidate labels, the algorithm has a long runtime.
+This is due to the fact that in our implementation we calculate the costs of all the mappings between all pairs of traces and then pick the best one.
+The calculation of the mappings can be further improved in a way that not all mappings are considered, but the difference in the results is negligible.
 
 %\addcontentsline{toc}{chapter}{\textbf{References}}
 \end{flushleft}
