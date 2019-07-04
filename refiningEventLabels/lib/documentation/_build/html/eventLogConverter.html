@@ -47,41 +47,97 @@
 <dl class="class">
 <dt id="eventLogConverter.concreteImplementation.FileUtility">
 <em class="property">class </em><code class="descclassname">eventLogConverter.concreteImplementation.</code><code class="descname">FileUtility</code><span class="sig-paren">(</span><em>defaultDirectory</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#FileUtility"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.FileUtility" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>provides file import and export for XES and csv files</p>
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.concreteImplementation.XESFileConverter">
 <em class="property">class </em><code class="descclassname">eventLogConverter.concreteImplementation.</code><code class="descname">XESFileConverter</code><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#XESFileConverter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.XESFileConverter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>provides XES to event log conversion using pm4py</p>
+<dl class="method">
+<dt id="eventLogConverter.concreteImplementation.XESFileConverter.convert">
+<code class="descname">convert</code><span class="sig-paren">(</span><em>filePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#XESFileConverter.convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.XESFileConverter.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that converts xes files into event logs
+:param filePath: the path to the file
+:return: event log</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.concreteImplementation.CSVFileConverter">
 <em class="property">class </em><code class="descclassname">eventLogConverter.concreteImplementation.</code><code class="descname">CSVFileConverter</code><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#CSVFileConverter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.CSVFileConverter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>provides csv to event log conversion using pm4py</p>
+<dl class="method">
+<dt id="eventLogConverter.concreteImplementation.CSVFileConverter.convert">
+<code class="descname">convert</code><span class="sig-paren">(</span><em>filePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#CSVFileConverter.convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.CSVFileConverter.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that converts csv files into event logs
+:param filePath: the path to the file
+:return: event log</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.concreteImplementation.XESFileCreator">
 <em class="property">class </em><code class="descclassname">eventLogConverter.concreteImplementation.</code><code class="descname">XESFileCreator</code><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#XESFileCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.XESFileCreator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>provides creation of XES files from event logs using pm4py</p>
+<dl class="method">
+<dt id="eventLogConverter.concreteImplementation.XESFileCreator.createFile">
+<code class="descname">createFile</code><span class="sig-paren">(</span><em>eventLog</em>, <em>fileName=''</em>, <em>filePath=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/concreteImplementation.html#XESFileCreator.createFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.concreteImplementation.XESFileCreator.createFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that creates an XES file from an event log
+:param eventLog: given event log
+:param fileName: name of the file that will be created
+:param filePath: path where the created file should be stored
+:return: path of the stored converted XES file</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.defaultFileHandlersFactory.FileConverterFactory">
 <em class="property">class </em><code class="descclassname">eventLogConverter.defaultFileHandlersFactory.</code><code class="descname">FileConverterFactory</code><a class="reference internal" href="_modules/eventLogConverter/defaultFileHandlersFactory.html#FileConverterFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.defaultFileHandlersFactory.FileConverterFactory" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="method">
+<dt id="eventLogConverter.defaultFileHandlersFactory.FileConverterFactory.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>fileType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/defaultFileHandlersFactory.html#FileConverterFactory.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.defaultFileHandlersFactory.FileConverterFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory">
 <em class="property">class </em><code class="descclassname">eventLogConverter.defaultFileHandlersFactory.</code><code class="descname">FileCreatorFactory</code><a class="reference internal" href="_modules/eventLogConverter/defaultFileHandlersFactory.html#FileCreatorFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><dl class="method">
+<dt id="eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>fileType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/defaultFileHandlersFactory.html#FileCreatorFactory.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.fileHandlerBase.FileHandlerFactory">
 <em class="property">class </em><code class="descclassname">eventLogConverter.fileHandlerBase.</code><code class="descname">FileHandlerFactory</code><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileHandlerFactory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileHandlerFactory" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>defines factory base class for file creation and conversion</p>
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileHandlerFactory.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>fileType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileHandlerFactory.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileHandlerFactory.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="eventLogConverter.fileHandlerBase.FileHandlerFactory.register">
 <code class="descname">register</code><span class="sig-paren">(</span><em>fileType</em>, <em>fileHandler</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileHandlerFactory.register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileHandlerFactory.register" title="Permalink to this definition">¶</a></dt>
-<dd><p>Register a virtual subclass of an ABC.</p>
-<p>Returns the subclass, to allow usage as a class decorator.</p>
+<dd><p>register a new file handler for a given file type
+:param fileType: the file type of the provided file
+:param fileHandler: the handler that should be registered</p>
 </dd></dl>
 
 </dd></dl>
@@ -89,17 +145,106 @@
 <dl class="class">
 <dt id="eventLogConverter.fileHandlerBase.FileCreator">
 <em class="property">class </em><code class="descclassname">eventLogConverter.fileHandlerBase.</code><code class="descname">FileCreator</code><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileCreator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileCreator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Abstract class to create different files types from for event logs</p>
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileCreator.getFileType">
+<code class="descname">getFileType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileCreator.getFileType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileCreator.getFileType" title="Permalink to this definition">¶</a></dt>
+<dd><p>get function for the file type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileCreator.setDestinationPath">
+<code class="descname">setDestinationPath</code><span class="sig-paren">(</span><em>destinationPath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileCreator.setDestinationPath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileCreator.setDestinationPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>set function for the destination path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileCreator.getDestinationPath">
+<code class="descname">getDestinationPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileCreator.getDestinationPath"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileCreator.getDestinationPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>get function for the destination path</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileCreator.createFile">
+<code class="descname">createFile</code><span class="sig-paren">(</span><em>eventLog</em>, <em>fileName=''</em>, <em>filePath=''</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileCreator.createFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileCreator.createFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that creates a file from a given event log
+:param eventLog: event log
+:param fileName: name of the file that will be created
+:param filePath: path of the file that will be created
+:return: file created from an event log with the provided namen at the provided path</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.fileHandlerBase.FileConverter">
 <em class="property">class </em><code class="descclassname">eventLogConverter.fileHandlerBase.</code><code class="descname">FileConverter</code><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileConverter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileConverter" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>abstract class to convert different file types to event logs</p>
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileConverter.getFileType">
+<code class="descname">getFileType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileConverter.getFileType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileConverter.getFileType" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that creates the destination file type</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileHandlerBase.FileConverter.convert">
+<code class="descname">convert</code><span class="sig-paren">(</span><em>filePath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileHandlerBase.html#FileConverter.convert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileHandlerBase.FileConverter.convert" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that converts a file to an event log
+:param filePath: path of the file</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="eventLogConverter.fileUtility.FileUtilityBase">
 <em class="property">class </em><code class="descclassname">eventLogConverter.fileUtility.</code><code class="descname">FileUtilityBase</code><span class="sig-paren">(</span><em>defaultDirectory</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileUtility.html#FileUtilityBase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileUtility.FileUtilityBase" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Framework access to import and export event logs</p>
+<dl class="method">
+<dt id="eventLogConverter.fileUtility.FileUtilityBase.createFile">
+<code class="descname">createFile</code><span class="sig-paren">(</span><em>eventLog</em>, <em>fileName</em>, <em>fileType</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileUtility.html#FileUtilityBase.createFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileUtility.FileUtilityBase.createFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that creates a file from an event log</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>eventLog</strong> – provided event log</li>
+<li><strong>fileName</strong> – name of the created file</li>
+<li><strong>fileType</strong> – file type of the created file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">file created from the given event log with the given name and the given file type</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileUtility.FileUtilityBase.getEventLogFromFile">
+<code class="descname">getEventLogFromFile</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileUtility.html#FileUtilityBase.getEventLogFromFile"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileUtility.FileUtilityBase.getEventLogFromFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that converts a file to an event log
+:param path: path of the file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileUtility.FileUtilityBase.registerImport">
+<code class="descname">registerImport</code><span class="sig-paren">(</span><em>fileType</em>, <em>fileConverter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileUtility.html#FileUtilityBase.registerImport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileUtility.FileUtilityBase.registerImport" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that registers a new file converter to expand the import functionality
+:param fileType: type of the files that can be converted using the fileConverter
+:param fileConverter: file converter</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="eventLogConverter.fileUtility.FileUtilityBase.registerExport">
+<code class="descname">registerExport</code><span class="sig-paren">(</span><em>fileType</em>, <em>fileConverter</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/eventLogConverter/fileUtility.html#FileUtilityBase.registerExport"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#eventLogConverter.fileUtility.FileUtilityBase.registerExport" title="Permalink to this definition">¶</a></dt>
+<dd><p>function that registers a new file converter to expand the export functionality
+:param fileType: type of the files that can be converted using the fileConverter
+:param fileConverter: file converter</p>
+</dd></dl>
+
+</dd></dl>
 
 <div class="line-block">
 <div class="line"><br /></div>

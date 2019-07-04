@@ -20,7 +20,6 @@ Module 1 - File Converter
 
 .. autoclass:: eventLogConverter.fileHandlerBase.FileConverter
 
-
 .. autoclass:: eventLogConverter.fileUtility.FileUtilityBase
 
 

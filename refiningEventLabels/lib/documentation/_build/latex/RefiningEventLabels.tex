@@ -81,48 +81,120 @@ The source code is available under: \sphinxurl{https://github.com/NicoleVentsch/
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.FileUtility}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.concreteImplementation.}}\sphinxbfcode{\sphinxupquote{FileUtility}}}{\emph{defaultDirectory}}{}
+provides file import and export for XES and csv files
+
 \end{fulllineitems}
 
 \index{XESFileConverter (class in eventLogConverter.concreteImplementation)@\spxentry{XESFileConverter}\spxextra{class in eventLogConverter.concreteImplementation}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.XESFileConverter}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.concreteImplementation.}}\sphinxbfcode{\sphinxupquote{XESFileConverter}}}
+provides XES to event log conversion using pm4py
+\index{convert() (eventLogConverter.concreteImplementation.XESFileConverter method)@\spxentry{convert()}\spxextra{eventLogConverter.concreteImplementation.XESFileConverter method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.XESFileConverter.convert}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{convert}}}{\emph{filePath}}{}
+function that converts xes files into event logs
+:param filePath: the path to the file
+:return: event log
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{CSVFileConverter (class in eventLogConverter.concreteImplementation)@\spxentry{CSVFileConverter}\spxextra{class in eventLogConverter.concreteImplementation}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.CSVFileConverter}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.concreteImplementation.}}\sphinxbfcode{\sphinxupquote{CSVFileConverter}}}
+provides csv to event log conversion using pm4py
+\index{convert() (eventLogConverter.concreteImplementation.CSVFileConverter method)@\spxentry{convert()}\spxextra{eventLogConverter.concreteImplementation.CSVFileConverter method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.CSVFileConverter.convert}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{convert}}}{\emph{filePath}}{}
+function that converts csv files into event logs
+:param filePath: the path to the file
+:return: event log
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{XESFileCreator (class in eventLogConverter.concreteImplementation)@\spxentry{XESFileCreator}\spxextra{class in eventLogConverter.concreteImplementation}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.XESFileCreator}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.concreteImplementation.}}\sphinxbfcode{\sphinxupquote{XESFileCreator}}}
+provides creation of XES files from event logs using pm4py
+\index{createFile() (eventLogConverter.concreteImplementation.XESFileCreator method)@\spxentry{createFile()}\spxextra{eventLogConverter.concreteImplementation.XESFileCreator method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.concreteImplementation.XESFileCreator.createFile}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{createFile}}}{\emph{eventLog}, \emph{fileName=''}, \emph{filePath=''}}{}
+function that creates an XES file from an event log
+:param eventLog: given event log
+:param fileName: name of the file that will be created
+:param filePath: path where the created file should be stored
+:return: path of the stored converted XES file
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{FileConverterFactory (class in eventLogConverter.defaultFileHandlersFactory)@\spxentry{FileConverterFactory}\spxextra{class in eventLogConverter.defaultFileHandlersFactory}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileConverterFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.defaultFileHandlersFactory.}}\sphinxbfcode{\sphinxupquote{FileConverterFactory}}}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileConverterFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.defaultFileHandlersFactory.}}\sphinxbfcode{\sphinxupquote{FileConverterFactory}}}~\index{create() (eventLogConverter.defaultFileHandlersFactory.FileConverterFactory method)@\spxentry{create()}\spxextra{eventLogConverter.defaultFileHandlersFactory.FileConverterFactory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileConverterFactory.create}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create}}}{\emph{fileType}}{}
+returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{FileCreatorFactory (class in eventLogConverter.defaultFileHandlersFactory)@\spxentry{FileCreatorFactory}\spxextra{class in eventLogConverter.defaultFileHandlersFactory}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.defaultFileHandlersFactory.}}\sphinxbfcode{\sphinxupquote{FileCreatorFactory}}}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.defaultFileHandlersFactory.}}\sphinxbfcode{\sphinxupquote{FileCreatorFactory}}}~\index{create() (eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory method)@\spxentry{create()}\spxextra{eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.defaultFileHandlersFactory.FileCreatorFactory.create}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create}}}{\emph{fileType}}{}
+returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{FileHandlerFactory (class in eventLogConverter.fileHandlerBase)@\spxentry{FileHandlerFactory}\spxextra{class in eventLogConverter.fileHandlerBase}}
 
 \begin{fulllineitems}
-\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileHandlerFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.fileHandlerBase.}}\sphinxbfcode{\sphinxupquote{FileHandlerFactory}}}~\index{register() (eventLogConverter.fileHandlerBase.FileHandlerFactory method)@\spxentry{register()}\spxextra{eventLogConverter.fileHandlerBase.FileHandlerFactory method}}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileHandlerFactory}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.fileHandlerBase.}}\sphinxbfcode{\sphinxupquote{FileHandlerFactory}}}
+defines factory base class for file creation and conversion
+\index{create() (eventLogConverter.fileHandlerBase.FileHandlerFactory method)@\spxentry{create()}\spxextra{eventLogConverter.fileHandlerBase.FileHandlerFactory method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileHandlerFactory.create}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{create}}}{\emph{fileType}}{}
+returns the right file handler depending on the file type
+:param fileType: the file type of the provided file
+:return: file handler according to file type
+
+\end{fulllineitems}
+
+\index{register() (eventLogConverter.fileHandlerBase.FileHandlerFactory method)@\spxentry{register()}\spxextra{eventLogConverter.fileHandlerBase.FileHandlerFactory method}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileHandlerFactory.register}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{register}}}{\emph{fileType}, \emph{fileHandler}}{}
-Register a virtual subclass of an ABC.
-
-Returns the subclass, to allow usage as a class decorator.
+register a new file handler for a given file type
+:param fileType: the file type of the provided file
+:param fileHandler: the handler that should be registered
 
 \end{fulllineitems}
 
@@ -133,18 +205,131 @@ Returns the subclass, to allow usage as a class decorator.
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileCreator}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.fileHandlerBase.}}\sphinxbfcode{\sphinxupquote{FileCreator}}}
+Abstract class to create different files types from for event logs
+\index{getFileType() (eventLogConverter.fileHandlerBase.FileCreator method)@\spxentry{getFileType()}\spxextra{eventLogConverter.fileHandlerBase.FileCreator method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileCreator.getFileType}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{getFileType}}}{}{}
+get function for the file type
+
+\end{fulllineitems}
+
+\index{setDestinationPath() (eventLogConverter.fileHandlerBase.FileCreator method)@\spxentry{setDestinationPath()}\spxextra{eventLogConverter.fileHandlerBase.FileCreator method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileCreator.setDestinationPath}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{setDestinationPath}}}{\emph{destinationPath}}{}
+set function for the destination path
+
+\end{fulllineitems}
+
+\index{getDestinationPath() (eventLogConverter.fileHandlerBase.FileCreator method)@\spxentry{getDestinationPath()}\spxextra{eventLogConverter.fileHandlerBase.FileCreator method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileCreator.getDestinationPath}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{getDestinationPath}}}{}{}
+get function for the destination path
+
+\end{fulllineitems}
+
+\index{createFile() (eventLogConverter.fileHandlerBase.FileCreator method)@\spxentry{createFile()}\spxextra{eventLogConverter.fileHandlerBase.FileCreator method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileCreator.createFile}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{createFile}}}{\emph{eventLog}, \emph{fileName=''}, \emph{filePath=''}}{}
+function that creates a file from a given event log
+:param eventLog: event log
+:param fileName: name of the file that will be created
+:param filePath: path of the file that will be created
+:return: file created from an event log with the provided namen at the provided path
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{FileConverter (class in eventLogConverter.fileHandlerBase)@\spxentry{FileConverter}\spxextra{class in eventLogConverter.fileHandlerBase}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileConverter}}\pysigline{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.fileHandlerBase.}}\sphinxbfcode{\sphinxupquote{FileConverter}}}
+abstract class to convert different file types to event logs
+\index{getFileType() (eventLogConverter.fileHandlerBase.FileConverter method)@\spxentry{getFileType()}\spxextra{eventLogConverter.fileHandlerBase.FileConverter method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileConverter.getFileType}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{getFileType}}}{}{}
+function that creates the destination file type
+
+\end{fulllineitems}
+
+\index{convert() (eventLogConverter.fileHandlerBase.FileConverter method)@\spxentry{convert()}\spxextra{eventLogConverter.fileHandlerBase.FileConverter method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileHandlerBase.FileConverter.convert}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{convert}}}{\emph{filePath}}{}
+function that converts a file to an event log
+:param filePath: path of the file
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 \index{FileUtilityBase (class in eventLogConverter.fileUtility)@\spxentry{FileUtilityBase}\spxextra{class in eventLogConverter.fileUtility}}
 
 \begin{fulllineitems}
 \phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileUtility.FileUtilityBase}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{class }}\sphinxcode{\sphinxupquote{eventLogConverter.fileUtility.}}\sphinxbfcode{\sphinxupquote{FileUtilityBase}}}{\emph{defaultDirectory}}{}
+Framework access to import and export event logs
+\index{createFile() (eventLogConverter.fileUtility.FileUtilityBase method)@\spxentry{createFile()}\spxextra{eventLogConverter.fileUtility.FileUtilityBase method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileUtility.FileUtilityBase.createFile}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{createFile}}}{\emph{eventLog}, \emph{fileName}, \emph{fileType}}{}
+function that creates a file from an event log
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{eventLog}} \textendash{} provided event log
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{fileName}} \textendash{} name of the created file
+
+\item {} 
+\sphinxstyleliteralstrong{\sphinxupquote{fileType}} \textendash{} file type of the created file
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+file created from the given event log with the given name and the given file type
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{getEventLogFromFile() (eventLogConverter.fileUtility.FileUtilityBase method)@\spxentry{getEventLogFromFile()}\spxextra{eventLogConverter.fileUtility.FileUtilityBase method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileUtility.FileUtilityBase.getEventLogFromFile}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{getEventLogFromFile}}}{\emph{path}}{}
+function that converts a file to an event log
+:param path: path of the file
+
+\end{fulllineitems}
+
+\index{registerImport() (eventLogConverter.fileUtility.FileUtilityBase method)@\spxentry{registerImport()}\spxextra{eventLogConverter.fileUtility.FileUtilityBase method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileUtility.FileUtilityBase.registerImport}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{registerImport}}}{\emph{fileType}, \emph{fileConverter}}{}
+function that registers a new file converter to expand the import functionality
+:param fileType: type of the files that can be converted using the fileConverter
+:param fileConverter: file converter
+
+\end{fulllineitems}
+
+\index{registerExport() (eventLogConverter.fileUtility.FileUtilityBase method)@\spxentry{registerExport()}\spxextra{eventLogConverter.fileUtility.FileUtilityBase method}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{eventLogConverter:eventLogConverter.fileUtility.FileUtilityBase.registerExport}}\pysiglinewithargsret{\sphinxbfcode{\sphinxupquote{registerExport}}}{\emph{fileType}, \emph{fileConverter}}{}
+function that registers a new file converter to expand the export functionality
+:param fileType: type of the files that can be converted using the fileConverter
+:param fileConverter: file converter
+
+\end{fulllineitems}
+
+
 \end{fulllineitems}
 
 
