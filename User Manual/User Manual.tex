@@ -6,7 +6,8 @@
 \usepackage{amssymb}			
 \usepackage{mathtools}		
 \usepackage{comment} 			
-\usepackage{mdframed}			
+\usepackage{mdframed}
+\usepackage{hyperref}			
 \usepackage{xcolor}				
 \usepackage{fancyhdr}			
 \usepackage{listings}			
@@ -81,7 +82,7 @@
     bottom=30mm					%Causes warning
 }
 
-\begin{flushleft}				%Default page formatting on-going #2
+%\begin{flushleft}				%Default page formatting on-going #2
 
 \section{Overview}
 
@@ -102,7 +103,6 @@ The approach we have implemented is described in \cite{paper}.
 In the following chapters, the usage of this web service will be explained.
 
 
-%\section{Technical Background}
 
 \section{Instructions}
 
@@ -162,6 +162,45 @@ After entering the candidate labels, the user can click on the "submit" button, 
 The fresh labels have the form $labelx.y$ with $x,y$ natural numbers.
 Here $x$ identifies the refinement made in the horizontal refinement part of the algorithm, whereas $y$ identifies the refinement made in the vertical refinement part. 
 If no labels are given or the given labels do not appear in the log, the refined log will be identical with the original one.
+
+\section{Installation}
+
+In order to use the web service, the folder refiningEventLabels has to be downloaded from the \href{https://github.com/NicoleVentsch/Refining-Event-Labels}{GitHub repository}. In this folder, the user can also find the code documentation in html format under $refiningEventLabels/lib/$ $documentation/_build/html/index.html$. 
+
+After downloading the folder, Flask has to be installed. This can be done using the command:
+
+\begin{lstlisting}
+	pip install Flask 
+\end{lstlisting}
+
+Further information on how to install Flask can be found \href{http://flask.pocoo.org/docs/1.0/installation/}{here}. After opening a command prompt in the refiningEventLabels folder, the user needs to tell the terminal the application to work with by exporting the FLASK\_APP environment variable. This can be done using Windows by entering the following command:
+
+\begin{lstlisting}
+	C:\path\to\refiningEventLabels>set FLASK_APP=index.py
+\end{lstlisting}
+ 
+On Linux, the following command is needed:
+
+\begin{lstlisting}
+	 $ export FLASK_APP=index.py
+\end{lstlisting}
+
+More information on that can be found \href{http://flask.pocoo.org/docs/1.0/quickstart/}{here}.
+
+\medskip
+
+Now, the user can run Flask using the command:
+\begin{lstlisting}
+	 flask run
+\end{lstlisting}
+
+The output of this command will look like the following:
+
+
+\includegraphics[scale=0.7]{Flask.png}
+
+
+In the output, it is stated where the server is running, in this example on $http://127.0.0.1:5000/$. When typing this into a browser, the user will get to the start page of our web service and can then use it following the instructions found in section 2. 
 
 
 \section{Technical background}
@@ -252,7 +291,7 @@ This is due to the fact that in our implementation we calculate the costs of all
 The calculation of the mappings can be further improved in a way that not all mappings are considered, but the difference in the results is negligible.
 
 %\addcontentsline{toc}{chapter}{\textbf{References}}
-\end{flushleft}
+%\end{flushleft}
 %\bibliography{uw-ethesis}
 % Tip 5: You can create multiple .bib files to organize your references. 
 % Just list them all in the \bibliogaphy command, separated by commas (no spaces).
